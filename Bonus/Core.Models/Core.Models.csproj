@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D7965F8E-0720-46EE-82E8-BC5BE26FE8B2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AFT.RegoV2.Bonus.Core.Models</RootNamespace>
+    <AssemblyName>AFT.RegoV2.Bonus.Core.Models</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'QA|AnyCPU'">
+    <OutputPath>bin\QA\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FluentValidation, Version=6.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FluentValidation.6.2.1.0\lib\Net45\FluentValidation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=4.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Primitives.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Data\QualificationReasons.cs" />
+    <Compile Include="Enums\ActivationStatus.cs" />
+    <Compile Include="Enums\RolloverStatus.cs" />
+    <Compile Include="Enums\TemplateStatus.cs" />
+    <Compile Include="Enums\TransactionType.cs" />
+    <Compile Include="Enums\WageringMethod.cs" />
+    <Compile Include="Enums\BonusRewardType.cs" />
+    <Compile Include="Enums\IssuanceMode.cs" />
+    <Compile Include="Enums\BonusPlayerRedemptionsLimitType.cs" />
+    <Compile Include="Enums\Operation.cs" />
+    <Compile Include="Enums\DurationType.cs" />
+    <Compile Include="Data\BonusBalance.cs" />
+    <Compile Include="Data\BonusRedemption.cs" />
+    <Compile Include="Enums\BonusType.cs" />
+    <Compile Include="Data\Bonus.cs" />
+    <Compile Include="Commands\FirstDepositApplication.cs" />
+    <Compile Include="Commands\FundInBonusApplication.cs" />
+    <Compile Include="Commands\DepositBonusApplication.cs" />
+    <Compile Include="Commands\ClaimBonusRedemption.cs" />
+    <Compile Include="Commands\CancelBonusRedemption.cs" />
+    <Compile Include="Commands\CreateUpdateBonus.cs" />
+    <Compile Include="Commands\CreateUpdateTemplate.cs" />
+    <Compile Include="Commands\CreateUpdateTemplateAvailability.cs" />
+    <Compile Include="Commands\CreateUpdateTemplateInfo.cs" />
+    <Compile Include="Commands\CreateUpdateTemplateNotification.cs" />
+    <Compile Include="Commands\CreateUpdateTemplateRules.cs" />
+    <Compile Include="Commands\CreateUpdateTemplateWagering.cs" />
+    <Compile Include="Commands\DeleteTemplate.cs" />
+    <Compile Include="Commands\IssueBonusByCs.cs" />
+    <Compile Include="Commands\ToggleBonusStatus.cs" />
+    <Compile Include="Data\ManualByCsQualifiedBonus.cs" />
+    <Compile Include="Data\DepositQualifiedBonus.cs" />
+    <Compile Include="Data\Player.cs" />
+    <Compile Include="Data\PlayerWagering.cs" />
+    <Compile Include="Data\TemplateIdentifier.cs" />
+    <Compile Include="Data\Template.cs" />
+    <Compile Include="Events\Management\BonusActivated.cs" />
+    <Compile Include="Events\Management\BonusCreated.cs" />
+    <Compile Include="Events\Management\BonusDeactivated.cs" />
+    <Compile Include="Events\Management\BonusTemplateCreated.cs" />
+    <Compile Include="Events\Management\BonusTemplateUpdated.cs" />
+    <Compile Include="Events\Management\BonusUpdated.cs" />
+    <Compile Include="Events\Redemption\BonusRedeemed.cs" />
+    <Compile Include="Events\Redemption\RedemptionCanceled.cs" />
+    <Compile Include="Events\Redemption\RedemptionClaimed.cs" />
+    <Compile Include="Events\Redemption\RedemptionIsClaimable.cs" />
+    <Compile Include="Events\Redemption\RedemptionNegated.cs" />
+    <Compile Include="Events\Redemption\RedemptionRolloverCompleted.cs" />
+    <Compile Include="Events\Redemption\RedemptionRolloverDecreased.cs" />
+    <Compile Include="Events\Redemption\RedemptionRolloverIssued.cs" />
+    <Compile Include="Events\Redemption\RedemptionRolloverZeroedOut.cs" />
+    <Compile Include="Events\Wallet\BonusWalletBalanceChanged.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Core.Common\Core.Common.csproj">
+      <Project>{e60e73c7-09b9-45b2-950f-547350cfbe93}</Project>
+      <Name>Core.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Core.Messaging.Interface\Core.Messaging.Interface.csproj">
+      <Project>{44911B69-EC90-4ED2-A777-3B9D7CADA79B}</Project>
+      <Name>Core.Messaging.Interface</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,34 @@
+﻿namespace AFT.RegoV2.Core.Common.Data
+{
+    public enum PlayerInfoValidatorResponseCodes
+    {
+        FirstNameRequired,
+        LastNameRequired,
+        EmailIsRequired,
+        AgeIsUnderAllowed,
+        DateOfBirthIsMissingOrIncorrect,
+        TitleIsRequired,
+        CountryCodeIsRequired,
+        FirstNameLengthIsNotInTheAllowedRange,
+        FirstNameFormatIsWrong,
+        LastNameLengthIsNotInTheAllowedRange,
+        LastNameFormatIsWrong,
+        InvalidCountryCode,
+        InvalidCurrencyCode,
+        PhoneNumberIsRequired,
+        EmailLengthIsNotInAllowedRange,
+        EmailFormatIsWrong,
+        EmailAlreadyExists,
+        PhoneNumberLengthIsWrong,
+        PhoneNumberFormatIsWrong,
+        MailingAddressCityIsRequired,
+        MailingAddressLine1IsRequired,
+        MailingAddressPostalCodeIsRequired,
+        MailingAddressLine1LengthIsIncorrect,
+        MailingAddressPostalCodeLengthIsIncorrect,
+        MailingAddressStateProvince,
+        GenderIsRequired,
+        AccountAlertIsRequired,
+        MarketingAlertIsRequired,
+    }
+}

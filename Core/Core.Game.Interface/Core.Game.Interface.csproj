@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5DA8B439-142A-4409-AEA6-52B3ACECB6E5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AFT.RegoV2.Core.Game.Interface</RootNamespace>
+    <AssemblyName>AFT.RegoV2.Core.Game.Interface</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'QA|AnyCPU'">
+    <OutputPath>bin\QA\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AFT.UGS.Core.BaseModels, Version=2.0.14.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AFT.UGS.Core.BaseModels.2.0.14\lib\net45\AFT.UGS.Core.BaseModels.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AFT.UGS.Core.Messages, Version=2.0.14.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AFT.UGS.Core.Messages.2.0.14\lib\net45\AFT.UGS.Core.Messages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AFT.UGS.Core.TokenData, Version=2.0.14.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AFT.UGS.Core.TokenData.2.0.14\lib\net45\AFT.UGS.Core.TokenData.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=4.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Primitives.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Data\AssignLobbiesToBrandData.cs" />
+    <Compile Include="Data\AssignGamesToGameGroupData.cs" />
+    <Compile Include="Data\BetLimitGroup.cs" />
+    <Compile Include="Data\Brand.cs" />
+    <Compile Include="Data\BrandCredentials.cs" />
+    <Compile Include="Data\BrandCredentialsData.cs" />
+    <Compile Include="Data\GameGroupGame.cs" />
+    <Compile Include="Data\GameGroup.cs" />
+    <Compile Include="Data\BrandLobby.cs" />
+    <Compile Include="Data\BrandGameProviderConfiguration.cs" />
+    <Compile Include="Data\Lobby.cs" />
+    <Compile Include="Data\Game.cs" />
+    <Compile Include="Data\GameAction.cs" />
+    <Compile Include="Data\GameActionContext.cs" />
+    <Compile Include="Data\GameActionData.cs" />
+    <Compile Include="Data\GameCulture.cs" />
+    <Compile Include="Data\GameCurrency.cs" />
+    <Compile Include="Data\GameDTO.cs" />
+    <Compile Include="Data\GameProvider.cs" />
+    <Compile Include="Data\GameProviderBetLimit.cs" />
+    <Compile Include="Data\GameProviderCategory.cs" />
+    <Compile Include="Data\GameProviderConfiguration.cs" />
+    <Compile Include="Data\GameProviderCurrency.cs" />
+    <Compile Include="Data\GameProviderDTO.cs" />
+    <Compile Include="Data\GameProviderLanguage.cs" />
+    <Compile Include="Data\Licensee.cs" />
+    <Compile Include="Data\VipLevelBetLimitGroup.cs" />
+    <Compile Include="Events\BetLimitGroupUpdated.cs" />
+    <Compile Include="Events\BrandCredentialsUpdated.cs" />
+    <Compile Include="Data\PlayableBalanceInfo.cs" />
+    <Compile Include="Data\Player.cs" />
+    <Compile Include="Data\Round.cs" />
+    <Compile Include="Data\VipLevel.cs" />
+    <Compile Include="Data\VipLevelGameProviderBetLimit.cs" />
+    <Compile Include="Events\BetEvent.cs" />
+    <Compile Include="Events\Events.cs" />
+    <Compile Include="Events\FundedIn.cs" />
+    <Compile Include="Events\FundedOut.cs" />
+    <Compile Include="Events\GameCreated.cs" />
+    <Compile Include="Events\GameDeleted.cs" />
+    <Compile Include="Events\GameIntegrationEvent.cs" />
+    <Compile Include="Events\GameUpdated.cs" />
+    <Compile Include="Events\BetLimitGroupCreated.cs" />
+    <Compile Include="Exceptions\DuplicateBatchException.cs" />
+    <Compile Include="Exceptions\DuplicateGameActionException.cs" />
+    <Compile Include="Exceptions\GameActionNotFoundException.cs" />
+    <Compile Include="Exceptions\InvalidVipLevelBetException.cs" />
+    <Compile Include="Exceptions\LoseBetAmountMustBeZeroException.cs" />
+    <Compile Include="Exceptions\RoundNotFoundException.cs" />
+    <Compile Include="Interfaces\IBrandOperations.cs" />
+    <Compile Include="Interfaces\IProductOperations.cs" />
+    <Compile Include="Interfaces\IGameWalletQueries.cs" />
+    <Compile Include="Interfaces\IUgsEventRetranslator.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core.Common\Core.Common.csproj">
+      <Project>{e60e73c7-09b9-45b2-950f-547350cfbe93}</Project>
+      <Name>Core.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
+  </Target>
+  <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

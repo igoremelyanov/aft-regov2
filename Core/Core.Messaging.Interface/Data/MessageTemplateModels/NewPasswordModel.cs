@@ -1,0 +1,7 @@
+﻿namespace AFT.RegoV2.Core.Messaging.Interface.Data.MessageTemplateModels
+{
+    public class NewPasswordModel : PlayerMessageTemplateModel
+    {
+        public string NewPassword { get; set; }
+    }
+}

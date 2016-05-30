@@ -1,0 +1,23 @@
+﻿<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <copyright>Copyright AFT 2016</copyright>
+    <tags>WinService</tags>
+  </metadata>
+  <files>
+      <file src="bin\Debug\**\*.dll" target="Content\" />
+      <file src="bin\Debug\**\*.xml" target="Content\" />
+      <file src="bin\Debug\**\*.config" target="Content\" />
+      <file src="bin\Debug\**\*.exe" target="Content\" />
+      <file src="bin\Debug\**\*.targets" target="Content\" />
+      <file src="bin\Debug\**\*.resx" target="Content\" />
+      <file src="bin\Debug\**\*.cs" target="Content\" />
+  </files>
+</package>

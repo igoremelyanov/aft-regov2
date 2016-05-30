@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{18B71681-F11B-4F62-A4E9-A388FCC9A4B7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AFT.RegoV2.Core.Player</RootNamespace>
+    <AssemblyName>AFT.RegoV2.Core.Player</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <StyleCopTreatErrorsAsWarnings>false</StyleCopTreatErrorsAsWarnings>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'QA|AnyCPU'">
+    <OutputPath>bin\QA\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Label="SlowCheetah">
+    <SlowCheetahToolsPath>$([System.IO.Path]::GetFullPath( $(MSBuildProjectDirectory)\..\..\packages\SlowCheetah.2.5.14\tools\))</SlowCheetahToolsPath>
+    <SlowCheetah_EnableImportFromNuGet Condition=" '$(SlowCheetah_EnableImportFromNuGet)'=='' ">true</SlowCheetah_EnableImportFromNuGet>
+    <SlowCheetah_NuGetImportPath Condition=" '$(SlowCheetah_NuGetImportPath)'=='' ">$([System.IO.Path]::GetFullPath( $(MSBuildProjectDirectory)\Properties\SlowCheetah\SlowCheetah.Transforms.targets ))</SlowCheetah_NuGetImportPath>
+    <SlowCheetahTargets Condition=" '$(SlowCheetah_EnableImportFromNuGet)'=='true' and Exists('$(SlowCheetah_NuGetImportPath)') ">$(SlowCheetah_NuGetImportPath)</SlowCheetahTargets>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.0.4.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AutoMapper.4.0.4\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FluentValidation, Version=6.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FluentValidation.6.2.1.0\lib\Net45\FluentValidation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Common">
+      <HintPath>..\..\packages\ServiceStack.Common.3.9.71\lib\net35\ServiceStack.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Interfaces">
+      <HintPath>..\..\packages\ServiceStack.Common.3.9.71\lib\net35\ServiceStack.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.ServiceInterface">
+      <HintPath>..\..\packages\ServiceStack.3.9.71\lib\net35\ServiceStack.ServiceInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=4.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Primitives.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationServices\IdentificationDocumentSettingsService.cs" />
+    <Compile Include="ApplicationServices\PlayerCommands.cs" />
+    <Compile Include="ApplicationServices\PlayerSubscriber.cs" />
+    <Compile Include="ApplicationServices\PlayerQueries.cs" />
+    <Compile Include="Data\Bank.cs" />
+    <Compile Include="Data\BankAccount.cs" />
+    <Compile Include="Data\ConfirmResetPasswordData.cs" />
+    <Compile Include="Data\ConfirmResetPaswordData.cs" />
+    <Compile Include="Data\IdentificationDocumentSettings.cs" />
+    <Compile Include="Data\ChangeSecurityQuestionData.cs" />
+    <Compile Include="Data\PlayerInfoLog.cs" />
+    <Compile Include="Data\PlayerBetStatistics.cs" />
+    <Compile Include="Data\SecurityAnswerData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Events\ActivationEmailResent.cs" />
+    <Compile Include="Events\IdentityDocumentUnverified.cs" />
+    <Compile Include="Events\IdentityDocumentVerified.cs" />
+    <Compile Include="Events\IdentityDocumentUploaded.cs" />
+    <Compile Include="Events\IdentificationDocumentSettingsUpdated.cs" />
+    <Compile Include="Events\MobileVerificationCodeSentSms.cs" />
+    <Compile Include="Events\NewPasswordSent.cs" />
+    <Compile Include="Events\IdentificationDocumentSettingsCreated.cs" />
+    <Compile Include="Events\SecurityQuestionCreated.cs" />
+    <Compile Include="Events\PlayerCancelExclusion.cs" />
+    <Compile Include="Events\PlayerTimedOut.cs" />
+    <Compile Include="Events\PlayerSelfExcluded.cs" />
+    <Compile Include="Events\PlayerUnlocked.cs" />
+    <Compile Include="Events\PlayerLocked.cs" />
+    <Compile Include="Events\PlayerStatusChanged.cs" />
+    <Compile Include="IPlayerRepository.cs" />
+    <Compile Include="Data\PlayerActivityLog.cs" />
+    <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Messages.Designer.cs">
+      <DependentUpon>Messages.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Validators\AddSecurityQuestionValidator.cs" />
+    <Compile Include="Validators\ChangePasswordValidator.cs" />
+    <Compile Include="Validators\ChangePlayerPaymentLevelValidator.cs" />
+    <Compile Include="Validators\ChangeSecurityQuestionValidator.cs" />
+    <Compile Include="Validators\CommonPlayerSettings.cs" />
+    <Compile Include="Validators\ConfirmResetPasswordRequesAbstractValidator.cs" />
+    <Compile Include="Validators\EditPlayerValidator.cs" />
+    <Compile Include="Validators\LoginValidator.cs" />
+    <Compile Include="Validators\PlayerIdentityValidator.cs" />
+    <Compile Include="Validators\ReferalDataValidator.cs" />
+    <Compile Include="Validators\RegisterValidator.cs" />
+    <Compile Include="Validators\ResetPasswordRequestAbstractValidator.cs" />
+    <Compile Include="Validators\SecurityCheckRequestAbstractValidator.cs" />
+    <Compile Include="Validators\SendNewPasswordValidator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Messages.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Messages.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>AFT.RegoV2.Domain.Player.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Messages.zh-TW.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\RegoBus\RegoBus.csproj">
+      <Project>{8016f5e0-9689-4a7c-93f1-ddb5382e6e12}</Project>
+      <Name>RegoBus</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Shared\Shared.csproj">
+      <Project>{3D268EBA-3EF8-429B-90C7-AE35CE762FC8}</Project>
+      <Name>Shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core.Auth.Interface\Core.Auth.Interface.csproj">
+      <Project>{e7378369-7d0b-4724-aeef-9586cb54fde5}</Project>
+      <Name>Core.Auth.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core.Brand.Interface\Core.Brand.Interface.csproj">
+      <Project>{12EBE87C-D355-40EA-B7F9-87B8460B74CB}</Project>
+      <Name>Core.Brand.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core.Messaging.Interface\Core.Messaging.Interface.csproj">
+      <Project>{44911B69-EC90-4ED2-A777-3B9D7CADA79B}</Project>
+      <Name>Core.Messaging.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core.Messaging\Core.Messaging.csproj">
+      <Project>{FB049381-7815-4533-BCAE-3077D86722B0}</Project>
+      <Name>Core.Messaging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core.Brand\Core.Brand.csproj">
+      <Project>{D519BE95-FEE1-42D1-A60E-A3C008E1F8AA}</Project>
+      <Name>Core.Brand</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core.Fraud.Interface\Core.Fraud.Interface.csproj">
+      <Project>{F57F0BFF-FA0A-467F-859E-281558EB53A5}</Project>
+      <Name>Core.Fraud.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core.Game.Interface\Core.Game.Interface.csproj">
+      <Project>{5DA8B439-142A-4409-AEA6-52B3ACECB6E5}</Project>
+      <Name>Core.Game.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core.Payment.Interface\Core.Payment.Interface.csproj">
+      <Project>{ff8b0e71-6cb0-4177-9e69-9fccd9c10d41}</Project>
+      <Name>Core.Payment.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core.Player.Interface\Core.Player.Interface.csproj">
+      <Project>{6c555240-e53d-42cd-bb59-7d29a9b31ede}</Project>
+      <Name>Core.Player.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core.Security\Core.Security.csproj">
+      <Project>{C26F378C-8F63-49B5-BBED-3031071C300A}</Project>
+      <Name>Core.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core.Common\Core.Common.csproj">
+      <Project>{E60E73C7-09B9-45B2-950F-547350CFBE93}</Project>
+      <Name>Core.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Entities\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <TransformOnBuild>true</TransformOnBuild>
+    </None>
+    <None Include="App.Debug.config">
+      <DependentUpon>App.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="App.QA.config">
+      <DependentUpon>App.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="App.Release.config">
+      <DependentUpon>App.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\SlowCheetah\SlowCheetah.Transforms.targets" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <Import Project="$(SlowCheetahTargets)" Condition="Exists('$(SlowCheetahTargets)')" Label="SlowCheetah" />
+  <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

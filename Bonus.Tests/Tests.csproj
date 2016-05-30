@@ -1,0 +1,288 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CB32596C-E128-4121-A41E-00A4AAD9EE42}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AFT.RegoV2.Bonus.Tests</RootNamespace>
+    <AssemblyName>AFT.RegoV2.Bonus.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <NuGetPackageImportStamp>93e75aea</NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'QA|AnyCPU'">
+    <OutputPath>bin\QA\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Label="SlowCheetah">
+    <SlowCheetahToolsPath>$([System.IO.Path]::GetFullPath( $(MSBuildProjectDirectory)\..\packages\SlowCheetah.2.5.15\tools\))</SlowCheetahToolsPath>
+    <SlowCheetah_EnableImportFromNuGet Condition=" '$(SlowCheetah_EnableImportFromNuGet)'=='' ">true</SlowCheetah_EnableImportFromNuGet>
+    <SlowCheetah_NuGetImportPath Condition=" '$(SlowCheetah_NuGetImportPath)'=='' ">$([System.IO.Path]::GetFullPath( $(MSBuildProjectDirectory)\Properties\SlowCheetah\SlowCheetah.Transforms.targets ))</SlowCheetah_NuGetImportPath>
+    <SlowCheetahTargets Condition=" '$(SlowCheetah_EnableImportFromNuGet)'=='true' and Exists('$(SlowCheetah_NuGetImportPath)') ">$(SlowCheetah_NuGetImportPath)</SlowCheetahTargets>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FluentAssertions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentAssertions.3.5.0\lib\net45\FluentAssertions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FluentAssertions.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentAssertions.3.5.0\lib\net45\FluentAssertions.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FluentValidation, Version=6.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.6.2.1.0\lib\Net45\FluentValidation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.HttpListener, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.HttpListener.3.0.1\lib\net45\Microsoft.Owin.Host.HttpListener.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Hosting, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Hosting.3.0.1\lib\net45\Microsoft.Owin.Hosting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=3.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.3.5.1405-prerelease\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=3.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.3.5.1405-prerelease\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention, Version=3.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.3.5.1405-prerelease\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Moq, Version=4.2.1502.911, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\packages\Moq.4.2.1502.0911\lib\net40\Moq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=4.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Primitives.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Doubles\FakeBonusRepository.cs" />
+    <Compile Include="Integration\Api\AdminControllerTests.cs" />
+    <Compile Include="Integration\Api\BonusTemplateControllerTests.cs" />
+    <Compile Include="Integration\Api\IssueBonusControllerTests.cs" />
+    <Compile Include="Integration\Api\BonusHistoryControllerTests.cs" />
+    <Compile Include="Integration\Api\BonusControllerTests.cs" />
+    <Compile Include="Integration\Api\PlayerControllerTests.cs" />
+    <Compile Include="Base\ApiIntegrationTestBase.cs" />
+    <Compile Include="Base\BonusTestBase.cs" />
+    <Compile Include="Base\TestBase.cs" />
+    <Compile Include="Base\IntegrationTestBase.cs" />
+    <Compile Include="Base\UnitTestBase.cs" />
+    <Compile Include="Integration\DbPersistenceTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Integration\TransactionTests.cs" />
+    <Compile Include="Unit\CancellationTests.cs" />
+    <Compile Include="Unit\Features\AfterWagerTests.cs" />
+    <Compile Include="Unit\Features\DisableBonusesForPlayer.cs" />
+    <Compile Include="Unit\Features\IssuanceModeTests.cs" />
+    <Compile Include="Unit\Features\ManualByCsIssuanceTests.cs" />
+    <Compile Include="Unit\Features\NotificationTests.cs" />
+    <Compile Include="Unit\Features\ReceivingWalletTests.cs" />
+    <Compile Include="Unit\Features\RewardLimitingTests.cs" />
+    <Compile Include="Unit\Features\WithdrawableTests.cs" />
+    <Compile Include="Unit\ManagementTests.cs" />
+    <Compile Include="Unit\Mapping\BonusMappingTests.cs" />
+    <Compile Include="Unit\Mapping\TemplateMappingTests.cs" />
+    <Compile Include="Unit\Qualification\ActivationQualificationTests.cs" />
+    <Compile Include="Unit\Qualification\ClaimingQualificationTests.cs" />
+    <Compile Include="Unit\Qualification\HasClaimedDisqualificationTests.cs" />
+    <Compile Include="Unit\Qualification\IssanceByCsQualificationTests.cs" />
+    <Compile Include="Unit\Qualification\PreRedemptionQualificationTests.cs" />
+    <Compile Include="Unit\Qualification\RedemptionQualificationTests.cs" />
+    <Compile Include="Unit\RedemptionLifecycleEventTests.cs" />
+    <Compile Include="Unit\Rollover\RolloverAmountCalculationTests.cs" />
+    <Compile Include="Unit\Rollover\RolloverFulfillmentTests.cs" />
+    <Compile Include="Unit\Rollover\RolloverLockAmountCalculationTests.cs" />
+    <Compile Include="Unit\Rollover\RolloverLockUnlockTests.cs" />
+    <Compile Include="Unit\Types\FundInTests.cs" />
+    <Compile Include="Unit\Types\HighDepositTests.cs" />
+    <Compile Include="Unit\Types\MobilePlusEmailVerificationTests.cs" />
+    <Compile Include="Unit\Types\ReferFriendTests.cs" />
+    <Compile Include="Unit\Types\ReloadAndFirstDepositTests.cs" />
+    <Compile Include="Unit\Validation\BonusCancellationTests.cs" />
+    <Compile Include="Unit\Validation\BonusValidationTests.cs" />
+    <Compile Include="Unit\Validation\ClaimBonusTests.cs" />
+    <Compile Include="Unit\Validation\DepositBonusApplicationTests.cs" />
+    <Compile Include="Unit\Validation\FundInBonusApplicationTests.cs" />
+    <Compile Include="Unit\Validation\IssueBonusByCsTests.cs" />
+    <Compile Include="Unit\Validation\TemplateDeletionTests.cs" />
+    <Compile Include="Unit\Validation\TemplateValidationTests.cs" />
+    <Compile Include="Unit\Validation\ToggleBonusStatusTests.cs" />
+    <Compile Include="Unit\WalletTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bonus\Api.Interface\Api.Interface.csproj">
+      <Project>{39D94CA9-75C0-4A6F-B5D9-25737C447269}</Project>
+      <Name>Api.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bonus\Api\Api.csproj">
+      <Project>{b3693104-5b40-48d0-abb8-ca6453b4d2ca}</Project>
+      <Name>Api</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bonus\Core.Models\Core.Models.csproj">
+      <Project>{d7965f8e-0720-46ee-82e8-bc5be26fe8b2}</Project>
+      <Name>Core.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.Auth.Interface\Core.Auth.Interface.csproj">
+      <Project>{E7378369-7D0B-4724-AEEF-9586CB54FDE5}</Project>
+      <Name>Core.Auth.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.Bonus\Core.csproj">
+      <Project>{e7a571bc-3924-4be5-8b56-bb8574b30ce9}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.Common\Core.Common.csproj">
+      <Project>{e60e73c7-09b9-45b2-950f-547350cfbe93}</Project>
+      <Name>Core.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.Game.Interface\Core.Game.Interface.csproj">
+      <Project>{5da8b439-142a-4409-aea6-52b3acecb6e5}</Project>
+      <Name>Core.Game.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.Messaging.Interface\Core.Messaging.Interface.csproj">
+      <Project>{44911b69-ec90-4ed2-a777-3b9d7cada79b}</Project>
+      <Name>Core.Messaging.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.Payment.Interface\Core.Payment.Interface.csproj">
+      <Project>{ff8b0e71-6cb0-4177-9e69-9fccd9c10d41}</Project>
+      <Name>Core.Payment.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.Settings.Interface\Core.Settings.Interface.csproj">
+      <Project>{4236345c-0e93-443c-a4ba-8d8df9c76740}</Project>
+      <Name>Core.Settings.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure\Bonus.Infrastructure\Infrastructure.csproj">
+      <Project>{e1810152-6118-4b33-b5cb-4a2618c0edf9}</Project>
+      <Name>Bonus.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure\Infrastructure\Infrastructure.csproj">
+      <Project>{39AE091F-FC43-49BA-A605-6B79ED269DA6}</Project>
+      <Name>Infrastructure.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RegoBus\RegoBus.csproj">
+      <Project>{8016f5e0-9689-4a7c-93f1-ddb5382e6e12}</Project>
+      <Name>RegoBus</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shared\Shared.csproj">
+      <Project>{3D268EBA-3EF8-429B-90C7-AE35CE762FC8}</Project>
+      <Name>Shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tests.Common\Tests.Common.csproj">
+      <Project>{83102521-802c-4194-91e9-20df507462c0}</Project>
+      <Name>Tests.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WinService\WinService.csproj">
+      <Project>{8d39e3a9-29b9-4999-b8ca-2ada47e66ca0}</Project>
+      <Name>WinService</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <TransformOnBuild>true</TransformOnBuild>
+    </None>
+    <None Include="App.Debug.config">
+      <DependentUpon>App.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="App.QA.config">
+      <DependentUpon>App.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="App.Release.config">
+      <DependentUpon>App.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\SlowCheetah\SlowCheetah.Transforms.targets" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <Import Project="$(SlowCheetahTargets)" Condition="Exists('$(SlowCheetahTargets)')" Label="SlowCheetah" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

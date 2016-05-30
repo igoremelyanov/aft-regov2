@@ -1,0 +1,32 @@
+﻿namespace AFT.RegoV2.Core.Messaging.Interface.Data
+{
+    public enum MessageType
+    {
+        BonusIssued,
+        BonusWageringRequirement,
+        BonusWageringRequirementFulfilled,
+        ContactVerification,
+        FirstOnlineDepositSuccessful,
+        ForgotPassword,
+        HighDepositReminder,
+        NewPassword,
+        OfflineDepositPending,
+        OfflineDepositRejected,
+        OfflineDepositRequested,
+        OfflineDepositSuccessful,
+        OnlineDepositSuccessful,
+        OnlineDepositUnsuccessful,
+        PermanentSelfExclusion,
+        PlayerBankAccountApproved,
+        PlayerBankAccountRejected,
+        PlayerRegistered,
+        ReferFriends,
+        RegistrationVerification,
+        ResetPassword,
+        TemporarySelfExclusion,
+        TimeOut,
+        WithdrawalRequestDeclined,
+        WithdrawalRequested,
+        WithdrawalRequestReleased
+    }
+}

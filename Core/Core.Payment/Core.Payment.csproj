@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DBB83446-3C9E-4F1D-AC1C-2C88053BFDDD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AFT.RegoV2.Core.Payment</RootNamespace>
+    <AssemblyName>AFT.RegoV2.Core.Payment</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <StyleCopTreatErrorsAsWarnings>false</StyleCopTreatErrorsAsWarnings>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'QA|AnyCPU'">
+    <OutputPath>bin\QA\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Label="SlowCheetah">
+    <SlowCheetahToolsPath>$([System.IO.Path]::GetFullPath( $(MSBuildProjectDirectory)\..\..\packages\SlowCheetah.2.5.14\tools\))</SlowCheetahToolsPath>
+    <SlowCheetah_EnableImportFromNuGet Condition=" '$(SlowCheetah_EnableImportFromNuGet)'=='' ">true</SlowCheetah_EnableImportFromNuGet>
+    <SlowCheetah_NuGetImportPath Condition=" '$(SlowCheetah_NuGetImportPath)'=='' ">$([System.IO.Path]::GetFullPath( $(MSBuildProjectDirectory)\Properties\SlowCheetah\SlowCheetah.Transforms.targets ))</SlowCheetah_NuGetImportPath>
+    <SlowCheetahTargets Condition=" '$(SlowCheetah_EnableImportFromNuGet)'=='true' and Exists('$(SlowCheetah_NuGetImportPath)') ">$(SlowCheetah_NuGetImportPath)</SlowCheetahTargets>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.0.4.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AutoMapper.4.0.4\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FluentValidation, Version=6.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FluentValidation.6.2.1.0\lib\Net45\FluentValidation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>..\..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Unity.Interception.3.5.1404.0\lib\Net45\Microsoft.Practices.Unity.Interception.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=4.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Primitives.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationServices\BankQueries.cs" />
+    <Compile Include="ApplicationServices\BankCommands.cs" />
+    <Compile Include="ApplicationServices\CultureCommands.cs" />
+    <Compile Include="ApplicationServices\CurrencyCommands.cs" />
+    <Compile Include="ApplicationServices\CurrencyExchangeCommands.cs" />
+    <Compile Include="ApplicationServices\CurrencyManagerQueries.cs" />
+    <Compile Include="ApplicationServices\MapperConfig.cs" />
+    <Compile Include="ApplicationServices\OfflineDepositQueries.cs" />
+    <Compile Include="Data\Deposit.cs" />
+    <Compile Include="ApplicationServices\WalletQueries.cs" />
+    <Compile Include="Data\WithdrawalLock.cs" />
+    <Compile Include="Validators\ActivatePaymentGatewaySettingsValidator.cs" />
+    <Compile Include="Validators\DeactivatePaymentGatewaySettingsValidator.cs" />
+    <Compile Include="Validators\OfflineDepositValidator.cs" />
+    <Compile Include="ApplicationServices\BankAccountQueries.cs" />
+    <Compile Include="ApplicationServices\OnlineDepositQueries.cs" />
+    <Compile Include="ApplicationServices\OnlineDepositCommands.cs" />
+    <Compile Include="ApplicationServices\PaymentCommands.cs" />
+    <Compile Include="ApplicationServices\PaymentGatewaySettingsQueries.cs" />
+    <Compile Include="ApplicationServices\PaymentLevelCommands.cs" />
+    <Compile Include="ApplicationServices\PaymentLevelQueries.cs" />
+    <Compile Include="ApplicationServices\PaymentGatewaySettingsCommands.cs" />
+    <Compile Include="ApplicationServices\PaymentSettingsQueries.cs" />
+    <Compile Include="ApplicationServices\PlayerBankAccountQueries.cs" />
+    <Compile Include="ApplicationServices\PlayerBankAccountCommands.cs" />
+    <Compile Include="ApplicationServices\BankAccountCommands.cs" />
+    <Compile Include="ApplicationServices\PaymentSubscriber.cs" />
+    <Compile Include="ApplicationServices\OfflineDepositCommands.cs" />
+    <Compile Include="ApplicationServices\PaymentQueries.cs" />
+    <Compile Include="ApplicationServices\PaymentSettingsCommands.cs" />
+    <Compile Include="ApplicationServices\TransferFundCommands.cs" />
+    <Compile Include="ApplicationServices\TransferSettingsCommands.cs" />
+    <Compile Include="ApplicationServices\WithdrawalService.cs" />
+    <Compile Include="Data\Bank.cs" />
+    <Compile Include="Data\BankAccountType.cs" />
+    <Compile Include="Data\BrandCurrency.cs" />
+    <Compile Include="Data\Country.cs" />
+    <Compile Include="Data\Currency.cs" />
+    <Compile Include="Data\CurrencyExchange.cs" />
+    <Compile Include="Data\Licensee.cs" />
+    <Compile Include="Data\OfflineWithdrawalHistory.cs" />
+    <Compile Include="Data\OnlineDeposit.cs" />
+    <Compile Include="Data\PaymentGatewaySettings.cs" />
+    <Compile Include="Data\PlayerBankAccount.cs" />
+    <Compile Include="Data\BankAccount.cs" />
+    <Compile Include="Data\Brand.cs" />
+    <Compile Include="Data\OfflineDepositData.cs" />
+    <Compile Include="Data\OfflineWithdraw.cs" />
+    <Compile Include="Data\PaymentLevel.cs" />
+    <Compile Include="Data\PaymentSettings.cs" />
+    <Compile Include="Data\Player.cs" />
+    <Compile Include="Data\PlayerPaymentLevel.cs" />
+    <Compile Include="Data\TransferFundData.cs" />
+    <Compile Include="Data\TransferSettings.cs" />
+    <Compile Include="Data\VipLevel.cs" />
+    <Compile Include="Entities\BankAccount.cs" />
+    <Compile Include="Entities\OfflineDeposit.cs" />
+    <Compile Include="Entities\OnlineDeposit.cs" />
+    <Compile Include="IPaymentRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validators\ActivatePaymentLevelErrors.cs" />
+    <Compile Include="Validators\AddBankAccountTypeValidator.cs" />
+    <Compile Include="Validators\Bank\Common.cs" />
+    <Compile Include="Validators\Bank\EditBankValidator.cs" />
+    <Compile Include="Validators\Bank\AddBankValidator.cs" />
+    <Compile Include="Validators\DeactivatePaymentLevelErrors.cs" />
+    <Compile Include="Validators\DeactivatePaymentLevelValidator.cs" />
+    <Compile Include="Validators\ActivatePaymentLevelValidator.cs" />
+    <Compile Include="Validators\EditBankAccountValidator.cs" />
+    <Compile Include="Validators\AddBankAccountValidator.cs" />
+    <Compile Include="Validators\OfflineWithdrawalRequestValidationService.cs" />
+    <Compile Include="Validators\OfflineDepositConfirmValidationService.cs" />
+    <Compile Include="Validators\OnlineDepositAmountValidator.cs" />
+    <Compile Include="Validators\PaymentSettingsValidator.cs" />
+    <Compile Include="Validators\OnlineDepositPayNotifyRequestValidator.cs" />
+    <Compile Include="Validators\OnlineDepositRequestValidator.cs" />
+    <Compile Include="Validators\OnlineDepositValidator.cs" />
+    <Compile Include="Validators\SavePaymentGatewaySettingsValidator.cs" />
+    <Compile Include="Validators\SavePaymentSettingsValidator.cs" />
+    <Compile Include="Validators\RejectPlayerBankAccountValidator.cs" />
+    <Compile Include="Validators\SaveTransferSettingsValidator.cs" />
+    <Compile Include="Validators\ValidationErrors.cs" />
+    <Compile Include="Validators\VerifyPlayerBankAccountValidator.cs" />
+    <Compile Include="Validators\SetCurrentPlayerBankAccountValidator.cs" />
+    <Compile Include="Validators\AddPlayerBankAccountValidator.cs" />
+    <Compile Include="Validators\EditPlayerBankAccountValidator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Bonus\Api.Interface\Api.Interface.csproj">
+      <Project>{39D94CA9-75C0-4A6F-B5D9-25737C447269}</Project>
+      <Name>Api.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bonus\Core.Models\Core.Models.csproj">
+      <Project>{d7965f8e-0720-46ee-82e8-bc5be26fe8b2}</Project>
+      <Name>Core.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\RegoBus\RegoBus.csproj">
+      <Project>{8016f5e0-9689-4a7c-93f1-ddb5382e6e12}</Project>
+      <Name>RegoBus</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Shared\Shared.csproj">
+      <Project>{3D268EBA-3EF8-429B-90C7-AE35CE762FC8}</Project>
+      <Name>Shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core.Auth.Interface\Core.Auth.Interface.csproj">
+      <Project>{e7378369-7d0b-4724-aeef-9586cb54fde5}</Project>
+      <Name>Core.Auth.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core.Brand.Interface\Core.Brand.Interface.csproj">
+      <Project>{12EBE87C-D355-40EA-B7F9-87B8460B74CB}</Project>
+      <Name>Core.Brand.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core.Brand\Core.Brand.csproj">
+      <Project>{D519BE95-FEE1-42D1-A60E-A3C008E1F8AA}</Project>
+      <Name>Core.Brand</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core.Game.Interface\Core.Game.Interface.csproj">
+      <Project>{5DA8B439-142A-4409-AEA6-52B3ACECB6E5}</Project>
+      <Name>Core.Game.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core.Games\Core.Game.csproj">
+      <Project>{BFEBC671-1C27-40E8-BB98-C5B23919FCC7}</Project>
+      <Name>Core.Game</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core.Messaging.Interface\Core.Messaging.Interface.csproj">
+      <Project>{44911B69-EC90-4ED2-A777-3B9D7CADA79B}</Project>
+      <Name>Core.Messaging.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core.Payment.Interface\Core.Payment.Interface.csproj">
+      <Project>{ff8b0e71-6cb0-4177-9e69-9fccd9c10d41}</Project>
+      <Name>Core.Payment.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core.Player.Interface\Core.Player.Interface.csproj">
+      <Project>{6C555240-E53D-42CD-BB59-7D29A9B31EDE}</Project>
+      <Name>Core.Player.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core.Player\Core.Player.csproj">
+      <Project>{18B71681-F11B-4F62-A4E9-A388FCC9A4B7}</Project>
+      <Name>Core.Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core.Security\Core.Security.csproj">
+      <Project>{C26F378C-8F63-49B5-BBED-3031071C300A}</Project>
+      <Name>Core.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core.Common\Core.Common.csproj">
+      <Project>{E60E73C7-09B9-45B2-950F-547350CFBE93}</Project>
+      <Name>Core.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <TransformOnBuild>true</TransformOnBuild>
+    </None>
+    <None Include="App.Debug.config">
+      <DependentUpon>App.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="App.QA.config">
+      <DependentUpon>App.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="App.Release.config">
+      <DependentUpon>App.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Aspects\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <Import Project="$(SlowCheetahTargets)" Condition="Exists('$(SlowCheetahTargets)')" Label="SlowCheetah" />
+  <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

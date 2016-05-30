@@ -1,0 +1,136 @@
+﻿{
+    "db_password_staging": "^QPl*d0LkB3j",
+    "environments": [
+        {
+            "name": "staging",
+            "app_settings": [
+                { "key": "MemberWebsiteUrl", "value": "http://staging-rego.8080win.com/" },
+                { "key": "MemberApiUrl", "value": "http://staging-regov2-member-api.flycowdev.com/" },
+                { "key": "GameApiUrl", "value": "http://staging-regov2-game-api.flycowdev.com/" },
+                { "key": "InstanceName", "value": "staging" },
+                { "key": "WinServiceName", "value": "AFT.RegoV2.WinService-Staging" },
+                { "key": "EnableEmails", "value": "true" },
+                { "key": "BonusWinServiceName", "value": "AFT.RegoV2.Bonus.WinService-Staging" },
+                { "key": "dbsettings:OperatorApiUrl", "value": "http://integration-8-ugs-api.flycowdev.com/" },
+                { "key": "dbsettings:AdminApiUrl", "value": "https://staging-regov2-admin-api.flycowdev.com/" },
+                { "key": "dbsettings:MemberApiUrl", "value": "http://staging-regov2-member-api.flycowdev.com/" },
+                { "key": "dbsettings:BonusClientId", "value": "AFTRego" },
+                { "key": "dbsettings:BonusClientSecret", "value": "B8ED5542-5C32-496B-87C8-B3090C9C82D0" },
+                { "key": "dbsettings:BonusApiUrl", "value": "https://staging-regov2-bonus-api.flycowdev.com/" },
+                { "key": "dbsettings:MemberWebsiteUrl", "value": "http://staging-rego.8080win.com/" },
+                { "key": "dbsettings:AdminWebsiteUrl", "value": "https://staging-regov2-admin-website.flycowdev.com/" },
+                { "key": "dbsettings:GameWebsiteUrl", "value": "http://staging-regov2-game-website.flycowdev.com/" },
+                { "key": "dbsettings:PaymentProxyUrl", "value": "http://staging-regov2-fake-payment-server.flycowdev.com/" },
+                { "key": "dbsettings:PaymentNotifyUrl", "value": "http://staging-rego.8080win.com/" },
+                { "key": "dbsettings:wsb.httpport", "value": "10355" },
+                { "key": "dbsettings:wsb.tcpport", "value": "10354" },
+                { "key": "dbsettings:wsb.namespace", "value": "regostaging" },
+                { "key": "dbsettings:wsb.host", "value": "servicebus.flycowdev.com" },
+                { "key": "dbsettings:wsb.userdomain", "value": "regodomain" },
+                { "key": "dbsettings:wsb.username", "value": "servicebus" },
+                { "key": "dbsettings:wsb.password", "value": "3!18fOMRy#4y" },
+                { "key": "dbsettings:ugsbus.connectionString", "value": "Endpoint=sb://ugsdeploy.flycowdev.com/UgsServicesIntegration8,sb://ugsdb.flycowdev.com/UgsServicesIntegration8,sb://ugsgen.flycowdev.com/UgsServicesIntegration8;StsEndpoint=https://ugsdeploy.flycowdev.com:10355/UgsServicesIntegration8,https://ugsdb.flycowdev.com:10355/UgsServicesIntegration8,https://ugsgen.flycowdev.com:10355/UgsServicesIntegration8;RuntimePort=10354;ManagementPort=10355;SharedAccessKeyName=rego;SharedAccessKey=lKGuTQ8EBWlAPf5tVJhvKRSZ0LCupd1uQkz8B64kt9I=" },
+                { "key": "dbsettings:FlycowApiClient.ClientId", "value": "FlyCow-UGS" },
+                { "key": "dbsettings:FlycowApiClient.ClientSecret", "value": "ABgfatAyhGkIpNKMk3Wr705iWFvYObtDbBfvWz2YWgkXC9UZUMdCvD" }
+            ],
+            "connection_string": {
+                "name": "Default",
+                "value": "Server=RegoDB; Database=Rego-Staging; Persist Security Info=True; integrated security=false; user id=regostaging; password={0}"
+            }
+        }
+    ],
+    "servers": [
+      {
+        "id": "WEB-1",
+        "name": "regoweb01",
+        "path": "e:\\sites\\rego\\"
+      },
+      {
+        "id": "WEB-2",
+        "name": "regoweb02",
+        "path": "e:\\sites\\rego\\"
+      },
+      {
+        "id": "APP-1",
+        "name": "regoapp01",
+        "path": "e:\\sites\\rego\\"
+      },
+      {
+        "id": "APP-2",
+        "name": "regoapp02",
+        "path": "e:\\sites\\rego\\"
+      }
+    ],
+    "sites": [
+        {
+            "name": "AdminApi",
+            "servers": [ "WEB-1", "WEB-2" ],
+            "path": "regov2-admin-api",
+            "environments": [ "staging" ],
+            "package": "AFT.RegoV2.AdminApi"
+        },
+        {
+            "name": "AdminWebsite",
+            "servers": [ "WEB-1", "WEB-2" ],
+            "path": "regov2-admin-website",
+            "environments": [ "staging" ],
+            "package": "AFT.RegoV2.AdminWebsite"
+        },
+        {
+            "name": "BonusApi",
+            "servers": [ "WEB-1", "WEB-2" ],
+            "path": "regov2-bonus-api",
+            "environments": [ "staging" ],
+            "package": "AFT.RegoV2.Bonus.Api"
+        },
+        {
+            "name": "GameApi",
+            "servers": [ "WEB-1", "WEB-2" ],
+            "path": "regov2-game-api",
+            "environments": [ "staging" ],
+            "package": "AFT.RegoV2.FakeUGS"
+        },
+        {
+            "name": "GameWebsite",
+            "servers": [ "WEB-1", "WEB-2" ],
+            "path": "regov2-game-website",
+            "environments": [ "staging" ],
+            "package": "AFT.RegoV2.GameWebsite"
+        },
+        {
+            "name": "MemberApi",
+            "servers": [ "WEB-1", "WEB-2" ],
+            "path": "regov2-member-api",
+            "environments": [ "staging" ],
+            "package": "AFT.RegoV2.MemberApi"
+        },
+        {
+            "name": "MemberWebsite",
+            "servers": [ "WEB-1", "WEB-2" ],
+            "path": "regov2-member-website",
+            "environments": [ "staging" ],
+            "package": "AFT.RegoV2.MemberWebsite"
+        },
+        {
+            "name": "FakePaymentServer",
+            "servers": [ "WEB-1", "WEB-2" ],
+            "path": "regov2-fake-payment-server",
+            "environments": [ "staging" ],
+            "package": "AFT.RegoV2.FakePaymentServer"
+        },
+        {
+            "name": "WinService",
+            "servers": [ "APP-1", "APP-2" ],
+            "path": "regov2-winservice",
+            "environments": [ "staging" ],
+            "package": "AFT.RegoV2.WinService"
+        },
+        {
+            "name": "BonusWinService",
+            "servers": [ "APP-1", "APP-2" ],
+            "path": "regov2-bonus-winservice",
+            "environments": [ "staging" ],
+            "package": "AFT.RegoV2.Bonus.WinService"
+        }
+    ]
+}
