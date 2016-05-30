@@ -1,0 +1,79 @@
+﻿<section class="site-header">
+    <div class="container clearfix">
+        <div class="header-left pull-left">
+            <a href="~/"><img src="~/Content/images/logo.png" alt="" class="header_logo"></a>
+        </div>
+        <div class="header-right pull-right">
+            <div id="login-wrapper" class="login-wrapper">
+                <div>
+                    <nav>
+                        <ul class="clearfix">
+                            <li>
+                                <a href="@Url.Action("LiveDealer", "Home")" class="live-dealer">Live Dealer</a>
+                            </li>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <li><a href="@Url.Action("Casino", "Home")" class="casino">Casino</a></li>
+                            }
+                            else
+                            {
+                                <li><a href="#" class="casino js-show-login">Casino</a></li>
+                            }
+                            <li><a href="@Url.Action("Promos", "Home")" class="promos">Promos</a></li>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <li>
+
+                                    <div class="dropdown">
+                                        <a data-toggle="dropdown" href="#balance" class="balance drop">
+                                            Balance:
+                                            <span class="js-balance-currency-code"></span> <span class="js-balance-live-view" data-balance-type="playableFormatted"></span>
+                                        </a>
+                                        <ul class="dropdown-menu only-list balance">
+                                            <li><a href="@Url.Action("CasherHome", "Home")" class="cashier">Cashier</a></li>
+                                            <li><a href="@Url.Action("OnlineDeposit","Home")" class="deposit">Deposit</a></li>
+                                            <li><a href="@Url.Action("Withdrawal","Home")" class="withdrawal">Withdrawal</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="dropdown">
+                                        <a data-toggle="dropdown" href="#messages" class="messages drop">
+                                            @if (@ViewBag.UnreadMessages > 0)
+                                            {
+                                                <span class="no-read-msg-nb">@ViewBag.UnreadMessages</span>
+                                            }
+                                        </a>
+                                        <div class="dropdown-menu messages">
+                                            @{
+                                                Html.RenderAction("MessagesList", "Home");
+                                            }
+                                        </div>
+                                    </div>
+                                </li>
+                                <li id="login-controls">
+                                    <div class="dropdown">
+                                        <a data-toggle="dropdown" href="#settings" class="settings drop">&nbsp;</a>
+                                        <ul class="dropdown-menu only-list settings">
+                                            <li><a href="@Url.Action("PlayerProfile", "Home")">My Account</a></li>
+                                            <li><a href="@Url.Action("ClaimBonus", "Home")">My Bonus</a></li>
+                                            <li><a href="@Url.Action("GameSummary", "Home")">Account Activity</a></li>
+                                            <li><a href="#" data-bind="click: logout" data-i18n="login.logout"></a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            }
+                            else
+                            {
+                                <li><a href="#loginForm" target="_blank" data-toggle="modal" class="btn" onclick="$('#loginForm .reset').trigger('click')">login</a></li>
+                                <li id="login-controls"><a class="join-now btn" href="#" data-bind="click: toRegister, enable: !requestInProgress()">Join now</a></li>
+                            }
+                        </ul>
+                    </nav>
+                    @*Html.Partial("_PartialLanguages")*@
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,117 @@
+@{
+    ViewBag.Title = "My account - Rego";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string section = "bonushistory";
+}
+@model IEnumerable<AFT.RegoV2.MemberApi.Interface.Bonus.ActiveBonus>
+
+<section class="main-content section account">
+
+    <div class="container">
+
+        <h2 class="title-page"><span data-i18n="profile.myAccount"></span></h2>
+
+        <div class="row row-eq-height">
+
+          @Html.Partial("_PartialAccountMenu", section)
+
+          <div class="col-sm-9 white-content bonushistory" id="profile-wrapper">
+
+              <h2 data-i18n="profile.bonusHistory"></h2>
+
+              <p class="grey">Please note, transactions older than 1 years may not be available. If you wish to view these transactions, please contact <a href="javascript:void(0)" class="green" onclick="openLiveChat()">Customer Support</a>.</p>
+
+              <form class="infos-account clearfix row">
+                <div class="col-sm-3 form-group">
+                    <p><b data-i18n="common.startDate"></b></p>
+                    <input class="form-control datepicker" id="startDate" name="startDate" type="text" value="@ViewBag.StartDate">
+                </div>
+                <div class="col-sm-3 form-group">
+                    <p><b data-i18n="common.endDate"></b></p>
+                    <input class="form-control datepicker" id="endDate" name="endDate" type="text" value="@ViewBag.EndDate">
+                </div>
+                <div class="col-sm-3 form-group">
+                    <p>&nbsp;</p>
+                    <button type="submit" class="btn grey col-md-12" data-i18n="common.filter"></button>
+                </div>
+              </form>
+
+              <table class="table list sortable">
+                <thead>
+                  <tr>
+                    <th data-defaultsort="asc" data-sortcolumn="1">Bonus</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th data-defaultsort="disabled">Description</th>
+                    <th data-defaultsort="disabled">Remarks</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @if (Model.Any())
+                  {
+                    foreach (var item in Model)
+                    {
+                      <tr>
+                        <td>@item.Name</td>
+                        <td>@item.CreatedOn.ToString("yyyy/MM/dd")</td>
+                        <td>Claimed</td>
+                        <td>Play Poker: Bet @item.Rollover.ToString("F2")<br>Earn additional @item.Reward.ToString("F2") Bonus</td>
+                        <td><a class="grey" href="#">More info</a></td>
+                      </tr>
+                    }
+                  }
+                  else
+                  {
+                    <tr>
+                      <td colspan="5" data-i18n="common.noTransaction"></td>
+                    </tr>
+                  }
+                </tbody>
+              </table>
+
+              <div class="text-center clearfix">
+                <ul class="pagination pagination-lg pager" id="myPager"></ul>
+              </div>
+
+              @Html.Partial("_PartialQuickLinkConfirmation")
+
+              <div class="modal fade" id="responsiblegaming-alert">
+                  <div class="modal-dialog modal-warning text-center">
+                      <div class="modal-content">
+                          <div class="modal-body">
+                                <button data-dismiss="modal" aria-label="Close" class="close">
+                                    <img src="/Content/images/close-popup.png" />
+                                </button>
+                                <p class="align-center logo"><img src="/Content/images/logo-popup.png" /></p>
+
+                                <div class="row">
+                                  <div class="col-sm-offset-3 col-sm-6 no-padding">
+                                    <p data-bind="text:responsibleGambling.message"></p>
+                                    <div class="clearfix">
+                                    <button data-bind="click:responsibleGambling.submitResponsible" click="submit" class="btn pull-left">yes&nbsp; i&nbsp; am&nbsp; sure</button>
+                                      <button data-bind="click:responsibleGambling.closeModal" click="close" class="btn pull-right">no</button>
+                                    </div>
+                                        <p class="align-center marginTop40"><a href="#"><img src="/Content/images/icon-customerservice.png" /></a></p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+          </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+@section stylesheets {
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+}
+
+@section scripts {
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    @Html.Partial("_PartialProfileScript", section)
+}

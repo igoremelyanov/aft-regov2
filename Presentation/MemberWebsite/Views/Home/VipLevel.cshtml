@@ -1,0 +1,142 @@
+﻿@using AFT.RegoV2.MemberWebsite.Common
+
+@{
+    ViewBag.Title = "My VIP Level to rego";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string section = "details";
+    
+    string[,] levels = new string[5, 9] { 
+        { "topas", "Topas VIP Level I", "1st Bet", "false", "$50", "false", "$50", "$50", "$50" }, 
+        { "pearl", "Pearl VIP Level II", "10,000", "gift", "$100", "true", "$100", "$100", "$100" }, 
+        { "sapphire", "Sapphire VIP Level III", "10,000", "gift", "$500", "true", "$500", "$500", "$500" },
+        { "emerald", "Emerald VIP Level IV", "Invitation Only", "gift", "$1,000", "true", "$1,000", "$1,000", "$1,000" },
+        { "diamond", "Diamond VIP Level V", "Invitation Only", "gift", "$1,500", "true", "$1,500", "$1,500", "$1,500" }
+    };
+
+    int currentLevel = int.Parse(@Request.Params["vip"]) - 1;
+    int nextLevel = int.Parse(@Request.Params["vip"]);
+}
+
+<div class="site-body home main-content" id="vip-level">
+
+    <div class="container">
+        
+        <h2 class="title-page"><span>my vip level</span></h2>
+
+        <div class="clearfix">
+            
+            <div>
+                
+                <ul>
+                    <li data-i18n="viplevels.bettingRequirement"></li>
+                    <li data-i18n="viplevels.vipWelcomeGift"></li>
+                    <li data-i18n="viplevels.exclusiveBonuses"></li>
+                    <li data-i18n="viplevels.personalAccountManager"></li>
+                    <li data-i18n="viplevels.higherWithdrawalAmount"></li>
+                    <li data-i18n="viplevels.higherDepositAmount"></li>
+                    <li data-i18n="viplevels.depositRebates"></li>
+                </ul>
+
+            </div>
+            <div>
+
+                <div>
+                    <p class="align-center"><img class="@levels[currentLevel, 0]" src="@(Url.Content("~/Content/images/icon-" + levels[currentLevel, 0] + ".png"))" /></p>
+                    <h4 class="align-center">@levels[currentLevel, 1]</h4>
+                </div>
+                
+                <ul>
+                    <li>@levels[currentLevel, 2]</li>
+                    <li>
+                        @if (levels[currentLevel, 3] == "false")
+                        {
+                            @:<img src="@Url.Content("~/Content/images/icon-none.png")"/>
+                        }
+                        else
+                        {
+                            @:<img src="@Url.Content("~/Content/images/icon-gift.png")"/>
+                        }
+                    </li>
+                    <li>@levels[currentLevel, 4]</li>
+                    <li>
+                        @if (levels[currentLevel, 5] == "false")
+                        {
+                            @:<img src="@Url.Content("~/Content/images/icon-none.png")"/>
+                        }
+                        else
+                        {
+                            @:<img src="@Url.Content("~/Content/images/icon-check.png")"/>
+                        }
+                    </li>
+                    <li>@levels[currentLevel, 6]</li>
+                    <li>@levels[currentLevel, 7]</li>
+                    <li>@levels[currentLevel, 8]</li>
+                    <li><a href="#">Terms</a></li>
+                </ul>
+
+            </div>
+
+
+            @if (nextLevel < 5) {
+                <div class="disable">
+
+                    <div>
+                        <p class="align-center"><img class="@levels[nextLevel, 0]" src="@(Url.Content("~/Content/images/icon-" + levels[nextLevel, 0] + "-lock.png"))" /></p>
+                        <h4 class="align-center">@levels[nextLevel, 1]</h4>
+                    </div>
+                    
+                    <ul>
+                        <li>@levels[nextLevel, 2]</li>
+                        <li>
+                            @if (levels[nextLevel, 3] == "false")
+                            {
+                                @:<img src="@Url.Content("~/Content/images/icon-none-lock.png")"/>
+                            }
+                            else
+                            {
+                                @:<img src="@Url.Content("~/Content/images/icon-gift-lock.png")"/>
+                            }
+                        </li>
+                        <li>@levels[nextLevel, 4]</li>
+                        <li>
+                            @if (levels[nextLevel, 5] == "false")
+                            {
+                                @:<img src="@Url.Content("~/Content/images/icon-none-lock.png")"/>
+                            }
+                            else
+                            {
+                                @:<img src="@Url.Content("~/Content/images/icon-check-lock.png")"/>
+                            }
+                        </li>
+                        <li>@levels[nextLevel, 6]</li>
+                        <li>@levels[nextLevel, 7]</li>
+                        <li>@levels[nextLevel, 8]</li>
+                        <li><a href="#">Terms</a></li>
+                    </ul>
+
+                    <div class="hover">
+                        <p class="align-center">
+                            <span data-i18n="toUnlockVipLevels"></span>
+                            <br>
+                            <a href="@Url.Action("Login")" class="btn">play more</a>
+                        </p>
+                    </div>
+
+                </div>
+            }
+            else
+            {
+                <div class="topvip">
+                    <div>
+                        <p class="align-center"><img src="@Url.Content("~/Content/images/icon-vip-crown.png")"/></p>
+                        <h2 class="align-center">congratulations!<br>you're now the top vip</h2>
+                        <p class="align-center">Lorem ipsum dolor amet, consectetuer adipiscing elit.</p>
+                    </div>
+                </div>
+            }
+
+        </div>
+
+    </div> 
+</div>
+

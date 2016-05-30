@@ -1,0 +1,45 @@
+﻿@{ var section = Model; }
+<div class="col-sm-3 menu">
+
+    <h5 data-i18n="profile.myAccount"></h5>
+    <ul>
+        <li class="@(section == "details" ? "selected" : null)"><a href="@Url.Action("PlayerProfile")" data-i18n="profile.mydetail"></a></li>
+        <li class="@(section == "responsiblegaming" ? "selected" : null)"><a href="@Url.Action("ResponsibleGaming")" data-i18n="profile.responsibleGamebling"></a></li>
+    </ul>
+
+    <h5 data-i18n="profile.myBonus"></h5>
+
+    <ul>
+        <li class="@(section == "claimbonus" ? "selected" : null)"><a href="@Url.Action("ClaimBonus")" data-i18n="profile.claimBonus">claim bonus</a></li>
+        <li class="@(section == "activebonus" ? "selected" : null)"><a href="@Url.Action("ActiveBonus")" data-i18n="profile.activeBonus"></a></li>
+        <li class="@(section == "bonushistory" ? "selected" : null)"><a href="@Url.Action("BonusHistory")" data-i18n="profile.bonusHistory"></a></li>
+    </ul>
+
+    <!--<h5 data-i18n="profile.deposit"></h5>
+
+    <ul>
+        <li class="@(section == "deposit" ? "selected" : null)"> <a href="@Url.Action("Deposit")" data-i18n="profile.deposit"></a></li>
+    </ul>-->
+
+    <h5 data-i18n="profile.accountActivity"></h5>
+
+    <ul>
+        <li class="@(section == "gamesummary" ? "selected" : null)"><a href="@Url.Action("GameSummary")">Game history</a></li>
+    </ul>
+
+    @* <h5 data-i18n="registration.other"></h5>
+        <ul>
+            <li class="@(section == "transactionhistory" ? "selected" : null)"><a href="@Url.Action("TransactionHistory")" data-i18n="profile.transactionHistory">transaction history</a></li>
+        </ul> *@
+
+    <h5>Old menu for test</h5>
+    <ul>
+        <li><a href="@Url.Action("GameList")">Play Games</a></li>
+        <li><a href="@Url.Action("PlayerProfile")">Personal</a></li>
+        <li><a href="@Url.Action("ReferAFriend")">Refer a Friend</a></li>
+        <li><a href="@Url.Action("ClaimBonusReward")">Claim a Bonus</a></li>
+        <li><a href="@Url.Action("BalanceInformation")">Balance Information</a></li>
+    </ul>
+
+</div>
+

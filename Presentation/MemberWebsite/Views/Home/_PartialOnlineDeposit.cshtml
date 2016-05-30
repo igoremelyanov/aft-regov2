@@ -1,0 +1,42 @@
+﻿@{ var data = (AFT.RegoV2.MemberApi.Interface.Payment.OnlineDepositFormDataResponse)ViewData.Model; }
+<div class="alert alert-warning" data-i18n="app:payment.paymentLevelDisableOnlineDeposit" data-bind="visible: @((!data.PaymentGatewaySettings.Any()).ToString().ToLower())"></div>
+<div data-bind="visible:!onlineDepositRequestInProgress() && @((data.PaymentGatewaySettings.Any()).ToString().ToLower())">
+    <form role="form" id="payFormRedirect" method="post">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="ky-panel ky-margin-row ky-ticket-box">
+                    <h4 class="title"><i class="fa fa-fw fa-money"></i><span data-i18n="balanceInformation.onlineDepositRequest"></span></h4>
+                    <table class="table table-no-bordered ky-table">
+                        <tr>
+                            <td data-i18n="balanceInformation.Amount"></td>
+                            <td>
+                                <div>
+                                    <div>
+                                        <input type="number" min="0" maxlength="15" data-bind="value: onlineAmount, numeric: onlineAmount" id="amount" name="amount" class="form-control" />
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-xs-offset-6 text-right">
+                <button type="button" data-bind="click: submitOnlineDeposit ,enable: !onlineDepositRequestInProgress()" class="btn btn-lg btn-primary">
+                    <i class="fa fa-check"></i>
+                    <span data-i18n="balanceInformation.deposit"></span>
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <label class="ky-notification notification-danger" data-bind="visible: onlineDepositErrors().length > 0, text: onlineDepositErrors"></label>
+        </div>
+    </form>
+</div>
+<div data-bind="visible:onlineDepositRequestInProgress()">
+    <div class="spinner" align="center">
+        <br /><br /><br /><br /><br /><br />
+        <h3><span data-i18n="balanceInformation.onlineDepositSpinnerMessage"></span></h3>
+    </div>
+</div>

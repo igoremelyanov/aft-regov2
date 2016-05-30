@@ -1,0 +1,99 @@
+﻿@{
+    ViewBag.Title = "My account - Rego";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string section = "withdrawalhistory";
+}
+@using System.Globalization
+@using PagedList.Mvc
+@model PagedList.StaticPagedList<AFT.RegoV2.MemberApi.Interface.Payment.OfflineWithdrawal>
+
+<section class="main-content section account">
+
+    <div class="container">
+
+        <h2 class="title-page"><span>Cashier</span></h2>
+
+        <div class="row row-eq-height">
+
+            @Html.Partial("_PartialCashierMenu", section)
+
+            <div class="col-sm-9 white-content withdrawalhistory" id="profile-wrapper">
+
+                <h2>Withdrawal History</h2>
+
+                <p class="grey">Please note, transactions older than 1 years may not be available. If you wish to view these transactions, please contact <a class="green" href="javascript:void(0)" onclick="openLiveChat();">Customer Support</a>.</p>
+
+                @using (Html.BeginForm("WithdrawalHistory", "Home", FormMethod.Get, new { @class = "clearfix infos-account row" }))
+                {
+                    <input hidden="hidden" name="page" value="@Model.PageNumber" />
+                    <div class="col-sm-3 form-group">
+                        <p>
+                            <b data-i18n="common.startDate">Start Date</b>
+                        </p>
+                        @Html.TextBox("startDate", (string)ViewBag.StartDate, new { @class = "form-control datepicker" })
+                    </div>
+                    <div class="col-sm-3 form-group">
+                        <p>
+                            <b data-i18n="common.endDate">End Date</b>
+                        </p>
+                        @Html.TextBox("endDate", (string)ViewBag.EndDate, new { @class = "form-control datepicker" })
+                    </div>
+                    <div class="col-sm-3 form-group">
+                        <label>&nbsp;</label><br>
+                        <button type="submit" class="btn grey col-md-12" data-i18n="common.filter">filter</button>
+                    </div>
+                }
+
+                <table class="table list sortable">
+                    <thead>
+                        <tr>
+                            <th data-defaultsort="asc" data-i18n="balanceInformation.date">Date</th>
+                            <th data-i18n="balanceInformation.referenceCode">Reference Code</th>
+                            <th data-i18n="cashier.requestedAmount">Requested Amount</th>
+                            <th data-i18n="common.status">Status</th>
+                            <th data-i18n="cashier.remark">Remark</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (@Model.Count > 0)
+                        {
+                            foreach (var withdrawal in Model)
+                            {
+                                <tr>
+                                    <td >@Convert.ToDateTime(withdrawal.Created).ToString("yyyy-MM-dd HH:mm")</td>
+                                    <td>@withdrawal.TransactionNumber</td>
+                                    <td class="text-right">@withdrawal.AmountFormatted</td>
+                                    <td>@withdrawal.Status.ToString()</td>
+                                    <td></td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="5" data-i18n="common.noTransaction"></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+                <div class="text-center clearfix">
+                    <ul class="pagination pagination-lg pager"></ul>
+                    @Html.PagedListPager(@Model, page => Url.Action("WithdrawalHistory", new { page, startDate = @ViewBag.StartDate, endDate = @ViewBag.EndDate }))
+                </div>
+
+                @Html.Partial("_PartialQuickLink")
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+@section stylesheets {
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+}
+
+@section scripts {
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+}

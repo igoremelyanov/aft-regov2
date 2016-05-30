@@ -1,0 +1,79 @@
+@using AFT.RegoV2.MemberApi.Interface.Player
+@Model dynamic
+@{
+    ViewBag.Title = "Message - Rego";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="main-content section account">
+
+    <div class="container">
+
+        <h2 class="title-page"><span data-i18n="common.messages"></span></h2>
+
+        <div class="row row-eq-height messages">
+
+            <div class="pagination-messages holder"></div>
+
+            <div class="col-sm-3 menu list">
+
+                <div class="height900">
+                    <ul id="itemContainer">
+                        @foreach (var item in Model.Messages)
+                        {
+                            var shortenedSubject = @item.Subject.Length > 30
+                                ? @item.Subject.Substring(0, 30) + "..."
+                                : @item.Subject;
+
+                            var shortenedContent = @item.Content.Length > 30
+                                ? @item.Content.Substring(0, 30) + "..."
+                                : @item.Content;
+
+                            <li class="@(item.IsNew && Model.SelectedMessage.Id != item.Id ? "unread" : "read")@(Model.SelectedMessage.Id == item.Id ? " selected" : "")">
+                                <p>@item.Received.ToString("yyyy/MM/dd")</p>
+                                <a href="@Url.Action("Msg", new {id = @item.Id})">@shortenedSubject</a>
+                                <p>@shortenedContent</p>
+                            </li>
+                        }
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="col-sm-9 white-content body">
+
+                <p>@Model.SelectedMessage.Received.ToString("yyyy/MM/dd")</p>
+                <h3>@Model.SelectedMessage.Subject</h3>
+                <div>
+                    <p>@Model.SelectedMessage.Content</p>
+
+                    <div class="clearfix">
+                        @if (@Model.PreviousLink != null)
+                        {
+                            <a href="@Model.PreviousLink" class="pull-left">&lt; <span>Older</span></a>
+                        }
+                        @if (@Model.NextLink != null)
+                        {
+                            <a href="@Model.NextLink" class="pull-right">Newer &gt;</a>
+                        }
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+@section scripts {
+    <script src="/Scripts/custom/formbase.js"></script>
+    <script src="/Scripts/custom/profile/personal.js"></script>
+    <script src="/Scripts/custom/profile/security.js"></script>
+    <script src="/Scripts/custom/profile/contacts.js"></script>
+    <script src="/Scripts/custom/profile/verification.js"></script>
+    <script src="/Scripts/custom/profile/account.js"></script>
+    <script src="/Scripts/custom/profile/responsible-gambling.js"></script>
+    <script src="/Scripts/custom/profile/profile.js"></script>
+}

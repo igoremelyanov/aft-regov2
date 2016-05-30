@@ -1,0 +1,33 @@
+﻿@model IEnumerable<AFT.RegoV2.MemberApi.Interface.Player.OnSiteMessage>
+@if (Model.Any()) {
+    
+    <div class="list">
+        <ul class="clearfix">
+            @foreach (var item in Model)
+            {
+                var shortenedSubject = @item.Subject.Length > 25
+                    ? @item.Subject.Substring(0, 25) + "..."
+                    : @item.Subject;
+
+                var shortenedContent = @item.Content.Length > 50
+                    ? @item.Content.Substring(0, 50) + "..."
+                    : @item.Content;
+
+                <li class="@(item.IsNew ? "unread": "read")">
+                    <p>@item.Received.ToString("yyyy/MM/dd")</p>
+                    <a href="@Url.Action("Msg", new {id = @item.Id})">@shortenedSubject</a>
+                    <p>@shortenedContent</p>
+                </li>
+            }
+        </ul>
+
+    </div>
+    <p class="align-center">
+        <a class="btn no-border" href="@Url.Action("Msg")">View all</a>
+    </p>
+
+}
+else
+{
+    <p class="text-center no-messages" data-i18n="common.noMessages"></p>
+}

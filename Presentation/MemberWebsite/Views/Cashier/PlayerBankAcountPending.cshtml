@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "My account - Rego";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string section = "responsiblegaming";
+}
+
+<section class="main-content section account">
+    <div class="container">
+        <h2 class="title-page"><span>Cashier</span></h2>
+        <div class="row row-eq-height">
+            @Html.Partial("_PartialCashierMenu", section)
+            <div class="col-sm-9 white-content frozen-account" id="profile-wrapper">
+                <h2 data-i18n="profile.withdrawal">withdrawal</h2>
+                <div>
+                    <p class="grey waiting" data-i18n="withdrawal.VerifiedBankAccount.description">Verification process can take up to 2 hours. You will be notified by email once the account has been verified.</p>
+                </div>
+
+                @Html.Partial("_PartialQuickLink")
+            </div>
+        </div>
+    </div>
+</section>
+
+@section scripts {
+    <script src="/Scripts/custom/formbase.js"></script>
+    <script src="/Scripts/custom/profile/personal.js"></script>
+    <script src="/Scripts/custom/profile/security.js"></script>
+    <script src="/Scripts/custom/profile/contacts.js"></script>
+    <script src="/Scripts/custom/profile/verification.js"></script>
+    <script src="/Scripts/custom/profile/account.js"></script>
+    <script src="/Scripts/custom/profile/profile.js"></script>
+}

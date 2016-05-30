@@ -1,0 +1,92 @@
+@{
+    ViewBag.Title = "My account - Rego";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string section = "withdrawal";
+}
+
+<section class="main-content section account">
+
+    <div class="container">
+
+        <h2 class="title-page"><span data-i18n="profile.cashier">cashier</span></h2>s
+        
+        <div class="row row-eq-height">
+
+          @Html.Partial("_PartialCashierMenu", section)
+
+          <div class="col-sm-9 white-content withdrawal verified" id="profile-wrapper">
+              
+              <h2 data-i18n="profile.withdrawal">withdrawal</h2>
+
+              <p class="current-balance"><span data-i18n="common.withdrawalBalance">Withdrawal Balance</span>: <b>$75,000.00</b></p>
+              
+              <div class="alert-msg validation clearfix">
+                <ul>
+                  <li>Withdrawal Range: $50 - $50,000.</li>
+                  <li>Daily Maximum Amount Withdrawn: $100,000.</li>
+                  <li>Daily Maximum Deposit: 5.</li>
+                </ul>
+              </div>
+              
+              <h5 class="section"><span data-i18n="withdrawal.bankDetails">bank details</span></h5>
+
+              <div class="row infos-account">
+                  <div class="col-sm-4">
+                    <p><b>Full name</b></p>
+                    <p>John Doe</p>
+                  </div>
+                  <div class="col-sm-4">
+                    <p><b>Select Bank</b></p>
+                    <p>HSBC</p>
+                  </div>
+                  <div class="col-sm-4">
+                    <p><b>Bank Account #</b></p>
+                    <p>1234567890</p>
+                  </div>
+                  <div class="col-sm-4">
+                    <p><b>Branch</b></p>
+                    <p>Beijing</p>
+                  </div>
+                  <div class="col-sm-4">
+                    <p><b>Province</b></p>
+                    <p>Beijing</p>
+                  </div>
+                  <div class="col-sm-4">
+                    <p><b>City</b></p>
+                    <p>Beijing</p>
+                  </div>
+              </div>
+
+              <h5 class="section"><span data-i18n="withdrawal.withdrawalDetails">withdrawal details</span></h5>
+
+              <form class="clearfix infos-account">
+                  <div class="pull-left">
+                      <p><b>Withdrawal Amount</b></p>
+                      <div class="form-group" data-bind="css: {'has-error': !withdrawal.amount.isValid()}">
+                        <input data-bind="value: withdrawal.amount" class="form-control"/>
+                        <p class="msg">test</p>
+                      </div>
+                  </div>
+                  <div class="pull-left notifications">
+                      <p><b>Notification</b></p>
+                      <div class="form-group">
+                        <input id="sms" type="checkbox" data-bind="value: withdrawal.sms"/>
+                        <label for="sms">SMS</label>
+                        <input id="email" type="checkbox" data-bind="value: withdrawal.email"/>
+                        <label for="email">EMAIL</label>
+                      </div>
+                  </div>
+                  <button class="btn green pull-right" data-bind="click: withdrawal.submitWithdrawalDetail">submit</button>
+              </form>
+
+          </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+@section scripts {
+    @Html.Partial("_PartialProfileScript", section)
+}

@@ -1,0 +1,218 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="@Url.Content("/Content/bootstrap.min.css")">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/Content/bootstrap-sortable.css">
+    <link rel="stylesheet" href="/Content/ui/main.css">
+    <link rel="stylesheet" href="/Content/ui/flags/flags.css">
+    <link rel="stylesheet" href="/Content/Site.css">
+    <link rel="stylesheet" href="/Content/intlTelInput.css">
+    <link rel="stylesheet" href="/Content/jquery.realperson.css">
+    @RenderSection("stylesheets", false)
+    <script src="@Url.Content("/Scripts/respond.min.js")"></script>
+    <meta name="description" content="The description of my page" />
+</head>
+<body id="main-container" @RenderSection("classBody", false)>
+    @Html.Partial("_PartialLogin2")
+    @RenderBody()
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-4 menu">
+                    <h3 data-i18n="footer.siteMap"></h3>
+                    <ul>
+                        <li><a href="./" data-i18n="footer.home">Home</a></li>
+                        <li><a href="@Url.Action("LiveDealer")" data-i18n="footer.liveDealer">Live Dealer</a></li>
+                        <li><a href="@Url.Action("Casino")" data-i18n="footer.casino">Casino</a></li>
+                        <li><a href="@Url.Action("Promos")" data-i18n="footer.promos">Promos</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-4 menu">
+                    <h3 data-i18n="footer.siteInfo"></h3>
+                    <ul>
+                        <li><a href="@Url.Action("About")" data-i18n="footer.aboutUs"></a></li>
+                        <li><a href="@Url.Action("Contact")" data-i18n="footer.contactUs"></a></li>
+                        <li><a href="@Url.Action("Rules")" data-i18n="footer.rules"></a></li>
+                        <li><a href="@Url.Action("Privacy")" data-i18n="footer.privacyPolicy"></a></li>
+                        <li><a href="@Url.Action("Disclaimer")" data-i18n="footer.disclaimer"></a></li>
+                        <li><a href="@Url.Action("TermsConditions")" data-i18n="footer.termsAndConditions"></a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-4 menu">
+                    <h3 data-i18n="footer.help"></h3>
+                    <ul>
+                        <li><a href="javascript:void(0)" onclick="openLiveChat();" data-i18n="footer.support"></a></li>
+                        <li><a href="@Url.Action("ForgetPasswordStep1")" data-i18n="footer.forgotPassword"></a></li>
+                        <li><a href="@Url.Action("Responsibility")" data-i18n="footer.responsibilityGaming"></a></li>
+                        <li><a href="@Url.Action("Qna")" data-i18n="footer.faq"></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center copyright-wrapper">
+                <p data-i18n="common.homePageFooterInfo.footerFirst"></p>
+                <p data-i18n="common.homePageFooterInfo.footerSecond"></p>
+                <p data-i18n="common.homePageFooterInfo.footerThird"></p>
+            </div>
+            <img class="logo" src="/Content/images/logo.png" alt="Rego" />
+        </div>
+    </footer>
+    <a id="support" href="javascript:void(0)" onclick="openLiveChat();">
+        <img src="/Content/images/support.png" alt="support" />
+        <p>
+            24/7<br>
+            <strong>support</strong>
+        </p>
+    </a>
+    <div id="modal-login">
+        <div id="loginForm" tabindex="-1" role="dialog" aria-labelledby="loginForm" aria-hidden="true" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content modal-info text-left">
+                    <div class="modal-body">
+                        <button data-dismiss="modal" aria-label="Close" class="close">
+                            <img src="/Content/images/close-popup.png" />
+                        </button>
+                        <p class="align-center logo"><img src="/Content/images/logo-popup.png" /></p>
+                        <form role="form" data-bind="submit: signIn">
+                            <div class="row">
+                                <div class="col-sm-offset-2 col-sm-8">
+                                    <div class="form-group 5times" data-bind="css: {'has-error': hasErrors()}">
+                                        <p class="msg" data-i18n="[html]login.fiveTimesFailed"></p>
+                                    </div>
+                                    <div class="form-group" data-bind="css: {'has-error': hasErrors()}">
+                                        <input type="text" class="form-control" placeholder="Username" autofocus data-bind="value: username">
+                                    </div>
+                                    <div class="form-group password" data-bind="css: {'has-error': hasErrors()}">
+                                        <input type="password" class="form-control" placeholder="Password" data-bind="value: password">
+                                    </div>
+                                    <div class="form-group message" data-bind="css: {'has-error': hasErrors()}">
+                                        <p class="msg"></p>
+                                    </div>
+                                    <div class="clearfix">
+                                        <a href="@Url.Action("ForgetPasswordStep1")" target="_blank" data-toggle="modal" class="marginTopBottom10 block pull-left fontLight16px" data-i18n="login.forgotPasswordQuestion"></a>
+                                        <button class="btn pull-right" type="submit" data-bind="enable: !requestInProgress()" data-i18n="login.login"></button>
+                                    </div>
+                                    <div class="separator"></div>
+
+                                    <div class="row links">
+
+                                        <div>
+                                            <p class="align-center">
+                                                <span class="not-a-member" data-i18n="login.notMemberYet"></span><br />
+                                                <a href="#" class="upper-link join-now fontLight16px" data-bind="click: toRegister, enable: !requestInProgress()" data-i18n="login.joinNow"></a>
+                                            </p>
+                                        </div>
+
+                                        <div class="support">
+                                            <a class="text-center" href="javascript:void(0)" onclick="openLiveChat();">
+                                                <img src="/Content/images/support.png" alt="support" />
+                                                <p class="text-uppercase">24/7<br><strong>support</strong></p>
+                                            </a>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <button class="reset hide" data-bind="click: initLogin"></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*<div class="modal fade" id="login-messages">
+                <div class="modal-dialog modal-warning text-center">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <button type="button" data-dismiss="modal" aria-hidden="true" class="close"><i class="fa fa-fw fa-times-circle"></i></button>
+                            <h5 class="modal-title">Error</h5>
+                            <ul data-bind="foreach: messages" class="modal-list">
+                                <li data-bind="text: $data"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+        <div class="modal fade" id="alert-modal">
+            <div class="modal-dialog modal-warning text-center">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <button data-dismiss="modal" aria-label="Close" class="close">
+                            <img src="/Content/images/close-popup.png" />
+                        </button>
+                        <p class="align-center logo"><img src="@Url.Content("~/Content/images/logo-popup.png")" /></p>
+                        <div class="row">
+                            <div class="col-sm-offset-3 col-sm-6 no-padding">
+                                <p class="title"></p>
+                                <div class="clearfix">
+                                    <p class="message"></p>
+                                </div>
+                                <p class="align-center marginTop40">
+                                    <a href="#"><img src="@Url.Content("~/Content/images/icon-customerservice.png")" /></a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="game-modal">
+            <div class="modal-dialog modal-warning text-center">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <button data-dismiss="modal" aria-label="Close" class="close">
+                            <img src="/Content/images/close-popup.png"/>
+                        </button>
+                        <iframe src=""></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- IE8 -->
+    <script type='text/javascript' src="/Scripts/modernizr.min.js"></script>
+    <script type='text/javascript' src="//cdn.jsdelivr.net/css3-mediaqueries/0.1/css3-mediaqueries.min.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script type='text/javascript' src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+      <script type='text/javascript' src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js"></script>
+    <![endif]-->
+
+    <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+    <script src="http://malsup.github.io/jquery.blockUI.js"></script>
+    <script src="/Scripts/intlTelInput.min.js"></script>
+    <script src="/Scripts/jquery.cookie.js"></script>
+    <script src="/Scripts/pageMe.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/numeral.js/1.4.5/numeral.min.js"></script>
+    <script src="/Scripts/tinysort.min.js"></script>
+    <script src="/Scripts/bootbox.min.js"></script>
+    <script src="/Scripts/knockout-2.2.0.debug.js"></script>
+    <script src="/Scripts/knockout.validation.js"></script>
+    <script type="text/javascript" src="/Scripts/i18next-1.9.0.js"></script>
+    <script type="text/javascript" src="/Scripts/custom/main.js"></script>
+    <script src="/Scripts/custom/utilities.js"></script>
+    <script src="/Scripts/jquery.plugin.js"></script>
+    <script src="/Scripts/jquery.realperson.js"></script>
+    <script src="/Scripts/jquery.slimscroll.js"></script>
+    <script src="/Scripts/moment.min.js"></script>
+    <script src="/Scripts/bootstrap-sortable.js"></script>
+    <script src="/Scripts/jPages.min.js"></script>
+    <script src="/Scripts/custom/apps.js"></script>
+    <script src="/Scripts/custom/balanceView.js"></script>
+    <script src="/Scripts/custom/login.js"></script>
+    <script src="/Scripts/moment.js"></script>
+    <script src="/Scripts/lodash.js"></script>
+    <script src="/Scripts/support.js"></script>
+
+    @RenderSection("scripts", false)
+</body>
+</html>

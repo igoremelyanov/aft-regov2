@@ -1,0 +1,148 @@
+﻿@model AFT.RegoV2.MemberWebsite.Controllers.HomeController.CreateBankAccountModel
+@{
+    ViewBag.Title = "My account - Rego";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string section = "withdrawal";
+}
+
+<section class="main-content section account">
+    <div class="container">
+        <h2 class="title-page"><span>Cashier</span></h2>
+        <div class="row row-eq-height">
+            @Html.Partial("_PartialCashierMenu", section)
+            <div class="col-sm-9 white-content withdrawal verified  create-bank-account" id="create-bank-account-wrapper">
+
+                <h2 data-i18n="profile.withdrawal">withdrawal</h2>
+                @if (Model.IsRejected)
+                {
+                    <p class="alert-msg"><span data-i18n="withdrawal.errorInfos">Incorrect information. Please contact</span> <a href="javascript:void(0)" onclick="openLiveChat();" style="color: red; text-decoration: underline" data-i18n="common.customerSupport">Customer Support</a></p>
+                }
+                else
+                {
+                    <p class="grey">Please provide bank details to help process your withdrawal. You will receive the amount you are withdrawing into this bank account</p>
+                }
+
+                <h5 class="section"><span data-i18n="withdrawal.bankDetails">bank details</span></h5>
+
+                <form>
+                    <div class="row infos-account"data-bind="validationOptions: {insertMessages: false}">
+                        <div class="col-sm-4">
+                            <p>
+                                <b>Full name</b>
+                            </p>
+                            <div class="form-group" data-bind="css: {'has-error': !accountName.isValid()}">
+                                <input type="text" name="full-name" data-bind="value: accountName" class="form-control" />
+                                <p class="msg" data-bind="text: accountName.error, visible: !accountName.isValid()"></p>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <p>
+                                <b>Select Bank</b>
+                            </p>
+                            <div class="form-group">
+                                <select name="bank" data-bind="options: banks, optionsText: 'name', optionsValue: 'id', value: bankId" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <p>
+                                <b>Bank Account #</b>
+                            </p>
+                            <div class="form-group" data-bind="css: {'has-error': !accountNumber.isValid()}">
+                                <input type="text" name="bank-account-number" data-bind="value: accountNumber" class="form-control" />
+                                <p class="msg" data-bind="text: accountNumber.error, visible: !accountNumber.isValid()"></p>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <p>
+                                <b>Branch</b>
+                            </p>
+                            <div class="form-group" data-bind="css: {'has-error': !branch.isValid()}">
+                                <input type="text" name="branch" data-bind="value: branch" class="form-control" />
+                                <p class="msg" data-bind="text: branch.error, visible: !branch.isValid()"></p>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <p>
+                                <b>Province</b>
+                            </p>
+                            <div class="form-group" data-bind="css: {'has-error': !province.isValid()}">
+                                <input type="text" name="province" data-bind="value: province" class="form-control" />
+                                <p class="msg" data-bind="text: province.error, visible: !province.isValid()"></p>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <p>
+                                <b>City</b>
+                            </p>
+                            <div class="form-group" data-bind="css: {'has-error': !city.isValid()}">
+                                <input type="text" name="city" data-bind="value: city" class="form-control" />
+                                <p class="msg" data-bind="text: city.error, visible: !city.isValid()"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix">
+                        @if (Model.IsRejected)
+                        {
+                            <button class="btn green pull-right" data-bind="click: submitForm">resubmit</button>}
+                        else
+                        {
+                            <button class="btn green pull-right" data-bind="click: submitForm">submit</button>}
+                    </div>
+                </form>
+
+            </div>
+           <!-- <div class="col-sm-9 white-content create-bank-account" id="create-bank-account-wrapper">
+                <h2>Create bank account</h2>
+                @if (Model.IsRejected)
+                {
+                    <p>You request has been rejected. Please create bank account again.</p>
+                    <p>Reason: </p><p>@Model.Remark</p>
+                }
+                <div>
+                    <form autocomplete="on" method="POST">
+                        <div class="form-group" data-bind="css: {'has-error': !branch.isValid()}">
+                            <label>Branch</label>
+                            <input type="text" name="branch" data-bind="value: branch" class="form-control" />
+                            <p class="msg" data-bind="text: branch.error, visible: !branch.isValid()"></p>
+                        </div>
+                        <div class="form-group">
+                            <label>Bank</label>
+                            <select name="bank" data-bind="options: banks, optionsText: 'name', optionsValue: 'id', value: bankId" class="form-control">
+                            </select>
+                        </div>
+                        <div class="form-group" data-bind="css: {'has-error': !accountName.isValid()}">
+                            <label>Full name</label>
+                            <input type="text" name="full-name" data-bind="value: accountName" class="form-control" />
+                            <p class="msg" data-bind="text: accountName.error, visible: !accountName.isValid()"></p>
+                        </div>
+                        <div class="form-group" data-bind="css: {'has-error': !province.isValid()}">
+                            <label>Province</label>
+                            <input type="text" name="province" data-bind="value: province" class="form-control" />
+                            <p class="msg" data-bind="text: province.error, visible: !province.isValid()"></p>
+                        </div>
+                        <div class="form-group" data-bind="css: {'has-error': !accountNumber.isValid()}">
+                            <label>Bank account #</label>
+                            <input type="text" name="bank-account-number" data-bind="value: accountNumber" class="form-control" />
+                            <p class="msg" data-bind="text: accountNumber.error, visible: !accountNumber.isValid()"></p>
+                        </div>
+                        <div class="form-group" data-bind="css: {'has-error': !city.isValid()}">
+                            <label>City</label>
+                            <input type="text" name="city" data-bind="value: city" class="form-control" />
+                            <p class="msg" data-bind="text: city.error, visible: !city.isValid()"></p>
+                        </div>
+
+                        <div class="float-right">
+                            <button type="submit" class="btn btn-block" data-bind="click: submitForm" data-i18n="common.save"></button>
+                        </div>
+                    </form>
+                </div>
+            </div>-->
+        </div>
+    </div>
+</section>
+
+@section scripts {
+    <script src="/Scripts/custom/login.js"></script>
+    <script src="/Scripts/custom/formbase.js"></script>
+    <script src="/Scripts/custom/createBankAccount.js"></script>
+}

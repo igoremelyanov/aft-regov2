@@ -1,0 +1,93 @@
+﻿@{
+    Layout = "../Shared/_Layout.cshtml";
+    ViewBag.Title = "Promotion - Rego";
+}
+@model AFT.RegoV2.MemberWebsite.Models.PromoModel
+
+<section class="main-content section promo">
+    <div class="container">
+        <h2 class="title-page"><span>Promotion</span></h2>
+
+        <div class="white-content">
+
+            <div class="promo-header">
+                <img src="/Content/images/promotion-list.jpg" />
+                <p class="title">
+                    @Model.Bonus.Name<br>
+                    <span>@Model.Bonus.Description</span>
+                </p>
+                <p class="align-center"><a href="@Url.Action("OfflineDeposit")" class="btn green">claim the bonus</a></p>
+            </div>
+
+            <p class="align-right">
+                <a class="nav back" href="@Url.Action("Promos")"><img src="@Url.Content("~/Content/images/icon_back.png")" /> Back</a>
+            </p>
+
+            <h4>how to get started?</h4>
+
+            <ul>
+                <li>Sign-up and create your SUNBET account</li>
+                <li>You may deposit using any payment method to join this promotion.</li>
+            </ul>
+
+            <h4>how to qualify?</h4>
+
+            <ul>
+                <li>Sign-up and create your SUNBET account</li>
+                <li>You may deposit using any payment method to join this promotion.</li>
+            </ul>
+
+            <h4>full terms and conditions</h4>
+
+            <ul>
+                <li>This offer is open to NEW players only. Existing players do not qualify.</li>
+                <li>Your FREE BET bonus will be equivalent to your lowest stake during all your qualifying bets.</li>
+                <li>Place 6 bets each with a minimum stake of £10</li>
+                <li>If any of your 6 qualifying bets are over £50 it will only count as the £50 maximum and count towards 1 of your 6 qualifying bets.</li>
+                <li>Qualifying bets can only be placed on a win single or combo bet. System bets do not qualify.</li>
+                <li>The 6 qualifying bets should be placed on different events/ selections. In the event that the 6 qualifying bets are placed on same event/selection, only the first accepted bet shall qualify towards your 6 qualifying bet.</li>
+                <li>Qualifying single bets must be staked at odds. 2.00 or over. Each selection in qualifying combo bets must be placed at odds of 1.40 or over.</li>
+                <li>Only the win part of each way bets count as qualifying bet.</li>
+                <li>The FREE BET can only be claimed once all your qualifying bets have seen settled.</li>
+                <li>You must contact our 24/7 CUstomer Service Team to claim this offer.</li>
+                <li>FREE BET applies to Sportsbook markets only.</li>
+                <li>Offer expires on December 31st 2015.</li>
+                <li>Applies to pre live bets only</li>
+                <li>Available to all SUNBET players over 18 years of age.</li>
+                <li>The total amount of the FREE BET issued to your accound is valid for one single bet or combo bet, and cannot be divided into smaller amount (Multiple bets).</li>
+                <li>FREE BET can be used for a single bet or combo bets, but excluses System bets (Yankees, Lucky 15, Heinz, Super Heinz, Trixie, Goliath, Lucky 31, Lucky 63, Patent).</li>
+                <li>In the event that the FREE BET bonus was placed on multiple bets, only the first accepted bet will be honoured, and winnings for the succeeding bets will be voided.</li>
+                <li>FREE BET stake not included in any winnings.</li>
+                <li>Non-runner/voided bets do not contribute towards wagering requirement under any circumstances.</li>
+                <li>The free bet will only be valid for 7 days from when the bonus is issued.</li>
+                <li>The free bet offer is limited to one per person, household, IP address, ISP Network, email address, telephone number, same payment account(e.g. debit and credit card etc.) and shared computer, e.g university, public llibrary, workplace.</li>
+                <li>This promotion cannot be used in conjunction with any other offer or promotion run by SUNBET.</li>
+                <li>SUNBET reserves the right to withhold any free bets if believed that the offer has been abused and/or where the terms of the offer are not fulfilled or any irregular betting patterns are found. SUNBET decision is final.</li>
+                <li>SUNBET reserves the right to withdraw this offer at any time, for whatever reason and without prior notice.</li>
+                <li>SUNBET reserves the right to alter these Terms & Conditions at any time without prior notice.</li>
+            </ul>
+
+            <p class="align-center"><a href="@Url.Action("OfflineDeposit")" class="btn green">claim the bonus</a></p>
+
+            <div class="row nav">
+
+                <div class="col-sm-4">
+                    @if (Model.PreviousId != null)
+                    {
+                        <a class="nav" href="@Url.Action("Promo", new {id = Model.PreviousId.Value})">&lt; Previous</a>
+                    }
+                </div>
+                <div class="col-sm-4 align-center">
+                    <a class="nav back" href="@Url.Action("Promos")"><img src="@Url.Content("~/Content/images/icon_back.png")" /> Back</a>
+                </div>
+                <div class="col-sm-4 align-right">
+                    @if (Model.NextId != null)
+                    {
+                        <a class="nav" href="@Url.Action("Promo", new {id = Model.NextId.Value})">Next &gt;</a>
+                    }
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

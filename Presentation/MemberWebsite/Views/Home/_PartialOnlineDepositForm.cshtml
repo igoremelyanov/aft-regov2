@@ -1,0 +1,107 @@
+﻿@model AFT.RegoV2.MemberWebsite.Models.OfflineDepositModel
+
+<input type="hidden" id="deposit-amount-min" value="@Model.DepositAmountMin" />
+<input type="hidden" id="deposit-amount-max" value="@Model.DepositAmountMax"/>
+<input type="hidden" id="deposit-currency-code" value="@Model.CurrencyCode" />
+
+<div class="grey">
+    <ul>
+        @if (@Model.DepositAmountMax > 0)
+        {
+            <li>Deposit Range @Model.CurrencyCode @Model.DepositAmountMinFormatted - @Model.CurrencyCode@Model.DepositAmountMaxFormatted.</li>}
+        else
+        {
+            <li>Deposit Range @Model.CurrencyCode @Model.DepositAmountMinFormatted - not limited.</li>}
+
+        @if (@Model.DailyMaximumDepositAmount > 0)
+        {
+            <li>Daily Maximum Amount Deposited: @Model.CurrencyCode @Model.DailyMaximumDepositAmountFormatted.</li>}
+
+        @if (@Model.DailyMaximumDepositCount > 0)
+        {
+            <li>Daily Maximum Deposit: @Model.DailyMaximumDepositCount.</li>}
+       
+    </ul>
+</div>
+
+<h6 class="step-green"><b data-i18n="claimBonus.makeDeposit"></b><span>1</span></h6>
+
+<div class="block-left-dot">
+
+    <form id="deposit-form" role="form" method="POST" action="registerstep2">
+        <div class="form-group">
+            <label for="amount" data-i18n="cashier.quickSelectAmount">Quick Select Amount</label>
+            <div class="row choices">
+                @{    
+                    foreach (var quickSelectAmount in Model.QuickSelectAmounts)
+                    {
+                        <div class="col-sm-3">
+                            <button type="button" data-bind="click: function(){ setAmount('@quickSelectAmount.Amount'); }" class="btn green empty">@quickSelectAmount.AmountFormatted</button>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+        <div class="form-group has-error" data-bind="css: {'has-error': !amount.isValid()}">
+            <label for="amount" data-i18n="balanceInformation.amount"></label>
+            <div>
+                <input style="width: 50%;" type="text" id="amount" class="form-control" name="amount" maxlength="15" data-bind="value: amount, currency: amount" />
+            </div>
+            @if (Model.DepositAmountMax > 0)
+            {
+                <p class="font-size20">Min Deposit @Model.CurrencyCode @Model.DepositAmountMin Max Deposit @Model.CurrencyCode @Model.DepositAmountMax</p>}
+            else
+            {
+                <p class="font-size20">Min Deposit @Model.CurrencyCode @Model.DepositAmountMinFormatted Max Deposit not limited</p>}
+            @*<p class="msg" data-bind="visible: amount.hasError">Amount must be between a minimum deposit of $200 and a maximum deposit of $50.000</@*p>*@
+        </div>
+    </form>
+
+</div>
+
+<div class="step2" data-bind="css: { 'disabled': amount() == 0 }">
+    <h6 class="step-green"><b data-i18n="cashier.claimYourBonus">claim your bonus</b><span>2</span></h6>
+
+    <div data-bind="visible: bonuses().length > 0">
+        <p class="grey">
+            <span data-i18n="claimBonus.byClicking">By clicking the claim button, you have read and agreed to your</span>
+            <a class="green" href="@Url.Action("TermsConditions")" data-i18n="claimBonus.termsAndConditions"></a>
+        </p>
+
+        <div class="row clearfix claim-list" data-bind="foreach: bonuses">
+
+            <div class="col-sm-4 text-center" data-bind="css: { 'selected' : $root.claimedBonus() != undefined && $root.claimedBonus().id == $data.id, 'disable': $root.amount() < $data.requiredAmount }">
+                <div data-bind="click: function(){ $root.selectBonus($data) }">
+                    <div class="name"><h5 class="text-center"><span data-bind="text: name"></span></h5></div>
+                    <p data-bind="visible: percentage"><strong><b data-bind="text: percentage.substring(0,2)"></b>%</strong><br>bonus</p>
+                    <p data-bind="visible: !percentage"><strong>$<b data-bind="text: amount"></b></strong><br><span class="text-uppercase">bonus</span></p>
+                    <p>Deposit more than $<span data-bind="text:requiredAmount"></span> to be eligible for the bonus.</p>
+                    <p id="bonus-code" class="hide" data-bind="text: code"></p>
+                    <p id="bonus-id" class="hide" data-bind="text: id"></p>
+                    <p><a href="/en-US/Home/TermsConditions" target="_blank" data-i18n="common.moreInfo"></a></p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<p style="margin-top: 50px;" class="text-center bold" data-i18n="claimBonus.enterBonusCode">Or enter a Bonus Code</p>
+
+<form id="code-bonus-form">
+    <div class="row">
+        <div class="col-sm-offset-3 col-sm-4">
+            <div class="form-group clearfix" data-bind="css: {'has-error': !code.isValid()}, validationOptions:{ insertMessages: false }">
+                <input class="form-control" type="text" data-bind="value: code, valueUpdate: 'afterkeydown', enable: amountEntered" />
+                <p class="msg" data-bind="validationMessage: code"></p>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <button class="btn green empty" data-bind="click: submitCode, enable: amountEntered&& code() != undefined && code().length > 0" data-i18n="common.validate">validate</button>
+        </div>
+    </div>
+</form>
+
+<div class="clearfix submit-section">
+    <button class="btn green pull-right submit-btn" data-bind="click: submitRequest, enable: isValid() && $root.amount() != 0, text: depositCaption"></button>
+</div>

@@ -1,0 +1,147 @@
+﻿@using AFT.RegoV2.MemberWebsite.Common
+@model AFT.RegoV2.MemberWebsite.Models.GamesDataView
+
+@{
+    Layout = "../Shared/_Layout.cshtml";
+    ViewBag.Title = "Live Dealer to rego";
+
+    var liveDealerGameGroupCode = GameConstants.LiveDealerGameGroupCode;
+    var sunbetGameCode = GameConstants.SunbetLobbyGameCode;
+    var gdGameCode = GameConstants.GoldDeluxeLobbyGameCode;
+
+    string starterClass = Model.IsAuthenticated ? "js-game-starter" : "js-show-login";
+
+    string subnetGameUrl = string.Empty;
+    string subnetGameIsActive = "false";
+    int? subnetGameIeCompatibilityLevel = null;
+    string gdGameUrl = string.Empty;
+    string gdGameIsActive = "false";
+    int? gdGameIeCompatibilityLevel = null;
+
+    if (Model.IsAuthenticated && Model.Data != null)
+    {
+        var liveDealerGameGroup = Model.Data.GameGroups.SingleOrDefault(x => x.Code == liveDealerGameGroupCode);
+
+        if (liveDealerGameGroup != null)
+        {
+            var sunbetGame = liveDealerGameGroup.Games.SingleOrDefault(x => x.Code == sunbetGameCode);
+            if (sunbetGame != null)
+            {
+                subnetGameIsActive = sunbetGame.IsActive.ToString().ToLower();
+                subnetGameUrl = sunbetGame.Url;
+                subnetGameIeCompatibilityLevel = sunbetGame.IeCompatibilityLevel;
+            }
+
+            var gdGame = liveDealerGameGroup.Games.SingleOrDefault(x => x.Code == gdGameCode);
+            if (gdGame != null)
+            {
+                gdGameIsActive = gdGame.IsActive.ToString().ToLower();
+                gdGameUrl = gdGame.Url;
+                gdGameIeCompatibilityLevel = gdGame.IeCompatibilityLevel;
+            }
+        }
+    }
+}
+<div class="site-body home main-content" id="live-dealer">
+
+    <div class="top-page-banner">
+        <div class="container">
+            <div class="content">
+                <h2 class="fancy-title"><span>SUNBET</span></h2>
+                <p class="align-center" data-i18n="liveDealer.sunbetDescription"></p>
+                <p class="align-center"><button class="btn @starterClass" data-game-url="@subnetGameUrl" data-is-active="@subnetGameIsActive" data-ie-compatibility="@subnetGameIeCompatibilityLevel" data-i18n="playGames.playNow"></button></p>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row live-dealers">
+            @{
+                var promos = new List<dynamic>()
+                {
+                    new
+                    {
+                        NameKey = "liveDealer.baccarat",
+                        DescriptionKey = "liveDealer.baccaratDescription",
+                        StarterClass = starterClass,
+                        ImgSrc = Url.Content("/Content/images/livedealer/Game_SB_Sunbet_Lobby_Baccarat_520x520.jpg"),
+                        Url = subnetGameUrl,
+                        IsActive = subnetGameIsActive,
+                        IeCompatibilityLevel = subnetGameIeCompatibilityLevel,
+                    },
+                    new
+                    {
+                        NameKey = "liveDealer.dragonTiger",
+                        DescriptionKey = "liveDealer.dragonTigerDescription",
+                        StarterClass = starterClass,
+                        ImgSrc = Url.Content("/Content/images/livedealer/Game_SB_Sunbet_Lobby_Dragon_Tiger_520x520.jpg"),
+                        Url = subnetGameUrl,
+                        IsActive = subnetGameIsActive,
+                        IeCompatibilityLevel = subnetGameIeCompatibilityLevel,
+                    },
+                    new
+                    {
+                        NameKey = "liveDealer.roulette",
+                        DescriptionKey = "liveDealer.rouletteDescription",
+                        StarterClass = starterClass,
+                        ImgSrc = Url.Content("/Content/images/livedealer/Game_SB_Sunbet_Lobby_Roulette_520x520.jpg"),
+                        Url = subnetGameUrl,
+                        IsActive = subnetGameIsActive,
+                        IeCompatibilityLevel = subnetGameIeCompatibilityLevel,
+                    },
+                    new
+                    {
+                        NameKey = "liveDealer.parlayBaccarat",
+                        DescriptionKey = "liveDealer.parlayBaccaratDescription",
+                        StarterClass = starterClass,
+                        ImgSrc = Url.Content("/Content/images/livedealer/Game_GD_Gold_Deluxe_Lobby_Parlay_Baccarat_520x520.jpg"),
+                        Url = gdGameUrl,
+                        IsActive = gdGameIsActive,
+                        IeCompatibilityLevel = gdGameIeCompatibilityLevel,
+                    },
+                    new
+                    {
+                        NameKey = "liveDealer.MultiBaccarat",
+                        DescriptionKey = "liveDealer.MultiBaccaratDescription",
+                        StarterClass = starterClass,
+                        ImgSrc = Url.Content("/Content/images/livedealer/Game_GD_Gold_Deluxe_Lobby_Multigame_Baccarat_520x520.jpg"),
+                        Url = gdGameUrl,
+                        IsActive = gdGameIsActive,
+                        IeCompatibilityLevel = gdGameIeCompatibilityLevel,
+                    },
+                    new
+                    {
+                        NameKey = "liveDealer.3DBaccarat",
+                        DescriptionKey = "liveDealer.3DBaccaratDescription",
+                        StarterClass = starterClass,
+                        ImgSrc = Url.Content("/Content/images/livedealer/Game_GD_Gold_Deluxe_Lobby_3D_Baccarat_520x520.jpg"),
+                        Url = gdGameUrl,
+                        IsActive = gdGameIsActive,
+                        IeCompatibilityLevel = gdGameIeCompatibilityLevel,
+                    },
+                };
+                foreach (var promo in promos)
+                {
+                    <div class="col-sm-4">
+                        <a href="#" class="@promo.StarterClass" data-game-url="@promo.Url" data-is-active="@promo.IsActive" data-ie-compatibility="@promo.IeCompatibilityLevel" >
+                            <div class="radius-golden">
+                                <img src="@promo.ImgSrc" />
+                                <div>
+                                    <p class="align-center">
+                                        <span data-i18n="@promo.NameKey"></span><br /><br />
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="clearfix">
+                            <h4 class="pull-left" data-i18n="@promo.NameKey"></h4>
+                            <button class="btn pull-right @promo.StarterClass" data-game-url="@promo.Url" data-is-active="@promo.IsActive" data-ie-compatibility="@promo.IeCompatibilityLevel" data-i18n="playGames.playNow"></button>
+                        </div>
+                        <p data-i18n="@promo.DescriptionKey"></p>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+
+</div>
+

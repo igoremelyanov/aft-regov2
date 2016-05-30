@@ -1,0 +1,134 @@
+@{
+    ViewBag.Title = "My account - Rego";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+      string section = "claimbonus";
+}
+
+<section class="main-content section account">
+
+    <div class="container">
+
+        <h2 class="title-page"><span data-i18n="profile.myAccount"></span></h2>
+        
+        <div class="row row-eq-height">
+
+          @Html.Partial("_PartialAccountMenu", section)
+
+          <div class="col-sm-9 white-content claimsbonus eligible" id="profile-wrapper">
+              
+              <h2 data-i18n="profile.claimBonus">claim bonus</h2>
+
+              <p class="grey">
+                <a class="green" href="#"><b data-i18n="claimBonus.makeDeposit">Make a deposit</b></a> 
+                <span data-i18n="claimBonus.beEligigble">to be eligible for bonuses!</span>
+              </p>
+
+              <div class="row clearfix claim-list">
+                  <div class="col-sm-6">
+                      <div>
+                          <h5>live dealer 50 bonus</h5>
+                          <p>Lorem ipsum dolor consectetuer adipiscing.<br/><span>bonus code: AA42069PEN15</span></p>
+                          <div class="clearfix">
+                              <a class="pull-left" href="#" data-i18n="common.moreInfo"></a>
+                              <a class="pull-right btn green empty">claim</a>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-sm-6">
+                      <div>
+                          <h5>live dealer 50 bonus</h5>
+                          <p>Lorem ipsum dolor consectetuer adipiscing.<br/><span>bonus code: AA42069PEN15</span></p>
+                          <div class="clearfix">
+                              <a class="pull-left" href="#" data-i18n="common.moreInfo"></a>
+                              <a class="pull-right btn green empty">claim</a>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-sm-6">
+                      <div>
+                          <h5>live dealer 50 bonus</h5>
+                          <p>Lorem ipsum dolor consectetuer adipiscing.<br/><span>bonus code: AA42069PEN15</span></p>
+                          <div class="clearfix">
+                              <a class="pull-left" href="#" data-i18n="common.moreInfo"></a>
+                              <a class="pull-right btn green empty">claim</a>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-sm-6">
+                      <div>
+                          <h5>live dealer 50 bonus</h5>
+                          <p>Lorem ipsum dolor consectetuer adipiscing.<br/><span>bonus code: AA42069PEN15</span></p>
+                          <div class="clearfix">
+                              <a class="pull-left" href="#" data-i18n="common.moreInfo"></a>
+                              <a class="pull-right btn green empty">claim</a>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-sm-6">
+                      <div>
+                          <h5>live dealer 50 bonus</h5>
+                          <p>Lorem ipsum dolor consectetuer adipiscing.<br/><span>bonus code: AA42069PEN15</span></p>
+                          <div class="clearfix">
+                              <a class="pull-left" href="#" data-i18n="common.moreInfo"></a>
+                              <a class="pull-right btn green empty">claim</a>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-sm-6">
+                      <div>
+                          <h5>live dealer 50 bonus</h5>
+                          <p>Lorem ipsum dolor consectetuer adipiscing.<br/><span>bonus code: AA42069PEN15</span></p>
+                          <div class="clearfix">
+                              <a class="pull-left" href="#" data-i18n="common.moreInfo"></a>
+                              <a class="pull-right btn green empty">claim</a>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-sm-6">
+                      <div>
+                          <h5>live dealer 50 bonus</h5>
+                          <p>Lorem ipsum dolor consectetuer adipiscing.<br/><span>bonus code: AA42069PEN15</span></p>
+                          <div class="clearfix">
+                              <a class="pull-left" href="#" data-i18n="common.moreInfo"></a>
+                              <a class="pull-right btn green empty">claim</a>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-sm-6">
+                      <div>
+                          <h5>live dealer 50 bonus</h5>
+                          <p>Lorem ipsum dolor consectetuer adipiscing.<br/><span>bonus code: AA42069PEN15</span></p>
+                          <div class="clearfix">
+                              <a class="pull-left" href="#" data-i18n="common.moreInfo"></a>
+                              <a class="pull-right btn green empty">claim</a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <p class="text-center bold" data-i18n="claimBonus.enterBonusCode">Or enter a Bonus Code</p>
+
+              <form id="code-bonus-form">
+                <div class="row">
+                    <div class="col-sm-offset-1 col-sm-6">
+                      <div class="form-group clearfix" data-bind="css: {'has-error': !claimBonus.code.isValid()}">
+                          <input class="form-control pull-right" type="text" data-bind="value: claimBonus.code"/>
+                      </div>
+                    </div>
+                    <div class="col-sm-2">
+                      <button class="btn green empty" data-bind="click: claimBonus.submitBonusCode" data-i18n="common.validate">validate</button>
+                    </div>
+                </div>
+              </form>
+
+          </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+@section scripts {
+    @Html.Partial("_PartialProfileScript", section)
+}

@@ -1,0 +1,47 @@
+﻿@{
+    Layout = "../Shared/_Layout.cshtml";
+    ViewBag.Title = "Promotion - Rego";
+}
+@model IEnumerable<AFT.RegoV2.MemberApi.Interface.Bonus.QualifiedBonus>
+
+<section class="main-content section">
+    <div class="container">
+        <h2 class="title-page"><span>Promotion</span></h2>
+
+        <div class="white-content">
+
+            @if (Request.IsAuthenticated)
+            {
+                if (Model.Any())
+                {
+                    <ul class="promotion-list">
+                        @foreach (var bonus in Model)
+                        {
+                            <li>
+                                <img src="@Url.Content("~/Content/images/promotion-list.jpg")" />
+                                <p class="title">@bonus.Description</p>
+                                <p class="align-center">
+                                    <a href="@Url.Action("Promo", new {id = @bonus.Id})" class="btn grey">read more</a>
+                                </p>
+                            </li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <h3>Sorry, you are not qualified for any bonuses.</h3>
+                }
+            }
+            else
+            {
+                @Html.Partial("PromosUnregisteredPage")
+            }
+
+            <div class="nav">
+                <a href="#" class="float-right font-size16">Older Promotions &gt;</a>
+                <div class="clear"></div>
+            </div>
+        </div>
+
+    </div>
+</section>

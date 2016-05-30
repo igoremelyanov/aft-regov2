@@ -1,0 +1,19 @@
+﻿@model AFT.RegoV2.MemberWebsite.Controllers.HomeController.AcknowledgementModel
+@{
+    ViewBag.Title = "Acknowledgement";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="acknowledgement-wrapper">
+    <section class="main-content section">
+        <div class="container">
+            <h2 class="title-page big"><span>responsible gambling complete</span></h2>
+            <p id="elem" data-bind="html: getMainText('@Model.Date')">
+        </div>
+    </section>
+</div>
+
+@section scripts{
+    <script src="/Scripts/utils.js"></script>
+    <script src="/Scripts/custom/acknowledgement.js"></script>
+}

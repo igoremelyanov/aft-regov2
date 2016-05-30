@@ -1,0 +1,88 @@
+﻿@model AFT.RegoV2.MemberWebsite.Models.RegisterStep4Model
+
+@{
+    ViewBag.Title = "Registration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var startPlayingLink = Url.Action("GameList");
+    int Step = 3;
+}
+
+<div id="register-wrapper" class="register-confirm main-content">
+
+    <div class="container">
+
+        <h2 class="title-page"><span>Registration</span></h2>
+
+        @Html.Partial("_PartialRegisterHeader", Step)
+
+        <div class="page-wrapper">
+
+            <p class="align-center"><img src="/Content/images/icon_check.png"/></p>
+            <h2 class="middlewhite">Congratulation on your deposit!</h2>
+
+            <div class="row informations">
+                <div class="col-sm-offset-2 col-sm-8">
+
+                    <div>
+                        <table>
+                            <tr>
+                                <td>
+                                    <p><span>Deposit amount</span></p></td>
+                                <td><span class="js-balance-currency-code"></span> @Model.DepositAmountFormatted</td>
+                            </tr>
+                            @if (Model.BonusAmount.HasValue)
+                            {
+                                <tr>
+                                    <td>
+                                        <p><span>Bonus amount</span></p></td>
+                                    <td><span class="js-balance-currency-code"></span> @Model.BonusAmount</td>
+                                </tr>
+                                if (!string.IsNullOrEmpty(Model.BonusCode))
+                                {
+                                    <tr>
+                                        <td>
+                                            <p><span>Bonus code</span></p>
+                                        </td>
+                                        <td>@Model.BonusCode</td>
+                                    </tr>
+                                }
+                            }
+                            <tr>
+                                <td><p><span>Total</span></p></td>
+                                <td><span class="js-balance-currency-code"></span> @Model.TotalAmountFormatted</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+
+            <h2 class="middlewhite">Start playing now</h2>
+
+            <div class="row directions">
+                <div class="col-sm-offset-1 col-sm-5">
+                    <a href="@Url.Action("LiveDealer")" class="content">
+                        <p><img src="/Content/images/icon_dice.png"/>live dealer</p>
+                        <span></span>
+                    </a>
+                </div>
+                <div class="col-sm-offset-0 col-sm-5">
+                    <a href="@Url.Action("Casino")" class="content">
+                        <p class="float-right">
+                            <img src="/Content/images/icon-casino-gold.png"/> casino
+                        </p>
+                        <span></span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+@section scripts{
+    <script src="/Scripts/custom/login.js"></script>
+    <script src="/Scripts/custom/register3.js"></script>
+}

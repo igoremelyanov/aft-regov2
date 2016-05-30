@@ -1,0 +1,53 @@
+﻿<div class="ky-sub-tabs-content" >
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="ky-panel ky-margin-row ky-ticket-box" data-bind="visible: onlineDepositSuccess()">
+                <h4 class="title"><span data-i18n="balanceInformation.depositConfirmedSuccessfully"></span></h4>
+                <table class="table table-no-bordered ky-table">
+                    <tr>
+                        <td data-i18n="balanceInformation.playerDepositedAmount"></td>
+                        <td>
+                            <div>
+                                <div>
+                                    <span data-bind="text: playerDepositedAmount"></span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="balanceInformation.bonusAmount"></td>
+                        <td>
+                            <div>
+                                <div>
+                                    <span data-bind="text: bonusAmount"></span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td data-i18n="balanceInformation.totalDepositedAmount"></td>
+                        <td>
+                            <div>
+                                <div>
+                                    <span data-bind="text: totalDepositedAmount"></span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+            <div class="ky-panel ky-margin-row ky-ticket-box" data-bind="visible: onlineDepositSuccess()==false" >
+                <h3>
+                    <span data-i18n="balanceInformation.olineDepositFailedMessage1"></span><br />
+                    <span data-i18n="balanceInformation.olineDepositFailedMessage2"></span>
+                    <br /><br /><br />
+                    <span data-i18n="balanceInformation.olineDepositFailedMessage3"></span>
+                    <br />
+                    <span data-i18n="balanceInformation.olineDepositFailedMessage4"></span>                   
+                </h3>
+            </div>
+        </div>
+    </div>
+</div>

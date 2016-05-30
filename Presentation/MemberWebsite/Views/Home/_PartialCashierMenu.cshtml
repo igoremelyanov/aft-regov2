@@ -1,0 +1,55 @@
+﻿@{ var section = Model; }
+<div class="col-sm-3 menu">
+
+    <h5>Cashier</h5>
+    <ul>
+        <li class="@(section == "balancedetails" ? "selected" : null)"><a href="@Url.Action("BalanceDetails")">Balance details</a></li>
+        <li class="@(section == "transactionHistory" ? "selected" : null)"><a data-i18n="balanceInformation.transactionHistory" href="@Url.Action("TransactionHistory")"></a></li>
+    </ul>
+
+    <h5>Deposits</h5>
+
+    <ul>
+        <li class="@(section == "onlinedeposit" ? "selected" : null)"><a href="@Url.Action("OnlineDeposit")" data-i18="balanceInformation.onlineDeposit">Deposit online</a></li>
+        <li class="@(section == "offlinedeposit" ? "selected" : null)"><a href="@Url.Action("OfflineDeposit")" data-i18="balanceInformation.offlineDeposit">Deposit offline</a></li>
+        <li class="@(section == "depositHistory" ? "selected" : null)"><a href="@Url.Action("DepositHistory")" data-i18="balanceInformation.depositHistory">Deposit History</a></li>
+    </ul>
+
+    <h5>Withdrawal</h5>
+
+    <ul>
+        <li class="@(section == "withdrawal" ? "selected" : null)"><a href="@Url.Action("Withdrawal","Home")" data-i18n="profile.withdrawal">Withdrawal</a></li>
+        <li class="@(section == "withdrawalhistory" ? "selected" : null)"><a href="@Url.Action("WithdrawalHistory","Home")" data-i18n="profile.withdrawalHistory">Withdrawal History</a></li>
+    </ul>
+
+    @* <h5>Integration</h5>
+
+    <ul>
+        <li><a href="@Url.Action("WithdrawalFrozen")">Withdrawal Frozen</a></li>
+        <li><a href="@Url.Action("WithdrawalRejectedBankAccount")">Withdrawal Reject</a></li>
+        <li><a href="@Url.Action("WithdrawalVerifiedBankAccount")">Withdrawal Verified</a></li>
+        <li><a href="@Url.Action("WithdrawalUnverifiedBankAccount")">Withdrawal Unverified</a></li>
+        <li><a href="@Url.Action("WithdrawalUnverifyingBankAccount")">Withdrawal Verifying</a></li>
+    </ul> *@
+
+    <div class="modal fade no-border" id="bonus-details-information">
+        <div class="modal-dialog modal-warning text-center">
+            <div class="modal-content white-content account">
+                <h5 class="section" style="margin-left: 0;">
+                    <span data-i18n="">Terms</span>
+                    <a class="close" href="#" data-dismiss="modal"><img src="@Url.Content("/Content/images/close-popup-black.png")" /></a>
+                </h5>
+                <p><span class="bold">1)</span> This offer is exclusive to new and existing 138 players.</p>
+                <p><span class="bold">2)</span> Players must be over 18 years of age.</p>
+                <p><span class="bold">3)</span> Once the wagering requirement has been fulfilled players are eligible to cash out any winnings.</p>
+                <p><span class="bold">4)</span> This bonus promotion cannot be combined with any other bonus promotion unless otherwise stated.</p>
+                <p><span class="bold">5)</span> Bonuses cannot be combined and can only be claimed in sequence.</p>
+                <p><span class="bold">6)</span> Minimum deposits for this promotion apply.</p>
+                <p><span class="bold">7)</span> This bonus promotion cannot be combined with any other bonus promotion unless otherwise stated.</p>
+                <p><span class="bold">8)</span> 138 reserves the right to withdraw or change our promotions or conditions of use at any time without prior notice and players should check here regularly for any updates or changes.</p>
+                <p class="line"></p>
+            </div>
+        </div>
+    </div>
+</div>
+

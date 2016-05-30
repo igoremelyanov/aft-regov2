@@ -1,0 +1,428 @@
+@using AFT.RegoV2.MemberApi.Interface.Player
+@model RegistrationFormDataResponse
+@{
+    ViewBag.Title = "Registration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int Step = 1;
+}
+
+<div id="register-wrapper" class="site-body main-content">
+
+    <div class="container">
+
+        <h2 class="title-page"><span class="big" data-i18n="registration.signUpAndGetBonus">Sign up and get bonus</span></h2>
+
+        @Html.Partial("_PartialRegisterHeader", Step)
+
+        <div class="page-wrapper">
+
+        <form id="register-step1-form" role="form" data-bind="submit: submitRegistration" class="registration-form">
+            <div data-bind="validationOptions: { insertMessages: false}">
+                <input type="hidden" id="salt" value="123456" />
+                <input type="hidden" name="brandId" data-bind="value: brandId" />
+                <input type="hidden" name="physicalAddressLine1" data-bind="value: physicalAddressLine1" />
+                <input type="hidden" name="physicalAddressCity" data-bind="value: physicalAddressCity" />
+                <input type="hidden" name="physicalAddressPostalCode" data-bind="value: physicalAddressPostalCode" />
+                <input type="hidden" name="cultureCode" data-bind="value: cultureCode" />
+            </div>
+
+        <div class="row">
+
+        <div>
+
+            <h4 class="title"><span data-i18n="registration.accountInformation"></span></h4>
+
+            <div class="group-input">
+                <div class="row">
+                    <div class="col-xs-4 form-group" data-bind="css: {'has-error': !username.isValid()}">
+                        <label data-i18n="registration.userNameMandatory"></label>
+                        <div>
+                            <input name="Username" type="text" id="username-register" class="form-control" data-bind="value: username">
+                        </div>
+                    </div>
+
+                    <div class="col-xs-4 form-group" data-bind="css: {'has-error': !password.isValid()}">
+                        <label data-i18n="registration.passwordMandatory"></label>
+                        <div>
+                            <input id="password-register" name="Password" type="password" class="form-control" data-bind="value: password">
+                        </div>
+                    </div>
+
+                    <div class="col-xs-4 form-group" data-bind="css: {'has-error': !passwordConfirm.isValid()}">
+                        <label data-i18n="registration.confirmPasswordMandatory"></label>
+                        <div>
+                            <input id="password-confirm" name="PasswordConfirm" type="password" class="form-control" data-bind="value: passwordConfirm">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MOCKUP for Bonus Code
+
+            <div class="row form-group">
+                <div class="col-md-12">
+                    <div class="bonus-code clearfix">
+                        <label class="control-label col-md-12">Here's your sign up Bonus Code:</label>
+                        <div class="col-xs-12"><strong>AAAA-BBBB-CCCC-DDDD</strong>
+                        </div>
+                        <div class="col-xs-12" style="color: #aaaaaa">Click Next to get it!</div>
+                    </div>
+                </div>
+            </div>
+
+            End mockup for Bonus Code -->
+
+        </div><!--acc info.-->
+
+        <div>
+
+            <h4 class="title"><span data-i18n="registration.personalInformation"></span></h4>
+                        <p data-i18n="registration.provideSameName"></p>
+
+            <div class="group-input">
+
+                <div class="row">
+                    <div class="col-xs-4 form-group" data-bind="css: {'has-error': !email.isValid()}">
+                        <label data-i18n="common.emailAddressMandatory"></label>
+                        <div>
+                            <input name="Email" type="text" id="email" class="form-control" data-bind="value: email">
+                        </div>
+                    </div>
+
+                    <div class="col-xs-4 form-group" data-bind="css: {'has-error': !phoneNumber.isValid()}">
+                        <label data-i18n="registration.mobileNumber"></label>
+                        <div>
+                            <input type="tel" id="phone-number" class="form-control" data-bind="value: phoneNumber">
+                        </div>
+                    </div>
+
+                    <div class="col-xs-4 form-group" data-bind="css: {'has-error': !contactPreference.isValid()}">
+                        <label data-i18n="registration.contactPreference"></label>
+                        <div>
+                            <select name="ContactPreference" id="contactPreference" class="form-control" data-bind="value:contactPreference">
+                                <option value="" data-i18n="common.pleaseSelectOptionAsHint"></option>
+                                @foreach (var method in Model.ContactMethods)
+                                {
+                                    if (method == "CN")
+                                    {
+                                        <option selected value="@method">@method</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@method">@method</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-4">
+                        <div class="row">
+                            <div class="col-xs-6 form-group" data-bind="css: {'has-error': !title.isValid()}">
+                                <label data-i18n="registration.titleMandatory"></label>
+                                <div>
+                                    <select name="Title" id="title" class="form-control" data-bind="value: title">
+                                        <option value="" data-i18n="common.pleaseSelectOptionAsHint"></option>
+                                        @foreach (var title in Model.Titles)
+                                        {
+                                            <option value="@title">@title</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-6 form-group gender" data-bind="css: {'has-error': !gender.isValid()}">
+                                <label data-i18n="registration.genderMandatory"></label>
+                                <div class="row">
+                                    @foreach (var gender in Model.Genders)
+                                    {
+                                        <div class="col-md-6">
+                                            <input type="radio" name="Gender" id="@gender" value="@gender"/><label for="@gender">@gender</label>
+                                        </div>
+                                    }
+
+                                </div>
+                                <span class="validationMessage" data-bind="validationMessage: gender"></span>
+                            </div>
+                                
+                        </div>
+                    </div>
+
+                    <div class="col-xs-4 form-group" data-bind="css: {'has-error': !lastName.isValid()}">
+                        <label data-i18n="registration.lastNameMandatory"></label>
+                        <div>
+                            <input name="LastName" type="text" id="last-name" class="form-control" data-bind="value: lastName"/>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-4 form-group" data-bind="css: {'has-error': !firstName.isValid()}">
+                        <label data-i18n="registration.firstNameMandatory"></label>
+                        <div>
+                            <input type="text" id="first-name" name="FirstName" class="form-control" data-bind="value: firstName"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-4">
+                        <div class="form-group" data-bind="css: {'has-error': !yearOB.isValid()}">
+                            <label data-i18n="registration.dateOfBirthMandatory"></label>
+                            <div class="row">
+                                <div class="col-xs-4">
+                                                <select name="yearOB" class="form-control" id="year-of-birth" data-bind="value: yearOB, moreThan18: $element">
+                                        <option value="0" data-i18n="common.year"></option>
+                                        @for (var i = DateTime.Now.Year - 18; i >= 1914; i--)
+                                        {
+                                            <option value="@i">@i</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="col-xs-4">
+                                    <select name="monthOB" class="form-control" id="month-of-birth" data-bind="value: monthOB">
+                                        <option value="0" data-i18n="common.month"></option>
+                                        @for (var i = 1; i <= 12; i++)
+                                        {
+                                            <option value="@i.ToString("00")">@i.ToString("00")</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="col-xs-4">
+                                    <select name="dayOB" class="form-control" id="day-of-birth" data-bind="value: dayOB">
+                                        <option value="0" data-i18n="common.day"></option>
+                                        @for (var i = 1; i <= 31; i++)
+                                        {
+                                            <option value="@i.ToString("00")">@i.ToString("00")</option>
+                                        }
+                                    </select>
+                                </div>
+                                
+                            </div>
+                            <div><input class="col-xs-4" type="hidden" name="dateOfBirth" data-bind="value: dateOfBirth" /></div>
+                        </div>
+                    </div>
+                    <div class="col-xs-4 form-group" data-bind="css: {'has-error': !securityQuestionId.isValid()}">
+                        <label data-i18n="registration.securityQuestionMandatory"></label>
+                        <div>
+                            <select name="SecurityQuestionId" id="securityQuestionId" class="form-control" data-bind="value: securityQuestionId">
+                                <option value="" data-i18n="common.pleaseSelectOptionAsHint"></option>
+                                @foreach (var method in Model.SecurityQuestions)
+                                {
+                                    <option value="@method.Id">@method.Question</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-4 form-group" data-bind="css: {'has-error': !securityAnswer.isValid()}">
+                        <label data-i18n="registration.securityAnswerMandatory"></label>
+                        <div>
+                            <input name="SecurityAnswer" type="text" class="form-control" id="securityAnswer" data-bind="value: securityAnswer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--personal info.-->
+
+        <div>
+
+            <h4 class="title"><span data-i18n="registration.addressInformation">ADDRESS INFO</span></h4>
+
+            <div class="group-input">
+                <div class="row">
+
+                    <div class="col-xs-4 form-group" data-bind="css: {'has-error': !countryCode.isValid()}">
+                        <label data-i18n="registration.country"></label>
+                        <div>
+                            <select name="CountryCode" id="country" class="form-control" disabled="disabled" data-bind="value:countryCode">
+                                <option value="" data-i18n="common.pleaseSelectOptionAsHint"></option>
+                                @foreach (var country in Model.CountryCodes)
+                                {
+                                    if (country == "CN")
+                                    {
+                                        <option selected value="@country">@country</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@country">@country</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-8 form-group" data-bind="css: {'has-error': !mailingAddressLine1.isValid()}">
+                        <label data-i18n="registration.addressLine1"></label>
+                        <div>
+                            <input type="text" class="form-control" id="mailingAddressLine1" name="mailingAddressLine1" data-bind="value: mailingAddressLine1">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-4 form-group" data-bind="css: {'has-error': !mailingAddressPostalCode.isValid()}">
+                        <label data-i18n="registration.postalCode"></label>
+                        <div>
+                            <input type="text" class="form-control" id="mailingAddressPostalCode" name="mailingAddressPostalCode" data-bind="value: mailingAddressPostalCode">
+                        </div>
+                    </div>
+
+                    <div class="col-xs-4 form-group" data-bind="css: {'has-error': !mailingAddressCity.isValid()}">
+                        <label data-i18n="registration.city"></label>
+                        <div>
+                            <input type="text" class="form-control" id="mailingAddressCity" name="mailingAddressCity" data-bind="value: mailingAddressCity">
+                        </div>
+                    </div>
+
+                    <div class="col-xs-4 form-group" data-bind="css: {'has-error': !mailingAddressStateProvince.isValid()}">
+                        <label data-i18n="registration.statProvince"></label>
+                        <div>
+                            <input type="text" class="form-control" id="mailingAddressStateProvince" name="mailingAddressStateProvince" data-bind="value: mailingAddressStateProvince">
+                        </div>
+                    </div>
+
+                </div>
+
+                @* <div class="row">
+                                    <div class="col-xs-4 form-group" data-bind="css: {'has-error': Captcha.hasError()}">
+                                        <label data-i18n="registration.captcha"></label>
+                                        <div>
+                                            <input type="text" class="form-control" id="captcha" data-bind="value: Captcha">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-4 form-group" data-bind="css: {'has-error': CaptchaCheck.hasError()}">
+                                        <label data-i18n="registration.captchaCheck"></label>
+                                        <div>
+                                            <input type="text" class="form-control" id="captchaCheck" data-bind="value: CaptchaCheck">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-4 form-group" data-bind="css: {'has-error': CaptchaCheck.hasError()}">
+                                        <div>
+                                            <input id="over18" type="checkbox" data-bind="value: over18"/>
+                                            <label for="over18" data-i18n="registration.over18"></label><br>
+                                            <input id="acceptTerms" type="checkbox" data-bind="value: acceptTerms"/>
+                                            <label for="acceptTerms">I accept the <a href="@Url.Action("TermsConditions")" target="_blank">Terms & Conditions</a>.</label>
+                                        </div>
+                                    </div>
+                                </div> *@
+
+                <div class="row captcha">
+
+                    <div class="col-xs-4 form-group" data-bind="css: {'has-error': !currencyCode.isValid()}">
+                        <label data-i18n="registration.currency"></label>
+                        <div>
+                            <select name="CurrencyCode" id="currency" class="form-control" disabled="disabled" data-bind="value: currencyCode">
+                                <option value="" data-i18n="common.pleaseSelectOptionAsHint"></option>
+                                @foreach (var currency in Model.CurrencyCodes)
+                                {
+                                    if (currency == "RMB")
+                                    {
+                                        <option selected value="@currency">@currency</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@currency">@currency</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                    <!--<div class="col-xs-8 form-group" data-bind="css: {'has-error': Captcha.hasError()}">
+                        <label data-i18n="registration.captcha"></label>
+                        <div>
+                            <label class="captchaCheck" data-i18n="registration.captchaCheck"></label>
+                            <input type="text" class="form-control" id="captcha" data-bind="value: Captcha, initCaptcha: $element">
+                        </div>
+                    </div>-->
+                </div>
+
+                <div class="row checkbox">
+                    <div class="col-sm-10">
+                        <div class="float-left">
+                            <input id="over18" type="checkbox" data-bind="checked: over18"/>
+                            <label for="over18" data-i18n="registration.over18"></label>
+                        </div>
+                        <div class="float-left">
+                            <input id="acceptTerms" type="checkbox" data-bind="checked: acceptTerms"/>
+                            <label for="acceptTerms">I accept the <a href="@Url.Action("TermsConditions")" target="_blank">Terms & Conditions</a>, <a href="@Url.Action("Privacy")" target="_blank">Private Policy</a> and <a href="@Url.Action("Rules")" target="_blank">Bettings Rules</a>.</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 align-right">
+                        <button type="submit" data-bind="enable: over18() && acceptTerms()" class="btn selected btn-lg" id="register-btn" data-i18n="registration.signUp">sign up</button><br>
+                        <p>*All fields are required</p>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            <!--<div class="row form-group" data-bind="css: {'has-error': MailingAddressLine2.hasError()}">
+                <label class="col-md-12" data-i18n="registration.addressLine2"></label>
+                <div class="col-md-12">
+                    <input type="text" class="form-control" id="mailingAddressLine2" data-bind="value: MailingAddressLine2">
+                </div>
+            </div>
+
+            <div class="row form-group" data-bind="css: {'has-error': MailingAddressLine3.hasError()}">
+                <label class="col-md-12" data-i18n="registration.addressLine3"></label>
+                <div class="col-md-12">
+                    <input type="text" class="form-control" id="mailingAddressLine3" data-bind="value: MailingAddressLine3">
+                </div>
+            </div>
+
+            <div class="row form-group" data-bind="css: {'has-error': MailingAddressLine4.hasError()}">
+                <label class="col-md-12" data-i18n="registration.addressLine4"></label>
+                <div class="col-md-12">
+                    <input type="text" class="form-control" id="mailingAddressLine4" data-bind="value: MailingAddressLine4">
+                </div>
+            </div>-->
+
+
+            <div class="clear"></div>
+
+        </div><!--contact info.-->
+
+        </div>
+
+        </form>
+            @*<div class="modal fade" id="register-messages">
+                    <div class="modal-dialog modal-warning text-center">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <button type="button" data-dismiss="modal" aria-hidden="true" class="close"><i class="fa fa-fw fa-times-circle"></i></button>
+                                <h5 class="modal-title" data-i18n="common.error"></h5>
+                                <h6 data-i18n="common.pleaseCorrectTheErrors"></h6>
+                                <ul data-bind="foreach: messages" class="modal-list">
+                                    <li data-bind="text: $data"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
+            <div class="modal fade" id="register-inactive">
+                <div class="modal-dialog modal-success text-center">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <button type="button" data-dismiss="modal" aria-hidden="true" class="close"><i class="fa fa-fw fa-times-circle"></i></button>
+                            <h5 class="modal-title" data-i18n="common.congratulations"></h5>
+                            <p>
+                                Thank you for entering valid registration data.<br />
+                                The activation code is sent to you. Please use it to confirm your account, then login using your
+                                username <b data-bind="text: username"></b> and your password, specified during registration.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="/Scripts/custom/register.js"></script>
+}

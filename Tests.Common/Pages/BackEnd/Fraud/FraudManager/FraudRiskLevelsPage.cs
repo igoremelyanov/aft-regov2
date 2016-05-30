@@ -1,0 +1,108 @@
+﻿using System;
+using AFT.RegoV2.Tests.Common.Extensions;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+
+namespace AFT.RegoV2.Tests.Common.Pages.BackEnd.Fraud.FraudManager
+{
+    /// <summary>
+    /// Represents Fraud -> Fraud Manager page 
+    /// </summary>
+    public class FraudRiskLevelPage : BackendPageBase
+    {
+        internal static readonly By NewButtonBy = By.XPath("//button[contains(@data-bind,'openAddTab')]");
+        internal static readonly By EditButtonBy = By.XPath("//button[contains(@data-bind,'openEditTab')]");
+        internal static readonly By ScrolGridDropdown = By.XPath("//select[contains(@class,'ui-pg-selbox')]");
+        internal static readonly By RefreshButtonBy = By.XPath("//i[contains(@class,'fa-refresh')]");
+        internal static readonly By DeactivateButtonBy = By.Id("fraud-risk-level-deactivate-button");
+        internal static readonly By ActivateButtonBy = By.Id("fraud-risk-level-activate-button");
+
+        internal static readonly By FRLStatusBy = By.XPath(".//td[contains(@aria-describedby,'_Status')]");
+
+        public IWebElement ActivateButton
+        {
+            get { return _driver.FindElementWait(ActivateButtonBy); }
+        }
+
+        //Open new Fraud Risk Level form
+        public NewFraudRiskLevelForm OpenNewFraudRiskLevelForm()
+        {
+            Click(NewButtonBy);
+            var page = new NewFraudRiskLevelForm(_driver);
+            page.Initialize();
+            return page;
+        }
+
+        //Select record FRL by key values
+        public IWebElement SelectFRLRecord(FraudRiskLevelData frlData)
+        {
+            Click(RefreshButtonBy);
+            new SelectElement(_driver.FindElementWait(ScrolGridDropdown)).SelectByText("100");
+            _driver.WaitForJavaScript();
+
+            var recordXPath =
+                string.Format(
+                    "//table//tr[contains(., '{0}') and contains(., '{1}') and contains(., '{2}') and contains(., '{3}') ]",
+                    frlData.FRLCode, frlData.FRLName, frlData.Licensee,frlData.Brand );
+
+            var element = _driver.FindElementWait(By.XPath(recordXPath));
+            _driver.WaitAndClickElement(element);
+
+            return element;
+        }
+  
+        //Open edit Fraud Risk Level form for the selected record
+        public EditFraudRiskLevelForm OpenEditFraudRiskLevelForm(FraudRiskLevelData data)
+        {
+            SelectFRLRecord(data);
+            Click(EditButtonBy);
+            var form = new EditFraudRiskLevelForm(_driver);
+            form.Initialize();
+            return form;
+        }
+
+        private ActivationFRLModal OpenActivationFRLModal(FraudRiskLevelData frlData)
+        {
+            SelectFRLRecord(frlData);
+            _driver.WaitAndClickElement(ActivateButton);
+            var activationModal = new ActivationFRLModal(_driver);
+            return activationModal;
+        }
+
+        //Activate Fraud Risl Level
+        public ActivationDeactivationFRLConfirmationModal ActivateFRL(FraudRiskLevelData frlData)
+        {
+            var activationModal = OpenActivationFRLModal(frlData);
+            activationModal.EnterRemark("Activate " + Guid.NewGuid());
+            return activationModal.ConfirmFRLActivation();
+        }
+
+
+        //Deactivate Fraud Risk Level
+        public ActivationDeactivationFRLConfirmationModal DeactivateFRL(FraudRiskLevelData frlData)
+        {
+            SelectFRLRecord(frlData);
+            Click(DeactivateButtonBy);
+            var deactivationModal = new DeactivationFRLModal(_driver);
+            deactivationModal.EnterRemark("Deactivate " + Guid.NewGuid());
+            return deactivationModal.ConfirmFRLDeactivation();
+        }
+
+        //Cancel Activation of Fraud Risk Level
+        public void CancelActivationFRL(FraudRiskLevelData frlData)
+        {
+            OpenActivationFRLModal(frlData).CancelFRLActivation();
+        }
+
+        public string GetFRLStatus(FraudRiskLevelData frlData)
+        {
+            var record = SelectFRLRecord(frlData);
+            return record.FindElement(FRLStatusBy).Text;
+        }
+
+        public FraudRiskLevelPage(IWebDriver driver)
+            : base(driver)
+        { }
+
+    }
+}

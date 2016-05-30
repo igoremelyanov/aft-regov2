@@ -1,0 +1,195 @@
+﻿@using AFT.RegoV2.MemberWebsite.Common
+
+@{
+    Layout = "../Shared/_Layout.cshtml";
+    ViewBag.Title = "Welcome to rego";
+}
+
+<div id="carousel-home">
+    <div id="banner-home" class="carousel slide" data-ride="carousel">
+        
+        <div class="carousel-inner" role="listbox">
+            <div class="item active" style="background-image: url('/Content/images/banner_player.png');">
+                <div class="container">
+                    
+                    <div class="content">
+                        <h2 class="fancy-title"><span data-i18n="footer.liveDealer"></span></h2>
+                        <p class="align-center" data-i18n="home.liveDealerDescription"></p>
+                        <p class="align-center"><a href="@Url.Action("LiveDealer")" class="btn" data-i18n="playGames.playNow"></a></p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        
+        <a class="left carousel-control" href="#banner-home" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only"></span>
+        </a>
+        <a class="right carousel-control" href="#banner-home" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only"></span>
+        </a>
+
+    </div>
+</div>
+
+<div class="site-body home main-content">
+    <div class="container">
+
+        <div class="row links">
+            <div class="col-sm-3">
+                <a href="@Url.Action("Register")">
+                    <div class="media radius-golden">
+                        <img class="img-rounded" src="/Content/images/select_01.jpg"/>
+                    </div>
+                    <span data-i18n="common.welcomeBonus"></span>
+                </a>
+            </div>
+            <div class="col-sm-3">
+                <a href="@Url.Action("Register")">
+                    <div class="media radius-golden">
+                        <img class="img-rounded" src="/Content/images/select_02.jpg"/>
+                    </div>
+                    <span data-i18n="common.joinUs"></span>
+                </a>
+            </div>
+            <div class="col-sm-3">
+                <a href="@Url.Action("LiveDealer")">
+                    <div class="media radius-golden">
+                        <img class="img-rounded" src="/Content/images/select_03.jpg"/>
+                    </div>
+                    <span data-i18n="footer.liveDealer"></span>
+                </a>
+            </div>
+            <div class="col-sm-3">
+                <a href="@Url.Action("Promos")">
+                    <div class="media radius-golden">
+                        <img class="img-rounded" src="/Content/images/select_04.jpg"/>
+                    </div>
+                    <span data-i18n="footer.promos"></span>
+                </a>
+            </div>
+        </div>
+
+        <h2 class="title-page"><span data-i18n="footer.liveDealer"></span></h2>
+
+
+        <div id="carousel-live-dealer">
+
+            <div class="row games">
+
+                <div class="col-sm-4">
+                    <a href="#" class="radius-golden js-show-login">
+                        <img src="/Content/images/livedealer/Game_SB_Sunbet_Lobby_Baccarat_534x316.jpg" />
+                        <div>
+                            <p class="align-center"><span>Baccarat</span><br /><br /><button class="btn">play now</button></p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-sm-4">
+                    <a href="#" class="radius-golden js-show-login">
+                        <img src="/Content/images/livedealer/Game_SB_Sunbet_Lobby_Dragon_Tiger_534x316.jpg" />
+                        <div>
+                            <p class="align-center"><span>Dragon Tiger</span><br /><br /><button class="btn">play now</button></p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-sm-4">
+                    <a href="#" class="radius-golden js-show-login">
+                        <img src="/Content/images/livedealer/Game_SB_Sunbet_Lobby_Roulette_534x316.jpg" />
+                        <div>
+                            <p class="align-center"><span>Roulette</span><br /><br /><button class="btn">play now</button></p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-sm-4">
+                    <a href="#" class="radius-golden js-show-login">
+                        <img src="/Content/images/livedealer/Game_GD_Gold_Deluxe_Lobby_Multigame_Baccarat_534x316.jpg" />
+                        <div>
+                            <p class="align-center"><span>Multigame Baccarat</span><br /><br /><button class="btn">play now</button></p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-sm-4">
+                    <a href="#" class="radius-golden js-show-login">
+                        <img src="/Content/images/livedealer/Game_GD_Gold_Deluxe_Lobby_3D_Baccarat_534x316.jpg" />
+                        <div>
+                            <p class="align-center"><span>3D Baccarat</span><br /><br /><button class="btn">play now</button></p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-sm-4">
+                    <a href="#" class="radius-golden js-show-login">
+                        <img src="/Content/images/livedealer/Game_GD_Gold_Deluxe_Lobby_Parlay_Baccarat_534x316.jpg" />
+                        <div>
+                            <p class="align-center"><span>Parley Baccarat</span><br /><br /><button class="btn">play now</button></p>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+        <h2 class="title-page"><span data-i18n="common.casinoGames"></span></h2>
+
+        <div class="row games">
+            <div class="col-sm-4">
+                <a href="#" class="radius-golden js-show-login">
+                    <img src="/Content/images/games/Game_TGP_Dragons_Luck_534x316.jpg" />
+                    <div>
+                        <p class="align-center"><span>Dragon's Luck</span><br /><br /><button class="btn" data-i18n="playGames.playNow"></button></p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-4">
+                <a href="#" class="radius-golden js-show-login">
+                    <img src="/Content/images/games/Game_FC_Fortune_God_534x316.jpg" />
+                    <div>
+                        <p class="align-center"><span>Fortune God</span><br /><br /><button class="btn" data-i18n="playGames.playNow"></button></p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-4">
+                <a href="#" class="radius-golden js-show-login">
+                    <img src="/Content/images/games/Game_FC_Baccarat_534x316.jpg" />
+                    <div>
+                        <p class="align-center"><span>Baccarat</span><br /><br /><button class="btn" data-i18n="playGames.playNow"></button></p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-4">
+                <a href="#" class="radius-golden js-show-login">
+                    <img src="/Content/images/games/Game_TGP_Wild_Spartans_534x316.jpg" />
+                    <div>
+                        <p class="align-center"><span>Wild Spartan</span><br /><br /><button class="btn" data-i18n="playGames.playNow"></button></p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-4">
+                <a href="#" class="radius-golden js-show-login">
+                    <img src="/Content/images/games/Game_TGP_Lucky_Wizard_534x316.jpg" />
+                    <div>
+                        <p class="align-center"><span>Lucky Wizard</span><br /><br /><button class="btn" data-i18n="playGames.playNow"></button></p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-4">
+                <a href="#" class="radius-golden js-show-login">
+                    <img src="/Content/images/games/Game_TGP_Red_Phoenix_Rising_534x316.jpg" />
+                    <div>
+                        <p class="align-center"><span>Red Phoenix Rising</span><br /><br /><button class="btn" data-i18n="playGames.playNow"></button></p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+

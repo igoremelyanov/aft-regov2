@@ -1,0 +1,76 @@
+﻿@{
+    ViewBag.Title = "My account - Rego";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string section = "deposit";
+}
+
+<section class="main-content section account">
+
+    <div class="container">
+
+        <h2 class="title-page"><span data-i18n="profile.myAccount"></span></h2>
+
+        <div class="row row-eq-height">
+
+            @Html.Partial("_PartialAccountMenu", section)
+
+            <div class="col-sm-9 white-content" id="profile-wrapper">
+
+                <h2 data-i18n="profile.deposit"></h2>
+                <div>
+
+                    <div class="row">
+                        <form id="deposit-form" role="form" method="POST">
+                            <div class="form-group">
+                                <label data-i18n="balanceInformation.amount"></label>
+                                <div>
+                                    <input type="text" class="form-control" data-bind="value: amount"/>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="row">
+                        <button class="btn grey pull-right" data-i18n="common.submit"></button>
+                    </div>
+
+                    <div id="bonusList" class="carousel slide">
+                        <div class="carousel-inner" role="listbox">
+                            <div class="item row active" style="margin-left: 25px">
+                                <div data-bind="foreach: bonuses">
+                                    <div class="col-sm-3 text-center" style="color: white" data-bind="click: $root.selectBonus">
+                                        <div>
+                                            <p data-bind="text: name"></p>
+                                            <p data-bind="text: amount"></p><br><span>bonus</span>
+                                            <p id="bonus-code" style="display: none" data-bind="text: code"></p>
+                                            <p id="bonus-id" style="display: none" data-bind="text: id"></p>
+                                            <p>
+                                                <a href="@Url.Action("TermsConditions")" target="_blank">more info</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+@section scripts {
+    <script src="/Scripts/custom/utilities.js"></script>
+    <script src="/Scripts/custom/formbase.js"></script>
+    <script src="/Scripts/custom/profile/personal.js"></script>
+    <script src="/Scripts/custom/profile/security.js"></script>
+    <script src="/Scripts/custom/profile/contacts.js"></script>
+    <script src="/Scripts/custom/profile/verification.js"></script>
+    <script src="/Scripts/custom/profile/account.js"></script>
+    <script src="/Scripts/custom/profile/responsible-gambling.js"></script>
+    <script src="/Scripts/custom/profile/deposit.js"></script>
+    <script src="/Scripts/custom/profile/profile.js"></script>
+}

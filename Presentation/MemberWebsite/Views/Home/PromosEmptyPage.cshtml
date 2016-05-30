@@ -1,0 +1,36 @@
+﻿@{
+    Layout = "../Shared/_Layout.cshtml";
+    ViewBag.Title = "Promotion - Rego";
+}
+@model IEnumerable<AFT.RegoV2.MemberApi.Interface.Bonus.QualifiedBonus>
+
+<section class="main-content section promotions empty">
+    <div class="container">
+        <h2 class="title-page"><span data-i18n="common.promotion">Promotion</span></h2>
+
+        <div class="white-content text-center">
+            <img src="@Url.Content("/Content/images/icon-promos-none.png")"/>
+            <h3 class="text-uppercase">we don't have available pormotions for you now.. :'(</h3>
+        </div>
+
+        <h2 class="middlewhite">Start playing now</h2>
+
+        <div class="row directions">
+            <div class="col-sm-offset-1 col-sm-5">
+                <a href="@Url.Action("LiveDealer")" class="content">
+                    <p><img src="/Content/images/icon_dice.png"/>live dealer</p>
+                    <span></span>
+                </a>
+            </div>
+            <div class="col-sm-offset-0 col-sm-5">
+                <a href="@Url.Action("Casino")" class="content">
+                    <p class="float-right">
+                        <img src="/Content/images/icon-casino-gold.png"/> casino
+                    </p>
+                    <span></span>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</section>

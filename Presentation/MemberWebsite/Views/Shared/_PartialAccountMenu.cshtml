@@ -1,0 +1,36 @@
+﻿@{ var section = Model; }
+<div class="col-sm-3 menu">
+
+    <h4 data-i18n="profile.myAccount"></h4>
+    <ul>
+        <li class="@(section == "details" ? "selected" : null)"><a href="@Url.Action("PlayerProfile")" data-i18n="profile.mydetail"></a></li>
+        <li class="@(section == "responsiblegaming" ? "selected" : null)"><a href="@Url.Action("ResponsibleGaming")" data-i18n="profile.responsibleGamebling"></a></li>
+    </ul>
+
+    <h4 data-i18n="profile.myBonus"></h4>
+    <ul>
+        <li><a href="#" data-i18n="profile.claimsBonus"></a></li>
+        <li><a href="#" data-i18n="profile.activeBonus"></a></li>
+        <li><a href="#" data-i18n="profile.bonusSummary"></a></li>
+    </ul>
+
+    <h4 data-i18n="profile.accountActivity"></h4>
+    <ul>
+        <li><a href="#" data-i18n="profile.gameHistory"></a></li>
+    </ul>
+
+    <h4>Old menu for test</h4>
+    @* <ul>
+        @if (@Model.ActiveMenuItem != null && @Model.ActiveMenuItem.SubMenuItems != null && @Model.ActiveMenuItem.SubMenuItems.Any())
+        {
+            @foreach (var menuItem in @Model.ActiveMenuItem.SubMenuItems)
+            {
+                <li role="presentation" class="@(menuItem == @Model.ActiveSubMenuItem ? "active" : null)">
+                    <a href="@Url.ActionLocalized(menuItem.Action, menuItem.Controller)">@menuItem.Text</a>
+                </li>
+            }
+        }
+    </ul> *@
+
+</div>
+

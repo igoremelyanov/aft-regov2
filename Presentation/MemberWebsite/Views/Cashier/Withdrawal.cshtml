@@ -1,0 +1,128 @@
+﻿@model AFT.RegoV2.MemberApi.Interface.Payment.WithdrawalFormDataResponse
+@{
+    ViewBag.Title = "My account - Rego";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string section = "responsiblegaming";
+}
+
+<section class="main-content section account">
+
+    <div class="container">
+
+        <h2 class="title-page"><span>Cashier</span></h2>
+
+        <div class="row row-eq-height">
+
+            @Html.Partial("_PartialCashierMenu", section)
+            <div class="col-sm-9 white-content withdrawal verified" id="withdrawal-wrapper">
+
+                <h2 data-i18n="profile.withdrawal">withdrawal</h2>
+
+                <p class="current-balance"><span data-i18n="common.withdrawalBalance">Available Balance</span>: <b>$<span class="js-balance-live-view" data-balance-type="playable"></span>RMB</b></p>
+
+                <div class="alert-msg validation clearfix" data-bind="visible: isSuccessMessageVisible()">
+                    <p>Dear customer, we have received your withdrawal request. We will process the application as soon as we can. Thank you for your patience.</p>
+                </div>
+
+                @if (Model.PaymentSettings != null)
+                {
+                    <div class="alert-msg validation clearfix">
+                        <ul>
+                            <li>Withdrawal Range: @Model.PaymentSettings.MinAmountPerTransaction - @Model.PaymentSettings.MaxAmountPerTransaction.</li>
+                            <li>Daily Maximum Amount Withdrawn: @Model.PaymentSettings.MaxAmountPerDay.</li>
+                        </ul>
+                    </div>
+                }
+                
+                <h5 class="section"><span data-i18n="withdrawal.bankDetails">bank details</span></h5>
+
+                <div class="row infos-account">
+                    <div class="col-sm-4">
+                        <p><b>Full name</b></p>
+                        <p>@Model.BankAccount.BankAccountName</p>
+                    </div>
+                    <div class="col-sm-4">
+                        <p><b>Select Bank</b></p>
+                        <p>@Model.BankAccount.BankName</p>
+                    </div>
+                    <div class="col-sm-4">
+                        <p><b>Bank Account #</b></p>
+                        <p>@Model.BankAccount.BankAccountNumber</p>
+                    </div>
+                    <div class="col-sm-4">
+                        <p><b>Branch</b></p>
+                        <p>@Model.BankAccount.Branch</p>
+                    </div>
+                    <div class="col-sm-4">
+                        <p><b>Province</b></p>
+                        <p>@Model.BankAccount.Province</p>
+                    </div>
+                    <div class="col-sm-4">
+                        <p><b>City</b></p>
+                        <p>@Model.BankAccount.City</p>
+                    </div>
+                </div>
+
+                <h5 class="section"><span data-i18n="withdrawal.withdrawalDetails">withdrawal details</span></h5>
+
+                <form class="clearfix infos-account">
+                    <div class="pull-left">
+                        <p><b>Withdrawal Amount</b></p>
+                        <div class="form-group" data-bind="css: {'has-error': !amount.isValid()}">
+                            <input data-bind="value: amount" name="amount" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="pull-left notifications">
+                        <p><b>Notification</b></p>
+                        <div class="form-group">
+                            <input id="sms" type="radio" value="1" data-bind="checked: notificationType" />
+                            <label for="sms">SMS</label>
+                            <input id="email" type="radio" value="2" data-bind="checked: notificationType" />
+                            <label for="email">EMAIL</label>
+                        </div>
+                    </div>
+                    <button class="btn green pull-right" data-bind="click: submitForm">submit</button>
+                </form>
+
+            </div>
+            <!--<div class="col-sm-9 white-content withdrawal" id="">
+
+                <h2>Withdrawal</h2>
+                <p data-bind="visible: isSuccessMessageVisible()">Dear customer, we have received your withdrawal request. We will process the application as soon as we can. Thank you for your patience.</p>
+                <div>
+                    <form autocomplete="on" method="POST">
+                        <div class="form-group" data-bind="css: {'has-error': !amount.isValid()}">
+                            <label>Amount</label>
+                            <input type="text" name="amount" class="form-control" data-bind="value: amount"/>
+                        </div>
+                        <div class="form-group">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="sms" id="sms-radio" value="1" data-bind="checked: notificationType">
+                                    SMS
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="email" id="email-radio" value="2" data-bind="checked: notificationType">
+                                    Email
+                                </label>
+                            </div>
+                        </div>
+                        <div class="float-right">
+                            <button type="submit" class="btn btn-block" data-bind="click: submitForm" data-i18n="common.submit"></button>
+                        </div>
+                    </form>
+                </div>
+            </div>-->
+        </div>
+    </div>
+
+</section>
+
+@section scripts {
+    <script src="/Scripts/custom/login.js"></script>
+    <script src="/Scripts/custom/formbase.js"></script>
+    <script src="/Scripts/custom/withdrawal.js"></script>
+   
+}

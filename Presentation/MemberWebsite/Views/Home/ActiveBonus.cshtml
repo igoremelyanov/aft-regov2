@@ -1,0 +1,93 @@
+@{
+    ViewBag.Title = "My account - Rego";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string section = "activebonus";
+}
+@model IEnumerable<AFT.RegoV2.MemberApi.Interface.Bonus.ActiveBonus>
+
+<section class="main-content section account">
+
+    <div class="container">
+
+        <h2 class="title-page"><span data-i18n="profile.myAccount"></span></h2>
+
+        <div class="row row-eq-height">
+
+          @Html.Partial("_PartialAccountMenu", section)
+
+          <div class="col-sm-9 white-content activebonus" id="profile-wrapper">
+
+              <h2 data-i18n="profile.activeBonus"></h2>
+
+              <table class="table list sortable">
+                <thead>
+                  <tr>
+                    <th data-defaultsort="asc" data-sortcolumn="1">Bonus</th>
+                    <th>Wagering Requirements</th>
+                    <th>Wagers Remaining</th>
+                    <th data-i18n="common.remark" data-defaultsort="disabled">Remarks</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @if (Model.Any())
+                  {
+                    foreach (var bonus in @Model)
+                    {
+                      <tr>
+                        <td>@bonus.Name</td>
+                        <td>Play Poker: Bet $@bonus.Rollover.ToString("F2")<br>Earn additional $@bonus.Reward.ToString("F2") Bonus</td>
+                        <td>Remaining: Bet $@bonus.RolloverLeft.ToString("F2")<br>Earn additional $@bonus.Reward.ToString("F2") Bonus</td>
+                        <td><a class="grey" href="#">More info</a></td>
+                      </tr>
+                    }
+                  }
+                  else
+                  {
+                    <tr>
+                      <td colspan="4" data-i18n="common.noTransaction"></td>
+                    </tr>
+                  }
+                </tbody>
+              </table>
+
+              <div class="text-center clearfix">
+                <ul class="pagination pagination-lg pager" id="myPager"></ul>
+              </div>
+
+              @Html.Partial("_PartialQuickLink")
+
+              <div class="modal fade" id="responsiblegaming-alert">
+                  <div class="modal-dialog modal-warning text-center">
+                      <div class="modal-content">
+                          <div class="modal-body">
+                                <button data-dismiss="modal" aria-label="Close" class="close">
+                                    <img src="/Content/images/close-popup.png" />
+                                </button>
+                                <p class="align-center logo"><img src="/Content/images/logo-popup.png" /></p>
+
+                                <div class="row">
+                                  <div class="col-sm-offset-3 col-sm-6 no-padding">
+                                    <p data-bind="text:responsibleGambling.message"></p>
+                                    <div class="clearfix">
+                                    <button data-bind="click:responsibleGambling.submitResponsible" click="submit" class="btn pull-left">yes&nbsp; i&nbsp; am&nbsp; sure</button>
+                                      <button data-bind="click:responsibleGambling.closeModal" click="close" class="btn pull-right">no</button>
+                                    </div>
+                                        <p class="align-center marginTop40"><a href="#"><img src="/Content/images/icon-customerservice.png" /></a></p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+          </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+@section scripts {
+    @Html.Partial("_PartialProfileScript", section)
+}

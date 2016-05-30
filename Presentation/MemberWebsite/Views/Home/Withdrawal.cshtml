@@ -1,0 +1,115 @@
+﻿@model AFT.RegoV2.MemberApi.Interface.Payment.WithdrawalFormDataResponse
+@{
+    ViewBag.Title = "My account - Rego";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string section = "withdrawal";
+}
+
+<section class="main-content section account">
+
+    <div class="container">
+
+        <h2 class="title-page"><span>Cashier</span></h2>
+
+        <div class="row row-eq-height">
+
+            @Html.Partial("_PartialCashierMenu", section)
+            <div class="col-sm-9 white-content withdrawal verified" id="withdrawal-wrapper">
+
+                <h2 data-i18n="profile.withdrawal">withdrawal</h2>
+
+                @if (ViewBag.SuccesfullyRecieved != null && ViewBag.SuccesfullyRecieved)
+                {
+                    <div class="alert-msg validation clearfix">
+                        <p>Dear customer, we have received your withdrawal request. We will process the application as soon as we can. Thank you for your patience.</p>
+                    </div>
+                }
+                else
+                {
+                    <p class="current-balance"><span data-i18n="common.withdrawalBalance">Available Balance</span>: <b><span class="js-balance-currency-code"></span> <span class="js-balance-live-view" data-balance-type="playableFormatted"></span></b></p>
+
+                    <div class="grey clearfix">
+                        <ul>
+                            @if (@Model.PaymentSettings == null)
+                            {
+                                <li>Withdrawal Range: <span class="js-balance-currency-code"></span> 0.00 - no limit.</li>
+                            }
+                            else
+                            {
+                                <li>Withdrawal Range: <span class="js-balance-currency-code"></span> @Model.PaymentSettings.MinAmountPerTransaction - @Model.PaymentSettings.MaxAmountPerTransaction.</li>
+                            }
+                            @if (@Model.PaymentSettings != null)
+                            {
+                                <li>Daily Maximum Amount Withdrawn: <span class="js-balance-currency-code"></span> @Model.PaymentSettings.MaxAmountPerDay.</li>
+                            }
+                            @if (@Model.PaymentSettings != null)
+                            {
+                                <li>Daily Maximum Withdrawals: @Model.PaymentSettings.DayMaximumDeposit.</li>
+                            }
+                        </ul>
+                    </div>
+
+                    <h5 class="section"><span data-i18n="withdrawal.bankDetails">bank details</span></h5>
+
+                    <div class="row infos-account">
+                        <div class="col-sm-4">
+                            <p><b>Full name</b></p>
+                            <p>@Model.BankAccount.BankAccountName</p>
+                        </div>
+                        <div class="col-sm-4">
+                            <p><b>Select Bank</b></p>
+                            <p>@Model.BankAccount.BankName</p>
+                        </div>
+                        <div class="col-sm-4">
+                            <p><b>Bank Account #</b></p>
+                            <p>@Model.BankAccount.BankAccountNumber</p>
+                        </div>
+                        <div class="col-sm-4">
+                            <p><b>Branch</b></p>
+                            <p>@Model.BankAccount.Branch</p>
+                        </div>
+                        <div class="col-sm-4">
+                            <p><b>Province</b></p>
+                            <p>@Model.BankAccount.Province</p>
+                        </div>
+                        <div class="col-sm-4">
+                            <p><b>City</b></p>
+                            <p>@Model.BankAccount.City</p>
+                        </div>
+                    </div>
+
+                    <h5 class="section"><span data-i18n="withdrawal.withdrawalDetails">withdrawal details</span></h5>
+
+                    <form class="clearfix infos-account">
+                        <div class="pull-left">
+                            <p><b>Withdrawal Amount</b>
+                            </p>
+                            <div class="form-group" data-bind="css: {'has-error': !amount.isValid()}">
+                                <input data-bind="value: amount" name="amount" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="pull-left notifications">
+                            <p><b>Notification</b>
+                            </p>
+                            <div class="form-group">
+                                <input id="sms" type="checkbox" data-bind="checked: notifySms"/>
+                                <label for="sms">SMS</label>
+                                <input id="email" type="checkbox" data-bind="checked: notifyEmail"/>
+                                <label for="email">EMAIL</label>
+                            </div>
+                        </div>
+                        <button class="btn green pull-right" data-bind="click: submitForm">submit</button>
+                    </form>
+                }
+            </div>
+        </div>
+    </div>
+
+</section>
+
+@section scripts {
+    <script src="/Scripts/custom/login.js"></script>
+    <script src="/Scripts/custom/formbase.js"></script>
+    <script src="/Scripts/custom/withdrawal.js"></script>
+   
+}

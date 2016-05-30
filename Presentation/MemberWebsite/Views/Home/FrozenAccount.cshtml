@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "My account - Rego";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string section = "withdrawal";
+}
+
+<section class="main-content section account">
+    <div class="container">
+        <h2 class="title-page"><span>Cashier</span></h2>
+        <div class="row row-eq-height">
+            @Html.Partial("_PartialCashierMenu", section)
+            <div class="col-sm-9 white-content frozen-account" id="profile-wrapper">
+                <h2 data-i18n="profile.withdrawal">withdrawal</h2>
+                <div>
+                    <p>Hello <b>@User.Identity.Name</b>,</p>
+                    <p data-i18n="withdrawal.frozen.description">
+                        Your account has been frozen and cannot proceed the withdrawal request. Please contact our customer support team for further assistance.
+                    </p>
+                    <p data-i18n="withdrawal.frozen.thankyou">Thank you.</p>
+                    <a href="#" class="support"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section scripts {
+    <script src="/Scripts/custom/formbase.js"></script>
+    <script src="/Scripts/custom/profile/personal.js"></script>
+    <script src="/Scripts/custom/profile/security.js"></script>
+    <script src="/Scripts/custom/profile/contacts.js"></script>
+    <script src="/Scripts/custom/profile/verification.js"></script>
+    <script src="/Scripts/custom/profile/account.js"></script>
+    <script src="/Scripts/custom/profile/responsible-gambling.js"></script>
+    <script src="/Scripts/custom/profile/profile.js"></script>
+}

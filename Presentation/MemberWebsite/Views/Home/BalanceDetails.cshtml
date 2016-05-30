@@ -1,0 +1,91 @@
+﻿@{
+    ViewBag.Title = "My account - Rego";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string section = "balancedetails";
+}
+
+<section class="main-content section account">
+
+    <div class="container">
+
+        <h2 class="title-page"><span data-i18n="profile.cashier">cashier</span></h2>
+
+        <div class="row row-eq-height">
+
+            @Html.Partial("_PartialCashierMenu", section)
+
+            <div class="col-sm-9 white-content balancedetails frozen" id="profile-wrapper">
+
+                <h2 data-i18n="cashier.balanceDetails">balance details</h2>
+
+                <div class="clearfix">
+                    <p class="pull-left grey initial"><span data-i18n="balanceInformation.availableBalance"></span>: <b><span class="js-balance-currency-code"></span> <span class="js-balance-live-view" data-balance-type="playableFormatted"></span></b></p>
+                    <a class="btn green empty pull-right" href="@Url.Action("OnlineDeposit")" data-i18n="registration.deposit"></a>
+                </div>
+
+                <table class="table list">
+                    <thead>
+                        <tr>
+                            <th>
+                                <span data-i18n="cashier.playableBalance">Playable Balance</span>
+                                <a href="#balance-details-information" data-toggle="modal"><img src="/Content/images/icon_info.png"></a>
+                            </th>
+                            <th>
+                                <span data-i18n="cashier.mainBalance">Main Balance</span>
+                                <a href="#balance-details-information" data-toggle="modal"><img src="/Content/images/icon_info.png"></a>
+                            </th>
+                            <th>
+                                <span data-i18n="cashier.bonusBalance">Bonus Balance</span>
+                                <a href="#balance-details-information" data-toggle="modal"><img src="/Content/images/icon_info.png"></a>
+                            </th>
+                            <th>
+                                <span data-i18n="cashier.freeBalance">Free Balance</span>
+                                <a href="#balance-details-information" data-toggle="modal"><img src="/Content/images/icon_info.png"></a>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-right"><span class="js-balance-live-view" data-balance-type="playableFormatted"></span></td>
+                            <td class="text-right"><span class="js-balance-live-view" data-balance-type="mainFormatted"></span></td>
+                            <td class="text-right"><a class="green" href="/en-US/Home/BonusHistory"><span class="js-balance-live-view" data-balance-type="bonusFormatted"></span></a></td>
+                            <td class="text-right"><span class="js-balance-live-view" data-balance-type="freeFormatted"></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                @Html.Partial("_PartialQuickLink")
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<div class="modal fade no-border" id="balance-details-information">
+    <div class="modal-dialog modal-warning text-center">
+        <div class="modal-content white-content account">
+            <h5 class="section">
+                <span data-i18n="">balance definitions</span>
+                <a class="close" href="#" data-dismiss="modal"><img src="@Url.Content("/Content/images/close-popup-black.png")" /></a>
+            </h5>
+            <h6 data-i18n="">Transfert method</h6>
+            <p>The total amount available to the player to bet.</p>
+            <h6 data-i18n="">Main Balance</h6>
+            <p>
+                The amount available to bet, excluding Bonus Balance.
+                Transfers from this amount are possible, but if amount exceeds Free Balance then the bonus(es) must be cancelled first.
+            </p>
+            <h6 data-i18n="">Bonus Balance</h6>
+            <p>The total amount awarded from bonus redemptions and winnings made while fulfilling the wagering requirement of a bonus. This amount can be betted. Once wagering requirements are met, this amount is moved into the Main Balance.</p>
+            <h6 data-i18n="">Free Balance</h6>
+            <p>The amount available to freely tranfer out of the wallet.</p>
+            <p class="line"></p>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+}

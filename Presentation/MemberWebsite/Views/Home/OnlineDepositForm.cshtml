@@ -1,0 +1,27 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OnlineDeposit</title>
+</head>
+<body>
+    <form id="payRedirectForm" name="payRedirectForm" method="post" >
+        <input type="hidden" id="method" name="method"  />
+        <input type="hidden" id="amount" name="amount" />
+        <input type="hidden" id="channel" name="channel" />
+        <input type="hidden" id="merchantId" name="merchantId" />
+        <input type="hidden" id="orderId" name="orderId" />
+        <input type="hidden" id="currency" name="currency" />
+        <input type="hidden" id="language" name="language" />
+        <input type="hidden" id="returnUrl" name="returnUrl" />
+        <input type="hidden" id="notifyUrl" name="notifyUrl" />
+        <input type="hidden" id="signature" name="signature" />
+    </form>
+</body>
+</html>
+<script>
+    var isPopwinReady = true;    
+</script>

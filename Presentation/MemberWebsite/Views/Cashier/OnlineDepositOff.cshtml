@@ -1,0 +1,162 @@
+@{
+    ViewBag.Title = "My account - Rego";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string section = "onlinedeposit";
+}
+
+<section class="main-content section account">
+
+    <div class="container">
+
+        <h2 class="title-page"><span>Cashier</span></h2>
+
+        <div class="row row-eq-height">
+
+            @Html.Partial("_PartialCashierMenu", section)
+
+            <div class="col-sm-9 white-content claimbonus onlinedeposit eligible" id="withdrawal-wrapper">
+
+                <h2 data-i18="balanceInformation.onlineDeposit">online deposit</h2>
+
+                <p class="grey">
+                    Make a deposit  
+                    <span data-i18n="claimBonus.beEligigble">to be eligible for bonuses!</span>
+                </p>
+
+                <h6 class="step-green"><b data-i18n="claimBonus.makeDeposit"></b><span>1</span></h6>
+
+                <div class="block-left-dot">
+
+                    <form id="deposit-form" role="form" method="POST" action="registerstep2" data-bind="submit: onSubmit">
+                        <div class="form-group">
+                            <label for="amount" data-i18n="cashier.quickSelectAmount">Quick Select Amount</label>
+                            
+                            <div class="row choices">
+                                <div class="col-sm-3">
+                                    <button data-bind="click: function(){ $root.setAmount(5000)" class="btn green empty">$5,000</button>
+                                </div>
+                                <div class="col-sm-3">
+                                    <button data-bind="click: function(){ $root.setAmount(4000)" class="btn green empty">$4,000</button>
+                                </div>
+                                <div class="col-sm-3">
+                                    <button data-bind="click: function(){ $root.setAmount(3000)" class="btn green empty">$3,000</button>
+                                </div>
+                                <div class="col-sm-3">
+                                    <button data-bind="click: function(){ $root.setAmount(2000)" class="btn green empty">$2,000</button>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group has-error" data-bind="css: {'has-error': onlinedeposit.amount.hasError()}">
+                            <label for="amount" data-i18n="balanceInformation.amount"></label>
+                            <div>
+                                <input style="width: 50%;" type="text" id="amount" class="form-control" name="amount" data-bind="value: onlinedeposit.amount" />
+                            </div>
+                            <p class="font-size20">Min Deposit $200 Max Deposit $50.000</p>
+                            <p class="msg" data-bind="visible: amount.hasError">Amount must be between a minimum deposit of $200 and a maximum deposit of $50.000</p>
+                        </div>
+                    </form>
+
+                </div>
+
+                <h6 class="step-green"><b data-i18n="cashier.claimYourBonus">claim your bonus</b><span>2</span></h6>
+
+                <p class="grey">
+                    <span data-i18n="claimBonus.byClicking">By clicking the claim button, you have read and agreed to your</span> 
+                    <a class="green" href="@Url.Action("TermsConditions")" data-i18n="claimBonus.termsAndConditions"></a>
+                </p>
+
+
+                <div class="row clearfix claim-list">
+                  <div class="col-sm-6">
+                      <div>
+                          <h5>live dealer 50 bonus</h5>
+                          <p>Lorem ipsum dolor consectetuer adipiscing.<br/><span>bonus code: AA42069PEN15</span></p>
+                          <div class="clearfix">
+                              <a class="pull-left grey" href="#" data-i18n="common.moreInfo"></a>
+                              <a class="pull-right btn green empty">claim</a>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-sm-6">
+                      <div>
+                          <h5>live dealer 50 bonus</h5>
+                          <p>Lorem ipsum dolor consectetuer adipiscing.<br/><span>bonus code: AA42069PEN15</span></p>
+                          <div class="clearfix">
+                              <a class="pull-left grey" href="#" data-i18n="common.moreInfo"></a>
+                              <a class="pull-right btn green empty">claim</a>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-sm-6">
+                      <div>
+                          <h5>live dealer 50 bonus</h5>
+                          <p>Lorem ipsum dolor consectetuer adipiscing.<br/><span>bonus code: AA42069PEN15</span></p>
+                          <div class="clearfix">
+                              <a class="pull-left grey" href="#" data-i18n="common.moreInfo"></a>
+                              <a class="pull-right btn green empty">claim</a>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-sm-6">
+                      <div>
+                          <h5>live dealer 50 bonus</h5>
+                          <p>Lorem ipsum dolor consectetuer adipiscing.<br/><span>bonus code: AA42069PEN15</span></p>
+                          <div class="clearfix">
+                              <a class="pull-left grey" href="#" data-i18n="common.moreInfo"></a>
+                              <a class="pull-right btn green empty">claim</a>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-sm-6">
+                      <div>
+                          <h5>live dealer 50 bonus</h5>
+                          <p>Lorem ipsum dolor consectetuer adipiscing.<br/><span>bonus code: AA42069PEN15</span></p>
+                          <div class="clearfix">
+                              <a class="pull-left grey" href="#" data-i18n="common.moreInfo"></a>
+                              <a class="pull-right btn green empty">claim</a>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-sm-6">
+                      <div>
+                          <h5>live dealer 50 bonus</h5>
+                          <p>Lorem ipsum dolor consectetuer adipiscing.<br/><span>bonus code: AA42069PEN15</span></p>
+                          <div class="clearfix">
+                              <a class="pull-left grey" href="#" data-i18n="common.moreInfo"></a>
+                              <a class="pull-right btn green empty">claim</a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+
+                <p style="margin-top: 50px;"class="text-center bold" data-i18n="claimBonus.enterBonusCode">Or enter a Bonus Code</p>
+
+                  <form id="code-bonus-form">
+                    <div class="row">
+                        <div class="col-sm-offset-1 col-sm-6">
+                          <div class="form-group clearfix" data-bind="css: {'has-error': !onlinedeposit.code.isValid()}">
+                              <input disabled class="form-control disabled pull-right" type="text" data-bind="value: onlinedeposit.code"/>
+                          </div>
+                        </div>
+                        <div class="col-sm-2">
+                          <button class="btn grey disabled empty" data-bind="click: onlinedeposit.submitBonusCode" data-i18n="common.validate">validate</button>
+                        </div>
+                    </div>
+                  </form>
+
+                <div class="clearfix">
+                    <button class="btn grey disabled pull-right" data-i18n="balanceInformation.depositAndGetBonus"></button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+@section scripts {
+    @Html.Partial("_PartialCashierScript", section)
+   
+}

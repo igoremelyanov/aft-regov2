@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "My account - Rego";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string section = "pendingdeposits";
+}
+
+<section class="main-content section account">
+
+    <div class="container">
+
+        <h2 class="title-page"><span>Cashier</span></h2>
+
+        <div class="row row-eq-height">
+
+            @Html.Partial("_PartialCashierMenu", section)
+
+            <div class="col-sm-9 white-content pendingdeposit" id="withdrawal-wrapper">
+
+                <h2 data-i18="balanceInformation.pendingDeposits">Pending Deposits</h2>
+                
+                <p class="alert-msg validation clearfix">Your bonus will be granted after we validate your deposit</p>
+                
+                @Html.Partial("_PartialQuickLink")
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+@section scripts {
+    <script src="/Scripts/custom/login.js"></script>
+    <script src="/Scripts/custom/formbase.js"></script>
+    <script src="/Scripts/custom/withdrawal.js"></script>
+   
+}

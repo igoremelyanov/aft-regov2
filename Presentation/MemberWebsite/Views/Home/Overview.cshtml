@@ -1,0 +1,291 @@
+﻿@using AFT.RegoV2.MemberWebsite.Common
+@using AFT.RegoV2.MemberWebsite.Models
+@model AFT.RegoV2.MemberWebsite.Models.OverviewModel
+
+@{
+    Layout = "../Shared/_Layout.cshtml";
+    ViewBag.Title = "Overview";
+}
+<div class="site-body home main-content" id="homepage-login-state">
+    <div class="top-page-banner">
+
+        <div id="banner" class="carousel slide" data-ride="carousel">
+
+            <div class="carousel-inner" role="listbox">
+
+                <div class="item active" style="background-image: url(/Content/images/Game_UGS_CasinoCollection_1920x450_bg.jpg);">
+                    <div class="container">
+                        <div class="content align-center">
+                            <h6><strong data-i18n="playGames.ExcitingCasinoGames"></strong><br>
+                            <span data-i18n="playGames.ExcitingCasinoGamesDescription"></span></h6>
+                            <p><a href="@Url.Action("Casino")" class="btn" data-i18n="playGames.playNow"></a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item" style="background-image: url(/Content/images/home_banner_hand_login.jpg);">
+                    <div class="container">
+                        <div class="content align-center">
+                            <h6><strong data-i18n="profile.playLiveDealer"></strong><br><span data-i18n="overView.getBonus"></span></h6>
+                            <p><a href="@Url.Action("LiveDealer")" class="btn" data-i18n="playGames.playNow"></a></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <a class="left carousel-control" href="#banner" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#banner" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+    <div class="container">
+        <p class="font20px">Welcome <strong>@User.Identity.Name</strong> !</p>
+        <div class="row infos">
+            <div class="col-sm-4 claim-a-bonus">
+                @if (Model.BonusId.HasValue)
+                {
+                    <a href="@Url.Action("Promo", "Home", new { id = Model.BonusId.Value })">
+                        <h5>claim a bonus</h5>
+                        <div>
+                            <p>
+                                <span>
+                                    @Model.BonusCode<br />
+                                    @Model.BonusName
+                                </span>
+                            </p>
+                        </div>
+                        <div><p class="align-center">bonus details</p></div>
+                    </a>
+                }
+                else
+                {
+                    <a href="#" class="unlink">
+                        <h5>claim a bonus</h5>
+                        <div><p><span>No available bonuses</span></p></div>
+                        <div><p class="align-center"></p></div>
+                    </a>
+                }
+            </div>
+            <div class="col-sm-4 latest-message">
+                @if (Model.MessageId.HasValue)
+                {
+                    <a href="@Url.Action("Msg", "Home", new { id = Model.MessageId.Value })">
+                        <h5 data-i18n="common.message"></h5>
+                        <div>
+                            <p class="align-center">
+                                <span class="text-uppercase">@Model.MessageSubject</span>
+                            </p>
+                        </div>
+                        <div>
+                            <p class="align-center text-uppercase" data-i18n="common.readMore"></p>
+                        </div>
+                    </a>
+                }
+                else
+                {
+                    <a href="#" class="unlink">
+                        <h5 data-i18n="common.message"></h5>
+                        <div>
+                            <p class="align-center">
+                                <span class="text-uppercase">No messages</span>
+                            </p>
+                        </div>
+                        <div><p class="align-center text-uppercase"></p></div>
+                    </a>
+                }
+            </div>
+            <div class="col-sm-4 my-balance">
+                <a href="@Url.Action("OnlineDeposit")">
+                    <h5 data-i18n="common.myBalance"></h5>
+                    <div>
+                        <p class="align-center">
+                            <span class="js-balance-currency-code"></span> <span class="js-balance-live-view" data-balance-type="playableFormatted"></span>
+                        </p>
+                    </div>
+                    <div>
+                        <p class="align-center" data-i18n="profile.makeDeposit"></p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <ul class="nav nav-tabs row">
+            <li class="active"><a data-toggle="tab" class="latest-played-game" href="#latest-played-game-content" data-i18n="common.featuredGames"></a></li>
+            <li class=""><a data-toggle="tab" class="casino-game" href="#casino-game-content" data-i18n="common.casinoGames"></a></li>
+            <li class=""><a data-toggle="tab" class="live-dealer" href="#live-dealer-content" data-i18n="footer.liveDealer"></a></li>
+        </ul>
+        <div class="tab-content" id="tabs">
+            <div class="tab-pane active" id="latest-played-game-content">
+
+                <div class="row games">
+                    @{
+                        var featuredGames = Model.Games.Data.GameGroups
+                            .Where(x => x.Code == GameConstants.OverviewFeatureGameGroupCode)
+                            .SelectMany(x => x.Games)
+                            .OrderBy(x => x.Order)
+                            .ToList();
+
+                        foreach (var game in featuredGames)
+                        {
+                            <div class="col-sm-4">
+                                @Html.Partial("_PartialCasinoGame", new CasinoGameModel(game, Model.Games.Data.CdnRoot, "343x200"))
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+            <div class="tab-pane" id="casino-game-content">
+                <div class="row games">
+                    @{
+                        var mainGames = Model.Games.Data.GameGroups
+                            .Where(x => x.Code == GameConstants.OverviewCasinoGameGroupCode)
+                            .SelectMany(x => x.Games)
+                            .OrderBy(x => x.Order)
+                            .ToList();
+
+                        foreach (var game in mainGames)
+                        {
+                            <div class="col-sm-4">
+                                @Html.Partial("_PartialCasinoGame", new CasinoGameModel(game, Model.Games.Data.CdnRoot, "343x200"))
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+            <div class="tab-pane" id="live-dealer-content">
+                <div class="row games">
+                    @{
+                        var liveDealerGameGroupCode = GameConstants.LiveDealerGameGroupCode;
+                        var sunbetGameCode = GameConstants.SunbetLobbyGameCode;
+                        var gdGameCode = GameConstants.GoldDeluxeLobbyGameCode;
+
+                        string subnetGameUrl = string.Empty;
+                        string subnetGameIsActive = "false";
+                        int? subnetGameIeCompatibilityLevel = null;
+                        string gdGameUrl = string.Empty;
+                        string gdGameIsActive = "false";
+                        int? gdGameIeCompatibilityLevel = null;
+
+                        var liveDealerGameGroup = Model.Games.Data.GameGroups.SingleOrDefault(x => x.Code == liveDealerGameGroupCode);
+                        if (liveDealerGameGroup != null)
+                        {
+                            var sunbetGame = liveDealerGameGroup.Games.SingleOrDefault(x => x.Code == sunbetGameCode);
+                            if (sunbetGame != null)
+                            {
+                                subnetGameIsActive = sunbetGame.IsActive.ToString().ToLower();
+                                subnetGameUrl = sunbetGame.Url;
+                                subnetGameIeCompatibilityLevel = sunbetGame.IeCompatibilityLevel;
+                            }
+
+                            var gdGame = liveDealerGameGroup.Games.SingleOrDefault(x => x.Code == gdGameCode);
+                            if (gdGame != null)
+                            {
+                                gdGameIsActive = gdGame.IsActive.ToString().ToLower();
+                                gdGameUrl = gdGame.Url;
+                                gdGameIeCompatibilityLevel = gdGame.IeCompatibilityLevel;
+                            }
+                        }
+
+                        var liveDealerPromos = new List<dynamic>()
+                        {
+                            new
+                            {
+                                NameKey = "liveDealer.baccarat",
+                                DescriptionKey = "liveDealer.baccaratDescription",
+                                ImgSrc = Url.Content("/Content/images/games/Sunbet_Lobby_534x316_03.jpg"),
+                                Url = subnetGameUrl,
+                                IsActive = subnetGameIsActive,
+                                IeCompatibilityLevel = subnetGameIeCompatibilityLevel,
+                            },
+                            new
+                            {
+                                NameKey = "liveDealer.dragonTiger",
+                                DescriptionKey = "liveDealer.dragonTigerDescription",
+                                ImgSrc = Url.Content("/Content/images/games/Sunbet_Lobby_534x316_02.jpg"),
+                                Url = subnetGameUrl,
+                                IsActive = subnetGameIsActive,
+                                IeCompatibilityLevel = subnetGameIeCompatibilityLevel,
+                            },
+                            new
+                            {
+                                NameKey = "liveDealer.MultiBaccarat",
+                                DescriptionKey = "liveDealer.MultiBaccaratDescription",
+                                ImgSrc = Url.Content("/Content/images/games/Game_GD_Gold_Deluxe_Lobby_534x316_03.jpg"),
+                                Url = gdGameUrl,
+                                IsActive = gdGameIsActive,
+                                IeCompatibilityLevel = gdGameIeCompatibilityLevel,
+                            },
+                            new
+                            {
+                                NameKey = "liveDealer.roulette",
+                                DescriptionKey = "liveDealer.rouletteDescription",
+                                ImgSrc = Url.Content("/Content/images/games/Sunbet_Lobby_534x316_01.jpg"),
+                                Url = subnetGameUrl,
+                                IsActive = subnetGameIsActive,
+                                IeCompatibilityLevel = subnetGameIeCompatibilityLevel,
+                            },
+                            new
+                            {
+                                NameKey = "liveDealer.3DBaccarat",
+                                DescriptionKey = "liveDealer.3DBaccaratDescription",
+                                ImgSrc = Url.Content("/Content/images/games/Game_GD_Gold_Deluxe_Lobby_534x316_01.jpg"),
+                                Url = gdGameUrl,
+                                IsActive = gdGameIsActive,
+                                IeCompatibilityLevel = gdGameIeCompatibilityLevel,
+                            },
+                            new
+                            {
+                                NameKey = "liveDealer.parlayBaccarat",
+                                DescriptionKey = "liveDealer.parlayBaccaratDescription",
+                                ImgSrc = Url.Content("/Content/images/games/Game_GD_Gold_Deluxe_Lobby_534x316_02.jpg"),
+                                Url = gdGameUrl,
+                                IsActive = gdGameIsActive,
+                                IeCompatibilityLevel = gdGameIeCompatibilityLevel,
+                            },
+                        };
+
+                        foreach (var promo in liveDealerPromos)
+                        {
+                            <div class="col-sm-4">
+                                <a href="#"  class="radius-golden js-game-starter" data-game-url="@promo.Url" data-is-active="@promo.IsActive" data-ie-compatibility="@promo.IeCompatibilityLevel">
+                                    <img src="@promo.ImgSrc" />
+                                    <div>
+                                        <p class="align-center"><span data-i18n="@promo.NameKey"></span><br /><br /><button class="btn" data-i18n="playGames.playNow"></button></p>
+                                    </div>
+                                </a>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    
+        @{
+            var recommendedGames = Model.Games.Data.GameGroups
+                .Where(x => x.Code == GameConstants.RecommendedGameGroupCode)
+                .SelectMany(x => x.Games)
+                .OrderBy(x => x.Order)
+                .ToList();
+            if (recommendedGames.Any())
+            {
+                <h4>recommended games</h4>
+                <div id="recommendedGames">
+                    <div class="row games">
+                        @foreach (var game in recommendedGames)
+                        {
+                            <div class="col-sm-4">
+                                @Html.Partial("_PartialCasinoGame", new CasinoGameModel(game, Model.Games.Data.CdnRoot, "343x200"))
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        }
+
+    </div>
+</div>

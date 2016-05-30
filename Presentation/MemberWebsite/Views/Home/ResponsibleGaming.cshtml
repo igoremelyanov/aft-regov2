@@ -1,0 +1,83 @@
+@{
+    ViewBag.Title = "My account - Rego";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string section = "responsiblegaming";
+}
+
+<section class="main-content section account">
+
+    <div class="container">
+
+        <h2 class="title-page"><span data-i18n="profile.myAccount"></span></h2>
+        
+        <div class="row row-eq-height">
+
+          @Html.Partial("_PartialAccountMenu", section)
+
+          <div class="col-sm-9 white-content responsiblegaming" id="profile-wrapper">
+              
+              <h2 data-i18n="profile.responsibleGamebling"></h2>
+              <div>
+                  <p data-i18n="responsibleGamebling.introduction"></p>
+
+                  <table class="choices">
+                    <tr>
+                      <td>
+                        <input id="time-out" type="checkbox" data-bind="checked: responsibleGambling.isTimeOutEnabled, disable: responsibleGambling.submitted()">
+                      </td>
+                      <td><label for="time-out"><strong data-i18n="responsibleGamebling.timeOut"></strong></label></td>
+                      <td>
+                        <select class="form-control" data-bind="options: responsibleGambling.timeOuts, value: responsibleGambling.timeOut, optionsText: 'name', optionsValue: 'id'"></select>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <input id="self-exclude" type="checkbox" data-bind="checked: responsibleGambling.isSelfExclusionEnabled, disable: responsibleGambling.submitted()">
+                      </td>
+                      <td><label for="self-exclude"><strong data-i18n="responsibleGamebling.selfexluded"></strong></label></td>
+                      <td>
+                        <select class="form-control" style="margin-bottom: 10px" data-bind="options: responsibleGambling.selfExclusions, value: responsibleGambling.selfExclusion, optionsText: 'name', optionsValue: 'id'"></select>
+                      </td>
+                    </tr>
+                  </table>
+
+                  <div>
+                      <button class="btn grey pull-right " data-bind="click: responsibleGambling.save, enable: responsibleGambling.isTimeOutEnabled() || responsibleGambling.isSelfExclusionEnabled()" data-i18n="common.save"></button>
+                  </div>
+              </div>
+
+              <div class="modal fade" id="responsiblegaming-alert">
+                  <div class="modal-dialog modal-warning text-center">
+                      <div class="modal-content">
+                          <div class="modal-body">
+                                <button data-dismiss="modal" aria-label="Close" class="close">
+                                    <img src="/Content/images/close-popup.png"/>
+                                </button>
+                                <p class="align-center logo"><img src="/Content/images/logo-popup.png"/></p>
+
+                                <div class="row">
+                                  <div class="col-sm-offset-3 col-sm-6 no-padding">
+                                    <p data-bind="text:responsibleGambling.message"></p>
+                                    <div class="clearfix">
+                                    <button data-bind="click:responsibleGambling.submitResponsible" click="submit" class="btn pull-left">yes&nbsp; i&nbsp; am&nbsp; sure</button>
+                                      <button data-bind="click:responsibleGambling.closeModal" click="close" class="btn pull-right">no</button>
+                                    </div>
+                                    <p class="align-center marginTop40"><a href="#"><img src="/Content/images/icon-customerservice.png"/></a></p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+          </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+@section scripts {
+    @Html.Partial("_PartialProfileScript", section)
+}

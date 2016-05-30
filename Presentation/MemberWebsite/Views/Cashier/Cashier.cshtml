@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "My account - Rego";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string section = "responsiblegaming";
+}
+
+<section class="main-content section account">
+    <div class="container">
+        <h2 class="title-page"><span>Cashier</span></h2>
+        <div class="row row-eq-height">
+            @Html.Partial("_PartialCashierMenu", section)
+            <div class="col-sm-9 white-content cashier-home" id="cashier-home-wrapper">
+                <h2>Cashier home page</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section scripts {
+}

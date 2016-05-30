@@ -1,0 +1,18 @@
+﻿@model AFT.RegoV2.MemberWebsite.Models.CasinoGameModel
+@{
+}
+
+@if (Model.Game != null)
+{
+    var game = Model.Game;
+    var imgSrc = Model.CdnRoot + game.IconPath.Replace("{iconres}", Model.IconResolution);
+
+    <a href="#" class="radius-golden js-game-starter" data-game-url="@game.Url" data-is-active="@game.IsActive.ToString().ToLower()" data-ie-compatibility="@game.IeCompatibilityLevel">
+        <img src="@imgSrc"/>
+        <div>
+            <p class="align-center">
+                <span>@game.Name</span><br/><br/><button class="btn" data-i18n="playGames.playNow"></button>
+            </p>
+        </div>
+    </a>
+}

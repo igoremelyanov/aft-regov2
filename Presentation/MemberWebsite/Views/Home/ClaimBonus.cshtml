@@ -1,0 +1,87 @@
+@{
+    ViewBag.Title = "My account - Rego";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string section = "claimbonus";
+}
+@model IEnumerable<AFT.RegoV2.MemberApi.Interface.Bonus.ClaimableRedemption>
+
+<section class="main-content section account">
+
+    <div id="claim-bonus-page" class="container">
+
+        <h2 class="title-page"><span data-i18n="profile.myAccount"></span></h2>
+
+        <div class="row row-eq-height">
+
+            @Html.Partial("_PartialAccountMenu", section)
+
+            <div class="col-sm-9 white-content claimsbonus">
+
+                <h2 data-i18n="profile.claimBonus">claim bonus</h2>
+
+                @if (Model == null)
+                {
+                    <p class="grey"><span data-i18n="claimBonus.noBonuses"></span> <a class="green" href="@Url.Action("OnlineDeposit")" data-i18n="claimBonus.makeDeposit"></a></p>
+                }
+                else {
+
+                    <p class="grey"><span data-i18n="claimBonus.byClicking"></span> <a class="green" href="@Url.Action("TermsConditions")" data-i18n="claimBonus.termsAndConditions"></a></p>
+
+                    <div class="row clearfix claim-list">
+                        @foreach (var item in Model)
+                        {
+
+                            <div class="col-sm-4 text-center" redemption-id="@item.Id" data-bind="css: {'selected' : claimedBonus() != undefined && claimedBonus() == '@item.Id'}">
+                                <div data-bind="click: function(){ selectBonus('@item.Id') }">
+                                    <div class="name"><h5 class="text-center"><span>@item.BonusName</span></h5></div>
+
+                                    @if (!string.IsNullOrEmpty(item.Percentage))
+                                    {
+                                        <p><strong>@(item.Percentage.Substring(0, 2))%</strong><br><span class="text-uppercase">bonus</span></p>
+                                    }
+                                    else {
+                                        <p><strong>$@((int)item.Amount)</strong><br><span class="text-uppercase">bonus</span></p>
+                                    }
+
+                                    <p>@item.Description</p>
+                                    <p id="bonus-code" class="hide">@item.Code</p>
+                                    <p id="bonus-id" class="hide">@item.Id</p>
+                                    <p><a href="/en-US/Home/TermsConditions" target="_blank">More info</a></p>
+                                </div>
+                            </div>
+
+                        }
+
+                    </div>
+
+                }
+
+                <p style="margin-top: 40px;" class="text-center bold" data-i18n="claimBonus.enterBonusCode">Or enter a Bonus Code</p>
+
+                <form id="code-bonus-form">
+                    <div class="row">
+                        <div class="col-sm-offset-1 col-sm-6">
+                            <div class="form-group clearfix">
+                                <input class="form-control pull-right" type="text" />
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <button class="btn green empty" data-i18n="common.validate">validate</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="clearfix submit-section">
+                    <button class="btn green pull-right submit-btn" data-bind="click: claim, enable: claimedBonus() != undefined">Claim</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+@section scripts {
+    @Html.Partial("_PartialProfileScript", section)
+    <script src="/Scripts/custom/claimBonus.js"></script>
+}

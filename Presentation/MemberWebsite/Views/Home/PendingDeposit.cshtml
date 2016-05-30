@@ -1,0 +1,185 @@
+﻿@{
+    ViewBag.Title = "My account - Rego";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string section = "pendingdeposits";
+}
+
+<section class="main-content section account">
+
+    <div class="container">
+
+        <h2 class="title-page"><span>Cashier</span></h2>
+
+        <div class="row row-eq-height">
+
+            @Html.Partial("_PartialCashierMenu", section)
+
+            <div class="col-sm-9 white-content pendingdeposit" id="withdrawal-wrapper">
+
+                <h2 data-i18="balanceInformation.pendingDeposits">Pending Deposits</h2>
+                
+                <table class="table list sortable">
+                    <thead>
+                      <tr>
+                        <th data-i18n="common.date" data-defaultsort="desc" data-sortcolumn="1">Date</th>
+                        <th data-i18n="balanceInformation.referenceCode">Reference Code</th>
+                        <th data-i18n="balanceInformation.depositAmount">Deposit Amount</th>
+                        <th data-defaultsort="disabled" data-i18n="balanceInformation.status">status</th>
+                        <th data-defaultsort="disabled" data-i18n="balanceInformation.action">action</th>
+                        <th data-defaultsort="disabled" data-i18n="common.remarks">Remarks</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Dec 2 2015</td>
+                        <td>OD4061869</td>
+                        <td class="text-right">75,000$</td>
+                        <td>Processing</td>
+                        <td><a href="#deposit-confirmation" data-toggle="modal" class="btn green empty">confirm</a></td>
+                        <td><a href="#" class="grey">More info</a></td>
+                      </tr>
+                      <tr>
+                        <td>Dec 2 2015</td>
+                        <td>OD4061869</td>
+                        <td class="text-right">75,000$</td>
+                        <td>Processing</td>
+                        <td><a href="#deposit-confirmation" data-toggle="modal" class="btn green empty">confirm</a></td>
+                        <td><a href="#" class="grey">More info</a></td>
+                      </tr>
+                      <tr>
+                        <td>Dec 2 2015</td>
+                        <td>OD4061869</td>
+                        <td class="text-right">75,000$</td>
+                        <td>Processing</td>
+                        <td><a href="#deposit-confirmation" data-toggle="modal" class="btn green empty">confirm</a></td>
+                        <td><a href="#" class="grey">More info</a></td>
+                      </tr>
+                      <tr>
+                        <td>Dec 2 2015</td>
+                        <td>OD4061869</td>
+                        <td class="text-right">75,000$</td>
+                        <td>Processing</td>
+                        <td><a href="#deposit-confirmation" data-toggle="modal" class="btn green empty">confirm</a></td>
+                        <td><a href="#" class="grey">More info</a></td>
+                      </tr>
+                      <tr>
+                        <td>Dec 2 2015</td>
+                        <td>OD4061869</td>
+                        <td class="text-right">75,000$</td>
+                        <td>Processing</td>
+                        <td><a href="#deposit-confirmation" data-toggle="modal" class="btn green empty">confirm</a></td>
+                        <td><a href="#" class="grey">More info</a></td>
+                      </tr>
+                    </tbody>
+                </table>
+                
+                @Html.Partial("_PartialQuickLink")
+
+
+                <div class="modal fade no-border" id="deposit-confirmation">
+                    <div class="modal-dialog modal-warning text-center">
+                        <div class="modal-content white-content account">
+                            <h5 class="section">
+                              <span data-i18n="cashier.depositConfirmation">deposit confirmation</span>
+                              <a class="close" href="#" data-dismiss="modal"><img src="@Url.Content("/Content/images/close-popup-black.png")"/></a>
+                            </h5>
+                            <div class="grey">
+                                <ul>
+                                    <li data-i18n="cashier.currentIDrequired">Current ID required for all other bank account not registered with this account.</li>
+                                    <li data-i18n="cashier.imageBankreceipt">Image of bank transfer receipt.</li>
+                                    <li data-i18n="cashier.uploadFileLimit">All uploaded files cannot exceed 4mb.</li>
+                                </ul>
+                            </div>
+
+                            <form>
+
+                                <div class="row infos-account">
+                                    <div class="col-sm-3 form-group" data-bind="css: { 'has-error': !pendingDeposit.transferMethod() } ">
+                                        <label for="" data-i18n="cashier.transferMethod">Transfer method</label>
+                                        <div>
+                                            <select class="form-control" data-bind="value: pendingDeposit.transferMethod">
+                                                <option value="">Counter Deposit</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 form-group" data-bind="css: { 'has-error': !pendingDeposit.fullName() }">
+                                        <label for="" data-i18n="profile.fullName">Full Name</label>
+                                        <div>
+                                            <input class="form-control" data-bind="value: pendingDeposit.fullName"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-5 form-group" data-bind="css: { 'has-error': !pendingDeposit.transferBank() }">
+                                        <label for="" data-i18n="cashier.transferBank">Transfer Bank</label>
+                                        <div>
+                                            <select class="form-control" data-bind="value: pendingDeposit.transferMethod">
+                                                <option value="">Counter Deposit</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row infos-account">
+                                    <div class="col-sm-6">
+                                        <label for="" data-i18n="cashier.idFront">ID Front</label>
+                                        <div class="row no-margin">
+                                            <div class="col-sm-2 noPaddingLeft"><img src="@Url.Content("/Content/images/exemple-upload.jpg")"/></div>
+                                            <div class="col-sm-10 noPaddingLeft noPaddingRight form-group file uploaded" data-bind="css: { 'has-error': !pendingDeposit.idFront() }">
+                                                <input type="text" class="form-control" data-target="id_front" data-bind="value: pendingDeposit.idFront" value="picture-name.jpg"/>
+                                                <input type="file" id="id_front" accept="image/*"/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <label for="" data-i18n="cashier.idBack">ID Back</label>
+                                        <div class="row no-margin">
+                                            <div class="col-sm-2 noPaddingLeft"><img src="@Url.Content("/Content/images/icon_id.png")"/></div>
+                                            <div class="col-sm-10 noPaddingLeft noPaddingRight form-group file has-error" data-bind="css: { 'has-error': !pendingDeposit.idBack() }">
+                                                <input type="text" class="form-control file" data-target="id_back" data-bind="value: pendingDeposit.idBack"/>
+                                                <input type="file" id="id_back" accept="image/*"/>
+                                                <p class="msg">Error message</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row infos-account">
+                                    <div class="col-sm-6">
+                                        <label for="" data-i18n="cashier.depositReceipt">Deposit Receipt</label>
+                                        <div class="row no-margin">
+                                            <div class="col-sm-2 noPaddingLeft"><img src="@Url.Content("/Content/images/icon_id.png")"/></div>
+                                            <div class="col-sm-10 noPaddingLeft noPaddingRight form-group file" data-bind="css: { 'has-error': !pendingDeposit.depositReceipt() }">
+                                                <input placeholder="Upload your Deposit receipt" type="text" class="form-control file" data-target="deposit_receipt" data-bind="value: pendingDeposit.depositReceipt"/>
+                                                <input type="file" id="deposit_receipt" accept="image/*"/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-3" data-bind="css: { 'has-error': !pendingDeposit.depositAmount() }">
+                                        <label for="" data-i18n="balanceInformation.depositAmount">Deposit Amount</label>
+                                        <input type="text" class="form-control" data-bind="value: pendingDeposit.depositAmount"/>
+                                    </div>
+                                    <div class="col-sm-3" data-bind="css: { 'has-error': !pendingDeposit.remark() }">
+                                        <label for="" data-i18n="cashier.remark">Remark</label>
+                                        <input type="text" class="form-control" data-bind="value: pendingDeposit.remark"/>
+                                    </div>
+                                </div>
+
+                                <p class="text-center marginTop40"><button class="btn green" data-i18n="common.submit" data-bind="click: pendingDeposit.submitDepositConfirmation"></button></p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+@section scripts {
+    <script src="/Scripts/custom/login.js"></script>
+    <script src="/Scripts/custom/formbase.js"></script>
+    <script src="/Scripts/custom/withdrawal.js"></script>
+}

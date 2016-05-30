@@ -1,0 +1,34 @@
+﻿@{ var section = Model; }
+<div class="col-sm-3 menu">
+
+    <h5>Cashier</h5>
+    <ul>
+        <li class="@(section == "balancedetails" ? "selected" : null)"><a href="@Url.Action("BalanceDetails")">Balance details</a></li>
+    </ul>
+
+    <h5>Deposits</h5>
+
+    <ul>
+        <li class="@(section == "onlinedeposit" ? "selected" : null)"><a href="@Url.Action("OnlineDepositConfirmation")" data-i18="balanceInformation.onlineDeposit">online deposit</a></li>
+        <li class="@(section == "offlinedeposit" ? "selected" : null)"><a href="#" data-i18="balanceInformation.offlineDeposit">offline deposit</a></li>
+        <li class="@(section == "pendingdeposits" ? "selected" : null)"><a href="@Url.Action("PendingDeposit")" data-i18="balanceInformation.pendingDeposits">Pending Deposits</a></li>
+    </ul>
+
+    <h5>Other</h5>
+
+    <ul>
+        <li class="@(section == "withdrawal" ? "selected" : null)"><a href="@Url.Action("Withdrawal","Cashier")">Withdrawal</a></li>
+        <li class="@(section == "transactionHistory" ? "selected" : null)"><a data-i18n="balanceInformation.transactionHistory" href="@Url.Action("TransactionHistory")"></a></li>
+    </ul>
+
+    <h5>Integration</h5>
+
+    <ul>
+        <li><a href="@Url.Action("WithdrawalFrozen")">Withdrawal Frozen</a></li>
+        <li><a href="@Url.Action("WithdrawalRejectedBankAccount")">Withdrawal Reject</a></li>
+        <li><a href="@Url.Action("WithdrawalVerifiedBankAccount")">Withdrawal Verified</a></li>
+        <li><a href="@Url.Action("WithdrawalUnverifiedBankAccount")">Withdrawal Unverified</a></li>
+        <li><a href="@Url.Action("WithdrawalUnverifyingBankAccount")">Withdrawal Verifying</a></li>
+    </ul>
+</div>
+

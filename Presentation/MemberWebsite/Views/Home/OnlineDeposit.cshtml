@@ -1,0 +1,60 @@
+﻿@model AFT.RegoV2.MemberWebsite.Models.OfflineDepositModel
+
+@{
+    ViewBag.Title = "My account - Rego";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var section = "onlinedeposit";
+}
+
+<section class="main-content section account">
+
+    <div class="container">
+
+        <h2 class="title-page"><span>Cashier</span></h2>
+
+        <div class="row row-eq-height">
+
+            @Html.Partial("_PartialCashierMenu", section)
+
+            <div class="col-sm-9 white-content claimbonus onlinedeposit" id="cashier-wrapper">
+                <h2>deposit online</h2>
+
+                @(ViewBag.IsFrozen
+                    ? Html.Partial("_PartialAccountFrozen")
+                      : Html.Partial("_PartialOnlineDepositForm", @Model))
+
+                <div class="modal fade" id="skipbonus-alert-modal">
+                    <div class="modal-dialog modal-warning text-center">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <button data-dismiss="modal" aria-label="Close" class="close">
+                                    <img src="/Content/images/close-popup.png" />
+                                </button>
+                                <p class="align-center logo"><img src="@Url.Content("~/Content/images/logo-popup.png")" /></p>
+                                <div class="row">
+                                    <div class="col-sm-offset-3 col-sm-6 no-padding">
+                                        <p data-i18n="app:payment.onlineDeposit.confirmationModal.areYouSureYouAreSkippingBonus">Are you sure you don’t want to claim your bonus?</p>
+                                    </div>
+                                    <div class="clearfix">
+                                        <button data-bind="click:goAheadWithDeposititng" class="btn" data-i18n="app:common.yesSure">Yes, I am sure</button>
+                                        &nbsp;&nbsp;
+                                        <button data-bind="click:skipDepositAndGetBonus" class="btn" data-i18n="app:payment.onlineDeposit.confirmationModal.claimMyBonus">I want to claim my bonus</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+@section scripts {
+    <script src="/Scripts/utils.js"></script>
+    <script src="/Scripts/custom/formBase.js"></script>
+    <script src="/Scripts/custom/currencyUtils.js"></script>
+    <script src="/Scripts/custom/onlineDeposit.js"></script>
+    <script src="/Scripts/custom/onlineDepositForm.js"></script>
+}

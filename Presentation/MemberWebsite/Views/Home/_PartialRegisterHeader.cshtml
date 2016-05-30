@@ -1,0 +1,23 @@
+﻿@{ var step = Model; }
+<div class="row">
+    <div class="col-sm-offset-1 col-sm-10">
+        <div class="ky-step-list">
+            <ul class="clearfix">
+                <li class="clearfix pull-left item step1 @(step >= 1 ? "focus" : null)">
+                    <i class="pull-left"></i>
+                    <p class="pull-left" data-i18n="registration.register"></p>
+                </li>
+                <li class="clearfix pull-left item arrow @(step >= 2 ? "focus" : null)"><i class="fa fa-long-arrow-right"></i></li>
+                <li class="clearfix pull-left item step2 @(step >= 2 ? "focus" : null)">
+                    <i class="pull-left"></i>
+                    <p class="pull-left" data-i18n="registration.depositAndBonus">Deposit & Bonus</p>
+                </li>
+                <li class="clearfix pull-left item arrow @(step >= 3 ? "focus" : null)"><i class="fa fa-long-arrow-right"></i></li>
+                <li class="clearfix pull-left item step3 @(step >= 3 ? "focus" : null)">
+                    <i class="pull-left"></i>
+                    <p class="pull-left" data-i18n="registration.startPlaying">Start Playing</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

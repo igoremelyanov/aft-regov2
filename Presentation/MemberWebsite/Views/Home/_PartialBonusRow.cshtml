@@ -1,0 +1,27 @@
+﻿@model AFT.RegoV2.MemberWebsite.Models.BonusRowModel
+
+<div class="@(Model.slider ? "item" : "") row @(Model.IsFirstRow && Model.slider ? "active" : "")">
+    @foreach (var bonus in Model.Bonuses)
+    {
+        <div class="col-sm-3 text-center" data-bind="click: function(data, event) { selectBonus('@bonus.Id',@bonus.RequiredAmount) }, css: { 'disable': amount() < @((int)bonus.RequiredAmount), 'selected':  $root.selectedBonusId() ==  '@bonus.Id'}">
+            <div>
+                <div class="name"><p class="text-center"><span>@bonus.Name</span></p></div>
+                @if (!string.IsNullOrEmpty(bonus.Percentage))
+                {
+                    <p>@(bonus.Percentage.Substring(0,2))%<br><span>bonus</span></p>
+                }
+                else
+                {
+                    <p>$@((int)bonus.Amount)<br><span>bonus</span></p>
+                }
+                <p>Deposit more than $@bonus.RequiredAmount to be eligible for the bonus.</p>
+                <p id="bonus-code" class="hide">@bonus.Code</p>
+                <p id="bonus-id" class="hide">@bonus.Id</p>
+                <p>
+                    <a href="/en-US/Home/TermsConditions" target="_blank">more info</a>
+                </p>
+            </div>
+        </div>
+    }
+</div>
+

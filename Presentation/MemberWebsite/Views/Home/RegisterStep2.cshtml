@@ -1,0 +1,137 @@
+﻿@using AFT.RegoV2.MemberWebsite.Models
+@model RegisterStep2Model
+
+@{
+    ViewBag.Title = "Registration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int Step = 2;
+}
+
+
+<div id="register2-wrapper" class="register-step-2 site-body main-content">
+    <div class="container">
+
+        <h2 class="title-page"><span data-i18n="registration.registration"></span></h2>
+
+        @Html.Partial("_PartialRegisterHeader", Step)
+
+        <div class="marginTopBottom70">
+            <h2 class="text-center subtitleCenter" data-i18n="registration.nextStepDepositBelow">Next step: deposit below</h2>
+            <p class="text-center">As a member of REGO family, we want to give you the FIRST TIME DEPOSIT bonuses! Enjoy the fun!</p>
+        </div>
+
+        <h4 class="first-step" data-i18n="registration.makeYourFirstDepositAndGetBonus">Make your first deposit and get bonus</h4>
+
+        <div class="row choices">
+            @if (Model.Max == null && Model.Min == null)
+            {
+                <div class="col-sm-2">
+                    <button class="btn" data-bind="click: function(){ $root.setAmount(1000) }"><span class="js-balance-currency-symbol"></span>1,000</button>
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn" data-bind="click: function(){ $root.setAmount(2000) }"><span class="js-balance-currency-symbol"></span>2,000</button>
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn" data-bind="click: function(){ $root.setAmount(3000) }"><span class="js-balance-currency-symbol"></span>3,000</button>
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn" data-bind="click: function(){ $root.setAmount(5000) }"><span class="js-balance-currency-symbol"></span>5,000</button>
+                </div>}
+            else
+            {
+                foreach (var quickSelectAmount in Model.QuickSelectAmounts)
+                {
+                    <div class="col-sm-2">
+                        <button class="btn" data-bind="click: function(){ $root.setAmount(@quickSelectAmount.Amount) }">@quickSelectAmount.AmountFormatted</button>
+                    </div>
+                }
+            }
+
+            <div class="col-sm-4">
+                <form id="deposit-form" role="form" method="POST" action="registerstep2" data-bind="submit: onSubmit">
+                    <div class="form-group">
+                        <label for="amount" data-i18n="balanceInformation.amount"></label>
+                        <div>
+                            @Html.Hidden("amount", Model.Amount, new {id="hidden-amount"})
+                            <input type="text" id="amount" class="form-control" name="amount" maxlength="15" data-bind="value: amount, valueUpdate: 'afterkeydown', currency: amount"/>
+                        </div>
+                        @if (Model.Max != null && Model.Min != null)
+                        {
+                            <p class="font-size20">Min Deposit @Model.MinFormatted &middot; Max Deposit @Model.MaxFormatted</p>
+                        }
+                        <p class="msg" data-bind="visible: amount.hasError, text: amount.errorMessage"></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="step2-wrapper disabled" data-bind="css: { 'disabled': amount() <= 0 }">
+            <h4 class="second-step" data-i18n="cashier.claimYourBonus">Claim your bonus</h4>
+
+            @if (@Model.Bonuses.Count() > 4)
+            {
+
+                <div id="bonusList" class="carousel slide">
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        @for (int i = 0; i <= Model.Bonuses.Count() / 4; i++)
+                        {
+                            var bonuses = Model.Bonuses.Skip(i * 4).Take(4);
+                            @Html.Partial("_PartialBonusRow", new BonusRowModel() { Bonuses = bonuses, IsFirstRow = i == 0, slider = true })
+                        }
+                    </div>
+                    <!-- Left and right controls -->
+                    <a class="left carousel-control" href="#bonusList" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#bonusList" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+
+            }
+            else
+            {
+                if (@Model.Bonuses.Count() > 0)
+                {
+                    var bonuses = Model.Bonuses.Skip(0).Take(4);
+
+                    <div id="bonusList">
+                        @Html.Partial("_PartialBonusRow", new BonusRowModel() { Bonuses = bonuses, IsFirstRow = false, slider = false })
+                    </div>
+                }
+            }
+
+        </div>
+        <div class="row clearfix">
+            <div class="col-sm-6">
+                <form role="form" class="form-add-bonus clearfix">
+                    <div class="form-group col-xs-9">
+                        <label>Or enter bonus code</label>
+                        <div>
+                            <input type="text" name="bonus" class="form-control" data-bind="value: bonuscode, enable: amount() > 0">
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-2">
+                        <label>&nbsp;</label>
+                        <input type="submit" value="validate" class="btn" data-bind="enable: bonuscode() && amount() > 0, click: validateBonusCode" disabled="">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="clearfix marginTop40">
+            <a href="#" data-i18n="balanceInformation.depositAndGetBonus" class="btn pull-right add deposit selected" data-bind="click: onSubmit, text: buttonTitle()"></a>
+            <a href="@Url.Action("Index")" class="btn white pull-right no-border no-padding-x" data-i18n="registration.skipToHomepage">skip to homepage</a>
+        </div>
+
+        <p class="pull-right clearfix paddingTopBottom10"><span data-i18n="claimBonus.byClickingStep2">By clicking the button above, I agree that I have read and accepted the</span> <a target="_blank" href="@Url.Action("TermsConditions")" data-i18n="referFriend.termsAndConditions">Terms and Conditions</a>.</p>
+    </div>
+</div>
+
+@section scripts{
+    <script src="/Scripts/custom/login.js"></script>
+    <script src="/Scripts/custom/onlineDeposit.js"></script>
+    <script src="/Scripts/custom/register2.js"></script>
+}

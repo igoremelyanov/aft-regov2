@@ -1,0 +1,105 @@
+﻿@{
+    ViewBag.Title = "My account - Rego";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string section = "gamesummary";
+}
+
+<section class="main-content section account">
+
+    <div class="container">
+
+        <h2 class="title-page"><span data-i18n="profile.myAccount"></span></h2>
+
+        <div class="row row-eq-height">
+
+            @Html.Partial("_PartialAccountMenu", section)
+
+            <div class="col-sm-9 white-content gamesummary" id="profile-wrapper">
+
+                <h2 data-i18n="profile.gameSummary">game summary</h2>
+
+                <p class="grey">Please note, transactions older than 1 years may not be available. If you wish to view these transactions, please contact <a class="green" href="#">Customer Support</a>.</p>
+
+                <form class="clearfix infos-account row">
+                    <div class="col-sm-3 form-group">
+                        <p><b data-i18n="common.game">Game</b></p>
+                        <select class="form-control" data-bind="value: gamehistory.game">
+                            <option value="">Select</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-3 form-group">
+                        <p><b data-i18n="common.from">From</b></p>
+                        <input type="text" class="form-control datepicker" data-bind="value: gamehistory.from"/>
+                    </div>
+                    <div class="col-sm-3 form-group">
+                        <p><b data-i18n="common.to">To</b></p>
+                        <input type="text" class="form-control datepicker" data-bind="value: gamehistory.to"/>
+                    </div>
+                    <div class="col-sm-3 form-group">
+                        <label>&nbsp;</label><br>
+                        <button class="btn grey col-md-12" data-bind="click: gamehistory.submitFilter" data-i18n="common.filter">filter</button>
+                    </div>
+                </form>
+
+                <table class="table list sortable">
+                    <thead>
+                        <tr>
+                            <th data-i18n="common.game"></th>
+                            <th data-i18n="common.date"></th>
+                            <th data-i18n="common.bet"></th>
+                            <th data-i18n="common.win"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="4">There were no transaction found.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="text-center clearfix hidden">
+                  <ul class="pagination pagination-lg pager" id="myPager"></ul>
+                </div>
+
+                @Html.Partial("_PartialQuickLink")
+
+                <div class="modal fade" id="responsiblegaming-alert">
+                    <div class="modal-dialog modal-warning text-center">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <button data-dismiss="modal" aria-label="Close" class="close">
+                                    <img src="/Content/images/close-popup.png" />
+                                </button>
+                                <p class="align-center logo"><img src="/Content/images/logo-popup.png" /></p>
+
+                                <div class="row">
+                                    <div class="col-sm-offset-3 col-sm-6 no-padding">
+                                        <p data-bind="text:responsibleGambling.message"></p>
+                                        <div class="clearfix">
+                                            <button data-bind="click:responsibleGambling.submitResponsible" click="submit" class="btn pull-left">yes&nbsp; i&nbsp; am&nbsp; sure</button>
+                                            <button data-bind="click:responsibleGambling.closeModal" click="close" class="btn pull-right">no</button>
+                                        </div>
+                                        <p class="align-center marginTop40"><a href="#"><img src="/Content/images/icon-customerservice.png" /></a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+@section stylesheets {
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+}
+
+@section scripts {
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    @Html.Partial("_PartialProfileScript", section)
+}

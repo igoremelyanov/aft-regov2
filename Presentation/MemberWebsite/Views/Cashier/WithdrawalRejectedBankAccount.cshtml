@@ -1,0 +1,83 @@
+@{
+    ViewBag.Title = "My account - Rego";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string section = "withdrawal";
+}
+
+<section class="main-content section account">
+
+    <div class="container">
+
+        <h2 class="title-page"><span data-i18n="profile.cashier">cashier</span></h2>
+        
+        <div class="row row-eq-height">
+
+          @Html.Partial("_PartialCashierMenu", section)
+
+          <div class="col-sm-9 white-content withdrawal verified" id="profile-wrapper">
+              
+              <h2 data-i18n="profile.withdrawal">withdrawal</h2>
+
+              <p class="alert-msg"><span data-i18n="withdrawal.errorInfos">Incorrect information. Please contact</span> <a href="javascript:void(0)" onclick="openLiveChat();"><b data-i18n="common.customerSupport">Customer Support</b></a></p>
+              
+              <h5 class="section"><span data-i18n="withdrawal.bankDetails">bank details</span></h5>
+
+              <form>
+                <div class="row infos-account">
+                    <div class="col-sm-4">
+                      <p><b>Full name</b></p>
+                      <div class="form-group">
+                        <input class="form-control" data-bind="value: bank.name"/>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <p><b>Select Bank</b></p>
+                      <div class="form-group" data-bind="css: {'has-error': !bank.bank.isValid()}">
+                        <select class="form-control">
+                          <option>HSBC</option>
+                          <option>BNP PARIBAS</option>
+                          <option>CITY BANK</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <p><b>Bank Account #</b></p>
+                      <div class="form-group" data-bind="css: {'has-error': !bank.account_number.isValid()}">
+                        <input class="form-control" data-bind="value: bank.account_number"/>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <p><b>Branch</b></p>
+                      <div class="form-group" data-bind="css: {'has-error': !bank.branch.isValid()}">
+                        <input class="form-control" data-bind="value: bank.branch"/>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <p><b>Province</b></p>
+                      <div class="form-group" data-bind="css: {'has-error': !bank.province.isValid()}">
+                        <input class="form-control" data-bind="value: bank.province"/>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <p><b>City</b></p>
+                      <div class="form-group" data-bind="css: {'has-error': !bank.city.isValid()}">
+                        <input class="form-control" data-bind="value: bank.city"/>
+                      </div>
+                    </div>
+                </div>
+                <div class="clearfix">
+                    <button data-i18n="common.resubmit" class="btn green pull-right" data-bind="click: bank.submitBankDetail">resubmit</button>
+                </div>
+              </form>
+
+          </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+@section scripts {
+    @Html.Partial("_PartialCashierScript", section)
+}
