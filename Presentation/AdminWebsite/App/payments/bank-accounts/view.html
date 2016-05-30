@@ -1,0 +1,194 @@
+﻿<form role="form" class="form-horizontal" data-bind="validationOptions: { insertMessages: false }">
+
+    <div class="alert alert-success" data-bind="visible: Model.message, text: Model.message"></div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">
+            <span data-i18n="app:common.licensee"></span>
+        </label>
+        <div class="col-sm-8">
+            <p class="form-control-static" data-bind="text: Model.licenseeName"></p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">
+            <span data-i18n="app:common.brand"></span>
+        </label>
+        <div class="col-sm-8">
+            <p class="form-control-static" data-bind="text: Model.brandName"></p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">
+            <span data-i18n="app:common.currency"></span>
+        </label>
+        <div class="col-sm-8">
+            <p class="form-control-static" data-bind="text: Model.currencyCode"></p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">
+            <span data-i18n="app:banks.bankAccountId"></span>
+        </label>
+        <div class="col-sm-8">
+            <p class="form-control-static" data-bind="text: Model.bankAccountId"></p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">
+            <span data-i18n="app:banks.bankName"></span>
+        </label>
+        <div class="col-sm-8">
+            <p class="form-control-static" data-bind="text: Model.bankName"></p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">
+            <span data-i18n="app:banks.bankAccountNumber"></span>
+        </label>
+        <div class="col-sm-8">
+            <p class="form-control-static" data-bind="text: Model.bankAccountNumber"></p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">
+            <span data-i18n="app:banks.bankAccountName"></span>
+        </label>
+        <div class="col-sm-8">
+            <p class="form-control-static" data-bind="text: Model.bankAccountAccountName"></p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">
+            <span data-i18n="app:banks.province"></span>
+        </label>
+        <div class="col-sm-8">
+            <p class="form-control-static" data-bind="text: Model.bankAccountProvince"></p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">
+            <span data-i18n="app:banks.branch"></span>
+        </label>
+        <div class="col-sm-8">
+            <p class="form-control-static" data-bind="text: Model.bankAccountBranch"></p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">
+            <span data-i18n="app:banks.bankAccountType"></span>
+        </label>
+        <div class="col-sm-8">
+            <p class="form-control-static" data-bind="text: Model.bankAccountAccountTypeName"></p>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">
+            <span data-i18n="app:banks.supplierName"></span>
+        </label>
+        <div class="col-sm-8">
+            <p class="form-control-static" data-bind="text: Model.supplierName"></p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">
+            <span data-i18n="app:banks.contactNumber"></span>
+        </label>
+        <div class="col-sm-8">
+            <p class="form-control-static" data-bind="text: Model.contactNumber"></p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">
+            <span data-i18n="app:banks.usbCode"></span>
+        </label>
+        <div class="col-sm-8">
+            <p class="form-control-static" data-bind="text: Model.usbCode"></p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">
+            <span data-i18n="app:banks.purchasedDate"></span>
+        </label>
+        <div class="col-sm-8">
+            <p class="form-control-static" data-bind="text: Model.purchasedDate"></p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">
+            <span data-i18n="app:banks.utilizationDate"></span>
+        </label>
+        <div class="col-sm-8">
+            <p class="form-control-static" data-bind="text: Model.utilizationDate"></p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">
+            <span data-i18n="app:banks.expirationDate"></span>
+        </label>
+        <div class="col-sm-8">
+            <p class="form-control-static" data-bind="text: Model.expirationDate"></p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">
+            <span>ID Front</span>
+        </label>
+        <div class="col-sm-8">
+            <img style="width: 300px; height: 200px;" data-bind="attr: {src: Model.uploadId1Src}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">
+            <span>ID Back</span>
+        </label>
+        <div class="col-sm-8">
+            <img style="width: 300px; height: 200px;" data-bind="attr: {src: Model.uploadId2Src}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">
+            <span>ATM Card</span>
+        </label>
+        <div class="col-sm-8">
+            <img style="width: 300px; height: 200px;" data-bind="attr: {src: Model.uploadId3Src}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">
+            <span data-i18n="app:common.remarks"></span>
+        </label>
+        <div class="col-sm-8">
+            <p class="form-control-static" data-bind="text: Model.remarks"></p>
+        </div>
+    </div>
+
+
+    <div class="clearfix form-actions">
+        <div class="center">
+            <button class="btn btn-white btn-round" data-bind="click: cancel" data-i18n="common.close"></button>
+        </div>
+    </div>
+
+</form>

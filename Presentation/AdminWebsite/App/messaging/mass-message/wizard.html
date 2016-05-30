@@ -1,0 +1,19 @@
+﻿<link rel="stylesheet" href="/Content/css/daterangepicker-bs3.css" />
+<div class="template-wizard" data-bind="validationOptions: { insertMessages: false }">
+    <ul style="margin-bottom: 10px; margin-left: 0;">
+        <!-- ko foreach: tabs -->
+        <li><a data-toggle="tab" data-bind="attr: {href: '#' + tabId}"><span class="badge" data-bind="text: stepNumber"></span> <span data-bind="text: stepName"></span></a></li>
+        <!-- /ko -->
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane form-horizontal" data-bind="compose: { model: Recipients, view: 'messaging/mass-message/recipients.html' }, attr: {id: tabs[0].tabId }"></div>
+        <div class="tab-pane form-horizontal" data-bind="compose: { model: Content, view: 'messaging/mass-message/content.html'}, attr: {id: tabs[1].tabId}"></div>
+        <br />
+        <div class="clearfix form-actions center" style="margin-bottom: 0">
+            <button type="button" class="btn btn-white btn-round" data-bind="click: close, text: closeBtnText"></button>
+            <button type="button" data-bind="attr: {class: 'btn btn-white btn-round ' + prevBtnClass}, visible: isPrevBtnVisible" data-i18n="common.previous"></button>
+            <button type="button" data-bind="attr: {class: 'btn btn-primary btn-round ' + nextBtnClass}, visible: isNextBtnVisible" data-i18n="common.saveAndContinue"></button>
+            <button type="button" class="btn btn-white btn-round" data-bind="click: send, visible: !isNextBtnVisible()" data-i18n="messaging.massMessage.send"></button>
+        </div>
+    </div>
+</div>

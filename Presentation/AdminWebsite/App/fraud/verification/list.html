@@ -1,0 +1,40 @@
+﻿<div id="verification-manager-list" data-bind="grid: {
+    source: '/autoverification/list',
+    fields: ['Status','LicenseeName', 'BrandName', 'Currency', 'Viplevel', 'Criteria', 'CreatedBy', 'DateCreated'],
+    filter: ko.computed(function() { return {
+        'BrandName': search()
+    }}),
+    defaultSort: { field: 'BrandName', direction: 'desc' },
+    paging: true,
+    useResizeManager: { height: 400 },
+    useLicenseeFilter: true
+}">
+    <header>
+        <div data-bind="gridHeader: { context: $data,
+            filters: [
+                ['Status', 'Status', 'text'],
+                ['LicenseeName', 'Licensee Name', 'text'],
+                ['BrandName', 'Brand Name', 'text'],
+                ['Currency', 'Currency', 'text'],
+                ['Viplevel', 'Viplevel', 'text'],
+                ['Username', 'CreatedBy', 'text'],
+                ['DateCreated', 'DateCreated', 'date'],
+            ],
+            buttons: [
+                { name: 'add', text: 'New', click: add, icon: 'plus', visible: isAddAllowed },
+                { name: 'edit', click: openEditTab, text: 'Edit', enabled: rowId, icon: 'pencil', visible: isEditAllowed },
+                { name: 'view', click: openViewTab, enabled: rowId, text: 'View', icon: 'file-text-o' },
+                { name: 'activate', click: openActivateDialog, text: 'Activate', icon: 'check', enabled: canActivate, visible: isActivateAllowed},
+                { name: 'deactivate', click: openDeactivateDialog, text: 'Deactivate', icon: 'ban', enabled: canDeactivate, visible: isDeactivateAllowed},
+            ]
+        }"></div>
+    </header>
+    <column title="Status" sort-field="Status" width="100" data-value="@Status" />
+    <column title="Licensee" sort-field="LicenseeName" width="100" data-value="@LicenseeName" />
+    <column title="Brand" sort-field="BrandName" width="100" data-value="@BrandName" />
+    <column title="Currency" sort-field="Currency" width="80" data-value="@Currency" />
+    <column title="VipLevel" sort-field="VipLevel" width="100" data-value="@Viplevel" />
+    <column title="Criteria" width="180" data-value="@Criteria" />
+    <column title="Created By" sort-field="Username" width="180" data-value="@CreatedBy" />
+    <column title="Date Created" sort-field="DateCreated" width="180" data-value="@DateCreated" />
+</div>

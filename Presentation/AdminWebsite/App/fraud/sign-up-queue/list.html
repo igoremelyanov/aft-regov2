@@ -1,0 +1,82 @@
+﻿<link rel="stylesheet" href="/Content/css/daterangepicker-bs3.css" />
+
+<form class="form-horizontal" data-bind="validationOptions: { insertMessages: false }">
+    <div class="form-group">
+        <label class="col-sm-3 control-label"><span>Time period</span></label>
+        <div class="col-sm-8 field-box">
+            <select class="form-control" data-bind="value: period">
+                <option value="0">Today</option>
+                <option value="1">Current month</option>
+                <option value="2">Previous month</option>
+                <option value="3">All</option>
+                <option value="4">Custom</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group" data-bind="visible: period() == 4">
+        <label class="col-sm-3 control-label"><span>Date range</span></label>
+        <div class="col-sm-8 field-box">
+            <div class="input-group">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                <input class="form-control" data-bind="dateRange: true, format: 'YYYY/MM/DD', startDate: startDate, endDate: endDate" readonly style="cursor: default"/>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label"><span>User name</span></label>
+        <div class="col-sm-8 field-box">
+            <input class="form-control" data-bind="value: username"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label"><span></span></label>
+        <div class="col-sm-8 field-box">
+            <input id="no-handling" type="checkbox" value="0" data-bind="checked: tag"/> <label for="no-handling">No handling</label>
+            <input id="recheck" type="checkbox" value="1" data-bind="checked: tag"/> <label for="recheck">Recheck</label>
+            <input id="fraudlent" type="checkbox" value="2" data-bind="checked: tag"/> <label for="fraudlent">Fraudlent</label>
+            <input id="completed" type="checkbox" value="3" data-bind="checked: tag"/> <label for="completed">Completed</label>
+        </div>
+    </div>
+
+
+    <div id="sign-up-list" data-bind="grid: {
+            source: 'signup/list',
+            fields: ['Id', 'Username', 'SignDate', 'DmcDate', 'Folder','Description', 'Status', 'HandledBy', 'HandleDate', 'CompletedDate', 'UpdatedBy', 'UpdatedDate', 'FraudType'],
+            defaultSort: { field: 'Username', direction: 'desc' },
+            paging: true,
+            useResizeManager: { height: 400 },
+            sendAlso: ko.computed(function() { return  [{ filter: getFilter() }]; })
+        }">
+
+        <column hidden data-value="@Id"/>
+        <column width="20">
+            <input type="checkbox" data-visible="@Folder=='ReCheck'"/>
+        </column>
+        <column title="Username" sort-field="Username" width="120">
+            <a data-id="@Id" style="color: #428bca" data-bind="click: $root.playerInfo" data-value="@Username">view</a>
+        </column>
+        <column title="Sign up date" width="120" data-value="@SignDate"/>
+        <column title="Duplicate check date" width="120" data-value="@DmcDate"/>
+        <column title="Folder" width="120" data-value="@Folder"/>
+        <column title="Description" width="120" data-value="@Description"/>
+        <column title="Status" width="120" data-value="@Status"/>
+        <column title="Handle Date" width="120" data-value="@HandleDate"/>
+        <column title="Completed Date" width="120" data-value="@CompletedDate"/>
+        <column title="Fraud Type" width="120" sort-field="FraudType">
+            <a data-visible="@Folder!='ReCheck'" data-value="@FraudType"></a><select data-visible="@Folder=='ReCheck'" data-bind="options: $root.fraudTypes, optionsText: 'name', optionsValue: 'id', event: {change: $root.onChange}"></select>
+        </column>
+    </div>
+    <div class="form-group" style="padding-top: 20px">
+        <label class="col-sm-3 control-label"><span>Remark</span></label>
+        <div class="col-sm-8 field-box">
+            <textarea class="form-control" data-bind="value: remarks"></textarea>
+        </div>
+    </div>
+</form>
+
+<div class="clearfix form-actions">
+    <div class="center">
+        <button type="submit" class="btn btn-primary btn-round" data-bind="click: update">Update</button>
+        <button type="submit" class="btn btn-primary btn-round" data-bind="click: close">Cancel</button>
+    </div>
+</div>

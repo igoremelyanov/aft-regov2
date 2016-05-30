@@ -1,0 +1,41 @@
+﻿<form role="form" class="form-horizontal">
+    <!-- ko foreach: Languages-->
+    <div class="form-group">
+        <label class="col-sm-3 control-label">
+            <strong data-bind="text: $data.languageName"></strong>
+        </label>
+        <div class="col-sm-8">
+            <p class="red form-control-static" data-bind="validationMessage: $data.hasMessage"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">
+            <em data-i18n="common.onSite"></em>
+        </label>
+        <div class="col-sm-8 field-box">
+            <input type="checkbox" data-bind="checked: $data.onSite"/>
+        </div>
+    </div>
+    <div class="form-group" data-bind="visible: $data.onSite">
+        <label class="col-sm-3 control-label">
+            <span data-i18n="app:common.subject"></span><span class="red">*</span>
+        </label>
+        <div class="col-sm-8">
+            <div class="rego-code-editor rego-code-editor-single-line">
+                <div data-bind="attr: {'id': $data.onSiteSubjectId }"></div>
+            </div>
+            <span class="red block" data-bind="validationMessage: $data.onSiteSubject"></span>
+        </div>
+    </div>
+    <div class="form-group" data-bind="visible: $data.onSite">
+        <label class="col-sm-3 control-label">
+            <span data-i18n="app:common.content"></span><span class="red">*</span>
+        </label>
+        <div class="col-sm-8">
+            <div class="rego-code-editor" data-bind="attr: {'id': $data.onSiteContentId }"></div>
+            <span class="red block" data-bind="validationMessage: $data.onSiteContent"></span>
+        </div>
+    </div>
+    <hr/>
+    <!-- /ko -->
+</form>

@@ -1,0 +1,25 @@
+﻿<div class="modal-content" style="width: 400px;">
+    <div class="modal-header">
+        <h4 data-bind="text: title"></h4>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-danger" data-bind="visible: error, text: error"></div>
+        <div class="alert alert-success" data-bind="visible: message, text: message"></div>
+        <form class="form-horizontal">
+            <div class="form-group" data-bind="visible: !submitted()">
+                <label class="col-sm-3 control-label">
+                    <span data-bind="text: form.label" />
+                </label>
+                <div class="col-sm-8">
+                    <textarea class="form-control" data-bind="attr: { id: form.ctrl }, value: form.fields[form.ctrl]" maxlength="200" autofocus />
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer" style="text-align: center">
+        <button class="btn btn-primary" data-bind="click: close, visible: true" data-i18n="app:common.close"></button>
+        <button class="btn btn-primary" data-bind="click: clear, visible: !submitted()" data-i18n="app:common.clear"></button>
+
+        <button class="btn btn-primary" data-bind="click: ok, visible: !submitted(), text: submitButtonText"></button>
+    </div>
+</div>

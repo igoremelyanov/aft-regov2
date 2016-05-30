@@ -1,0 +1,161 @@
+﻿<div class="form-group">
+    <label class="col-sm-3 control-label">
+        <span data-i18n="common.licensee"></span><span class="red">*</span>
+    </label>
+    <div class="col-sm-8">
+        <select class="form-control" data-bind="options: availableLicensees, optionsText: 'name', value: selectedLicensee, disable: !allowChangeBrand()"></select>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-sm-3 control-label">
+        <span data-i18n="common.brand"></span><span class="red">*</span>
+    </label>
+    <div class="col-sm-8">
+        <select class="form-control" data-bind="options: availableBrands, optionsText: 'name', value: selectedBrand, disable: !allowChangeBrand()"></select>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-sm-3 control-label">
+        <span data-i18n="common.searchAll"></span>
+    </label>
+    <div class="col-sm-8">
+        <input class="form-control" data-bind="value: SearchTerm, valueUpdate: 'input'" />
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-sm-3 control-label">
+        <span data-i18n="payment.level"></span>
+    </label>
+    <div class="col-sm-8">
+        <select class="form-control" data-bind="options: availablePaymentLevels, optionsValue: 'id', optionsText: 'name', optionsCaption: all(), value: PaymentLevelId"></select>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-sm-3 control-label">
+        <span data-i18n="common.vipLevel"></span>
+    </label>
+    <div class="col-sm-8">
+        <select class="form-control" data-bind="options: availableVipLevels, optionsValue: 'id', optionsText: 'name', optionsCaption: all(), value: VipLevelId"></select>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-sm-3 control-label">
+        <span data-i18n="common.playerStatus"></span>
+    </label>
+    <div class="col-sm-8">
+        <select class="form-control" data-bind="options: availableStatuses, optionsValue: 'value', optionsText: 'name', optionsCaption: all(), value: Status"></select>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-sm-3 control-label">
+        <span data-i18n="messaging.massMessage.registrationDateFrom"></span>
+    </label>
+    <div class="col-sm-8 field-box">
+        <div class="input-group">
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+            <input class="form-control" type="text" data-bind="datepicker: registrationDateFrom, value: registrationDateFrom" />
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-sm-3 control-label">
+        <span data-i18n="messaging.massMessage.registrationDateTo"></span>
+    </label>
+    <div class="col-sm-8 field-box">
+        <div class="input-group">
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+            <input class="form-control" type="text" data-bind="datepicker: registrationDateTo, value: registrationDateTo" />
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-sm-3 control-label">
+        <span data-i18n="common.players"></span>
+    </label>
+</div>
+<div id="mass-message-search-grid" data-bind="grid: {
+    source: config.adminApi('MassMessage/SearchPlayersList'),
+    fields: [
+        'Username',
+        'FirstName',
+        'LastName',
+        'Email',
+        'PhoneNumber',
+        'PaymentLevel',
+        'VipLevel',
+        'Status',
+        'DateRegistered',
+        'Selected'],
+    defaultSort: {
+        field: 'Username',
+        direction: 'asc' },
+    paging: true,
+    useResizeManager: {height: 400},
+    multiselect: true,
+    sendAlso: ko.computed(function(){
+        return [{
+            Id: Id,
+            BrandId: BrandId,
+            SearchTerm: SearchTerm,
+            PaymentLevelId: PaymentLevelId,
+            VipLevelId: VipLevelId,
+            PlayerStatus: Status,
+            RegistrationDateFrom: RegistrationDateFrom,
+            RegistrationDateTo: RegistrationDateTo}]
+    })
+}">
+    <column title="app:common.username" sort-field="Username" width="120" data-value="@Username" />
+    <column title="app:common.firstName" sort-field="FirstName" width="120" data-value="@FirstName" />
+    <column title="app:common.lastName" sort-field="LastName" width="120" data-value="@LastName" />
+    <column title="app:common.email" sort-field="Email" width="240" data-value="@Email" />
+    <column title="app:playerManager.list.mobileNumber" sort-field="PhoneNumber" width="120" data-value="@PhoneNumber" />
+    <column title="app:payment.level" sort-field="PaymentLevelName" width="120" data-value="@PaymentLevel" />
+    <column title="app:common.vipLevel" sort-field="VipLevelName" width="120" data-value="@VipLevel" />
+    <column title="app:common.status" sort-field="IsInactive" width="120" data-value="@Status" />
+    <column title="app:playerManager.list.registrationDate" sort-field="DateRegistered" width="180" data-value="@DateRegistered" />
+    <column hidden data-value="@Selected" />
+</div>
+<div class="form-group margin-top-15">
+    <label class="col-sm-3 control-label">
+        <span data-i18n="messaging.massMessage.recipients"></span><span class="red">*</span>
+    </label>
+    <div class="col-sm-8">
+        <p class="form-control-static red" data-bind="validationMessage: HasRecipients"></p>
+    </div>
+</div>
+<div id="mass-message-recipients-grid" data-bind="grid: {
+    source: config.adminApi('MassMessage/RecipientsList'),
+    fields: [
+        'Username',
+        'FirstName',
+        'LastName',
+        'Email',
+        'PhoneNumber',
+        'PaymentLevel',
+        'VipLevel',
+        'Status',
+        'DateRegistered'],
+    defaultSort: {
+        field: 'Username',
+        direction: 'asc' },
+    paging: true,
+    useResizeManager: {height: 400},
+    multiselect: true,
+    sendAlso: ko.computed(function(){
+        return [{ id: Id }]
+    })
+}">
+    <column title="app:common.username" sort-field="Username" width="120" data-value="@Username" />
+    <column title="app:common.firstName" sort-field="FirstName" width="120" data-value="@FirstName" />
+    <column title="app:common.lastName" sort-field="LastName" width="120" data-value="@LastName" />
+    <column title="app:common.email" sort-field="Email" width="240" data-value="@Email" />
+    <column title="app:playerManager.list.mobileNumber" sort-field="PhoneNumber" width="120" data-value="@PhoneNumber" />
+    <column title="app:payment.level" sort-field="PaymentLevelName" width="120" data-value="@PaymentLevel" />
+    <column title="app:common.vipLevel" sort-field="VipLevelName" width="120" data-value="@VipLevel" />
+    <column title="app:common.status" sort-field="IsInactive" width="120" data-value="@Status" />
+    <column title="app:playerManager.list.registrationDate" sort-field="DateRegistered" width="180" data-value="@DateRegistered" />
+</div>

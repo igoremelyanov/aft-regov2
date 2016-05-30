@@ -1,0 +1,320 @@
+﻿<div class="alert" data-bind="visible: message, text: message, css: messageClass"></div>
+<form class="form-horizontal" data-bind="validationOptions: { insertMessages: false }">
+    <div class="form-group">
+        <label data-bind="attr: { for: licenseeFieldId() }" class="col-sm-3 control-label"><span data-i18n="app:common.licensee"></span></label>
+        <div class="col-sm-8 field-box" data-bind="with: form.fields.licensee">
+            <select class="form-control" data-bind="attr: { id: $root.licenseeFieldId() }, options: options, optionsText: 'name', value: value, visible: !isReadOnly(), disable: $root.disabled"></select> <span class="red" data-bind="validationMessage: value"></span>
+            <p class="form-control-static" data-bind="visible: isReadOnly, text: display"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label data-bind="attr: { for: brandFieldId() }" class="col-sm-3 control-label"><span data-i18n="app:common.brand"></span> <span class="red">*</span></label>
+        <div class="col-sm-8 field-box" data-bind="with: form.fields.brand">
+            <select class="form-control" data-bind="attr: { id: $root.brandFieldId() }, options: options, optionsText: 'name', value: value, visible: !isReadOnly(), disable: $root.disabled"></select> <span class="red" data-bind="validationMessage: value"></span>
+            <p class="form-control-static" data-bind="visible: isReadOnly, text: display"></p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-offset-1">General Configuration</label>
+    </div>
+    <div>
+        <table class="table col-sm-offset-2" style="width: auto;">
+            <thead>
+                <tr>
+                    <th>Criteria</th>
+                    <th>Exact Match Score</th>
+                    <th>Fuzzy Match Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Device ID Similarity</td>
+                    <td><input class="form-control" maxLength="15" data-bind="value: form.fields.deviceIdExactScore.value, numericInt: form.fields.deviceIdExactScore.value, enable: !$root.submitted()"></td>
+                    <td><input class="form-control" maxLength="15" data-bind="value: form.fields.deviceIdFuzzyScore.value, numericInt: form.fields.deviceIdFuzzyScore.value, enable: !$root.submitted()"></td>
+                </tr>
+                <tr class="validation-row" data-bind="visible: !form.fields.deviceIdExactScore.value.isValid() || !form.fields.deviceIdFuzzyScore.value.isValid()">
+                    <td></td>
+                    <td>
+                        <div class="red" data-bind="validationMessage: form.fields.deviceIdExactScore.value"></div>
+                    </td>
+                    <td>
+                        <div class="red" data-bind="validationMessage: form.fields.deviceIdFuzzyScore.value"></div>
+                    </td>
+                    <!-- <td colspan=n"3" style="border-top:n none">
+                        <div>
+                            <div class="red" data-bind="validationMessage: form.fields.deviceIdExactScore.value"></div>
+                            <div class="red" data-bind="validationMessage: form.fields.deviceIdFuzzyScore.value"></div>
+                        </div>
+                    </td>-->
+                </tr>
+                <tr>
+                    <td>First Name Similarity</td>
+                    <td><input class="form-control" maxLength="15" data-bind="value: form.fields.firstNameExactScore.value, numericInt: form.fields.firstNameExactScore.value, enable: !$root.submitted()"></td>
+                    <td><input class="form-control" maxLength="15" data-bind="value: form.fields.firstNameFuzzyScore.value, numericInt: form.fields.firstNameFuzzyScore.value, enable: !$root.submitted()"></td>
+                </tr>
+                <tr class="validation-row" data-bind="visible: !form.fields.firstNameExactScore.value.isValid() || !form.fields.firstNameFuzzyScore.value.isValid()">
+                    <td></td>
+                    <td>
+                        <div class="red" data-bind="validationMessage: form.fields.firstNameExactScore.value"></div>
+                    </td>
+                    <td>
+                        <div class="red" data-bind="validationMessage: form.fields.firstNameFuzzyScore.value"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Last Name Similarity</td>
+                    <td><input class="form-control" maxLength="15" data-bind="value: form.fields.lastNameExactScore.value, numericInt: form.fields.lastNameExactScore.value, enable: !$root.submitted()"></td>
+                    <td><input class="form-control" maxLength="15" data-bind="value: form.fields.lastNameFuzzyScore.value, numericInt: form.fields.lastNameFuzzyScore.value, enable: !$root.submitted()"></td>
+                </tr>
+                <tr class="validation-row" data-bind="visible: !form.fields.lastNameExactScore.value.isValid() || !form.fields.lastNameFuzzyScore.value.isValid()">
+                    <td></td>
+                    <td>
+                        <div class="red" data-bind="validationMessage: form.fields.lastNameExactScore.value"></div>
+                    </td>
+                    <td>
+                        <div class="red" data-bind="validationMessage: form.fields.lastNameFuzzyScore.value"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Full Name Similarity</td>
+                    <td><input class="form-control" maxLength="15" data-bind="value: form.fields.fullNameExactScore.value, numericInt: form.fields.fullNameExactScore.value, enable: !$root.submitted()"></td>
+                    <td><input class="form-control" maxLength="15" data-bind="value: form.fields.fullNameFuzzyScore.value, numericInt: form.fields.fullNameFuzzyScore.value, enable: !$root.submitted()"></td>
+                </tr>
+                <tr class="validation-row" data-bind="visible: !form.fields.fullNameExactScore.value.isValid() || !form.fields.fullNameFuzzyScore.value.isValid()">
+                    <td></td>
+                    <td>
+                        <div class="red" data-bind="validationMessage: form.fields.fullNameExactScore.value"></div>
+                    </td>
+                    <td>
+                        <div class="red" data-bind="validationMessage: form.fields.fullNameFuzzyScore.value"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Username Similarity</td>
+                    <td><input class="form-control" maxLength="15" data-bind="value: form.fields.usernameExactScore.value, numericInt: form.fields.usernameExactScore.value, enable: false"></td>
+                    <td><input class="form-control" maxLength="15" data-bind="value: form.fields.usernameFuzzyScore.value, numericInt: form.fields.usernameFuzzyScore.value, enable: !$root.submitted()"></td>
+                </tr>
+                <tr class="validation-row" data-bind="visible: !form.fields.usernameExactScore.value.isValid() || !form.fields.usernameFuzzyScore.value.isValid()">
+                    <td></td>
+                    <td>
+                        <div class="red" data-bind="validationMessage: form.fields.usernameExactScore.value"></div>
+                    </td>
+                    <td>
+                        <div class="red" data-bind="validationMessage: form.fields.usernameFuzzyScore.value"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Address Similarity</td>
+                    <td><input class="form-control" maxLength="15" data-bind="value: form.fields.addressExactScore.value, numericInt: form.fields.addressExactScore.value, enable: !$root.submitted()"></td>
+                    <td><input class="form-control" maxLength="15" data-bind="value: form.fields.addressFuzzyScore.value, numericInt: form.fields.addressFuzzyScore.value, enable: !$root.submitted()"></td>
+                </tr>
+                <tr class="validation-row" data-bind="visible: !form.fields.addressExactScore.value.isValid() || !form.fields.addressFuzzyScore.value.isValid()">
+                    <td></td>
+                    <td>
+                        <div class="red" data-bind="validationMessage: form.fields.addressExactScore.value"></div>
+                    </td>
+                    <td>
+                        <div class="red" data-bind="validationMessage: form.fields.addressFuzzyScore.value"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Sign Up IP Similarity</td>
+                    <td><input class="form-control" maxLength="15" data-bind="value: form.fields.signUpIpExactScore.value, numericInt: form.fields.signUpIpExactScore.value, enable: !$root.submitted()"></td>
+                    <td><input class="form-control" maxLength="15" data-bind="value: form.fields.signUpIpFuzzyScore.value, numericInt: form.fields.signUpIpFuzzyScore.value, enable: !$root.submitted()"></td>
+                </tr>
+                <tr class="validation-row" data-bind="visible: !form.fields.signUpIpExactScore.value.isValid() || !form.fields.signUpIpFuzzyScore.value.isValid()">
+                    <td></td>
+                    <td>
+                        <div class="red" data-bind="validationMessage: form.fields.signUpIpExactScore.value"></div>
+                    </td>
+                    <td>
+                        <div class="red" data-bind="validationMessage: form.fields.signUpIpFuzzyScore.value"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Mobile Number Similarity</td>
+                    <td><input class="form-control" maxLength="15" data-bind="value: form.fields.mobilePhoneExactScore.value, numericInt: form.fields.mobilePhoneExactScore.value, enable: !$root.submitted()"></td>
+                    <td><input class="form-control" maxLength="15" data-bind="value: form.fields.mobilePhoneFuzzyScore.value, numericInt: form.fields.mobilePhoneFuzzyScore.value, enable: !$root.submitted()"></td>
+                </tr>
+                <tr class="validation-row" data-bind="visible: !form.fields.mobilePhoneExactScore.value.isValid() || !form.fields.mobilePhoneFuzzyScore.value.isValid()">
+                    <td></td>
+                    <td>
+                        <div class="red" data-bind="validationMessage: form.fields.mobilePhoneExactScore.value"></div>
+                    </td>
+                    <td>
+                        <div class="red" data-bind="validationMessage: form.fields.mobilePhoneFuzzyScore.value"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Date Of Birth Similarity</td>
+                    <td><input class="form-control" maxLength="15" data-bind="value: form.fields.dateOfBirthExactScore.value, numericInt: form.fields.dateOfBirthExactScore.value, enable: !$root.submitted()"></td>
+                    <td><input class="form-control" maxLength="15" data-bind="value: form.fields.dateOfBirthFuzzyScore.value, numericInt: form.fields.dateOfBirthFuzzyScore.value, enable: !$root.submitted()"></td>
+                </tr>
+                <tr class="validation-row" data-bind="visible: !form.fields.dateOfBirthExactScore.value.isValid() || !form.fields.dateOfBirthFuzzyScore.value.isValid()">
+                    <td></td>
+                    <td>
+                        <div class="red" data-bind="validationMessage: form.fields.dateOfBirthExactScore.value"></div>
+                    </td>
+                    <td>
+                        <div class="red" data-bind="validationMessage: form.fields.dateOfBirthFuzzyScore.value"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Email Address Similarity</td>
+                    <td><input class="form-control" maxLength="15" data-bind="value: form.fields.emailAddressExactScore.value, numericInt: form.fields.emailAddressExactScore.value, enable: !$root.submitted()"></td>
+                    <td><input class="form-control" maxLength="15" data-bind="value: form.fields.emailAddressFuzzyScore.value, numericInt: form.fields.emailAddressFuzzyScore.value, enable: !$root.submitted()"></td>
+                </tr>
+                <tr class="validation-row" data-bind="visible: !form.fields.emailAddressExactScore.value.isValid() || !form.fields.emailAddressFuzzyScore.value.isValid()">
+                    <td></td>
+                    <td>
+                        <div class="red" data-bind="validationMessage: form.fields.emailAddressExactScore.value"></div>
+                    </td>
+                    <td>
+                        <div class="red" data-bind="validationMessage: form.fields.emailAddressFuzzyScore.value"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Zip Code Similarity</td>
+                    <td><input class="form-control" maxLength="15" data-bind="value: form.fields.zipCodeExactScore.value, numericInt: form.fields.zipCodeExactScore.value, enable: !$root.submitted()"></td>
+                    <td><input class="form-control" maxLength="15" data-bind="value: form.fields.zipCodeFuzzyScore.value, numericInt: form.fields.zipCodeFuzzyScore.value, enable: !$root.submitted()"></td>
+                </tr>
+                <tr class="validation-row" data-bind="visible: !form.fields.zipCodeExactScore.value.isValid() || !form.fields.zipCodeFuzzyScore.value.isValid()">
+                    <td></td>
+                    <td>
+                        <div class="red" data-bind="validationMessage: form.fields.zipCodeExactScore.value"></div>
+                    </td>
+                    <td>
+                        <div class="red" data-bind="validationMessage: form.fields.zipCodeFuzzyScore.value"></div>
+                    </td>
+                </tr>
+                <tr class="info">
+                    <td>Total Score</td>
+                    <td><input class="form-control" maxLength="15" data-bind="value: totalExactScore, enable: false"></td>
+                    <td><input class="form-control" maxLength="15" data-bind="value: totalFuzzyScore, enable: false"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-offset-1">Sign Up Queue Folder<span class="red">*</span></label>
+    </div>
+    <div>
+        <table class="table col-sm-offset-2" style="width: auto">
+            <thead>
+                <tr>
+                    <th>Folder</th>
+                    <th colspan="2">
+                        <div align="center">Score Range</div>
+                        <div align="center">From-To</div>
+                    </th>
+                    <th>System Action</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>No Handling<span class="red">*</span></td>
+                    <td>
+                        <input class="form-control" maxlength="15" data-bind="value: form.fields.noHandlingScoreMin.value, numericInt: form.fields.noHandlingScoreMin.value, enable: !$root.submitted()">
+                    </td>
+                    <td>
+                        <input class="form-control" maxlength="15" data-bind="value: form.fields.noHandlingScoreMax.value, numericInt: form.fields.noHandlingScoreMax.value, enable: !$root.submitted()">
+                    </td>
+                    <td>
+                        <select data-bind="options: actions, optionsText: 'text', optionsValue: 'value', value: form.fields.noHandlingSystemAction.value, enable: !$root.submitted()"></select>
+                    </td>
+                    <td>
+                        <input type="text" data-bind="value: form.fields.noHandlingDescr.value, enable: !$root.submitted()" />
+                    </td>
+                </tr>
+                <tr class="validation-row">
+                    <td></td>
+                    <td>
+                        <div class="red" data-bind="validationMessage: form.fields.noHandlingScoreMin.value"></div>
+                    </td>
+                    <td>
+                        <div class="red" data-bind="validationMessage: form.fields.noHandlingScoreMax.value"></div>
+                    </td>
+                    <td></td>
+                    <td>
+                        <div class="red" data-bind="validationMessage: form.fields.noHandlingDescr.value"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Recheck<span class="red">*</span></td>
+                    <td>
+                        <input class="form-control" maxlength="15" data-bind="value: form.fields.recheckScoreMin.value, numericInt: form.fields.recheckScoreMin.value, enable: !$root.submitted()">
+                    </td>
+                    <td>
+                        <input class="form-control" maxlength="15" data-bind="value: form.fields.recheckScoreMax.value, numericInt: form.fields.recheckScoreMax.value, enable: !$root.submitted()">
+                    </td>
+                    <td>
+                        <select data-bind="options: actions, optionsText: 'text', optionsValue: 'value', value: form.fields.recheckSystemAction.value, enable: !$root.submitted()"></select>
+                    </td>
+                    <td>
+                        <input type="text" data-bind="value: form.fields.recheckDescr.value, enable: !$root.submitted()" />
+                    </td>
+                </tr>
+                <tr class="validation-row">
+                    <td></td>
+                    <td>
+                        <div class="red" data-bind="validationMessage: form.fields.recheckScoreMin.value, enable: !$root.submitted()"></div>
+                    </td>
+                    <td>
+                        <div class="red" data-bind="validationMessage: form.fields.recheckScoreMax.value, enable: !$root.submitted()"></div>
+                    </td>
+                    <td></td>
+                    <td>
+                        <div class="red" data-bind="validationMessage: form.fields.recheckDescr.value"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Fraudulent<span class="red">*</span></td>
+                    <td>
+                        <input class="form-control" maxlength="15" data-bind="value: form.fields.fraudulentScoreMin.value, numericInt: form.fields.fraudulentScoreMin.value, enable: !$root.submitted()">
+                    </td>
+                    <td>
+                        <input class="form-control" maxlength="15" data-bind="value: form.fields.fraudulentScoreMax.value, numericInt: form.fields.fraudulentScoreMax.value, enable: false">
+                    </td>
+                    <td>
+                        <select data-bind="options: actions, optionsText: 'text', optionsValue: 'value', value: form.fields.fraudulentSystemAction.value, enable: !$root.submitted()"></select>
+                    </td>
+                    <td>
+                        <input type="text" data-bind="value: form.fields.fraudulentDescr.value, enable: !$root.submitted()" />
+                    </td>
+                </tr>
+                <tr class="validation-row">
+                    <td></td>
+                    <td>
+                        <div class="red" data-bind="validationMessage: form.fields.fraudulentScoreMin.value"></div>
+                    </td>
+                    <td>
+                        <div class="red" data-bind="validationMessage: form.fields.fraudulentScoreMax.value"></div>
+                    </td>
+                    <td></td>
+                    <td>
+                        <div class="red" data-bind="validationMessage: form.fields.fraudulentDescr.value"></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="clearfix form-actions">
+        <div class="center">
+            <button type="button" class="btn btn-default btn-round" data-bind="click: close" data-i18n="app:common.close"></button>
+            &nbsp; &nbsp; &nbsp;
+            <button type="button" class="btn btn-primary btn-round" data-bind="click: clear, visible: !submitted()" data-i18n="app:common.clear"></button>
+            &nbsp; &nbsp; &nbsp;
+            <button type="submit" class="btn btn-primary btn-round" data-bind="click: save, visible: !submitted()" data-i18n="app:common.save"></button>
+        </div>
+    </div>
+</form>
+
+<style>
+    .validation-row > td {
+        border-top: none !important;
+    }
+</style>

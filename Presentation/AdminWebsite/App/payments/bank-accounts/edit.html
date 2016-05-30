@@ -1,0 +1,266 @@
+﻿<div>
+    <div data-bind="visible: message, text: message, css: messageClass"></div>
+
+    <form role="form" class="form-horizontal" data-bind="validationOptions: { insertMessages: false }">
+
+        <div class="form-group">
+            <div class="col-sm-8 col-sm-offset-3">
+                <span class5="red" data-bind="validationMessage: Model.id"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">
+                <span data-i18n="app:common.licensee"></span><span class="red">*</span>
+            </label>
+            <div class="col-sm-8">
+                <span data-bind="text: Model.licenseeName, visible: Model.isActive() || submitted()"></span>
+                <select class="form-control" data-bind="options: Model.licensees, value: Model.licenseeId, optionsText: 'name', optionsValue: 'id', visible: !Model.isActive() && !submitted()"></select>
+                <span class5="red" data-bind="validationMessage: Model.licenseeId"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">
+                <span data-i18n="app:common.brand"></span><span class="red">*</span>
+            </label>
+            <div class="col-sm-8">
+                <span data-bind="text: Model.brandName, visible: Model.isActive() || submitted()"></span>
+                <select class="form-control" data-bind="options: Model.brands, value: Model.brandId, optionsText: 'name', optionsValue: 'id', visible: !Model.isActive() && !submitted()"></select>
+                <span class="red" data-bind="validationMessage: Model.brandId"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">
+                <span data-i18n="app:common.currency"></span>
+                <span class="red">*</span>
+            </label>
+            <div class="col-sm-8">
+                <span data-bind="text: Model.currencyCode, visible: Model.isActive() || submitted()"></span>
+                <select class="form-control" data-bind="options: Model.currencies, value: Model.currencyCode, optionsText: 'code', optionsValue: 'code', visible: !Model.isActive() && !submitted()"></select>
+                <span class="red" data-bind="validationMessage: Model.currencyCode"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">
+                <span data-i18n="app:banks.bankAccountId"></span><span class="red">*</span>
+            </label>
+            <div class="col-sm-8">
+                <span data-bind="text: Model.bankAccountId, visible: Model.isActive() || submitted()"></span>
+                <input type="text" class="form-control" data-bind="value: Model.bankAccountId, visible: !Model.isActive() && !submitted()" maxlength="50" />
+                <span class="red" data-bind="validationMessage: Model.bankAccountId"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">
+                <span data-i18n="app:banks.bankName"></span><span class="red">*</span>
+            </label>
+            <div class="col-sm-8">
+                <span data-bind="text: Model.bankName, visible: Model.isActive() || submitted()"></span>
+                <select class="form-control" data-bind="options: Model.banks, value: Model.bankId, optionsText: 'name', optionsValue: 'id', visible: !Model.isActive() && !submitted()"></select>
+                <span class5="red" data-bind="validationMessage: Model.bankId"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">
+                <span data-i18n="app:banks.bankAccountNumber"></span><span class="red">*</span>
+            </label>
+            <div class="col-sm-8">
+                <span data-bind="text: Model.bankAccountNumber, visible: Model.isActive() || submitted()"></span>
+                <input type="text" class="form-control" data-bind="value: Model.bankAccountNumber, visible: !Model.isActive() && !submitted()" maxlength="50" />
+                <span class="red" data-bind="validationMessage: Model.bankAccountNumber"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">
+                <span data-i18n="app:banks.bankAccountName"></span><span class="red">*</span>
+            </label>
+            <div class="col-sm-8">
+                <span data-bind="text: Model.bankAccountName, visible: Model.isActive() || submitted()"></span>
+                <input type="text" class="form-control" data-bind="value: Model.bankAccountName, visible: !Model.isActive() && !submitted()" maxlength="50" />
+                <span class="red" data-bind="validationMessage: Model.bankAccountName"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">
+                <span data-i18n="app:banks.province"></span><span class="red">*</span>
+            </label>
+            <div class="col-sm-8">
+                <span data-bind="text: Model.bankAccountProvince, visible: Model.isActive() || submitted()"></span>
+                <input type="text" class="form-control" data-bind="value: Model.bankAccountProvince, visible: !Model.isActive() && !submitted()" maxlength="50" />
+                <span class="red" data-bind="validationMessage: Model.bankAccountProvince"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">
+                <span data-i18n="app:banks.branch"></span><span class="red">*</span>
+            </label>
+            <div class="col-sm-8">
+                <span data-bind="text: Model.bankAccountBranch, visible: Model.isActive() || submitted()"></span>
+                <input type="text" class="form-control" data-bind="value: Model.bankAccountBranch, visible: !Model.isActive() && !submitted()" maxlength="50" />
+                <span class="red" data-bind="validationMessage: Model.bankAccountBranch"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">
+                <span data-i18n="app:banks.bankAccountType"></span><span class="red">*</span>
+            </label>
+            <div class="col-sm-8">
+                <select class="form-control" data-bind="options: Model.bankAccountAccountTypes, value: Model.bankAccountAccountTypeId, optionsText: 'name', optionsValue: 'id'"></select>
+                <span class5="red" data-bind="validationMessage: Model.bankAccountAccountTypeId"></span>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">
+                <span data-i18n="app:banks.supplierName"></span><span class="red">*</span>
+            </label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" data-bind="value: Model.supplierName, visible: !submitted()" maxlength="50" />
+                <span class="red" data-bind="validationMessage: Model.supplierName"></span>
+                <p class="form-control-static" data-bind="text: Model.supplierName, visible: submitted"></p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">
+                <span data-i18n="app:banks.contactNumber"></span><span class="red">*</span>
+            </label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" data-bind="value: Model.contactNumber, visible: !submitted()" maxlength="20" />
+                <span class="red" data-bind="validationMessage: Model.contactNumber"></span>
+                <p class="form-control-static" data-bind="text: Model.contactNumber, visible: submitted"></p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">
+                <span data-i18n="app:banks.usbCode"></span><span class="red">*</span>
+            </label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" data-bind="value: Model.usbCode, visible: !submitted()" maxlength="20" />
+                <span class="red" data-bind="validationMessage: Model.usbCode"></span>
+                <p class="form-control-static" data-bind="text: Model.usbCode, visible: submitted"></p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">
+                <span data-i18n="app:banks.purchasedDate"></span><span data-bind="visible: !submitted()" class="red">*</span>
+            </label>
+            <div class="field-box col-sm-8">
+                <div class="input-group" data-bind="visible: !Model.isActive() && !submitted()">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                    <input class="form-control" type="text" data-bind="datepicker: Model.purchasedDate, value: Model.purchasedDate">
+                </div>
+                <span class="red" data-bind="validationMessage: Model.purchasedDate"></span>
+                <p class="form-control-static" data-bind="text: Model.purchasedDate, visible: Model.isActive() || submitted()"></p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">
+                <span data-i18n="app:banks.utilizationDate"></span><span data-bind="visible: !submitted()" class="red">*</span>
+            </label>
+            <div class="field-box col-sm-8">
+                <div class="input-group" data-bind="visible: !submitted()">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                    <input class="form-control" type="text" data-bind="datepicker: Model.utilizationDate, value: Model.utilizationDate">
+                </div>
+                <span class="red" data-bind="validationMessage: Model.utilizationDate"></span>
+                <p class="form-control-static" data-bind="text: Model.utilizationDate, visible: submitted()"></p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">
+                <span data-i18n="app:banks.expirationDate"></span><span data-bind="visible: !submitted()" class="red">*</span>
+            </label>
+            <div class="field-box col-sm-8">
+                <div class="input-group" data-bind="visible: !submitted()">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                    <input class="form-control" type="text" data-bind="datepicker: Model.expirationDate, value: Model.expirationDate">
+                </div>
+                <span class="red" data-bind="validationMessage: Model.expirationDate"></span>
+                <p class="form-control-static" data-bind="text: Model.expirationDate, visible: submitted()"></p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label data-bind="attr: { for: Model.uploadId1FieldId() }" class="col-sm-3 control-label">ID Front Upload</label>
+            <div class="col-sm-8">
+                <div data-bind="visible: Model.uploadId1Src">
+                    <img style="width: 300px; height: 200px;" data-bind="attr: {src: Model.uploadId1Src}">
+                </div>
+                <div class="ace-file-input ace-file-multiple" data-bind="visible: !submitted()">
+                    <input type="file" data-bind="attr: { id: Model.uploadId1FieldId() }, value: Model.idFrontImage" name="uploadId1">
+                </div>
+                <span class="red" data-bind="validationMessage: Model.file1Src"></span>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label data-bind="attr: { for: Model.uploadId2FieldId() }" class="col-sm-3 control-label">ID Back Upload</label>
+            <div class="col-sm-8">
+                <div data-bind="visible: Model.uploadId2Src">
+                    <img style="width: 300px; height: 200px;" data-bind="attr: {src: Model.uploadId2Src}">
+                </div>
+                <div class="ace-file-input ace-file-multiple" data-bind="visible: !submitted()">
+                    <input type="file" data-bind="attr: { id: Model.uploadId2FieldId() }, value: Model.idBackImage" name="uploadId2">
+                </div>
+                <span class="red" data-bind="validationMessage: Model.file2Src"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label data-bind="attr: { for: Model.uploadId3FieldId() }" class="col-sm-3 control-label">ATM Card Upload</label>
+            <div class="col-sm-8">
+                <div data-bind="visible: Model.uploadId3Src">
+                    <img style="width: 300px; height: 200px;" data-bind="attr: {src: Model.uploadId3Src}">
+                </div>
+                <div class="ace-file-input ace-file-multiple" data-bind="visible: !submitted()">
+                    <input type="file" data-bind="attr: { id: Model.uploadId3FieldId() }, value: Model.atmCardImage" name="uploadId3">
+                </div>
+                <span class="red" data-bind="validationMessage: Model.file3Src"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">
+                <span data-i18n="app:common.remarks"></span><span class="red">*</span>
+            </label>
+            <div class="col-sm-8">
+                <p class="form-control-static" data-bind="text: Model.remarks, visible: submitted"></p>
+                <textarea class="form-control" data-bind="value: Model.remarks, visible: !submitted()" maxlength="200"></textarea>
+                <span class="red" data-bind="validationMessage: Model.remarks"></span>
+            </div>
+        </div>
+
+        <div class="clearfix form-actions">
+            <div class="center">
+                <button class="btn btn-white btn-round" data-bind="click: cancel" data-i18n="common.close"></button>
+                &nbsp; &nbsp; &nbsp;
+                <button class="btn btn-primary btn-round" data-bind="click: save, visible: !submitted()" data-i18n="common.save"></button>
+            </div>
+        </div>
+
+    </form>
+
+</div>

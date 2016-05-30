@@ -1,0 +1,85 @@
+﻿<div>
+    <div id="payment-settings-grid" data-bind="grid: {
+        source: '/PaymentSettings/List',
+        fields: [
+                'Brand.LicenseeName',
+                'Brand.Name',
+                'CurrencyCode',
+                'PaymentType',
+                'VipLevel',
+                'PaymentMethod',
+                'Enabled',
+                'MinAmountPerTransaction',
+                'MaxAmountPerTransaction',
+                'MaxAmountPerDay',
+                'MaxTransactionPerDay',
+                'MaxTransactionPerWeek',
+                'MaxTransactionPerMonth',
+                'CreatedBy',
+                'CreatedDate',
+                'UpdatedBy',
+                'UpdatedDate',
+                'EnabledBy',
+                'EnabledDate',
+                'DisabledBy',
+                'DisabledDate'
+            ],
+        filter: ko.computed(function() { return {
+            'Brand.Name': search()
+        }}),
+        defaultSort: { field: 'Brand.Name' },
+        paging: true,
+        useResizeManager: true,
+        useBrandFilter: true
+    }">
+
+        <header>
+            <div data-bind="gridHeader: { context: $data,
+            filters: [
+                ['Brand.LicenseeName', 'Licensee Name', 'list', licensees()],
+                ['Brand.Name', 'Brand Name', 'list', brands()],
+                ['PaymentType', 'Payment Type', 'list', paymentTypes()],
+                ['VipLevel', 'Vip Level', 'list', vipLevels()],
+                ['PaymentMethod', 'Payment Method', 'list', paymentMethods()],
+                ['CurrencyCode', 'Currency', 'list', currencies()],
+                ['Enabled' , 'Status', 'list', statuses()],
+                ['CreatedBy', 'Created By', 'text'],
+                ['UpdatedBy', 'Updated By', 'text']
+            ],
+            buttons: [
+                { name: 'new', click: openAddTab, visible: isAddAllowed, text: 'app:common.new', icon: 'plus' },
+                { name: 'edit', click: openEditTab, visible: isEditAllowed, enabled: rowId, text: 'app:common.edit', icon: 'pencil' },
+                { name: 'view', click: openViewTab, enabled: rowId, text: 'app:common.view', icon: 'file-text-o' },
+                { name: 'acticate', click: openActivateDialog, visible: isActivateAllowed, enabled: canActivate, text: 'app:common.activate', icon: 'check' },
+                { name: 'deactivate', click: openDeactivateDialog, visible: isDeactivateAllowed, enabled: canDeactivate, text: 'app:common.deactivate', icon: 'ban' },
+            ]
+        }"></div>
+        </header>
+
+        <column title="app:common.licensee" sort-field="Brand.LicenseeName" width="150" data-value="@['Brand.LicenseeName']" />
+        <column title="app:brand.name" sort-field="Brand.Name" width="150" data-value="@['Brand.Name']" />
+        <column title="app:common.currency" sort-field="CurrencyCode" width="150" data-value="@CurrencyCode" />
+        <column title="app:payment.settings.paymentType" sort-field="PaymentType" width="150" data-value="@PaymentType" />
+        <column title="app:common.vipLevel" sort-field="VipLevel" width="150" data-value="@VipLevel" />
+        <column title="app:payment.settings.paymentMethod" sort-field="PaymentMethod" width="150" data-value="@['PaymentMethod']" />
+
+        <column title="app:common.status" sort-field="Enabled" width="150" data-value="@Enabled" />
+
+        <column title="app:payment.settings.minAmountPerTransaction" sort-field="MinAmountPerTransaction" width="150" data-value="@MinAmountPerTransaction" />
+        <column title="app:payment.settings.maxAmountPerTransaction" sort-field="MaxAmountPerTransaction" width="150" data-value="@MaxAmountPerTransaction" />
+        <column title="app:payment.settings.maxAmountPerDay" sort-field="MaxAmountPerDay" width="150" data-value="@MaxAmountPerDay" />
+        <column title="app:payment.settings.maxTransactionPerDay" sort-field="MaxTransactionPerDay" width="150" data-value="@MaxTransactionPerDay" />
+        <column title="app:payment.settings.maxTransactionPerWeek" sort-field="MaxTransactionPerWeek" width="150" data-value="@MaxTransactionPerWeek" />
+        <column title="app:payment.settings.maxTransactionPerMonth" sort-field="MaxTransactionPerMonth" width="150" data-value="@MaxTransactionPerMonth" />
+
+        <column title="app:common.createdBy" sort-field="CreatedBy" width="150" data-value="@CreatedBy" />
+        <column title="app:common.dateCreated" sort-field="CreatedDate" width="150" data-value="@CreatedDate" />
+        <column title="app:common.updatedBy" sort-field="UpdatedBy" width="150" data-value="@UpdatedBy" />
+        <column title="app:common.dateUpdated" sort-field="UpdatedDate" width="150" data-value="@UpdatedDate" />
+        <column title="app:common.activatedBy" sort-field="EnabledBy" width="150" data-value="@EnabledBy" />
+        <column title="app:common.dateActivated" sort-field="EnabledDate" width="150" data-value="@EnabledDate" />
+        <column title="app:common.deactivatedBy" sort-field="DisabledBy" width="150" data-value="@DisabledBy" />
+        <column title="app:common.dateDeactivated" sort-field="DisabledDate" width="150" data-value="@DisabledDate" />
+    </div>
+    <div class="no-records" data-bind="visible: noRecordsFound">No records found</div>
+</div>

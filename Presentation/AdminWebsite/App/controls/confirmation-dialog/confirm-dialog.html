@@ -1,0 +1,16 @@
+﻿<div class="modal-content" style="width: 400px;">
+    <div class="modal-header">
+        <h3 data-bind="text: caption"></h3>
+    </div>
+    <div class="modal-body">
+        <form role="form" class="form-horizontal">
+            <div data-bind="text: question"></div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <div class="center">
+            <button class="btn btn-default btn-round" data-bind="click: noClick, text: noCaption"></button>
+            <button class="btn btn-primary btn-round" data-bind="click: yesClick, text: yesCaption"></button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+﻿<div id="signup-fraud-types-list" data-bind="grid: {
+        source: 'SignUpFraudTypes/list',
+        fields: ['Name', 'SystemAction', 'FraudRiskLevels', 'Remarks', 'CreatedBy', 'CreatedDate'],
+        filter: ko.computed(function() { return {  } }),
+        defaultSort: { field: 'CreatedBy', direction: 'desc' },
+        paging: true,
+        useResizeManager: { height: 400 }
+    }">
+    <header>
+        <div data-bind="gridHeader: { context: $data,
+            filters: [
+            ],
+            buttons: [
+                { name: 'new', click: create, text: 'New', icon: 'plus' },
+                { name: 'edit', click: edit, enabled: selectedRowId, text: 'Edit', icon: 'pencil' },
+                { name: 'view', click: view, text: 'View', enabled: selectedRowId, icon: 'file-text-o' }
+            ]
+        }"></div>
+    </header>
+    <column title="Name" width="180" data-value="@Name" />
+    <column title="SystemAction" width="180" data-value="@SystemAction" />
+    <column title="FraudRiskLevels" width="230" data-value="@FraudRiskLevels" />
+    <column title="Remarks" width="150" data-value="@Remarks" />
+    <column title="CreatedBy" width="150" data-value="@CreatedBy" />
+    <column title="CreatedDate" sort-field="DateCreated" width="140" data-value="@CreatedDate" />
+</div>

@@ -1,0 +1,63 @@
+﻿<div class="modal-content">
+    <div class="modal-header">
+        <h3>Do you want to apply the new sanction of the selected fraud type?</h3>
+    </div>
+    <div class="modal-body">
+        <form class="form-horizontal" data-bind="validationOptions: { insertMessages: false }">
+            <div class="form-group">
+                <div class="radio">
+                    <label>
+                        <input type="radio" class="ace" value="0" name="action" data-bind="checked: applySanctions" />
+                        <span class="lbl">Apply new sanctions</span>
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" class="ace" value="1" name="action" data-bind="checked: applySanctions" />
+                        <span class="lbl">Remove sanction</span>
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" class="ace" value="2" name="action" data-bind="checked: applySanctions" />
+                        <span class="lbl">Apply custom sanction</span>
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-1 col-sm-6" data-bind="visible: applySanctions() ==='2'">
+                    <div class="radio">
+                        <label>
+                            <input type="radio" class="ace" name="sanction" value="0" data-bind="checked: newSanction" />
+                            <span class="lbl">No handling</span>
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" class="ace" name="sanction" value="1" data-bind="checked: newSanction" />
+                            <span class="lbl">Freeze account</span>
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" class="ace" name="sanction" value="2" data-bind="checked: newSanction" />
+                            <span class="lbl">Deactivate bonus</span>
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" class="ace" name="sanction" value="3" data-bind="checked: newSanction" />
+                            <span class="lbl">Disable</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <div class="center">
+            <button class="btn btn-default btn-round" data-bind="click: update">Update</button>
+            <button class="btn btn-default btn-round" data-bind="click: cancel" data-i18n="common.close"></button>
+        </div>
+    </div>
+</div>

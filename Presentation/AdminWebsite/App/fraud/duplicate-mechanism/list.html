@@ -1,0 +1,25 @@
+﻿<div id="duplicate-configurations-list" data-bind="grid: {
+        source: 'DuplicateMechanism/List',
+        fields: ['LicenseeName', 'BrandName', 'CreatedBy', 'CreatedDate', 'UpdatedBy', 'UpdatedDate'],
+        defaultSort: { field: 'CreatedBy', direction: 'desc' },
+        paging: true,
+        useResizeManager: { height: 400 }
+    }">
+    <header>
+        <div data-bind="gridHeader: { context: $data,
+            filters: [
+            ],
+            buttons: [
+                { name: 'create', click: create, text: 'create', visible: isAddAllowed, icon: 'plus' },
+                { name: 'edit', click: edit, enabled: selectedRowId, text: 'edit', visible: isEditAllowed, icon: 'pencil' },
+                { name: 'view', click: view, text: 'view', enabled: selectedRowId, icon: 'file-text-o' }
+            ]
+        }"></div>
+    </header>
+    <column title="Licensee" sort-field="LicenseeName" width="180" data-value="@LicenseeName" />
+    <column title="Brand" sort-field="BrandName" width="180" data-value="@BrandName" />
+    <column title="CreatedBy" sort-field="CreatedBy" width="120" data-value="@CreatedBy" />
+    <column title="CreatedDate" sort-field="CreatedDate" width="120" data-value="@CreatedDate" />
+    <column title="UpdatedBy" sort-field="UpdatedBy" width="120" data-value="@UpdatedBy" />
+    <column title="UpdatedDate" sort-field="UpdatedDate" width="120" data-value="@UpdatedDate" />
+</div>

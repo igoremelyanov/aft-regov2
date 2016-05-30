@@ -1,0 +1,27 @@
+﻿<div id="risk-profile-check-list" data-bind="grid: {
+        source: 'RiskProfileCheck/list',
+        fields: ['LicenseeName', 'BrandName', 'Currency', 'VipLevel', 'Criteria', 'CreatedBy', 'CreatedDate'],
+        filter: ko.computed(function() { return { 'Brand.Name': search() }; }),
+        defaultSort: { field: 'CreatedBy', direction: 'desc' },
+        paging: true,
+        useResizeManager: { height: 400 }
+    }">
+    <header>
+        <div data-bind="gridHeader: { context: $data,
+            filters: [
+            ],
+            buttons: [
+                { name: 'new', click: create, text: 'New', icon: 'plus' },
+                { name: 'edit', click: edit, enabled: selectedRowId, text: 'Edit', icon: 'pencil' },
+                { name: 'view', click: view, text: 'View', enabled: selectedRowId, icon: 'file-text-o' }
+            ]
+        }"></div>
+    </header>
+    <column title="Licensee" width="180" data-value="@LicenseeName" />
+    <column title="Brand" sort-field="Brand.Name" width="180" data-value="@BrandName" />
+    <column title="Currency" sort-field="Currency" width="230" data-value="@Currency" />
+    <column title="VipLevel" width="150" data-value="@VipLevel" />
+    <column title="Criteria" width="150" data-value="@Criteria" />
+    <column title="CreatedBy" width="120" data-value="@CreatedBy" />
+    <column title="CreatedDate" sort-field="DateCreated" width="120" data-value="@CreatedDate" />
+</div>
