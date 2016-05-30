@@ -1,0 +1,758 @@
+﻿[
+  {
+    "outputFile": "App/fraud/verification/edit.js",
+    "inputFile": "App/fraud/verification/edit.coffee"
+  },
+  {
+    "outputFile": "App/fraud/verification/list.js",
+    "inputFile": "App/fraud/verification/list.coffee"
+  },
+  {
+    "outputFile": "App/payments/level-manager/list.js",
+    "inputFile": "App/payments/level-manager/list.coffee"
+  },
+  {
+    "outputFile": "App/withdrawal/verification-queue-list.js",
+    "inputFile": "App/withdrawal/verification-queue-list.coffee"
+  },
+  {
+    "outputFile": "App/withdrawal/withdrawal-log-dialog.js",
+    "inputFile": "App/withdrawal/withdrawal-log-dialog.coffee"
+  },
+  {
+    "outputFile": "App/withdrawal/on-hold-queue-list.js",
+    "inputFile": "App/withdrawal/on-hold-queue-list.coffee"
+  },
+  {
+    "outputFile": "App/withdrawal/accept-queue-list.js",
+    "inputFile": "App/withdrawal/accept-queue-list.coffee"
+  },
+  {
+    "outputFile": "App/withdrawal/release-queue-list.js",
+    "inputFile": "App/withdrawal/release-queue-list.coffee"
+  },
+  {
+    "outputFile": "App/withdrawal/withdrawal-verify.js",
+    "inputFile": "App/withdrawal/withdrawal-verify.coffee"
+  },
+  {
+    "outputFile": "App/fraud/risk-profile-check/edit.js",
+    "inputFile": "App/fraud/risk-profile-check/edit.coffee"
+  },
+  {
+    "outputFile": "App/fraud/duplicate-mechanism/edit.js",
+    "inputFile": "App/fraud/duplicate-mechanism/edit.coffee"
+  },
+  {
+    "outputFile": "App/player-manager/info/bonus/history.js",
+    "inputFile": "App/player-manager/info/bonus/history.coffee"
+  },
+  {
+    "outputFile": "App/player-manager/info/bonus/view-redemption.js",
+    "inputFile": "App/player-manager/info/bonus/view-redemption.coffee"
+  },
+  {
+    "outputFile": "App/player-manager/info/bonus/issue.js",
+    "inputFile": "App/player-manager/info/bonus/issue.coffee"
+  },
+  {
+    "outputFile": "App/widgets/actionButtons/viewmodel.js",
+    "inputFile": "App/widgets/actionButtons/viewmodel.coffee"
+  },
+  {
+    "outputFile": "App/player-manager/offline-deposit/add-request.js",
+    "inputFile": "App/player-manager/offline-deposit/add-request.coffee"
+  },
+  {
+    "outputFile": "App/payments/banks/view.js",
+    "inputFile": "App/payments/banks/view.coffee"
+  },
+  {
+    "outputFile": "App/admin/admin-activity-log/list.js",
+    "inputFile": "App/admin/admin-activity-log/list.coffee"
+  },
+  {
+    "outputFile": "App/admin/admin-activity-log/remark-dialog.js",
+    "inputFile": "App/admin/admin-activity-log/remark-dialog.coffee"
+  },
+  {
+    "outputFile": "App/admin/admin-authentication-log/list.js",
+    "inputFile": "App/admin/admin-authentication-log/list.coffee"
+  },
+  {
+    "outputFile": "App/admin/admin-authentication-log/request-headers.js",
+    "inputFile": "App/admin/admin-authentication-log/request-headers.coffee"
+  },
+  {
+    "outputFile": "App/admin/admin-manager/dialogs/reset-password-dialog.js",
+    "inputFile": "App/admin/admin-manager/dialogs/reset-password-dialog.coffee"
+  },
+  {
+    "outputFile": "App/admin/admin-manager/dialogs/user-status-dialog.js",
+    "inputFile": "App/admin/admin-manager/dialogs/user-status-dialog.coffee"
+  },
+  {
+    "outputFile": "App/admin/admin-manager/model/user-model.js",
+    "inputFile": "App/admin/admin-manager/model/user-model.coffee"
+  },
+  {
+    "outputFile": "App/admin/admin-manager/add-user.js",
+    "inputFile": "App/admin/admin-manager/add-user.coffee"
+  },
+  {
+    "outputFile": "App/admin/admin-manager/edit-user.js",
+    "inputFile": "App/admin/admin-manager/edit-user.coffee"
+  },
+  {
+    "outputFile": "App/admin/admin-manager/list.js",
+    "inputFile": "App/admin/admin-manager/list.coffee"
+  },
+  {
+    "outputFile": "App/admin/admin-manager/reset-password.js",
+    "inputFile": "App/admin/admin-manager/reset-password.coffee"
+  },
+  {
+    "outputFile": "App/admin/admin-manager/view-user.js",
+    "inputFile": "App/admin/admin-manager/view-user.coffee"
+  },
+  {
+    "outputFile": "App/admin/identification-document-settings/model/model.js",
+    "inputFile": "App/admin/identification-document-settings/model/model.coffee"
+  },
+  {
+    "outputFile": "App/admin/identification-document-settings/remarks-dialog/remarks-dialog.js",
+    "inputFile": "App/admin/identification-document-settings/remarks-dialog/remarks-dialog.coffee"
+  },
+  {
+    "outputFile": "App/admin/identification-document-settings/add.js",
+    "inputFile": "App/admin/identification-document-settings/add.coffee"
+  },
+  {
+    "outputFile": "App/admin/identification-document-settings/edit.js",
+    "inputFile": "App/admin/identification-document-settings/edit.coffee"
+  },
+  {
+    "outputFile": "App/admin/identification-document-settings/list.js",
+    "inputFile": "App/admin/identification-document-settings/list.coffee"
+  },
+  {
+    "outputFile": "App/admin/ip-regulations/admin/model/admin-ip-regulation-model.js",
+    "inputFile": "App/admin/ip-regulations/admin/model/admin-ip-regulation-model.coffee"
+  },
+  {
+    "outputFile": "App/admin/ip-regulations/admin/admin-add-edit-ip-regulation.js",
+    "inputFile": "App/admin/ip-regulations/admin/admin-add-edit-ip-regulation.coffee"
+  },
+  {
+    "outputFile": "App/admin/ip-regulations/admin/list.js",
+    "inputFile": "App/admin/ip-regulations/admin/list.coffee"
+  },
+  {
+    "outputFile": "App/admin/ip-regulations/base/ip-regulation-model-base.js",
+    "inputFile": "App/admin/ip-regulations/base/ip-regulation-model-base.coffee"
+  },
+  {
+    "outputFile": "App/admin/ip-regulations/brand/model/brand-ip-regulation-model.js",
+    "inputFile": "App/admin/ip-regulations/brand/model/brand-ip-regulation-model.coffee"
+  },
+  {
+    "outputFile": "App/admin/ip-regulations/brand/brand-add-edit-ip-regulation.js",
+    "inputFile": "App/admin/ip-regulations/brand/brand-add-edit-ip-regulation.coffee"
+  },
+  {
+    "outputFile": "App/admin/ip-regulations/brand/list.js",
+    "inputFile": "App/admin/ip-regulations/brand/list.coffee"
+  },
+  {
+    "outputFile": "App/admin/member-authentication-log/list.js",
+    "inputFile": "App/admin/member-authentication-log/list.coffee"
+  },
+  {
+    "outputFile": "App/admin/role-manager/helpers/grid-helper.js",
+    "inputFile": "App/admin/role-manager/helpers/grid-helper.coffee"
+  },
+  {
+    "outputFile": "App/admin/role-manager/model/role-model.js",
+    "inputFile": "App/admin/role-manager/model/role-model.coffee"
+  },
+  {
+    "outputFile": "App/admin/role-manager/add-role.js",
+    "inputFile": "App/admin/role-manager/add-role.coffee"
+  },
+  {
+    "outputFile": "App/admin/role-manager/edit-role.js",
+    "inputFile": "App/admin/role-manager/edit-role.coffee"
+  },
+  {
+    "outputFile": "App/admin/role-manager/list.js",
+    "inputFile": "App/admin/role-manager/list.coffee"
+  },
+  {
+    "outputFile": "App/admin/role-manager/view-role.js",
+    "inputFile": "App/admin/role-manager/view-role.coffee"
+  },
+  {
+    "outputFile": "App/base/base-grid-viewmodel.js",
+    "inputFile": "App/base/base-grid-viewmodel.coffee"
+  },
+  {
+    "outputFile": "App/base/base-model.js",
+    "inputFile": "App/base/base-model.coffee"
+  },
+  {
+    "outputFile": "App/base/base-view-model.js",
+    "inputFile": "App/base/base-view-model.coffee"
+  },
+  {
+    "outputFile": "App/binders/visibleAnimated.js",
+    "inputFile": "App/binders/visibleAnimated.coffee"
+  },
+  {
+    "outputFile": "App/bonus/bonus-manager/activate-dialog.js",
+    "inputFile": "App/bonus/bonus-manager/activate-dialog.coffee"
+  },
+  {
+    "outputFile": "App/bonus/bonus-manager/add-edit-bonus.js",
+    "inputFile": "App/bonus/bonus-manager/add-edit-bonus.coffee"
+  },
+  {
+    "outputFile": "App/bonus/bonus-manager/list.js",
+    "inputFile": "App/bonus/bonus-manager/list.coffee"
+  },
+  {
+    "outputFile": "App/bonus/bonus-manager/bonusBase.js",
+    "inputFile": "App/bonus/bonus-manager/bonusBase.coffee"
+  },
+  {
+    "outputFile": "App/bonus/bonus-manager/view-bonus.js",
+    "inputFile": "App/bonus/bonus-manager/view-bonus.coffee"
+  },
+  {
+    "outputFile": "App/bonus/template-manager/availability.js",
+    "inputFile": "App/bonus/template-manager/availability.coffee"
+  },
+  {
+    "outputFile": "App/bonus/template-manager/changeTracker.js",
+    "inputFile": "App/bonus/template-manager/changeTracker.coffee"
+  },
+  {
+    "outputFile": "App/bonus/template-manager/info.js",
+    "inputFile": "App/bonus/template-manager/info.coffee"
+  },
+  {
+    "outputFile": "App/bonus/template-manager/list.js",
+    "inputFile": "App/bonus/template-manager/list.coffee"
+  },
+  {
+    "outputFile": "App/bonus/template-manager/notification.js",
+    "inputFile": "App/bonus/template-manager/notification.coffee"
+  },
+  {
+    "outputFile": "App/bonus/template-manager/rewardTier.js",
+    "inputFile": "App/bonus/template-manager/rewardTier.coffee"
+  },
+  {
+    "outputFile": "App/bonus/template-manager/rules.js",
+    "inputFile": "App/bonus/template-manager/rules.coffee"
+  },
+  {
+    "outputFile": "App/bonus/template-manager/summary.js",
+    "inputFile": "App/bonus/template-manager/summary.coffee"
+  },
+  {
+    "outputFile": "App/bonus/template-manager/wagering.js",
+    "inputFile": "App/bonus/template-manager/wagering.coffee"
+  },
+  {
+    "outputFile": "App/bonus/template-manager/wizard.js",
+    "inputFile": "App/bonus/template-manager/wizard.coffee"
+  },
+  {
+    "outputFile": "App/bonus/bonusCommon.js",
+    "inputFile": "App/bonus/bonusCommon.coffee"
+  },
+  {
+    "outputFile": "App/bonus/dateBinders.js",
+    "inputFile": "App/bonus/dateBinders.coffee"
+  },
+  {
+    "outputFile": "App/brand/brand-manager/model/brand-model.js",
+    "inputFile": "App/brand/brand-manager/model/brand-model.coffee"
+  },
+  {
+    "outputFile": "App/brand/brand-manager/list.js",
+    "inputFile": "App/brand/brand-manager/list.coffee"
+  },
+  {
+    "outputFile": "App/brand/currencyexchange-manager/model/currencyexchange-model.js",
+    "inputFile": "App/brand/currencyexchange-manager/model/currencyexchange-model.coffee"
+  },
+  {
+    "outputFile": "App/brand/currencyexchange-manager/add-currencyexchange.js",
+    "inputFile": "App/brand/currencyexchange-manager/add-currencyexchange.coffee"
+  },
+  {
+    "outputFile": "App/brand/currencyexchange-manager/edit-currencyexchange.js",
+    "inputFile": "App/brand/currencyexchange-manager/edit-currencyexchange.coffee"
+  },
+  {
+    "outputFile": "App/brand/currencyexchange-manager/list.js",
+    "inputFile": "App/brand/currencyexchange-manager/list.coffee"
+  },
+  {
+    "outputFile": "App/brand/currencyexchange-manager/view-currencyexchange.js",
+    "inputFile": "App/brand/currencyexchange-manager/view-currencyexchange.coffee"
+  },
+  {
+    "outputFile": "App/brand/translation-manager/dialogs/status-dialog.js",
+    "inputFile": "App/brand/translation-manager/dialogs/status-dialog.coffee"
+  },
+  {
+    "outputFile": "App/brand/translation-manager/model/add-content-translation-model.js",
+    "inputFile": "App/brand/translation-manager/model/add-content-translation-model.coffee"
+  },
+  {
+    "outputFile": "App/brand/translation-manager/model/content-translation-model.js",
+    "inputFile": "App/brand/translation-manager/model/content-translation-model.coffee"
+  },
+  {
+    "outputFile": "App/brand/translation-manager/model/edit-content-translation-model.js",
+    "inputFile": "App/brand/translation-manager/model/edit-content-translation-model.coffee"
+  },
+  {
+    "outputFile": "App/brand/translation-manager/add-translation.js",
+    "inputFile": "App/brand/translation-manager/add-translation.coffee"
+  },
+  {
+    "outputFile": "App/brand/translation-manager/edit-translation.js",
+    "inputFile": "App/brand/translation-manager/edit-translation.coffee"
+  },
+  {
+    "outputFile": "App/brand/translation-manager/list.js",
+    "inputFile": "App/brand/translation-manager/list.coffee"
+  },
+  {
+    "outputFile": "App/controls/confirmation-dialog/confirm-dialog.js",
+    "inputFile": "App/controls/confirmation-dialog/confirm-dialog.coffee"
+  },
+  {
+    "outputFile": "App/controls/test/filterstest.js",
+    "inputFile": "App/controls/test/filterstest.coffee"
+  },
+  {
+    "outputFile": "App/controls/test/gridtest.js",
+    "inputFile": "App/controls/test/gridtest.coffee"
+  },
+  {
+    "outputFile": "App/controls/assign.js",
+    "inputFile": "App/controls/assign.coffee"
+  },
+  {
+    "outputFile": "App/controls/column-selection-dialog.js",
+    "inputFile": "App/controls/column-selection-dialog.coffee"
+  },
+  {
+    "outputFile": "App/controls/filters.js",
+    "inputFile": "App/controls/filters.coffee"
+  },
+  {
+    "outputFile": "App/controls/grid.js",
+    "inputFile": "App/controls/grid.coffee"
+  },
+  {
+    "outputFile": "App/country-manager/list.js",
+    "inputFile": "App/country-manager/list.coffee"
+  },
+  {
+    "outputFile": "App/culture-manager/list.js",
+    "inputFile": "App/culture-manager/list.coffee"
+  },
+  {
+    "outputFile": "App/currency-manager/list.js",
+    "inputFile": "App/currency-manager/list.coffee"
+  },
+  {
+    "outputFile": "App/fraud/duplicate-mechanism/list.js",
+    "inputFile": "App/fraud/duplicate-mechanism/list.coffee"
+  },
+  {
+    "outputFile": "App/fraud/risk-profile-check/list.js",
+    "inputFile": "App/fraud/risk-profile-check/list.coffee"
+  },
+  {
+    "outputFile": "App/fraud/sign-up-queue/dialog.js",
+    "inputFile": "App/fraud/sign-up-queue/dialog.coffee"
+  },
+  {
+    "outputFile": "App/fraud/sign-up-queue/list.js",
+    "inputFile": "App/fraud/sign-up-queue/list.coffee"
+  },
+  {
+    "outputFile": "App/fraud/signup-fraud-types/edit.js",
+    "inputFile": "App/fraud/signup-fraud-types/edit.coffee"
+  },
+  {
+    "outputFile": "App/fraud/signup-fraud-types/list.js",
+    "inputFile": "App/fraud/signup-fraud-types/list.coffee"
+  },
+  {
+    "outputFile": "App/fraud/verification/WinningRule.js",
+    "inputFile": "App/fraud/verification/WinningRule.coffee"
+  },
+  {
+    "outputFile": "App/layout/document-container/document-container.js",
+    "inputFile": "App/layout/document-container/document-container.coffee"
+  },
+  {
+    "outputFile": "App/layout/shell/main-menu.js",
+    "inputFile": "App/layout/shell/main-menu.coffee"
+  },
+  {
+    "outputFile": "App/layout/shell/nav.js",
+    "inputFile": "App/layout/shell/nav.coffee"
+  },
+  {
+    "outputFile": "App/layout/shell/shell.js",
+    "inputFile": "App/layout/shell/shell.coffee"
+  },
+  {
+    "outputFile": "App/layout/shell/sidebar.js",
+    "inputFile": "App/layout/shell/sidebar.coffee"
+  },
+  {
+    "outputFile": "App/messaging/mass-message/content-message.js",
+    "inputFile": "App/messaging/mass-message/content-message.coffee"
+  },
+  {
+    "outputFile": "App/messaging/mass-message/content.js",
+    "inputFile": "App/messaging/mass-message/content.coffee"
+  },
+  {
+    "outputFile": "App/messaging/mass-message/history.js",
+    "inputFile": "App/messaging/mass-message/history.coffee"
+  },
+  {
+    "outputFile": "App/messaging/mass-message/recipients.js",
+    "inputFile": "App/messaging/mass-message/recipients.coffee"
+  },
+  {
+    "outputFile": "App/messaging/mass-message/send-dialog.js",
+    "inputFile": "App/messaging/mass-message/send-dialog.coffee"
+  },
+  {
+    "outputFile": "App/messaging/mass-message/wizard.js",
+    "inputFile": "App/messaging/mass-message/wizard.coffee"
+  },
+  {
+    "outputFile": "App/messaging/message-templates/models/activate-template-model.js",
+    "inputFile": "App/messaging/message-templates/models/activate-template-model.coffee"
+  },
+  {
+    "outputFile": "App/messaging/message-templates/models/add-template-model.js",
+    "inputFile": "App/messaging/message-templates/models/add-template-model.coffee"
+  },
+  {
+    "outputFile": "App/messaging/message-templates/models/edit-template-model.js",
+    "inputFile": "App/messaging/message-templates/models/edit-template-model.coffee"
+  },
+  {
+    "outputFile": "App/messaging/message-templates/models/view-template-model.js",
+    "inputFile": "App/messaging/message-templates/models/view-template-model.coffee"
+  },
+  {
+    "outputFile": "App/messaging/message-templates/activate-dialog.js",
+    "inputFile": "App/messaging/message-templates/activate-dialog.coffee"
+  },
+  {
+    "outputFile": "App/messaging/message-templates/add.js",
+    "inputFile": "App/messaging/message-templates/add.coffee"
+  },
+  {
+    "outputFile": "App/messaging/message-templates/edit.js",
+    "inputFile": "App/messaging/message-templates/edit.coffee"
+  },
+  {
+    "outputFile": "App/messaging/message-templates/list.js",
+    "inputFile": "App/messaging/message-templates/list.coffee"
+  },
+  {
+    "outputFile": "App/messaging/message-templates/view.js",
+    "inputFile": "App/messaging/message-templates/view.coffee"
+  },
+  {
+    "outputFile": "App/payments/bank-accounts/models/add-bank-account-model.js",
+    "inputFile": "App/payments/bank-accounts/models/add-bank-account-model.coffee"
+  },
+  {
+    "outputFile": "App/payments/bank-accounts/models/edit-bank-account-model.js",
+    "inputFile": "App/payments/bank-accounts/models/edit-bank-account-model.coffee"
+  },
+  {
+    "outputFile": "App/payments/bank-accounts/models/view-bank-account-model.js",
+    "inputFile": "App/payments/bank-accounts/models/view-bank-account-model.coffee"
+  },
+  {
+    "outputFile": "App/payments/bank-accounts/add.js",
+    "inputFile": "App/payments/bank-accounts/add.coffee"
+  },
+  {
+    "outputFile": "App/payments/bank-accounts/common.js",
+    "inputFile": "App/payments/bank-accounts/common.coffee"
+  },
+  {
+    "outputFile": "App/payments/bank-accounts/edit.js",
+    "inputFile": "App/payments/bank-accounts/edit.coffee"
+  },
+  {
+    "outputFile": "App/payments/bank-accounts/view.js",
+    "inputFile": "App/payments/bank-accounts/view.coffee"
+  },
+  {
+    "outputFile": "App/payments/banks/models/add-bank-model.js",
+    "inputFile": "App/payments/banks/models/add-bank-model.coffee"
+  },
+  {
+    "outputFile": "App/payments/banks/models/edit-bank-model.js",
+    "inputFile": "App/payments/banks/models/edit-bank-model.coffee"
+  },
+  {
+    "outputFile": "App/payments/banks/models/view-bank-model.js",
+    "inputFile": "App/payments/banks/models/view-bank-model.coffee"
+  },
+  {
+    "outputFile": "App/payments/banks/add.js",
+    "inputFile": "App/payments/banks/add.coffee"
+  },
+  {
+    "outputFile": "App/payments/banks/common.js",
+    "inputFile": "App/payments/banks/common.coffee"
+  },
+  {
+    "outputFile": "App/payments/banks/edit.js",
+    "inputFile": "App/payments/banks/edit.coffee"
+  },
+  {
+    "outputFile": "App/payments/banks/list.js",
+    "inputFile": "App/payments/banks/list.coffee"
+  },
+  {
+    "outputFile": "App/payments/payment-gateway-settings/list.js",
+    "inputFile": "App/payments/payment-gateway-settings/list.coffee"
+  },
+  {
+    "outputFile": "App/payments/settings/list.js",
+    "inputFile": "App/payments/settings/list.coffee"
+  },
+  {
+    "outputFile": "App/payments/withdrawal/cancel.js",
+    "inputFile": "App/payments/withdrawal/cancel.coffee"
+  },
+  {
+    "outputFile": "App/player-manager/documents-upload/upload-identification-doc.js",
+    "inputFile": "App/player-manager/documents-upload/upload-identification-doc.coffee"
+  },
+  {
+    "outputFile": "App/player-manager/info/bonus/description-dialog.js",
+    "inputFile": "App/player-manager/info/bonus/description-dialog.coffee"
+  },
+  {
+    "outputFile": "App/player-manager/info/confirm-dialog/confirm-dialog.js",
+    "inputFile": "App/player-manager/info/confirm-dialog/confirm-dialog.coffee"
+  },
+  {
+    "outputFile": "App/player-manager/info/remarks-dialog/remarks-dialog.js",
+    "inputFile": "App/player-manager/info/remarks-dialog/remarks-dialog.coffee"
+  },
+  {
+    "outputFile": "App/player-manager/info/account.js",
+    "inputFile": "App/player-manager/info/account.coffee"
+  },
+  {
+    "outputFile": "App/player-manager/info/activity-log-remark-dialog.js",
+    "inputFile": "App/player-manager/info/activity-log-remark-dialog.coffee"
+  },
+  {
+    "outputFile": "App/player-manager/info/activity-log.js",
+    "inputFile": "App/player-manager/info/activity-log.coffee"
+  },
+  {
+    "outputFile": "App/player-manager/info/balance.js",
+    "inputFile": "App/player-manager/info/balance.coffee"
+  },
+  {
+    "outputFile": "App/player-manager/info/bank-accounts.js",
+    "inputFile": "App/player-manager/info/bank-accounts.coffee"
+  },
+  {
+    "outputFile": "App/player-manager/info/deposits.js",
+    "inputFile": "App/player-manager/info/deposits.coffee"
+  },
+  {
+    "outputFile": "App/player-manager/info/duplicate-account-search.js",
+    "inputFile": "App/player-manager/info/duplicate-account-search.coffee"
+  },
+  {
+    "outputFile": "App/player-manager/info/fraud-evaluation.js",
+    "inputFile": "App/player-manager/info/fraud-evaluation.coffee"
+  },
+  {
+    "outputFile": "App/player-manager/info/fund-transfers.js",
+    "inputFile": "App/player-manager/info/fund-transfers.coffee"
+  },
+  {
+    "outputFile": "App/player-manager/info/identity-verification.js",
+    "inputFile": "App/player-manager/info/identity-verification.coffee"
+  },
+  {
+    "outputFile": "App/player-manager/info/responsible-gambling.js",
+    "inputFile": "App/player-manager/info/responsible-gambling.coffee"
+  },
+  {
+    "outputFile": "App/player-manager/info/restrictions.js",
+    "inputFile": "App/player-manager/info/restrictions.coffee"
+  },
+  {
+    "outputFile": "App/player-manager/info/transactions-adv.js",
+    "inputFile": "App/player-manager/info/transactions-adv.coffee"
+  },
+  {
+    "outputFile": "App/player-manager/info/transactions.js",
+    "inputFile": "App/player-manager/info/transactions.coffee"
+  },
+  {
+    "outputFile": "App/player-manager/info/withdrawals.js",
+    "inputFile": "App/player-manager/info/withdrawals.coffee"
+  },
+  {
+    "outputFile": "App/player-manager/model/player-model.js",
+    "inputFile": "App/player-manager/model/player-model.coffee"
+  },
+  {
+    "outputFile": "App/player-manager/offline-deposit/approveRequests.js",
+    "inputFile": "App/player-manager/offline-deposit/approveRequests.coffee"
+  },
+  {
+    "outputFile": "App/player-manager/offline-deposit/requests.js",
+    "inputFile": "App/player-manager/offline-deposit/requests.coffee"
+  },
+  {
+    "outputFile": "App/player-manager/offline-deposit/verifyRequests.js",
+    "inputFile": "App/player-manager/offline-deposit/verifyRequests.coffee"
+  },
+  {
+    "outputFile": "App/player-manager/offline-deposit/view-request.js",
+    "inputFile": "App/player-manager/offline-deposit/view-request.coffee"
+  },
+  {
+    "outputFile": "App/player-manager/info.js",
+    "inputFile": "App/player-manager/info.coffee"
+  },
+  {
+    "outputFile": "App/player-manager/list.js",
+    "inputFile": "App/player-manager/list.coffee"
+  },
+  {
+    "outputFile": "App/product/games-manager/list.js",
+    "inputFile": "App/product/games-manager/list.coffee"
+  },
+  {
+    "outputFile": "App/product/products-manager/edit-gameProvider.js",
+    "inputFile": "App/product/products-manager/edit-gameProvider.coffee"
+  },
+  {
+    "outputFile": "App/product/products-manager/list.js",
+    "inputFile": "App/product/products-manager/list.coffee"
+  },
+  {
+    "outputFile": "App/reports/brand/brand.js",
+    "inputFile": "App/reports/brand/brand.coffee"
+  },
+  {
+    "outputFile": "App/reports/brand/language.js",
+    "inputFile": "App/reports/brand/language.coffee"
+  },
+  {
+    "outputFile": "App/reports/brand/licensee.js",
+    "inputFile": "App/reports/brand/licensee.coffee"
+  },
+  {
+    "outputFile": "App/reports/brand/vipLevel.js",
+    "inputFile": "App/reports/brand/vipLevel.coffee"
+  },
+  {
+    "outputFile": "App/reports/payment/deposit.js",
+    "inputFile": "App/reports/payment/deposit.coffee"
+  },
+  {
+    "outputFile": "App/reports/player/player-bet-history.js",
+    "inputFile": "App/reports/player/player-bet-history.coffee"
+  },
+  {
+    "outputFile": "App/reports/player/player.js",
+    "inputFile": "App/reports/player/player.coffee"
+  },
+  {
+    "outputFile": "App/reports/list.js",
+    "inputFile": "App/reports/list.coffee"
+  },
+  {
+    "outputFile": "App/reports/report-base.js",
+    "inputFile": "App/reports/report-base.coffee"
+  },
+  {
+    "outputFile": "App/reports/report-menu.js",
+    "inputFile": "App/reports/report-menu.coffee"
+  },
+  {
+    "outputFile": "App/security/security.js",
+    "inputFile": "App/security/security.coffee"
+  },
+  {
+    "outputFile": "App/vip-manager/confirm-dialog.js",
+    "inputFile": "App/vip-manager/confirm-dialog.coffee"
+  },
+  {
+    "outputFile": "App/wallet/manager/list.js",
+    "inputFile": "App/wallet/manager/list.coffee"
+  },
+  {
+    "outputFile": "App/widgets/gridHeader/viewmodel.js",
+    "inputFile": "App/widgets/gridHeader/viewmodel.coffee"
+  },
+  {
+    "outputFile": "App/widgets/multiSelect/viewmodel.js",
+    "inputFile": "App/widgets/multiSelect/viewmodel.coffee"
+  },
+  {
+    "outputFile": "App/widgets/timezones/data/timezones.js",
+    "inputFile": "App/widgets/timezones/data/timezones.coffee"
+  },
+  {
+    "outputFile": "App/widgets/timezones/viewmodel.js",
+    "inputFile": "App/widgets/timezones/viewmodel.coffee"
+  },
+  {
+    "outputFile": "App/ace-editor.js",
+    "inputFile": "App/ace-editor.coffee"
+  },
+  {
+    "outputFile": "App/regular-expression.js",
+    "inputFile": "App/regular-expression.coffee"
+  },
+  {
+    "outputFile": "App/utils.js",
+    "inputFile": "App/utils.coffee"
+  },
+  {
+    "outputFile": "Content/css/fixes.css",
+    "inputFile": "Content/css/fixes.scss"
+  },
+  {
+    "outputFile": "App/player-manager/payment-level-settings/list.js",
+    "inputFile": "App/player-manager/payment-level-settings/list.coffee"
+  },
+  {
+    "outputFile": "App/payments/player-bank-accounts/pending-list.js",
+    "inputFile": "App/payments/player-bank-accounts/pending-list.coffee"
+  }
+]

@@ -1,0 +1,87 @@
+﻿<div class="alert" style="" data-bind="visible: displayMessage, text: message, css: messageClass"></div>
+
+<form class="form-horizontal" enctype="multipart/form-data" data-bind="validationOptions: { insertMessages: false }">
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Licensee</label>
+        <div class="col-sm-8">
+            <p class="form-control-static" data-bind="text: licensee"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Brand</label>
+        <div class="col-sm-8">
+            <p class="form-control-static" data-bind="text: brandName"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Username</label>
+        <div class="col-sm-8">
+            <p class="form-control-static" data-bind="text: username"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Player Name</label>
+        <div class="col-sm-8">
+            <p class="form-control-static" data-bind="text: playerName"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label" data-i18n="app:payment.referenceCode"></label>
+        <div class="col-sm-8">
+            <p class="form-control-static" data-bind="text: referenceCode"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Status</label>
+        <div class="col-sm-8">
+            <p class="form-control-static" data-bind="text: status"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Payment Method</label>
+        <div class="col-sm-8">
+            <p class="form-control-static" data-bind="text: paymentMethod"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Currency</label>
+        <div class="col-sm-8">
+            <p class="form-control-static" data-bind="text: currencyCode"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Amount</label>
+        <div class="col-sm-8">
+            <p class="form-control-static" data-bind="numberText: amount , precision: 2"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Deposit Type</label>
+        <div class="col-sm-8">
+            <p class="form-control-static" data-bind="text: depositType"></p>
+        </div>
+    </div>    
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Date Submitted</label>
+        <div class="col-sm-8">
+            <p class="form-control-static" data-bind="text: dateSubmitted"></p>
+        </div>
+    </div>    
+    <div class="form-group">
+        <label data-bind="attr: { for: remarksId() }" class="col-sm-3 control-label">Remarks <span class="red">*</span></label>
+        <div class="col-sm-8">
+            <textarea class="form-control" data-bind="attr: { id: remarksId() }, value: remarks, visible: !submitted()"></textarea> <span class="red" data-bind="validationMessage: remarks"></span>
+            <p class="form-control-static" data-bind="visible: submitted, text: remarks"></p>
+        </div>
+    </div>
+    <div class="clearfix form-actions">
+        <div class="center">
+            <button class="btn btn-white btn-round" data-bind="click: close, visible: !submitted()">Cancel</button>
+
+            &nbsp; &nbsp; &nbsp;
+            <button class="btn btn-info btn-round" data-bind="click: submit, visible: !submitted() && (action() == 'verify' || action() == 'approve') ">Submit</button>
+            <button class="btn btn-warning btn-round" data-bind="click: submit, visible: !submitted() && (action() == 'reject' || action() == 'unverify')">Submit</button>
+            <button class="btn btn-info btn-round" data-bind="click: close, visible: submitted">Close</button>
+        </div>
+    </div>
+</form>

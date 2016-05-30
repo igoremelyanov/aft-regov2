@@ -1,0 +1,53 @@
+﻿<div class="modal-content" style="width: 700px;">
+    <div class="modal-header">
+        <h3 data-bind="visible: avcVerificationType()" data-i18n="app:fraud.autoVerification.labels.autoVerificationStatus"></h3>
+        <h3 data-bind="visible: !avcVerificationType()" data-i18n="app:fraud.autoVerification.labels.riskVerificationStatus"></h3>
+    </div>
+    <div class="modal-body">
+        <div>
+            <label class="bolded" data-i18n="app:fraud.autoVerification.labels.licenseeLabelWithSemiColumns"></label>
+            <span data-bind="text: licenseeName"></span>
+        </div>
+        <div>
+            <label class="bolded" data-i18n="app:fraud.autoVerification.labels.brandLabelWithSemiColumns"></label>
+            <span data-bind="text: brandName"></span>
+        </div>
+        <div>
+            <label class="bolded" data-i18n="app:fraud.autoVerification.labels.usernameLabelWithSemiColumns"></label>
+            <span data-bind="text: playerName"></span>
+        </div>
+        <div style="padding-bottom: 20px;">
+            <label class="bolded" data-i18n="app:fraud.autoVerification.labels.autoVerificationCheckResultWithSemiColumns"></label>
+            <span data-bind="text: statusSuccess, style: { color: statusSuccess() == 'Succeeded' || statusSuccess() == 'Low' ? 'green' : 'red' }"></span>
+        </div>
+        <div class="col-sm-12" style=" overflow-y: auto; max-height: 350px;">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th data-i18n="app:fraud.autoVerification.labels.criteria"></th>
+                    <th>Requred value</th>
+                    <th data-i18n="app:fraud.autoVerification.labels.value"></th>
+                    <th data-i18n="app:fraud.autoVerification.labels.status"></th>
+                </tr>
+                </thead>
+                <tbody data-bind="foreach: statuses">
+                <tr data-bind="css: { success: Status == 'success' || Status == 'Low', danger: Status == 'failed' || Status == 'High'}">
+                    <td data-bind="text: VerificationRule"></td>
+                    <td data-bind="text: RuleRequiredValue"></td>
+                    <td data-bind="text: CurrentValue"></td>
+                    <td data-bind="text: Status"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="modal-footer align-center">
+            <button class="btn btn-primary" style="margin-top: 12px;" data-bind="click: close" data-i18n="app:fraud.autoVerification.labels.close"></button>
+        </div>
+    </div>
+</div>
+
+<style>
+    .bolded {
+        font-weight: bold;
+    }
+</style>

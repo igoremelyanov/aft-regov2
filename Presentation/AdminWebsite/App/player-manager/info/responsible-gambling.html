@@ -1,0 +1,63 @@
+﻿<div>
+    <form role="form" class="form-horizontal">
+        <div class="form-group">
+            <label class="control-label col-sm-3">
+                <input type="checkbox" data-bind="checked: isTimeOutEnabled, disable: submitted()">
+                <span>Time-Out</span>
+            </label>
+            <div class="col-sm-8 field-box">
+                <div class="form-control">
+                    <select data-bind="options: timeOuts, value: timeOut, optionsText: 'name', optionsValue: 'id', visible: isTimeOutEnabled"></select>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" data-bind="visible: isTimeOutEnabled">
+            <label class="control-label col-sm-3">
+                <span>Duration</span>
+            </label>
+            <div class="col-sm-8 field-box">
+                <div class="form-control">
+                    <span>
+                        from <span data-bind="text: timeOutStartDate"></span>
+                        to <span data-bind="text: timeOutEndDate"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-3">
+                <input type="checkbox" data-bind="checked: isSelfExclusionEnabled, disable: submitted()">
+                <span>Self-Exluded</span>
+            </label>
+            <div class="col-sm-8 field-box">
+                <div class="form-control">
+                    <select data-bind="options: selfExclusions, value: selfExclusion, optionsText: 'name', optionsValue: 'id', visible: isSelfExclusionEnabled"></select>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" data-bind="visible: isSelfExclusionEnabled">
+            <label class="control-label col-sm-3">
+                <span>Duration</span>
+            </label>
+            <div class="col-sm-8 field-box">
+                <div class="form-control">
+                    <span>
+                        from <span data-bind="text: selfExclusionStartDate"></span>
+                        to <span data-bind="text: selfExclusionEndDate"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-8 field-box">
+                <div class="form-control">
+                    <button type="submit" class="btn btn-primary" data-bind="click: update" data-i18n="common.update">Update</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="responsible-alert" class="alert fade in" data-bind="visible: message, text: message, css: messageClass"></div>
+    </form>
+</div>

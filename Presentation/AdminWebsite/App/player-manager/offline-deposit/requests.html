@@ -1,0 +1,74 @@
+﻿<div id="offline-deposit-confirm-grid" data-bind="grid: {
+    source: '/OfflineDeposit/RequestedList',
+    fields: [
+        'Licensee',
+        'Brand',
+        'Username',
+        'TransactionNumber',
+        'BankAccountName',
+        'BankAccountNumber',
+        'ReferenceNumber',
+        'Amount',
+        'BankAccountId',
+        'TransferType',
+        'DepositMethod',
+        'CreatedBy',
+        'Created'
+    ],
+    filter: ko.computed(function() { return {
+        'Player.Username': usernameSearchPattern()
+    }}),
+    defaultSort: { field: 'Created' },
+    paging: true,
+    useResizeManager: true,
+    useBrandFilter: true
+}">
+    <header>
+        <form id="offline-deposit-confirm-username-search-form" action="#" class="pull-left">
+            <input id="offline-deposit-confirm-username-search" type="text" data-i18n="[placeholder]app:common.username" />
+            <div class="custom-filters" data-bind="visible: filterVisible, compose: { model: 'controls/filters', activationData: [[
+                ['Brand.LicenseeName', 'app:common.licensee', 'text'],
+                ['Brand.Name', 'app:common.brand', 'text'],
+                ['Player.Username', 'app:common.username', 'text'],
+                ['TransactionNumber', 'app:common.referenceCode', 'text'],
+                ['BankAccount.AccountName', 'app:banks.bankAccountName', 'text'],
+                ['BankAccount.AccountNumber', 'app:banks.bankAccountNumber', 'text'],
+                ['ReferenceNumber', 'app:banks.bankReferenceNumber', 'text'],
+                ['Amount', 'app:common.amount', 'numeric'],
+                ['BankAccount.AccountId', 'app:banks.bankAccountId', 'text'],
+                ['TransferType', 'app:payment.transferType', 'enum', {'SameBank': i18n.t('app:payment.transferTypes.SameBank'), 'DifferentBank': i18n.t('app:payment.transferTypes.DifferentBank')}],
+                ['DepositMethod', 'app:payment.depositMethod', 'enum', {'InternetBanking': i18n.t('app:payment.depositMethods.InternetBanking'), 'ATM': i18n.t('app:payment.depositMethods.ATM'), 'CounterDeposit': i18n.t('app:payment.depositMethods.CounterDeposit')}],
+                ['CreatedBy', 'app:common.createdBy', 'text'],
+                ['Created', 'app:common.created', 'date']
+            ]] }"></div>
+            <button id="offline-deposit-confirm-username-search-button" type="submit" class="btn btn-sm btn-white btn-round" data-i18n="app:common.search"></button>
+        </form>
+        <div class="btn-group pull-right">
+            <button class="btn btn-sm btn-primary btn-round" data-bind="click: function() { filterVisible(true); }, visible: !filterVisible()">
+                <i class="ace-icon fa fa-filter"></i> <span data-i18n="app:report.common.showFilter"></span>
+            </button>
+            <button class="btn btn-sm btn-primary btn-round" data-bind="click: function() { filterVisible(false); }, visible: filterVisible()">
+                <i class="ace-icon fa fa-filter"></i> <span data-i18n="app:report.common.hideFilter"></span>
+            </button>
+            <button class="btn btn-sm btn-success btn-round" id="offline-deposit-confirm-button" data-bind="click: confirmDepositRequest, visible: isConfirmBtnVisible, css: { disabled: !selectedRowId() }">
+                <span data-i18n="app:common.confirm"></span>
+            </button>
+            <button class="btn btn-sm btn-primary btn-round" id="offline-deposit-confirm-view-button" data-bind="click: viewDepositRequest, visible: isViewBtnVisible, css: { disabled: !selectedRowId() }">
+                <i class="ace-icon fa fa-file-text-o"></i> <span data-i18n="app:common.view"></span>
+            </button>
+        </div>
+    </header>
+    <column title="app:common.licensee" sort-field="Brand.LicenseeName" width="150" data-value="@Licensee" />
+    <column title="app:common.brand" sort-field="Brand.Name" width="150" data-value="@Brand" />
+    <column title="app:common.username" sort-field="Player.Username" width="150" data-value="@Username" />
+    <column title="app:common.referenceCode" sort-field="TransactionNumber" width="150" data-value="@TransactionNumber" />
+    <column title="app:banks.bankAccountName" sort-field="BankAccount.AccountName" width="180" data-value="@BankAccountName" />
+    <column title="app:banks.bankAccountNumber" sort-field="BankAccount.AccountNumber" width="180" data-value="@BankAccountNumber" />
+    <column title="app:banks.bankReferenceNumber" sort-field="ReferenceNumber" width="150" data-value="@ReferenceNumber" />
+    <column title="app:common.amount" sort-field="Amount" width="150" data-value="@Amount" />
+    <column title="app:banks.bankAccountId" sort-field="BankAccount.AccountId" width="150" data-value="@BankAccountId" />
+    <column title="app:payment.transferType" sort-field="TransferType" width="150" data-value="$root.transferTypeFormatter(@TransferType)" />
+    <column title="app:payment.depositMethod" sort-field="DepositMethod" width="150" data-value="$root.depositMethodFormatter(@DepositMethod)" />
+    <column title="app:common.createdBy" sort-field="CreatedBy" width="180" data-value="@CreatedBy" />
+    <column title="app:common.created" sort-field="Created" width="180" data-value="@Created" />
+</div>

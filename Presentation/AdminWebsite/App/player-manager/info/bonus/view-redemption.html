@@ -1,0 +1,82 @@
+<form role="form" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-sm-3 control-label" data-i18n="common.licensee"></label>
+        <label class="col-sm-8 control-label" data-bind="text: LicenseeName" style="text-align: left;"></label>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label" data-i18n="common.brand"></label>
+        <label class="col-sm-8 control-label" data-bind="text: BrandName" style="text-align: left;"></label>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label" data-i18n="common.username"></label>
+        <div class="col-sm-8">
+            <p class="form-control-static" data-bind="text: Username"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label" data-i18n="bonus.bonusFields.name"></label>
+        <div class="col-sm-8">
+            <p class="form-control-static" data-bind="text: BonusName"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label" data-i18n="bonus.templateFields.bonusAmount"></label>
+        <div class="col-sm-8">
+            <p class="form-control-static" data-bind="text: Amount"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label" data-i18n="playerManager.bonusHistory.redemptionFields.rollover"></label>
+        <div class="col-sm-8">
+            <p class="form-control-static-multilines" data-bind="text: Rollover"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label" data-i18n="playerManager.bonusHistory.redemptionFields.lockedAmount"></label>
+        <div class="col-sm-8">
+            <p class="form-control-static" data-bind="text: LockedAmount"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label" data-i18n="playerManager.bonusHistory.redemptionFields.activationState"></label>
+        <div class="col-sm-8">
+            <p class="form-control-static" data-bind="text: vActivationState"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label" data-i18n="playerManager.bonusHistory.redemptionFields.rolloverState"></label>
+        <div class="col-sm-8">
+            <p class="form-control-static" data-bind="text: vRolloverState"></p>
+        </div>
+    </div>
+
+    <div id="redemption-events-grid" data-bind="grid: {
+        source: config.adminApi('BonusHistory/GetRedemptionEvents'),
+        fields: ['Created', 'DataType', 'Data'],
+        defaultSort: { field: 'Created', direction: 'desc' },
+        paging: true,
+        useResizeManager: { height: 350 },
+        sendAlso: ko.computed(function() { return [ activationData() ]; })
+    }">
+        <header>
+            <form action="#">
+                <div class="custom-filters" data-bind="compose: { model: 'controls/filters', activationData:
+                [[
+                ['Created', 'app:playerManager.bonusHistory.eventFields.date', 'date'],
+                ['DataType', 'app:playerManager.bonusHistory.eventFields.activity', 'list', i18N.t('playerManager.bonusHistory.eventTypes', { returnObjectTrees: true })]
+                ]] }">
+                </div>
+                <button type="submit" class="btn btn-sm btn-white btn-round" data-i18n="common.search"></button>
+            </form>
+        </header>
+        <column title="app:playerManager.bonusHistory.eventFields.date" sort-field="Created" width="150" data-value="@Created"/>
+        <column title="app:playerManager.bonusHistory.eventFields.activity" sort-field="DataType" width="270" data-value="$root.eventTypeFormatter.call @"/>
+        <column title="app:playerManager.bonusHistory.eventFields.description" width="800" data-value="$root.eventDescriptionFormatter.call @"/>
+    </div>
+
+    <div class="clearfix form-actions">
+        <div class="center">
+            <button class="btn btn-white btn-round" data-bind="click: cancel" data-i18n="common.close"></button>
+        </div>
+    </div>
+</form>

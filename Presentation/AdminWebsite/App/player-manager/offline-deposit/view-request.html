@@ -1,0 +1,82 @@
+<div class="alert alert-success" data-bind="visible: message, text: message"></div>
+
+<form class="form-horizontal">
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Username</label>
+        <div class="col-sm-8">
+            <p class="form-control-static" data-bind="text: username"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Reference Code</label>
+        <div class="col-sm-8">
+            <p class="form-control-static" data-bind="text: transactionNumber"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Bank</label>
+        <div class="col-sm-8 field-box">
+            <p class="form-control-static" data-bind="text: bankName"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Amount</label>
+        <div class="col-sm-8 field-box">
+            <p class="form-control-static" data-bind="text: amount"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Selected bonus</label>
+        <div class="col-sm-8">
+            <p class="form-control-static" data-bind="text: bonusName"></p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Bank Account ID</label>
+        <div class="col-sm-8">
+            <p class="form-control-static" data-bind="text: bankAccountId"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Province</label>
+        <div class="col-sm-8">
+            <p class="form-control-static" data-bind="text: bankProvince"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Branch</label>
+        <div class="col-sm-8">
+            <p class="form-control-static" data-bind="text: bankBranch"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Bank Account Name</label>
+        <div class="col-sm-8">
+            <p class="form-control-static" data-bind="text: bankAccountName"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Bank Account Number</label>
+        <div class="col-sm-8">
+            <p class="form-control-static" data-bind="text: bankAccountNumber"></p>
+        </div>
+    </div>
+    <div class="form-group" data-bind="visible: playerRemark()">
+        <label class="col-sm-3 control-label">Player Remark</label>
+        <div class="col-sm-8">
+            <p class="form-control-static" data-bind="text: playerRemark"></p>
+        </div>
+    </div>
+    <div class="form-group" data-bind="visible: status() =='Unverified'">
+        <label class="col-sm-3 control-label">Unverify Reason</label>
+        <div class="col-sm-8">
+            <textarea class="form-control" disabled data-bind="value: unverifyReason"></textarea>
+        </div>
+    </div>
+    <div class="clearfix form-actions">
+        <div class="center">
+            <button type="button" class="btn btn-default btn-round" data-bind="click: close">Close</button>
+        </div>
+    </div>
+</form>

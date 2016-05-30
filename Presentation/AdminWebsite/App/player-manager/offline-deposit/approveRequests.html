@@ -1,0 +1,87 @@
+﻿<div id="deposit-approve-grid" data-bind="grid: {
+    source: '/Deposit/ApproveList',
+    fields: [
+        'Licensee',
+        'BrandName',
+        'Username',
+        'ReferenceCode',
+        'PaymentMethod',
+        'CurrencyCode',
+        'Amount',
+        'UniqueDepositAmount',
+        'Status',
+        'DateVerified',
+        'VerifiedBy',
+        'DepositType',
+        'BankAccountId',
+        'BankName',
+        'BankProvince',
+        'BankBranch',
+        'BankAccountNumber',
+        'BankAccountName'
+    ],
+    filter: ko.computed(function() { return {
+        'Username': usernameSearchPattern()
+    }}),
+    defaultSort: { field: 'DateSubmitted', direction: 'desc' },
+    paging: true,
+    useResizeManager: true,
+    useBrandFilter: true
+}">
+    <header>
+        <form id="deposit-approve-username-search-form" action="#" class="pull-left">
+            <input id="deposit-approve-username-search" type="text" data-i18n="[placeholder]app:common.username" />
+            <div class="custom-filters" data-bind="visible: filterVisible, compose: { model: 'controls/filters', activationData: [[
+                ['BrandName', 'Brand', 'text'],
+                ['Username', 'Username', 'text'],
+                ['ReferenceCode', 'Reference Code', 'text'],
+                ['PaymentMethod', 'Payment Method', 'list', paymentMethods()],
+                ['CurrencyCode', 'Currency', 'text'],
+                ['Amount', 'Amount', 'numeric'],
+                ['UniqueDepositAmount', 'Unique Deposit Amount', 'numeric'],
+                ['DateVerified', 'Date Submitted', 'date'],
+                ['VerifiedBy', 'Verified By', 'text'],
+                ['DepositType', 'Deposit Type', 'enum', {'Offline': 'Offline', 'Online': 'Online'}],
+                ['BankAccountId', 'Bank Account ID', 'text'],
+                ['BankName', 'Bank Name', 'text'],
+                ['BankProvince', 'Province', 'text'],
+                ['BankBranch', 'Branch', 'text'],
+                ['BankAccountNumber', 'Bank Account Number', 'text'],
+                ['BankAccountName', 'Bank Account Name', 'text'],
+            ]] }"></div>
+            <button id="deposit-approve-username-search-button" type="submit" class="btn btn-sm btn-white btn-round" data-i18n="app:common.search"></button>
+        </form>
+        <div class="btn-group pull-right">
+            <button class="btn btn-sm btn-primary btn-round" data-bind="click: function() { filterVisible(true); }, visible: !filterVisible()">
+                <i class="ace-icon fa fa-filter"></i> <span data-i18n="app:report.common.showFilter"></span>
+            </button>
+            <button class="btn btn-sm btn-primary btn-round" data-bind="click: function() { filterVisible(false); }, visible: filterVisible()">
+                <i class="ace-icon fa fa-filter"></i> <span data-i18n="app:report.common.hideFilter"></span>
+            </button>
+            <button class="btn btn-sm btn-success btn-round" id="deposit-approve-button" data-bind="click: approveDepositRequest, visible: isApproveBtnVisible, css: { disabled: !selectedRowId() }">
+                <span data-i18n="app:common.approve"></span>
+            </button>
+            <button class="btn btn-sm btn-danger btn-round" id="deposit-approve-reject-button" data-bind="click: rejectDepositRequest, visible: isRejectBtnVisible, css: { disabled: !selectedRowId() }">
+                <span data-i18n="app:common.reject"></span>
+            </button>
+        </div>
+    </header>
+    <column title="app:common.licensee" sort-field="Licensee" width="150" data-value="@Licensee" />
+    <column title="app:common.brand" sort-field="Brand.Name" width="150" data-value="@BrandName" />
+    <column title="app:common.username" sort-field="Player.Username" width="150" data-value="@Username" />
+    <column title="app:common.referenceCode" sort-field="ReferenceCode" width="150" data-value="@ReferenceCode" />
+    <column title="app:payment.paymentMethod" sort-field="PaymentMethod" width="150" data-value="@PaymentMethod" />
+    <column title="app:common.currency" sort-field="CurrencyCode" width="150" data-value="@CurrencyCode" />
+    <column title="app:common.amount" sort-field="Amount" width="150" data-value="@Amount" />
+    <column title="app:common.uniqueDepositAmount" sort-field="UniqueDepositAmount" width="150" data-value="@UniqueDepositAmount" />
+    <column title="app:common.status" sort-field="Status" width="150" data-value="@Status" />
+    <column title="app:common.dateVerified" sort-field="DateVerified" width="180" data-value="@DateVerified" />
+    <column title="app:common.verifiedBy" sort-field="VerifiedBy" width="180" data-value="@VerifiedBy" />
+    <column title="app:payment.depositType" sort-field="DepositType" width="180" data-value="@DepositType" />
+    <column title="app:banks.bankAccountId" sort-field="BankAccountId" width="150" data-value="@BankAccountId" />
+    <column title="app:banks.bankName" sort-field="BankName" width="150" data-value="@BankName" />
+    <column title="app:common.province" sort-field="BankProvince" width="150" data-value="@BankBranch" />
+    <column title="app:banks.branch" sort-field="BankBranch" width="150" data-value="@BankProvince" />
+    <column title="app:banks.bankAccountNumber" sort-field="BankAccountNumber" width="180" data-value="@BankAccountNumber" />
+    <column title="app:banks.bankAccountName" sort-field="BankAccountName" width="180" data-value="@BankAccountName" />
+</div>

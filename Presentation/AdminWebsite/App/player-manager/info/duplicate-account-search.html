@@ -1,0 +1,122 @@
+﻿<div>
+    <div>
+        <table class="table col-sm-offset-2" style="width: auto;">
+            <thead>
+                <tr>
+                    <th>Criteria</th>
+                    <th>Exact Match Score</th>
+                    <th>Fuzzy Match Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Device ID Similarity</td>
+                    <td><input class="form-control" maxlength="15" data-bind="value: form.fields.deviceIdExactScore.value, numericInt: form.fields.deviceIdExactScore.value, enable: !$root.submitted()"></td>
+                    <td><input class="form-control" maxlength="15" data-bind="value: form.fields.deviceIdFuzzyScore.value, numericInt: form.fields.deviceIdFuzzyScore.value, enable: !$root.submitted()"></td>
+                </tr>
+                <tr>
+                    <td>First Name Similarity</td>
+                    <td><input class="form-control" maxlength="15" data-bind="value: form.fields.firstNameExactScore.value, numericInt: form.fields.firstNameExactScore.value, enable: !$root.submitted()"></td>
+                    <td><input class="form-control" maxlength="15" data-bind="value: form.fields.firstNameFuzzyScore.value, numericInt: form.fields.firstNameFuzzyScore.value, enable: !$root.submitted()"></td>
+                </tr>
+                <tr>
+                    <td>Last Name Similarity</td>
+                    <td><input class="form-control" maxlength="15" data-bind="value: form.fields.lastNameExactScore.value, numericInt: form.fields.lastNameExactScore.value, enable: !$root.submitted()"></td>
+                    <td><input class="form-control" maxlength="15" data-bind="value: form.fields.lastNameFuzzyScore.value, numericInt: form.fields.lastNameFuzzyScore.value, enable: !$root.submitted()"></td>
+                </tr>
+                <tr>
+                    <td>Full Name Similarity</td>
+                    <td><input class="form-control" maxlength="15" data-bind="value: form.fields.fullNameExactScore.value, numericInt: form.fields.fullNameExactScore.value, enable: !$root.submitted()"></td>
+                    <td><input class="form-control" maxlength="15" data-bind="value: form.fields.fullNameFuzzyScore.value, numericInt: form.fields.fullNameFuzzyScore.value, enable: !$root.submitted()"></td>
+                </tr>
+                <tr>
+                    <td>Username Similarity</td>
+                    <td><input class="form-control" maxlength="15" data-bind="value: form.fields.usernameExactScore.value, numericInt: form.fields.usernameExactScore.value, enable: !$root.submitted()"></td>
+                    <td><input class="form-control" maxlength="15" data-bind="value: form.fields.usernameFuzzyScore.value, numericInt: form.fields.usernameFuzzyScore.value, enable: !$root.submitted()"></td>
+                </tr>
+                <tr>
+                    <td>Address Similarity</td>
+                    <td><input class="form-control" maxlength="15" data-bind="value: form.fields.addressExactScore.value, numericInt: form.fields.addressExactScore.value, enable: !$root.submitted()"></td>
+                    <td><input class="form-control" maxlength="15" data-bind="value: form.fields.addressFuzzyScore.value, numericInt: form.fields.addressFuzzyScore.value, enable: !$root.submitted()"></td>
+                </tr>
+                <tr>
+                    <td>Sign Up IP Similarity</td>
+                    <td><input class="form-control" maxlength="15" data-bind="value: form.fields.signUpIpExactScore.value, numericInt: form.fields.signUpIpExactScore.value, enable: !$root.submitted()"></td>
+                    <td><input class="form-control" maxlength="15" data-bind="value: form.fields.signUpIpFuzzyScore.value, numericInt: form.fields.signUpIpFuzzyScore.value, enable: !$root.submitted()"></td>
+                </tr>
+                <tr>
+                    <td>Mobile Number Similarity</td>
+                    <td><input class="form-control" maxlength="15" data-bind="value: form.fields.mobilePhoneExactScore.value, numericInt: form.fields.mobilePhoneExactScore.value, enable: !$root.submitted()"></td>
+                    <td><input class="form-control" maxlength="15" data-bind="value: form.fields.mobilePhoneFuzzyScore.value, numericInt: form.fields.mobilePhoneFuzzyScore.value, enable: !$root.submitted()"></td>
+                </tr>
+                <tr>
+                    <td>Date Of Birth Similarity</td>
+                    <td><input class="form-control" maxlength="15" data-bind="value: form.fields.dateOfBirthExactScore.value, numericInt: form.fields.dateOfBirthExactScore.value, enable: !$root.submitted()"></td>
+                    <td><input class="form-control" maxlength="15" data-bind="value: form.fields.dateOfBirthFuzzyScore.value, numericInt: form.fields.dateOfBirthFuzzyScore.value, enable: !$root.submitted()"></td>
+                </tr>
+                <tr>
+                    <td>Email Address Similarity</td>
+                    <td><input class="form-control" maxlength="15" data-bind="value: form.fields.emailAddressExactScore.value, numericInt: form.fields.emailAddressExactScore.value, enable: !$root.submitted()"></td>
+                    <td><input class="form-control" maxlength="15" data-bind="value: form.fields.emailAddressFuzzyScore.value, numericInt: form.fields.emailAddressFuzzyScore.value, enable: !$root.submitted()"></td>
+                </tr>
+                <tr>
+                    <td>Zip Code Similarity</td>
+                    <td><input class="form-control" maxlength="15" data-bind="value: form.fields.zipCodeExactScore.value, numericInt: form.fields.zipCodeExactScore.value, enable: !$root.submitted()"></td>
+                    <td><input class="form-control" maxlength="15" data-bind="value: form.fields.zipCodeFuzzyScore.value, numericInt: form.fields.zipCodeFuzzyScore.value, enable: !$root.submitted()"></td>
+                </tr>
+                <tr class="info">
+                    <td>Total Score</td>
+                    <td><input class="form-control" maxlength="15" data-bind="value: totalExactScore, enable: false"></td>
+                    <td><input class="form-control" maxlength="15" data-bind="value: totalFuzzyScore, enable: false"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="duplicate-search-grid" data-bind="grid: {
+            source: 'DuplicateMechanism/PlayerList',
+            fields: ['Id', 'Metadata', 'BrandName', 'Username', 'SignUpDate', 'FirstName', 'LastName', 'DateOfBirth', 'Email', 'PhoneNumber', 'Address', 'ZipCode', 'IpAddress', 'DeviceId', 'Score'],
+            defaultSort: { field: 'SecondPlayer.Username', direction: 'desc' },
+            paging: true,
+            useResizeManager: { height: 400 },
+            sendAlso: ko.computed(function() { return [ { playerId: playerId, formData: getFormData() }]; })
+        }">
+        <column hidden data-value="@Id" />
+        <column title="Metadata" hidden data-value="$root.setMetadata(@)" />
+        <column title="BrandName" width="160">
+            <div data-value="@BrandName"></div>
+        </column>
+        <column title="Username" sort-field="SecondPlayer.Username" width="180">
+            <span data-value="$root.colorClass('Username', @Username , @Id)"></span>
+        </column>
+        <column title="Sign Up Date" sort-field="SecondPlayer.DateRegitered" width="120" data-value="@SignUpDate" />
+        <column title="First Name" sort-field="SecondPlayer.FirstName" width="120">
+            <span data-value="$root.colorClass('FirstName', @FirstName, @Id)"></span>
+        </column>
+        <column title="Last Name" sort-field="SecondPlayer.LastName" width="120">
+            <span data-value="$root.colorClass('LastName', @LastName, @Id)"></span>
+        </column>
+        <column title="Date Of Birth" width="150">
+            <span data-value="$root.colorClass('DateOfBirth', @DateOfBirth, @Id)"></span>
+        </column>
+        <column title="Email" sort-field="SecondPlayer.Email" width="120">
+            <span data-value="$root.colorClass('Email', @Email, @Id)"></span>
+        </column>
+        <column title="Phone Number" sort-field="SecondPlayer.Phone" width="150">
+            <span data-value="$root.colorClass('PhoneNumber', @PhoneNumber, @Id)"></span>
+        </column>
+        <column title="Address" sort-field="SecondPlayer.Address" width="120">
+            <span data-value="$root.colorClass('Address', @Address, @Id)"></span>
+        </column>
+        <column title="Zip Code" sort-field="SecondPlayer.ZipCode" width="150">
+            <span data-value="$root.colorClass('ZipCode', @ZipCode, @Id)"></span>
+        </column>
+        <column title="Ip Address" sort-field="SecondPlayer.IPAddress" width="150">
+            <span data-value="$root.colorClass('IPAddress', @IPAddress, @Id)"></span>
+        </column>
+        <column title="DeviceId" width="150">
+            <span data-value="$root.colorClass('DeviceId', @DevceId, @Id)"></span>
+        </column>
+        <column title="Score" width="150" data-value="@Score" />
+    </div>
+</div>

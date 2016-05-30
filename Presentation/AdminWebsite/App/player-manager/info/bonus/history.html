@@ -1,0 +1,39 @@
+<div id="redemption-grid" data-bind="grid: {
+        source: config.adminApi('BonusHistory/Data'),
+        fields: ['BonusName', 'TemplateType', 'CreatedOn', 'ActivationState', 'Amount',
+                 'Rollover', 'RolloverCompleted', 'RolloverLeft', 'CanBeCanceled'],
+        defaultSort: { field: 'CreatedOn', direction: 'desc' },
+        filter: ko.computed(function() { return {
+            'BonusName': search()
+        }}),
+        paging: true,
+        useResizeManager: { height: 400 },
+        sendAlso: ko.computed(function() { return [ { playerId: playerId }]; })
+    }">
+    <header>
+        <div data-bind="gridHeader: {
+            context: $data,
+            filters: [
+                ['BonusType', 'app:bonus.templateFields.type', 'list', {
+                    'FirstDeposit': i18N.t('app:bonus.bonusTypes.FirstDeposit'),
+                    'ReloadDeposit': i18N.t('app:bonus.bonusTypes.ReloadDeposit')}],
+                ['ActivationState', 'app:playerManager.bonusHistory.redemptionFields.activationState', 'list',
+                    i18N.t('playerManager.bonusHistory.activationStates', { returnObjectTrees: true })],
+                ['CreatedOn', 'app:playerManager.bonusHistory.redemptionFields.dateApplied', 'date']
+            ],
+            buttons: [
+                { click: openViewTab, enabled: redemptionId, text: 'app:common.view', icon: 'file-text-o' },
+                { click: cancel, enabled: canBeCanceled,  text: 'app:common.cancel', icon: 'trash-o', color: 'red' }
+             ]}">
+        </div>
+    </header>
+    <column title="app:bonus.bonusFields.name" width="300" data-value="@BonusName" />
+    <column title="app:bonus.templateFields.type" width="150" data-value="$root.typeFormatter.call @" />
+    <column title="app:playerManager.bonusHistory.redemptionFields.dateApplied" sort-field="CreatedOn" width="150" data-value="@CreatedOn" />
+    <column title="app:playerManager.bonusHistory.redemptionFields.activationState" width="120" data-value="$root.activationFormatter.call @" />
+    <column title="app:bonus.templateFields.bonusAmount" width="120" data-value="@Amount" />
+    <column title="app:playerManager.bonusHistory.redemptionFields.rollover" width="170" data-value="@Rollover" />
+    <column title="app:playerManager.bonusHistory.redemptionFields.rolloverCompleted" width="150" data-value="@RolloverCompleted" />
+    <column title="app:playerManager.bonusHistory.redemptionFields.rolloverLeft" width="150" data-value="@RolloverLeft" />
+    <column name="CanBeCanceled" hidden data-value="@CanBeCanceled" />
+</div>

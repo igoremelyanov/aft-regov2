@@ -1,0 +1,49 @@
+﻿<div id="withdraw-verify-grid" data-bind="grid: {
+    source: '/OfflineWithdraw/VerificationQueueList',
+    fields: ['Id','PlayerId', 'Username', 'PlayerName', 'ReferenceCode', 'PaymentMethod', 'Currency', 'Amount', 'Status', 'AutoVerificationResult', 'RiskProfileCheckResult'],
+    filter: ko.computed(function() { return { 'PlayerBankAccount.Player.Username': search() }; }),
+    defaultSort: { field: 'TransactionNumber', direction: 'desc' },
+    paging: true,
+    useResizeManager: true,
+    useLicenseeFilter: true
+}">
+    <header>
+        <div data-bind="gridHeader: { context: $data,
+            filters: [
+                ['PlayerBankAccount.Player.Username', 'Username', 'text'],
+                ['PlayerName', 'Player Name', 'text'],
+                ['ReferenceCode', 'Reference Code', 'text'],
+                ['PaymentMethod', 'Payment Method', 'text'],
+                ['Currency', 'Currency', 'text'],
+                ['Amount', 'Amount', 'text'],
+                ['Status', 'Status', 'text'],
+                ['AutoVerificationResult', 'AutoVerification Result', 'bool'],
+                ['RiskProfileCheckResult', 'Risk Profile Check Result', 'bool'],
+
+            ],
+            buttons: [
+                { name: 'view',text: 'View', click: view, enabled: rowId, icon: 'file-text-o' },
+                { name: 'verify', click: verify, enabled: rowId, text: 'Verify', icon: 'check' },
+                { name: 'unverify', click: unverify, text: 'Unverify', enabled: rowId, icon: 'ban' },
+                { name: 'docs', click: documents, text: 'Docs', enabled: rowId},
+                { name: 'investigate', click: investigate, text: 'Investigate', enabled: rowId},
+                { name: 'cancel', click: cancel, text: 'Cancel', enabled: rowId},
+            ]
+        }"></div>
+    </header>
+    <column title="Username" sort-field="PlayerBankAccount.Player.Username" width="150">
+        <label data-value="@Username"></label>(<a data-id="@PlayerId" style="color: #428bca" data-bind="click: $root.playerInfo">view</a>)
+    </column>
+    <column title="PlayerName" sort-field="PlayerName" width="150" data-value="@PlayerName" />
+    <column title="Reference Code" sort-field="ReferenceCode" width="150" data-value="@ReferenceCode" />
+    <column title="Payment Method" sort-field="PaymentMethod" width="150" data-value="@PaymentMethod" />
+    <column title="Currency" sort-field="Currency" width="100" data-value="@Currency" />
+    <column title="Amount" sort-field="Amount" width="50" data-value="@Amount" />
+    <column title="Status" sort-field="Status" width="50" data-value="@Status" />
+    <column title="Auto Verification Result" sort-field="AutoVerificationResult" width="150">
+        <label data-value="$root.avcTemplate(@AutoVerificationResult)"></label>
+    </column>
+    <column title="Risk Profile Check Result" sort-field="RiskProfileCheckResult" width="150">
+        <label data-value="$root.riskTemplate(@RiskProfileCheckResult)"></label>
+    </column>
+</div>

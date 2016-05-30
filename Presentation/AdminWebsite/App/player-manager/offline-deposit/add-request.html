@@ -1,0 +1,43 @@
+<div class="alert" data-bind="visible: message, text: message, css: messageClass"></div>
+
+<form class="form-horizontal" data-bind="validationOptions: { insertMessages: false }">
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Username</label>
+        <div class="col-sm-8">
+            <p class="form-control-static" data-bind="text: username"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Bank<span class="red">*</span></label>
+        <div class="col-sm-8 field-box">
+            <select class="form-control" data-bind="options: banks, optionsText: 'name', value: selectedBankAccount, disable: disable"></select> <span class="red" data-bind="validationMessage: selectedBankAccount"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Amount<span class="red">*</span></label>
+        <div class="col-sm-8 field-box">
+            <input class="form-control" maxlength="15" data-bind="value: amount, numeric: amount, disable: disable" /> <span class="red" data-bind="validationMessage: amount"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Qualified deposit bonuses</label>
+        <div class="col-sm-8">
+            <!-- ko foreach: bonuses-->
+            <div>
+                <label>
+                    <input class="ace" type="radio" name="bonusRadios" data-bind="checkedValue: $data, checked: $root.selectedBonus" />
+                    <span class="lbl" data-bind="text: $root.bonusFormatter($data)"></span>
+                </label>
+            </div>
+            <!-- /ko -->
+            <span class="red" data-bind="validationMessage: selectedBonus"></span>
+        </div>
+    </div>
+    <div class="clearfix form-actions">
+        <div class="center">
+            <button type="button" class="btn btn-default btn-round" data-bind="click: close">Close</button>
+            &nbsp; &nbsp; &nbsp;
+            <button type="submit" class="btn btn-primary btn-round" data-bind="click: sendRequest, disable: disable">Submit</button>
+        </div>
+    </div>
+</form>

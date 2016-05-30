@@ -1,0 +1,57 @@
+﻿<div>
+    <div id="payment-level-settings-grid" data-bind="grid: {
+        source:  config.adminApi('PaymentLevelSettings/List'),
+        fields: [
+                'LicenseeName',
+                'BrandName',
+                'Username',
+                'FullName',
+                'PaymentLevelName',
+                'Amount',
+                'PaymentLevelId',
+                'BrandId',
+                'Currency'
+            ],
+        filter: ko.computed(function() { return {
+             BrandName: search()
+        }}),
+        defaultSort: { field: 'BrandName' },
+        paging: true,        
+        multiselect: true,
+        useResizeManager: true,
+        useBrandFilter: true
+    }">
+
+        <header>
+            <div data-bind="gridHeader: { context: $data,
+            filters: [
+                ['LicenseeName', 'Licensee', 'enum', licensees()],
+                ['BrandName', 'Brand', 'enum', brands()],
+                ['TransactionType', 'Transaction Type', 'enum', paymentTypes()],
+                ['PaymentMethod', 'Payment Method', 'list', paymentMethods()],
+                ['Username', 'Username', 'text'],
+                ['PlayerStatus', 'Player Status', 'list', ['Active', 'Inactive','Time-out', 'Self-Excluded']],
+                ['PaymentLevelName', 'Payment Level', 'list', paymentLevels()],
+                ['ApproveDate' , 'Approve Date', 'date'],
+                ['Amount', 'app:common.amount', 'amount'],
+                ['Currency', 'Currency', 'list', currencies()],
+            ],
+            buttons: [
+                { name: 'btn-SetPaymentLevel', click: openEditTab, visible: isEditAllowed, text: 'app:playerManager.paymentLevelSettings.setPaymentLevel', icon: 'exclamation' }
+            ],
+            
+        }"></div>
+        </header>
+
+        <column title="app:common.licensee" sort-field="LicenseeName" width="150" data-value="@['LicenseeName']" />
+        <column title="app:brand.name" sort-field="BrandName" width="150" data-value="@['BrandName']" />
+        <column title="app:common.username" sort-field="Username" width="220" data-value="@Username" />
+        <column title="app:common.playerName" sort-field="FullName" width="200" data-value="@FullName" />
+        <column title="app:payment.level" sort-field="PaymentLevelName" width="150" data-value="@PaymentLevelName" />
+        <column title="app:common.amount" sort-field="Amount" width="150" data-value="@Amount"/>
+        <column title="" sort-field="PaymentLevelId" width="0" data-value="@PaymentLevelId" hidden="true"/>
+        <column title="" sort-field="BrandId" width="0" data-value="@BrandId" hidden="true"/>
+        <column title="" sort-field="Currency" width="0" data-value="@Currency" hidden="true"/>
+    </div>
+    <div class="no-records" data-bind="visible: noRecordsFound">No records found</div>
+</div>

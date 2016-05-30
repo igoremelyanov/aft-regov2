@@ -1,0 +1,435 @@
+﻿<div data-bind="visible: message, text: message, css: messageCss"></div>
+<form class="form-horizontal" data-bind="validationOptions: { insertMessages: false }">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="widget-box">
+                <div class="widget-header">
+                    <h4 class="widget-title smaller">Base info</h4>
+                </div>
+                <div class="widget-body">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label">Licensee</label>
+                                <div class="col-sm-6 field-box">
+                                    <p class="form-control-static" data-bind="text: licenseeName"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label">Status</label>
+                                <div class="col-sm-6 field-box">
+                                    <p class="form-control-static" data-bind="text: status"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label">Amount</label>
+                                <div class="col-sm-6 field-box">
+                                    <p class="form-control-static" data-bind="text: amount"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label">Brand</label>
+                                <div class="col-sm-6 field-box">
+                                    <p class="form-control-static" data-bind="text: brandName"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label">Internal account</label>
+                                <div class="col-sm-6 field-box">
+                                    <p class="form-control-static" data-bind="text: internalAccount"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label">Submitted by</label>
+                                <div class="col-sm-6 field-box">
+                                    <p class="form-control-static" data-bind="text: submittedBy"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label">Username</label>
+                                <div class="col-sm-6 field-box">
+                                    <p class="form-control-static" data-bind="text: username"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label">Currency</label>
+                                <div class="col-sm-6 field-box">
+                                    <p class="form-control-static" data-bind="text: currency"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label">Date submitted</label>
+                                <div class="col-sm-6 field-box">
+                                    <p class="form-control-static" data-bind="text: dateSubmitted"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label">Reference Code</label>
+                                <div class="col-sm-6 field-box">
+                                    <p class="form-control-static" data-bind="text: referenceCode"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label">Payment method</label>
+                                <div class="col-sm-6 field-box">
+                                    <p class="form-control-static" data-bind="text: paymentMethod"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="widget-box">
+                <div class="widget-header">
+                    <h4 class="widget-title smaller">Bank information</h4>
+                </div>
+                <div class="widget-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label">Bank Name</label>
+                                <div class="col-sm-6 field-box">
+                                    <p class="form-control-static" data-bind="text: bankName"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label">SWIFT Code</label>
+                                <div class="col-sm-6 field-box">
+                                    <p class="form-control-static" data-bind="text: swiftCode"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label">Bank Account Name</label>
+                                <div class="col-sm-6 field-box">
+                                    <p class="form-control-static" data-bind="text: bankAccountName"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label">Address</label>
+                                <div class="col-sm-6 field-box">
+                                    <p class="form-control-static" data-bind="text: address"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label">Bank Account Number</label>
+                                <div class="col-sm-6 field-box">
+                                    <p class="form-control-static" data-bind="text: bankAccountNumber"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label">City</label>
+                                <div class="col-sm-6 field-box">
+                                    <p class="form-control-static" data-bind="text: city"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label">Branch</label>
+                                <div class="col-sm-6 field-box">
+                                    <p class="form-control-static" data-bind="text: branch"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label">Province</label>
+                                <div class="col-sm-6 field-box">
+                                    <p class="form-control-static" data-bind="text: province"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="widget-box">
+                <div class="widget-header">
+                    <h4 class="widget-title smaller">Process info</h4>
+                </div>
+                <div class="widget-body">
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <div class="widget-box" data-bind="visible: hasAutoVerification()" style="margin: 20px">
+                                <div class="widget-header">
+                                    <h4 class="widget-title smaller">Auto verification check</h4>
+                                </div>
+                                <div class="widget-body">
+                                    <div class="row">
+                                        <div class="col-sm-8 form-group">
+                                            <label class="col-sm-12 control-label">Auto verification check result:</label>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <p class="form-control-static">
+                                                <span data-bind="text:autoVerificationStatus "></span> <a href="#" data-bind="click: avcStatus">details</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-8 form-group">
+                                            <label class="col-sm-12 control-label">Auto verification check date:</label>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <p class="form-control-static" data-bind="text: autoVerificationDate"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <div class="widget-box" data-bind="visible: hasAutoVerification()" style="margin: 20px">
+                                <div class="widget-header">
+                                    <h4 class="widget-title smaller">Risk profile check</h4>
+                                </div>
+                                <div class="widget-body">
+                                    <div class="row">
+                                        <div class="col-sm-8 form-group">
+                                            <label class="col-sm-12 control-label">Risk profile check result:</label>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <p class="form-control-static">
+                                                <span data-bind="text:riskLevelStatus "></span> <a href="#" data-bind="click: rvcStatus">details</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-8 form-group">
+                                            <label class="col-sm-12 control-label">Risk profile check date:</label>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <p class="form-control-static" data-bind="text: riskLevelDate"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <div class="widget-box" data-bind="visible: hasVerificationQueue()" style="margin: 20px">
+                                <div class="widget-header">
+                                    <h4 class="widget-title smaller">Verification Queue</h4>
+                                </div>
+                                <div class="widget-body">
+                                    <div class="row">
+                                        <div class="col-sm-7 form-group">
+                                            <label class="col-sm-12 control-label">Verification Queue Result:</label>
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <p class="form-control-static">
+                                                <span data-bind="text: verificationQueueResult"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-7 form-group">
+                                            <label class="col-sm-12 control-label">Handled By:</label>
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <p class="form-control-static" data-bind="text: verificationHandledBy"></p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-7 form-group">
+                                            <label class="col-sm-12 control-label">Date Handled:</label>
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <p class="form-control-static" data-bind="text: verificationDateHandled"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <div class="widget-box" data-bind="visible: hasOnHoldQueue()" style="margin: 20px">
+                                <div class="widget-header">
+                                    <h4 class="widget-title smaller">On Hold Queue</h4>
+                                </div>
+                                <div class="widget-body">
+                                    <div class="row">
+                                        <div class="col-sm-7 form-group">
+                                            <label class="col-sm-12 control-label">On Hold Queue Result:</label>
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <p class="form-control-static">
+                                                <span data-bind="text: OnHoldResult"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-7 form-group">
+                                            <label class="col-sm-12 control-label">Handled By:</label>
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <p class="form-control-static" data-bind="text: OnHoldHandledBy"></p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-7 form-group">
+                                            <label class="col-sm-12 control-label">Date Handled:</label>
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <p class="form-control-static" data-bind="text: OnHoldDateHandled"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="widget-box">
+                <div class="widget-header">
+                    <h4 class="widget-title smaller">Remarks</h4>
+                </div>
+                <div class="widget-body">
+                    <table style="width: 100%;">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="widget-box" style="margin: 20px;">
+                                        <div class="widget-header">
+                                            <h4 class="widget-title smaller">Existing Admin Remarks</h4>
+                                        </div>
+                                        <div class="widget-body" style="padding: 10px;">
+                                            <div class="form-group">
+                                                <div class="col-sm-8 field-box">
+
+                                                    <table style="border: 1px black;">
+                                                        <tbody data-bind="foreach: adminRemarks">
+                                                            <tr>
+                                                                <td>
+                                                                    <span style="font-weight: bold" data-bind="text:user"></span> : <span data-bind="text:remark"></span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="widget-box" style="margin: 20px;">
+                                        <div class="widget-header">
+                                            <h4 class="widget-title smaller">Existing Player Remarks</h4>
+                                        </div>
+                                        <div class="widget-body" style="padding: 10px;">
+                                            <div class="form-group">
+                                                <div class="col-sm-8 field-box">
+
+                                                    <table style="border: 1px black;">
+                                                        <tbody data-bind="foreach: playerRemarks">
+                                                            <tr>
+                                                                <td>
+                                                                    <span style="font-weight: bold" data-bind="text:user"></span> : <span data-bind="text:remark"></span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+            <div class="row" data-bind="visible: event() != 'view'">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label"><span data-i18n="app:common.remarks"></span></label>
+                        <div class="col-sm-8 field-box">
+                            <textarea class="form-control" data-bind="value: remarks, visible: !isSubmitted()"></textarea><span class="red" data-bind="validationMessage: remarks"></span>
+                            <span class="red"></span>
+                            <p class="form-control-static" data-bind="text: remarks, visible: isSubmitted()"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix form-actions">
+                <div class="center">
+                    <button class="btn btn-white btn-round" data-bind="click: close, visible: !isSubmitted() && event() != 'view' && event() != 'cancel'">Cancel</button>
+                    <button class="btn btn-white btn-round" data-bind="click: close, visible: isSubmitted() || event() == 'view' || event() == 'cancel'">Close</button>
+                    &nbsp; &nbsp; &nbsp;
+                    <button type="button" class="btn btn-primary btn-round" data-bind="click: submit, visible: !isSubmitted() && event() != 'view', text: submitLabel()"></button>
+                </div>
+            </div>
+</form>
+

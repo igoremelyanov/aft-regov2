@@ -1,0 +1,76 @@
+﻿<div class="advanced-transaction-view" data-bind="grid: {
+            source: config.adminApi('PlayerInfo/TransactionsAdv'),
+            fields: ['Type',
+                        'MainBalanceAmount', 'MainBalance',
+                        'BonusBalanceAmount', 'BonusBalance',
+                        'TemporaryBalanceAmount', 'TemporaryBalance',
+                        'LockBonusAmount', 'LockBonus',
+                        'Balance',
+                        'CreatedOn', 'Wallet', 'CurrencyCode', 'Description', 
+                        'PerformedBy', 'TransactionId', 'RelatedTransactionId'],
+            filter: ko.computed(function() { return { }}),
+            defaultSort: { field: 'CreatedOn', direction: 'desc' },
+            paging: true,
+            useResizeManager: { height: 600 },
+            sendAlso: ko.computed(function() { return [ { playerId: playerId }]; })
+        }">
+    <header>
+        <form action="#" class="pull-left">
+            <div class="custom-filters" data-bind="compose: { model: 'controls/filters', activationData:
+                [[
+                ['CreatedOn', 'Date', 'date'],
+                ['Wallet', 'Wallet', 'list', walletsName()],
+                ['Type', 'Type', 'list', transactionTypeNames()],
+                ['Balance', 'Balance', 'numeric'],
+                ['MainBalanceAmount', 'Main Amount', 'numeric'],
+                ['MainBalance', 'Main Balance', 'numeric'],
+                ['BonusBalanceAmount', 'Bonus Amount', 'numeric'],
+                ['BonusBalance', 'Bonus Balance', 'numeric'],
+                ['TemporaryBalanceAmount', 'Temporary Amount', 'numeric'],
+                ['TemporaryBalance', 'Temporary Balance', 'numeric'],
+                ['LockBonusAmount', 'Lock Amount', 'numeric'],
+                ['LockBonus', 'Lock Balance', 'numeric'],
+                ['Description', 'Description', 'text'],
+                ['PerformedBy', 'Performed By', 'list', ['Player', 'System', 'Admin']],
+                ['TransactionId', 'Transaction Id', 'text'],
+                ]] }">
+            </div>
+            <button id="transactions-search-button" type="submit" class="btn btn-sm btn-white btn-round" data-i18n="app:common.search"></button>
+        </form>
+    </header>
+    <column title="app:playerManager.transactions.date" sort-field="CreatedOn" width="180" data-value="@CreatedOn" />
+    <column title="app:playerManager.transactions.wallet" width="120" data-value="@Wallet" />
+    <column title="app:playerManager.transactions.currency" width="80" data-value="@CurrencyCode" />
+    <column title="app:playerManager.transactions.type" width="130" data-value="$root.typeFormatter.call @" />
+    <column title="app:playerManager.transactions.balance" width="100">
+        <div class="pull-right" data-value="@Balance.toFixed 2"></div>
+    </column>
+    <column title="app:playerManager.transactions.mbAmount" width="100">
+        <div class="pull-right" data-value="@MainBalanceAmount.toFixed 2"></div>
+    </column>
+    <column title="app:playerManager.transactions.mBalance" width="100">
+        <div class="pull-right" data-value="@MainBalance.toFixed 2"></div>
+    </column>
+    <column title="app:playerManager.transactions.bbAmount" width="100">
+        <div class="pull-right" data-value="@BonusBalanceAmount.toFixed 2"></div>
+    </column>
+    <column title="app:playerManager.transactions.bBalance" width="100">
+        <div class="pull-right" data-value="@BonusBalance.toFixed 2"></div>
+    </column>
+    <column title="app:playerManager.transactions.tbAmount" width="100">
+        <div class="pull-right" data-value="@TemporaryBalanceAmount.toFixed 2"></div>
+    </column>
+    <column title="app:playerManager.transactions.tBalance" width="100">
+        <div class="pull-right" data-value="@TemporaryBalance.toFixed 2"></div>
+    </column>
+    <column title="app:playerManager.transactions.lbAmount" width="100">
+        <div class="pull-right" data-value="@LockBonusAmount.toFixed 2"></div>
+    </column>
+    <column title="app:playerManager.transactions.lBalance" width="100">
+        <div class="pull-right" data-value="@LockBonus.toFixed 2"></div>
+    </column>
+    <column title="app:playerManager.transactions.description" width="280" data-value="@Description" />
+    <column title="app:playerManager.transactions.performedBy" width="180" data-value="@PerformedBy" />
+    <column title="app:playerManager.transactions.transactionId" width="250" data-value="@TransactionId"/>
+    <column title="app:playerManager.transactions.relatedTransactionId" width="250" data-value="@RelatedTransactionId" />
+</div>
