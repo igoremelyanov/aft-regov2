@@ -1,0 +1,612 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Message Template Documentation</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="/Content/css/bootstrap-docs.min.css" />
+    <link rel="stylesheet" href="/Content/css/prism.css" />
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="/Scripts/html5shiv.js"></script>
+    <script src="/Scripts/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body data-spy="scroll" data-target=".scrollspy">
+    <div class="container bs-docs-container">
+        <div class="row">
+            <div class="col-md-9" role="main">
+                <div class="bs-docs-section">
+                    <h1 id="intro" class="page-header">
+                        <a class="anchorjs-link " href="#intro"></a>Introduction
+                    </h1>
+                    <h2 id="intro-rendering">
+                        <a class="anchorjs-link " href="#intro-rendering"></a>Rendering
+                    </h2>
+                    <p>
+                        Email and SMS messages are rendered using <a href="http://dotliquidmarkup.org">DotLiquid</a>, an easy to use programming language.
+                    </p>
+                    <div class="bs-callout bs-callout-info" id="callout-intro-email">
+                        <h4>Email</h4>
+                        <p>
+                            Email messages are sent as HTML and thus support HTML tags.
+                        </p>
+                    </div>
+                    <div class="bs-callout bs-callout-info" id="callout-intro-sms">
+                        <h4>SMS</h4>
+                        <p>
+                            SMS messages are sent as text and support unicode characters.
+                        </p>
+                    </div>
+                    <h2 id="intro-variables">
+                        <a class="anchorjs-link " href="#intro-variables"></a>Variables
+                    </h2>
+                    <p>
+                        Variables are surrounded by matched pairs of curly brackets and prefixed by the word <em>model</em>, followed by a period.
+                    </p>
+                    <figure class="highlight">
+<pre><code class="language-html">{{model.VariableName}}</code></pre>
+                    </figure>
+                    <p>
+                        If you send a message to someone named John Doe you could do this:
+                    </p>
+                    <div class="bs-example" data-example-id="example-variable">
+                        Hello, John Doe.
+                    </div>
+                    <figure class="highlight">
+<pre><code class="language-html">Hello, {{model.FirstName}} {{model.LastName}}.</code></pre>
+                    </figure>
+                    <h2 id="intro-categories">
+                        <a class="anchorjs-link " href="#intro-categories"></a>Message Categories
+                    </h2>
+                    <p>
+                        Messages that share common variables are grouped in to categories.
+                    </p>
+                    <div class="bs-callout bs-callout-info" id="callout-intro-player-messages">
+                        <h4>Player messages</h4>
+                        <p>
+                            Player messages are sent on behalf of a brand to registered players.
+                        </p>
+                    </div>
+                    <div class="bs-callout bs-callout-info" id="callout-intro-brand-messages">
+                        <h4>Brand messages</h4>
+                        <p>
+                            Brand messages are sent on behalf of a brand to people other than registered players.
+                        </p>
+                    </div>
+                </div>
+                <div class="bs-docs-section">
+                    <h1 id="player-messages" class="page-header">
+                        <a class="anchorjs-link " href="#player-messages"></a>Player message variables
+                    </h1>
+                    <h2 id="player-messages-common">
+                        <a class="anchorjs-link " href="#player-messages-common"></a>Common variables
+                    </h2>
+                    <p>
+                        All player messages have access to the following variables:
+                    </p>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered bs-events-table">
+                            <thead>
+                                <tr>
+                                    <th>Variable</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Username</td>
+                                    <td>The username of the player.</td>
+                                </tr>
+                                <tr>
+                                    <td>FirstName</td>
+                                    <td>The first name of the player.</td>
+                                </tr>
+                                <tr>
+                                    <td>LastName</td>
+                                    <td>The last name of the player.</td>
+                                </tr>
+                                <tr>
+                                    <td>BrandName</td>
+                                    <td>The name of the brand that the player belongs to.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h2 id="player-messages-bonus-issued">
+                        <a class="anchorjs-link " href="#player-messages-bonus-issued"></a>Bonus issued
+                    </h2>
+                    <p>Triggered when a player is issued a bonus.</p>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered bs-events-table">
+                            <thead>
+                                <tr>
+                                    <th>Variable</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Amount</td>
+                                    <td>The amount of the bonus.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h2 id="player-messages-bonus-wagering-requirement">
+                        <a class="anchorjs-link " href="#player-messages-bonus-wagering-requirement"></a>Bonus wagering requirement
+                    </h2>
+                    <p>Triggered when a player qualifies for a bonus that has a wagering requirement.</p>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered bs-events-table">
+                            <thead>
+                                <tr>
+                                    <th>Variable</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>RequiredWagerAmount</td>
+                                    <td>The required wager amount of the bonus.</td>
+                                </tr>
+                                <tr>
+                                    <td>BonusAmount</td>
+                                    <td>The amount of the bonus.</td>
+                                </tr>
+								<tr>
+                                    <td>IsAfterWager</td>
+                                    <td><code>true</code> if the bonus is issued after meeting the wagering requirement, otherwise <code>false</code>.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>					
+                    <h2 id="player-messages-contact-verification">
+                        <a class="anchorjs-link " href="#player-messages-contact-verification"></a>Contact verification
+                    </h2>
+                    <p>Triggered when email or SMS verification is requested of a player.</p>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered bs-events-table">
+                            <thead>
+                                <tr>
+                                    <th>Variable</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>VerificationCode</td>
+                                    <td>A verification code sent to a player's mobile phone. Only available in SMS messages.</td>
+                                </tr>
+                                <tr>
+                                    <td>VerificationUrl</td>
+                                    <td>A verification URL sent to a player's email. Only available in email messages.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h2 id="player-messages-high-deposit">
+                        <a class="anchorjs-link " href="#player-messages-high-deposit"></a>High deposit
+                    </h2>
+                    <p>Triggered when a player qualifies for a high-deposit bonus.</p>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered bs-events-table">
+                            <thead>
+                                <tr>
+                                    <th>Variable</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Currency</td>
+                                    <td>The currency.</td>
+                                </tr>
+                                <tr>
+                                    <td>BonusAmount</td>
+                                    <td>The bonus amount.</td>
+                                </tr>
+                                <tr>
+                                    <td>RemainingAmount</td>
+                                    <td>The remaining amount.</td>
+                                </tr>
+                                <tr>
+                                    <td>DepositAmountRequired</td>
+                                    <td>The deposit amount required.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h2 id="player-messages-new-password">
+                        <a class="anchorjs-link " href="#player-messages-new-password"></a>New password
+                    </h2>
+                    <p>Triggered when a request to reset a player's password is made.</p>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered bs-events-table">
+                            <thead>
+                                <tr>
+                                    <th>Variable</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>NewPassword</td>
+                                    <td>The player's new password.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h2 id="player-messages-player-registered">
+                        <a class="anchorjs-link " href="#player-messages-player-registered"></a>Player registered
+                    </h2>
+                    <p>Triggered when a player is registered.</p>
+                    <p>
+                        Only the <a href="#player-messages-common">common variables</a> are available for this message.
+                    </p>
+                    <h2 id="player-messages-registration-verification">
+                        <a class="anchorjs-link " href="#player-messages-registration-verification"></a>Registration verification
+                    </h2>
+                    <p>Triggered when a player registers and the brand requires email and/or SMS verification to complete the registration process.</p>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered bs-events-table">
+                            <thead>
+                                <tr>
+                                    <th>Variable</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>VerificationCode</td>
+                                    <td>A verification code sent to a player's mobile phone. Only available in SMS messages.</td>
+                                </tr>
+                                <tr>
+                                    <td>VerificationUrl</td>
+                                    <td>A verification URL sent to a player's email. Only available in email messages.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h2 id="player-messages-reset-password">
+                        <a class="anchorjs-link " href="#player-messages-reset-password"></a>Reset password
+                    </h2>
+                    <p>Triggered when a player requests to reset their password.</p>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered bs-events-table">
+                            <thead>
+                                <tr>
+                                    <th>Variable</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ResetPasswordUrl</td>
+                                    <td>The URL to a page where the player can reset their password.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="bs-docs-section">
+                    <h1 id="brand-messages" class="page-header">
+                        <a class="anchorjs-link " href="#brand-messages"></a>Brand message variables
+                    </h1>
+                    <h2 id="brand-messages-common">
+                        <a class="anchorjs-link " href="#brand-messages-common"></a>Common variables
+                    </h2>
+                    <p>
+                        All brand messages have access to the following variables:
+                    </p>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered bs-events-table">
+                            <thead>
+                                <tr>
+                                    <th>Variable</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>RecipientName</td>
+                                    <td>The name of the receipient.</td>
+                                </tr>
+                                <tr>
+                                    <td>BrandName</td>
+                                    <td>The name of the brand.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h2 id="brand-messages-refer-friends">
+                        <a class="anchorjs-link " href="#brand-messages-refer-friends"></a>Refer friends
+                    </h2>
+                    <p>Triggered when a referral request is made.</p>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered bs-events-table">
+                            <thead>
+                                <tr>
+                                    <th>Variable</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Referrer</td>
+                                    <td>The name of the referrer.</td>
+                                </tr>
+                                <tr>
+                                    <td>ReferralUrl</td>
+                                    <td>The URL where the person being referred can register.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="bs-docs-section">
+                    <h1 id="player-email-template" class="page-header">
+                        <a class="anchorjs-link " href="#player-email-template"></a>Player email default templates
+                    </h1>
+                    <h2 id="player-email-template-bonus-issued">
+                        <a class="anchorjs-link " href="#player-email-template-bonus-issued"></a>Bonus issued
+                    </h2>
+                    <figure class="highlight">
+<pre class="line-numbers"><code class="language-html">&lt;p&gt;
+	Hello {{model.Username}},
+&lt;/p&gt;
+&lt;p&gt;
+	You have been issued a bonus of {{model.Amount}}.
+&lt;/p&gt;</code></pre>
+                    </figure>
+                    <h2 id="player-email-template-bonus-wagering-requirement">
+                        <a class="anchorjs-link " href="#player-email-template-bonus-wagering-requirement"></a>Bonus wagering requirement
+                    </h2>
+                    <figure class="highlight">
+<pre class="line-numbers"><code class="language-html">&lt;p&gt;
+	Hello {{model.Username}},
+&lt;/p&gt;
+&lt;p&gt;
+	Your bonus has been activated. Bet {{model.RequiredWagerAmount}} to earn your {{model.BonusAmount}} bonus.
+&lt;/p&gt;
+&lt;p&gt;
+	Click &lt;a href='{{model.BrandWebsite}}'&gt;here&lt;/a&gt; to continue playing.
+&lt;/p&gt;</code></pre>
+                    </figure>					
+                    <h2 id="player-email-template-contact-verification">
+                        <a class="anchorjs-link " href="#player-email-template-contact-verification"></a>Contact verification
+                    </h2>
+                    <figure class="highlight">
+<pre class="line-numbers"><code class="language-html">&lt;p&gt;
+	Hello {{model.Username}},
+&lt;/p&gt;
+&lt;p&gt;
+	To verify your email address, please click the following link: &lt;a href='{{model.VerificationUrl}}'&gt;{{model.VerificationUrl}}&lt;/a&gt;
+&lt;/p&gt;</code></pre>
+                    </figure>
+                    <h2 id="player-email-template-high-deposit">
+                        <a class="anchorjs-link " href="#player-email-template-high-deposit"></a>High deposit
+                    </h2>
+                    <figure class="highlight">
+<pre class="line-numbers"><code class="language-html">&lt;p&gt;
+	Hello {{model.Username}},
+&lt;/p&gt;
+&lt;p&gt;
+	You are about to get {{model.BonusAmount}} by depositing {{model.RemainingAmount}} more to reach monthly deposit of {{model.DepositAmountRequired}} bonus
+&lt;/p&gt;</code></pre>
+                    </figure>					
+                    <h2 id="player-email-template-new-password">
+                        <a class="anchorjs-link " href="#player-email-template-new-password"></a>New password
+                    </h2>
+                    <figure class="highlight">
+<pre class="line-numbers"><code class="language-html">&lt;p&gt;
+	Hello {{model.Username}},
+&lt;/p&gt;
+&lt;p&gt;
+	Your new password is {{model.NewPassword}}
+&lt;/p&gt;</code></pre>
+                    </figure>					
+                    <h2 id="player-email-template-player-registered">
+                        <a class="anchorjs-link " href="#player-email-template-player-registered"></a>Player registered
+                    </h2>
+                    <figure class="highlight">
+<pre class="line-numbers"><code class="language-html">&lt;p&gt;
+	Hello {{model.Username}},
+&lt;/p&gt;
+&lt;p&gt;
+	Thanks for registering with {{model.BrandName}}
+&lt;/p&gt;</code></pre>
+                    </figure>					
+                    <h2 id="player-email-template-registration-verification">
+                        <a class="anchorjs-link " href="#player-email-template-registration-verification"></a>Registration verification
+                    </h2>
+                    <figure class="highlight">
+<pre class="line-numbers"><code class="language-html">&lt;p&gt;
+	Hello {{model.Username}},
+&lt;/p&gt;
+&lt;p&gt;
+	To verify your email address, please click the following link: &lt;a href='{{model.VerificationUrl}}'&gt;{{model.VerificationUrl}}&lt;/a&gt;
+&lt;/p&gt;</code></pre>
+                    </figure>					
+                    <h2 id="player-email-template-reset-password">
+                        <a class="anchorjs-link " href="#player-email-template-reset-password"></a>Reset password
+                    </h2>
+                    <figure class="highlight">
+<pre class="line-numbers"><code class="language-html">&lt;p&gt;
+	Hello {{model.Username}},
+&lt;/p&gt;
+&lt;p&gt;
+	If you requested to reset your password, please click the following link to complete the process &lt;strong&gt;&lt;a href='{{model.ResetPasswordUrl}}'&gt;{{model.ResetPasswordUrl}}&lt;/a&gt;&lt;/strong&gt;
+&lt;/p&gt;</code></pre>
+                    </figure>					
+                </div>
+                <div class="bs-docs-section">
+                    <h1 id="brand-email-template" class="page-header">
+                        <a class="anchorjs-link " href="#brand-email-template"></a>Brand email default templates
+                    </h1>
+                    <h2 id="brand-email-template-bonus-issued">
+                        <a class="anchorjs-link " href="#brand-email-template-refer-friends"></a>Refer friends
+                    </h2>
+                    <figure class="highlight">
+<pre class="line-numbers"><code class="language-html">&lt;p&gt;
+	Hello,
+&lt;/p&gt;
+&lt;p&gt;
+	Your friend {{model.Referrer}} has sent you a referral to {{model.BrandName}}. Click &lt;a href='{{model.ReferralUrl}}'&gt;here&lt;/a&gt;
+&lt;/p&gt;</code></pre>
+                    </figure>					
+                </div>
+                <div class="bs-docs-section">
+                    <h1 id="player-sms-template" class="page-header">
+                        <a class="anchorjs-link " href="#player-sms-template"></a>Player SMS default templates
+                    </h1>
+                    <h2 id="player-sms-template-bonus-issued">
+                        <a class="anchorjs-link " href="#player-sms-template-bonus-issued"></a>Bonus issued
+                    </h2>
+                    <figure class="highlight">
+<pre><code class="language-html">Hello, {{model.Username}}. You have been issued a bonus of {{model.Amount}}</code></pre>
+                    </figure>
+                    <h2 id="player-sms-template-bonus-wagering-requirement">
+                        <a class="anchorjs-link " href="#player-sms-template-bonus-wagering-requirement"></a>Bonus wagering requirement
+                    </h2>
+                    <figure class="highlight">
+<pre><code class="language-html">Bet {{model.RequiredWagerAmount}} to earn your bonus of  {{model.BonusAmount}}.</code></pre>
+                    </figure>					
+                    <h2 id="player-sms-template-contact-verification">
+                        <a class="anchorjs-link " href="#player-sms-template-contact-verification"></a>Contact verification
+                    </h2>
+                    <figure class="highlight">
+<pre><code class="language-html">Hello, {{model.Username}}. Your verification code is {{model.VerificationCode}}.</code></pre>
+                    </figure>					
+                    <h2 id="player-sms-template-high-deposit">
+                        <a class="anchorjs-link " href="#player-sms-template-high-deposit"></a>High deposit
+                    </h2>
+                    <figure class="highlight">
+<pre><code class="language-html"></code>Hello, {{model.Username}}. You are about to get {{model.BonusAmount}} by depositing {{model.RemainingAmount}} more to reach monthly deposit of {{model.DepositAmountRequired}} bonus.</pre>
+                    </figure>					
+                    <h2 id="player-sms-template-new-password">
+                        <a class="anchorjs-link " href="#player-sms-template-new-password"></a>New password
+                    </h2>
+                    <figure class="highlight">
+<pre><code class="language-html">Hello, {{model.Username}}. Your new password is {{model.NewPassword}}</code></pre>
+                    </figure>					
+                    <h2 id="player-sms-template-player-registered">
+                        <a class="anchorjs-link " href="#player-sms-template-player-registered"></a>Player registered
+                    </h2>
+                    <figure class="highlight">
+<pre><code class="language-html">Hello, {{model.Username}}. Thanks for registering with {{model.BrandName}}</code></pre>
+                    </figure>					
+                    <h2 id="player-sms-template-registration-verification">
+                        <a class="anchorjs-link " href="#player-sms-template-registration-verification"></a>Registration verification
+                    </h2>
+                    <figure class="highlight">
+<pre><code class="language-html">Hello, {{model.Username}}. Your verification code is {{model.VerificationCode}}.</code></pre>
+                    </figure>					
+                    <h2 id="player-sms-template-reset-password">
+                        <a class="anchorjs-link " href="#player-sms-template-reset-password"></a>Reset password
+                    </h2>
+                    <figure class="highlight">
+<pre><code class="language-html">Hello, {{model.Username}}. If you requested to reset your password, please click the following link to complete the process {{model.ResetPasswordUrl}}</code></pre>
+                    </figure>					
+                </div>
+                <div class="bs-docs-section">
+                    <h1 id="brand-sms-template" class="page-header">
+                        <a class="anchorjs-link " href="#brand-sms-template"></a>Brand sms default templates
+                    </h1>
+                    <h2 id="brand-sms-template-bonus-issued">
+                        <a class="anchorjs-link " href="#brand-sms-template-refer-friends"></a>Refer friends
+                    </h2>
+                    <figure class="highlight">
+<pre><code class="language-html">Your friend {{model.Referrer}} has sent you a referral to {{model.BrandName}}. Click this link {{model.ReferralUrl}}</code></pre>
+                    </figure>					
+                </div>
+            </div>
+            <div class="col-md-3" role="complementary">
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix-top">
+                    <ul class="nav bs-docs-sidenav">
+                        <li>
+                            <a href="#intro">Introduction</a>
+                            <ul class="nav">
+                                <li><a href="#intro-rendering">Rendering</a></li>
+                                <li><a href="#intro-variables">Variables</a></li>
+                                <li><a href="#intro-categories">Categories</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#player-messages">Player message variables</a>
+                            <ul class="nav">
+                                <li><a href="#player-messages-common">Common variables</a></li>
+                                <li><a href="#player-messages-bonus-issued">Bonus issued</a></li>
+								<li><a href="#player-messages-bonus-wagering-requirement">Bonus wagering requirement</a></li>
+                                <li><a href="#player-messages-contact-verification">Contact verification</a></li>
+                                <li><a href="#player-messages-high-deposit">High deposit</a></li>
+                                <li><a href="#player-messages-new-password">New password</a></li>
+                                <li><a href="#player-messages-player-registered">Player registered</a></li>
+                                <li><a href="#player-messages-registration-verification">Registration verification</a></li>
+                                <li><a href="#player-messages-reset-password">Reset password</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#brand-messages">Brand message variables</a>
+                            <ul class="nav">
+                                <li><a href="#brand-messages-common">Common variables</a></li>
+                                <li><a href="#brand-messages-refer-friends">Refer friends</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#player-email-template">Player email templates</a>
+                            <ul class="nav">
+                                <li><a href="#player-email-template-bonus-issued">Bonus issued</a></li>
+                                <li><a href="#player-email-template-bonus-wagering-requirement">Bonus wagering requirement</a></li>								
+                                <li><a href="#player-email-template-contact-verification">Contact verification</a></li>
+                                <li><a href="#player-email-template-high-deposit">High deposit</a></li>
+                                <li><a href="#player-email-template-new-password">New password</a></li>
+                                <li><a href="#player-email-template-player-registered">Player registered</a></li>
+                                <li><a href="#player-email-template-registration-verification">Registration verification</a></li>
+                                <li><a href="#player-email-template-reset-password">Reset password</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#brand-email-template">Brand email templates</a>
+                            <ul class="nav">
+                                <li><a href="#brand-email-template-refer-friends">Refer friends</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#player-sms-template">Player SMS templates</a>
+                            <ul class="nav">
+                                <li><a href="#player-sms-template-bonus-issued">Bonus issued</a></li>
+								<li><a href="#player-sms-template-bonus-wagering-requirement">Bonus wagering requirement</a></li>
+                                <li><a href="#player-sms-template-contact-verification">Contact verification</a></li>
+                                <li><a href="#player-sms-template-high-deposit">High deposit</a></li>
+                                <li><a href="#player-sms-template-new-password">New password</a></li>
+                                <li><a href="#player-sms-template-player-registered">Player registered</a></li>
+                                <li><a href="#player-sms-template-registration-verification">Registration verification</a></li>
+                                <li><a href="#player-sms-template-reset-password">Reset password</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#brand-sms-template">Brand SMS templates</a>
+                            <ul class="nav">
+                                <li><a href="#brand-sms-template-refer-friends">Refer friends</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <a class="back-to-top" href="#top"> Back to top </a>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="/Scripts/bootstrap-docs.min.js"></script>
+    <script src="/Scripts/prism.js"></script>
+</body>
+</html>

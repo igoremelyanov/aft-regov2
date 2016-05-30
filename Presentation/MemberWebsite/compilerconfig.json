@@ -1,0 +1,170 @@
+﻿[
+  {
+    "outputFile": "Scripts/custom/onlineDepositForm.js",
+    "inputFile": "Scripts/custom/onlineDepositForm.coffee"
+  },
+  {
+    "outputFile": "Scripts/custom/profile/account.js",
+    "inputFile": "Scripts/custom/profile/account.coffee"
+  },
+  {
+    "outputFile": "Scripts/custom/profile/bank.js",
+    "inputFile": "Scripts/custom/profile/bank.coffee"
+  },
+  {
+    "outputFile": "Scripts/custom/profile/claimbonus.js",
+    "inputFile": "Scripts/custom/profile/claimbonus.coffee"
+  },
+  {
+    "outputFile": "Scripts/custom/profile/contacts.js",
+    "inputFile": "Scripts/custom/profile/contacts.coffee"
+  },
+  {
+    "outputFile": "Scripts/custom/profile/deposit.js",
+    "inputFile": "Scripts/custom/profile/deposit.coffee"
+  },
+  {
+    "outputFile": "Scripts/custom/profile/gamehistory.js",
+    "inputFile": "Scripts/custom/profile/gamehistory.coffee"
+  },
+  {
+    "outputFile": "Scripts/custom/profile/onlinedeposit.js",
+    "inputFile": "Scripts/custom/profile/onlinedeposit.coffee"
+  },
+  {
+    "outputFile": "Scripts/custom/profile/pendingdeposit.js",
+    "inputFile": "Scripts/custom/profile/pendingdeposit.coffee"
+  },
+  {
+    "outputFile": "Scripts/custom/profile/personal.js",
+    "inputFile": "Scripts/custom/profile/personal.coffee"
+  },
+  {
+    "outputFile": "Scripts/custom/profile/profile.js",
+    "inputFile": "Scripts/custom/profile/profile.coffee"
+  },
+  {
+    "outputFile": "Scripts/custom/profile/responsible-gambling.js",
+    "inputFile": "Scripts/custom/profile/responsible-gambling.coffee"
+  },
+  {
+    "outputFile": "Scripts/custom/profile/security.js",
+    "inputFile": "Scripts/custom/profile/security.coffee"
+  },
+  {
+    "outputFile": "Scripts/custom/profile/transactionhistory.js",
+    "inputFile": "Scripts/custom/profile/transactionhistory.coffee"
+  },
+  {
+    "outputFile": "Scripts/custom/profile/verification.js",
+    "inputFile": "Scripts/custom/profile/verification.coffee"
+  },
+  {
+    "outputFile": "Scripts/custom/profile/withdrawal.js",
+    "inputFile": "Scripts/custom/profile/withdrawal.coffee"
+  },
+  {
+    "outputFile": "Scripts/custom/acknowledgement.js",
+    "inputFile": "Scripts/custom/acknowledgement.coffee"
+  },
+  {
+    "outputFile": "Scripts/custom/balance.js",
+    "inputFile": "Scripts/custom/balance.coffee"
+  },
+  {
+    "outputFile": "Scripts/custom/casino.js",
+    "inputFile": "Scripts/custom/casino.coffee"
+  },
+  {
+    "outputFile": "Scripts/custom/claimBonusReward.js",
+    "inputFile": "Scripts/custom/claimBonusReward.coffee"
+  },
+  {
+    "outputFile": "Scripts/custom/createBankAccount.js",
+    "inputFile": "Scripts/custom/createBankAccount.coffee"
+  },
+  {
+    "outputFile": "Scripts/custom/deposithistory.js",
+    "inputFile": "Scripts/custom/deposithistory.coffee"
+  },
+  {
+    "outputFile": "Scripts/custom/forgetPasswordStep1.js",
+    "inputFile": "Scripts/custom/forgetPasswordStep1.coffee"
+  },
+  {
+    "outputFile": "Scripts/custom/forgetPasswordStep2.js",
+    "inputFile": "Scripts/custom/forgetPasswordStep2.coffee"
+  },
+  {
+    "outputFile": "Scripts/custom/forgetPasswordStep3.js",
+    "inputFile": "Scripts/custom/forgetPasswordStep3.coffee"
+  },
+  {
+    "outputFile": "Scripts/custom/formBase.js",
+    "inputFile": "Scripts/custom/formBase.coffee"
+  },
+  {
+    "outputFile": "Scripts/custom/logincoffee.js",
+    "inputFile": "Scripts/custom/logincoffee.coffee"
+  },
+  {
+    "outputFile": "Scripts/custom/offlineDeposit.js",
+    "inputFile": "Scripts/custom/offlineDeposit.coffee"
+  },
+  {
+    "outputFile": "Scripts/custom/offlineDepositCashier.js",
+    "inputFile": "Scripts/custom/offlineDepositCashier.coffee"
+  },
+  {
+    "outputFile": "Scripts/custom/offlineDepositConfirmation.js",
+    "inputFile": "Scripts/custom/offlineDepositConfirmation.coffee"
+  },
+  {
+    "outputFile": "Scripts/custom/onlineDeposit.js",
+    "inputFile": "Scripts/custom/onlineDeposit.coffee"
+  },
+  {
+    "outputFile": "Scripts/custom/referAFriend.js",
+    "inputFile": "Scripts/custom/referAFriend.coffee"
+  },
+  {
+    "outputFile": "Scripts/custom/register.js",
+    "inputFile": "Scripts/custom/register.coffee"
+  },
+  {
+    "outputFile": "Scripts/custom/register2.js",
+    "inputFile": "Scripts/custom/register2.coffee"
+  },
+  {
+    "outputFile": "Scripts/custom/register3.js",
+    "inputFile": "Scripts/custom/register3.coffee"
+  },
+  {
+    "outputFile": "Scripts/custom/withdrawal.js",
+    "inputFile": "Scripts/custom/withdrawal.coffee"
+  },
+  {
+    "outputFile": "Scripts/custom/withdrawalhistory.js",
+    "inputFile": "Scripts/custom/withdrawalhistory.coffee"
+  },
+  {
+    "outputFile": "Scripts/custom/onlineDepositCashier.js",
+    "inputFile": "Scripts/custom/onlineDepositCashier.coffee"
+  },
+  {
+    "outputFile": "Content/ui/v2.css",
+    "inputFile": "Content/ui/v2.scss"
+  },
+  {
+    "outputFile": "Scripts/custom/balanceView.js",
+    "inputFile": "Scripts/custom/balanceView.coffee"
+  },
+  {
+    "outputFile": "Scripts/custom/currencyUtils.js",
+    "inputFile": "Scripts/custom/currencyUtils.coffee"
+  },
+  {
+    "outputFile": "Scripts/custom/claimBonus.js",
+    "inputFile": "Scripts/custom/claimBonus.coffee"
+  }
+]

@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:400,300,700');
+@import "mixin";
+
+$gold: #ffe39e;
+$goldLighter: #ffe39e;
+
+html, body {
+  min-height: 100%;
+}
+
+body {
+    background: #000 url(../images/bg.jpg) repeat-x;
+    background-position: bottom;
+    font-family: 'Lato', Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+
+    ul, ol {
+        list-style: none;
+        padding-left: 0;
+        margin-top: 0;
+        margin-bottom: 10.5px;
+    }
+
+    h1, h2, h3, h4, h5 {
+        color: $gold;
+    }
+
+    input[type="text"], input[type="password"], select {
+        height: 45px;
+    }
+
+    a {
+        color: #fff;
+        &:hover {
+            color: $gold;
+            text-decoration: none;
+        }
+    }
+
+    p {
+        margin: 0 0 10.5px;
+    }
+
+    .btn {
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: bold;
+        cursor: pointer;
+        
+        height: 44px;
+        font-size: 16px;
+
+        background-color: transparent;
+        color: $gold;
+        border: 1px solid $gold;
+        border-radius: inherit;
+
+        white-space: nowrap;
+        padding: 6px 25px !important;
+        line-height: 30px;
+
+        &:hover {
+            background-color: $gold;
+            color: #000;
+        }
+    }
+
+    .container {
+        margin: 0 auto;
+        padding: 0 15px;
+        min-width: 950px;
+        max-width: none !important;
+    }
+}
+
+/* HEADER */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    height: 70px;
+    width: 100%;
+
+    z-index: 2;
+    padding: 0;
+    border-bottom: 1px solid #373b3e;
+    
+    @include transparent-background();
+
+    ul {
+        li {
+            float: left;
+            display: block;
+            margin-right: 15px;
+        }
+    }
+
+    .header-left a {
+        margin-top: 10px;
+        display: block;
+    }
+
+    a.join-now {
+        width: 198px;
+        background: $gold 40px center url(../images/joinnow.png) no-repeat;
+        padding-left: 75px !important;
+        color: #000;
+        height: 44px;
+        text-align: left;
+        &:hover {
+            background-color: #fff0ca;
+        }
+    }
+
+    nav {
+        a:not(.btn) {
+            display: block;
+            line-height: 66px;
+            height: 66px;
+            font-size: 20px;
+            padding-left: 54px;
+        }
+    }
+}
+/* HEADER */
+
+/* FOOTER */
+.site-footer {
+    border-top: 1px solid #373b3e;
+    color: #777;
+    padding: 20px 0 50px 0;
+
+    .row {
+        margin-bottom: 20px;
+    }
+
+    .menu {
+        h3 {
+            border-bottom: 1px solid #373b3e;
+            text-transform: uppercase;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 30px;
+            padding-bottom: 20px;
+        }
+
+        ul {
+            li {
+                margin-bottom: 10px;
+                a {
+                    font-weight: 200;
+                }
+            }
+        }
+    }
+
+    p {
+        font-size: 12px;
+        margin: 0.5em;
+        line-height: 1.2;
+    }
+
+    .logo {
+        display: block;
+        height: auto;
+        width: 88px;
+        margin: 0 auto;
+        margin-top: 30px;
+    }
+}
+/* FOOTER */
+
+/* SUPPORT */
+#support {
+    position: fixed;
+    top: 130px;
+    right: 0;
+    border-top: 2px solid $gold;
+    border-bottom: 2px solid $gold;
+    border-left: 2px solid $gold;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    height: 100px;
+    width: 100px;
+    text-align: center;
+    text-transform: uppercase;
+    z-index: 2;
+    @include transparent-background();
+
+    img {
+        margin: 10px 0;
+        width: 40px;
+    }
+    p {
+        font-size: 18px;
+        color: $gold;
+        line-height: 16px;
+
+        strong {
+            font-size: 14px;
+        }
+    }
+}
+/* SUPPORT */
