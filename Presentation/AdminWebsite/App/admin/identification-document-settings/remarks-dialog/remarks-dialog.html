@@ -1,0 +1,22 @@
+﻿<div class="modal-content">
+    <div class="modal-header">
+        <h3>Identity Document Settings</h3>
+    </div>
+    <div class="modal-body">
+        <form class="form-horizontal" data-bind="validationOptions: { insertMessages: false }">
+            <div class="form-group">
+                <label class="col-sm-3 control-label">
+                    <span data-i18n="common.remarks"></span>
+                </label>
+                <div class="col-sm-8">
+                    <textarea disabled="disabled" data-bind="value: remarks" />
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <div class="center">
+            <button class="btn btn-default btn-round" data-bind="click: cancel" data-i18n="common.close"></button>
+        </div>
+    </div>
+</div>

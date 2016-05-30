@@ -1,0 +1,28 @@
+<div class="form-group">
+    <label class="col-sm-3 control-label">
+        <span data-i18n="common.email"></span>
+    </label>
+    <div data-bind="multiSelect:{
+        allItems: triggers,
+        optionsText: 'Name',
+        optionsValue: 'Id',
+        selected:{
+            labelText: 'bonus.templateFields.selectedTriggers',
+            items: EmailTriggers},
+        availableLabelText: 'bonus.templateFields.availableTriggers'}">
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-sm-3 control-label">
+        <span data-i18n="common.sms"></span>
+    </label>
+    <div data-bind="multiSelect:{
+        allItems: triggers,
+        optionsText: 'Name',
+        optionsValue: 'Id',
+        selected:{
+            labelText: 'bonus.templateFields.selectedTriggers',
+            items: SmsTriggers},
+        availableLabelText: 'bonus.templateFields.availableTriggers'}">
+    </div>
+</div>

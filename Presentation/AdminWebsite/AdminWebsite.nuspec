@@ -1,0 +1,30 @@
+﻿<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <copyright>Copyright AFT 2016</copyright>
+    <tags>Admin Website</tags>
+  </metadata>
+  <files>
+      <file src="App\**\*.*" target="Content\App" />
+      <file src="bin\**\*.dll" target="Content\bin" />
+      <file src="bin\**\*.xml" target="Content\bin" />
+      <file src="bin\**\*.config" target="Content\bin" />
+      <file src="bin\**\*.exe" target="Content\bin" />
+      <file src="bin\**\*.targets" target="Content\bin" />
+      <file src="bin\**\*.resx" target="Content\bin" />
+      <file src="bin\**\*.cs" target="Content\bin" />
+      <file src="Content\**\*.*" target="Content\Content" />
+      <file src="Scripts\**\*.*" target="Content\Scripts" />
+      <file src="Uploads\**\*.*" target="Content\Uploads" />
+      <file src="Views\**\*.*" target="Content\Views" />
+      <file src="Global.asax" target="Content\Global.asax" />
+      <file src="Web.config" target="Content\_temp.Web.config" />
+  </files>
+</package>

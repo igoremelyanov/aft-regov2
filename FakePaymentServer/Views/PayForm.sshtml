@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>OnlineDeposit</title>
+</head>
+<body>
+   <form action="" method="POST" id="payForm" name="payForm">
+   <div>Method:<input type="text" name="Method" value="@Model.Method"/></div>
+   <div>Channel:<input type="text" name="Channel" value="@Model.Channel"/></div>
+   <div>MerchantId:<input type="text" name="MerchantId" value="@Model.MerchantId"/></div>
+   <div>OrderId:<input type="text" name="OrderId" value="@Model.OrderId"/></div>
+   <div>Amount:<input type="text" name="Amount" value="@Model.Amount"/></div>
+   <div>Currency:<input type="text" name="Currency" value="@Model.Currency"/></div>
+   <div>Language:<input type="text" name="Language" value="@Model.Language"/></div>
+   <div>ReturnUrl:<input type="text" name="ReturnUrl" value="@Model.ReturnUrl"/></div>
+   <div>NotifyUrl:<input type="text" name="NotifyUrl" value="@Model.NotifyUrl"/></div>
+   <div>UserIp:<input type="text" name="UserIp" value="@Model.UserIp"/></div>
+   <div>BankId:<input type="text" name="BankId" value="@Model.BankId"/></div>
+   <div>Signature:<input type="text" name="Signature" value="@Model.Signature"/></div>   
+   <input type="submit" value="Notify and Redirect" onclick="document.payForm.action='/payment/notify/1';" >
+   <input type="submit" value="Notify Only" onclick="document.payForm.action='/payment/notify/2';" >
+   <input type="button" value="Cancel" onclick="window.close();">
+   </form>
+   <script>
+	var msg='@Model.Message';
+	if(msg!='')
+	{
+		alert(msg);
+	}
+   </script>
+</body>
+</html>

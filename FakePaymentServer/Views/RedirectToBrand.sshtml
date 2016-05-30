@@ -1,0 +1,16 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>OnlineDeposit</title>
+</head>
+<body onload="document.postForm.submit()">
+   <form action="@Model.Action" method="POST" name="postForm">
+   <input type="hidden" name="OrderIdOfMerchant" value="@Model.OrderIdOfMerchant"/>
+   <input type="hidden" name="OrderIdOfRouter" value="@Model.OrderIdOfRouter"/>
+   <input type="hidden" name="OrderIdOfGateway" value="@Model.OrderIdOfGateway"/>
+   <input type="hidden" name="Language" value="@Model.Language"/>
+   <input type="hidden" name="PayMethod" value="@Model.PayMethod"/>
+   <input type="hidden" name="Signature" value="@Model.Signature"/>
+   </form>
+</body>
+</html>

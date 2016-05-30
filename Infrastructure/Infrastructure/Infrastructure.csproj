@@ -1,0 +1,690 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{39AE091F-FC43-49BA-A605-6B79ED269DA6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AFT.RegoV2.Infrastructure</RootNamespace>
+    <AssemblyName>AFT.RegoV2.Infrastructure</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <StyleCopTreatErrorsAsWarnings>false</StyleCopTreatErrorsAsWarnings>
+    <NuGetPackageImportStamp>c0fe94b8</NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'QA|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\QA\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Label="SlowCheetah">
+    <SlowCheetahToolsPath>$([System.IO.Path]::GetFullPath( $(MSBuildProjectDirectory)\..\..\packages\SlowCheetah.2.5.14\tools\))</SlowCheetahToolsPath>
+    <SlowCheetah_EnableImportFromNuGet Condition=" '$(SlowCheetah_EnableImportFromNuGet)'=='' ">true</SlowCheetah_EnableImportFromNuGet>
+    <SlowCheetah_NuGetImportPath Condition=" '$(SlowCheetah_NuGetImportPath)'=='' ">$([System.IO.Path]::GetFullPath( $(MSBuildProjectDirectory)\Properties\SlowCheetah\SlowCheetah.Transforms.targets ))</SlowCheetah_NuGetImportPath>
+    <SlowCheetahTargets Condition=" '$(SlowCheetah_EnableImportFromNuGet)'=='true' and Exists('$(SlowCheetah_NuGetImportPath)') ">$(SlowCheetah_NuGetImportPath)</SlowCheetahTargets>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AFT.UGS.Core.BaseModels, Version=2.0.14.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AFT.UGS.Core.BaseModels.2.0.14\lib\net45\AFT.UGS.Core.BaseModels.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AFT.UGS.Core.BrandClient, Version=2.0.14.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AFT.UGS.Core.BrandClient.2.0.14\lib\net45\AFT.UGS.Core.BrandClient.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AFT.UGS.Core.Messages, Version=2.0.14.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AFT.UGS.Core.Messages.2.0.14\lib\net45\AFT.UGS.Core.Messages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AFT.UGS.Core.ProductConsumerClient, Version=2.0.14.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AFT.UGS.Core.ProductConsumerClient.2.0.14\lib\net45\AFT.UGS.Core.ProductConsumerClient.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AFT.UGS.Core.TokenData, Version=2.0.14.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AFT.UGS.Core.TokenData.2.0.14\lib\net45\AFT.UGS.Core.TokenData.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AutoMapper, Version=4.0.4.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AutoMapper.4.0.4\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Common.Logging.Core">
+      <HintPath>..\..\packages\Common.Logging.Core.2.2.0\lib\net40\Common.Logging.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.Core, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\DotNetOpenAuth.Core.4.3.4.13329\lib\net45-full\DotNetOpenAuth.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth.Common, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\DotNetOpenAuth.OAuth.Common.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OAuth.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth2, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\DotNetOpenAuth.OAuth2.Core.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OAuth2.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth2.AuthorizationServer, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\DotNetOpenAuth.OAuth2.AuthorizationServer.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OAuth2.AuthorizationServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth2.ClientAuthorization, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\DotNetOpenAuth.OAuth2.ClientAuthorization.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OAuth2.ClientAuthorization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth2.ResourceServer, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\DotNetOpenAuth.OAuth2.ResourceServer.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OAuth2.ResourceServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EFCache">
+      <HintPath>..\..\packages\EntityFramework.Cache.1.0.0\lib\net45\EFCache.dll</HintPath>
+    </Reference>
+    <Reference Include="EFCache.Redis">
+      <HintPath>..\..\packages\EFCache.Redis.2015.4.9.1\lib\net45\EFCache.Redis.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Elmah, Version=1.2.14706.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FluentValidation, Version=6.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FluentValidation.6.2.1.0\lib\Net45\FluentValidation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="LukeSkywalker.IPNetwork">
+      <HintPath>..\..\packages\IPNetwork.1.3.1.0\lib\LukeSkywalker.IPNetwork.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>..\..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration">
+      <HintPath>..\..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Unity.Interception.3.5.1404.0\lib\Net45\Microsoft.Practices.Unity.Interception.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception.Configuration">
+      <HintPath>..\..\packages\Unity.Interception.3.5.1404.0\lib\Net45\Microsoft.Practices.Unity.Interception.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention">
+      <HintPath>..\..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\RestSharp.105.2.3\lib\net451\RestSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ServiceStack">
+      <HintPath>..\..\packages\ServiceStack.3.9.71\lib\net35\ServiceStack.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Common">
+      <HintPath>..\..\packages\ServiceStack.Common.3.9.71\lib\net35\ServiceStack.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Interfaces">
+      <HintPath>..\..\packages\ServiceStack.Common.3.9.71\lib\net35\ServiceStack.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.OrmLite">
+      <HintPath>..\..\packages\ServiceStack.OrmLite.SqlServer.3.9.71\lib\net35\ServiceStack.OrmLite.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.OrmLite.SqlServer">
+      <HintPath>..\..\packages\ServiceStack.OrmLite.SqlServer.3.9.71\lib\net35\ServiceStack.OrmLite.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Redis">
+      <HintPath>..\..\packages\ServiceStack.Redis.3.9.71\lib\net35\ServiceStack.Redis.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.ServiceInterface">
+      <HintPath>..\..\packages\ServiceStack.3.9.71\lib\net35\ServiceStack.ServiceInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Text">
+      <HintPath>..\..\packages\ServiceStack.Text.3.9.71\lib\net35\ServiceStack.Text.dll</HintPath>
+    </Reference>
+    <Reference Include="StackExchange.Redis">
+      <HintPath>..\..\packages\StackExchange.Redis.1.0.414\lib\net45\StackExchange.Redis.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=4.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Primitives.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Twilio.Api, Version=3.4.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Twilio.4.4.1\lib\3.5\Twilio.Api.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Aspects\Base\FilterAspectBase.cs" />
+    <Compile Include="Aspects\Base\IFilter.cs" />
+    <Compile Include="Aspects\Brand\BrandCheckAspect.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Aspects\Brand\BrandFilterAspect.cs" />
+    <Compile Include="Attributes\EnsureSimpleXmlSerializationAttribute.cs" />
+    <Compile Include="Attributes\ForceJsonFormatterAttribute.cs" />
+    <Compile Include="DataAccess\ApplicationSeeder.cs" />
+    <Compile Include="DataAccess\ApplicationSeeder.Brands.cs" />
+    <Compile Include="DataAccess\ApplicationSeeder.Payments.cs" />
+    <Compile Include="DataAccess\ApplicationSeeder.Games.cs" />
+    <Compile Include="DataAccess\Auth\AuthRepository.cs" />
+    <Compile Include="DataAccess\Auth\Migrations\201603291609481_InitialCreate.cs" />
+    <Compile Include="DataAccess\Auth\Migrations\201603291609481_InitialCreate.Designer.cs">
+      <DependentUpon>201603291609481_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\Auth\Migrations\Configuration.cs" />
+    <Compile Include="DataAccess\Base\IRepositoryBase.cs" />
+    <Compile Include="DataAccess\Base\RepositoryBase.cs" />
+    <Compile Include="DataAccess\Brand\Mappings\RiskLevelMap.cs" />
+    <Compile Include="DataAccess\Brand\Mappings\BrandCountryMap.cs" />
+    <Compile Include="DataAccess\Brand\Mappings\BrandCurrencyMap.cs" />
+    <Compile Include="DataAccess\Brand\Mappings\BrandCultureMap.cs" />
+    <Compile Include="DataAccess\Brand\Mappings\ContentTranslationMap.cs" />
+    <Compile Include="DataAccess\Brand\Mappings\WalletTemplateProductMap.cs" />
+    <Compile Include="DataAccess\Brand\Migrations\201603301201165_InitialCreate.cs" />
+    <Compile Include="DataAccess\Brand\Migrations\201603301201165_InitialCreate.Designer.cs">
+      <DependentUpon>201603301201165_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\Documents\Migrations\201603291128469_InitialCreate.cs" />
+    <Compile Include="DataAccess\Documents\Migrations\201603291128469_InitialCreate.Designer.cs">
+      <DependentUpon>201603291128469_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\Fraud\Migrations\201603291615402_InitialCreate.cs" />
+    <Compile Include="DataAccess\Fraud\Migrations\201603291615402_InitialCreate.Designer.cs">
+      <DependentUpon>201603291615402_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\Game\Mappings\VipLevelBetLimitGroupMap.cs" />
+    <Compile Include="DataAccess\Game\Mappings\GameGroupGameMap.cs" />
+    <Compile Include="DataAccess\Game\Mappings\BrandLobbyMap.cs" />
+    <Compile Include="DataAccess\Game\Migrations\201604201900582_InitialCreate.cs" />
+    <Compile Include="DataAccess\Game\Migrations\201604201900582_InitialCreate.Designer.cs">
+      <DependentUpon>201604201900582_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\Messaging\Mappings\MassMessageContentMap.cs" />
+    <Compile Include="DataAccess\Messaging\Mappings\MassMessageMap.cs" />
+    <Compile Include="DataAccess\Messaging\Mappings\VipLevelMap.cs" />
+    <Compile Include="DataAccess\Messaging\Mappings\PaymentLevelMap.cs" />
+    <Compile Include="DataAccess\Messaging\Mappings\PlayerMap.cs" />
+    <Compile Include="DataAccess\Messaging\Mappings\BrandMap.cs" />
+    <Compile Include="DataAccess\Messaging\Mappings\CultureMap.cs" />
+    <Compile Include="DataAccess\Documents\Migrations\Configuration.cs" />
+    <Compile Include="DataAccess\Documents\DocumentsRepository.cs" />
+    <Compile Include="DataAccess\Documents\DocumentsRepositoryInitializer.cs" />
+    <Compile Include="DataAccess\Brand\Mappings\BrandProductMap.cs" />
+    <Compile Include="Constants\IpRegulationConstants.cs" />
+    <Compile Include="DataAccess\Brand\BrandRepositoryInitializer.cs" />
+    <Compile Include="DataAccess\Brand\BrandRepository.cs" />
+    <Compile Include="DataAccess\Brand\Mappings\ContractMap.cs" />
+    <Compile Include="DataAccess\Brand\Mappings\LicenseeProductMap.cs" />
+    <Compile Include="DataAccess\Brand\Mappings\VipLevelGameProviderBetLimitMap.cs" />
+    <Compile Include="DataAccess\Brand\Mappings\VipLevelMap.cs" />
+    <Compile Include="DataAccess\Brand\Mappings\LicenseeMap.cs" />
+    <Compile Include="DataAccess\Brand\Migrations\Configuration.cs" />
+    <Compile Include="DataAccess\Event\Migrations\201510291455203_InitialCreate.cs" />
+    <Compile Include="DataAccess\Event\Migrations\201510291455203_InitialCreate.Designer.cs">
+      <DependentUpon>201510291455203_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\Fraud\FraudRepository.cs" />
+    <Compile Include="DataAccess\Fraud\FraudRepositoryRepositoryInitializer.cs" />
+    <Compile Include="DataAccess\Fraud\Mappings\AutoVerificationCheckConfigurationMap.cs" />
+    <Compile Include="DataAccess\Fraud\Mappings\MatchingCriteriaMap.cs" />
+    <Compile Include="DataAccess\Fraud\Mappings\MatchingResultMap.cs" />
+    <Compile Include="DataAccess\Fraud\Mappings\DuplicateMechanismMap.cs" />
+    <Compile Include="DataAccess\Fraud\Mappings\PaymentMethodMap.cs" />
+    <Compile Include="DataAccess\Fraud\Mappings\PlayerMap.cs" />
+    <Compile Include="DataAccess\Fraud\Mappings\RiskProfileConfigurationMap.cs" />
+    <Compile Include="DataAccess\Fraud\Mappings\BrandMap.cs" />
+    <Compile Include="DataAccess\Fraud\Mappings\PaymentLevelMap.cs" />
+    <Compile Include="DataAccess\Fraud\Mappings\PlayerRiskLevelMap.cs" />
+    <Compile Include="DataAccess\Fraud\Mappings\BonusMap.cs" />
+    <Compile Include="DataAccess\Fraud\Mappings\SignUpFraudTypeMap.cs" />
+    <Compile Include="DataAccess\Fraud\Mappings\VipLevelMap.cs" />
+    <Compile Include="DataAccess\Fraud\Mappings\WinningRuleMap.cs" />
+    <Compile Include="DataAccess\Fraud\Mappings\RiskLevelMap.cs" />
+    <Compile Include="DataAccess\Fraud\Mappings\WagerConfigurationMap.cs" />
+    <Compile Include="DataAccess\Fraud\Mappings\WithdrawalVerificationLogMap.cs" />
+    <Compile Include="DataAccess\Fraud\Migrations\Configuration.cs" />
+    <Compile Include="DataAccess\Game\GameRepositoryInitializer.cs" />
+    <Compile Include="DataAccess\Game\GameRepository.cs" />
+    <Compile Include="DataAccess\Game\Mappings\BetLimitMap.cs" />
+    <Compile Include="DataAccess\Game\Mappings\BrandGameProviderConfigurationMap.cs" />
+    <Compile Include="DataAccess\Game\Mappings\BrandMap.cs" />
+    <Compile Include="DataAccess\Game\Mappings\GameActionMap.cs" />
+    <Compile Include="DataAccess\Game\Mappings\GameProviderConfigurationsMap.cs" />
+    <Compile Include="DataAccess\Game\Mappings\GameProviderMap.cs" />
+    <Compile Include="DataAccess\Game\Mappings\PlayerMap.cs" />
+    <Compile Include="DataAccess\Game\Mappings\RoundMap.cs" />
+    <Compile Include="DataAccess\Game\Migrations\Configuration.cs" />
+    <Compile Include="DataAccess\Messaging\Mappings\MessageTemplateMap.cs" />
+    <Compile Include="DataAccess\Messaging\MessagingRepository.cs" />
+    <Compile Include="DataAccess\Messaging\MessagingRepositoryInitializer.cs" />
+    <Compile Include="DataAccess\Messaging\Migrations\201603301138450_InitialCreate.cs" />
+    <Compile Include="DataAccess\Messaging\Migrations\201603301138450_InitialCreate.Designer.cs">
+      <DependentUpon>201603301138450_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\Messaging\Migrations\201603312145470_AddTemplateRemarks.cs" />
+    <Compile Include="DataAccess\Messaging\Migrations\201603312145470_AddTemplateRemarks.Designer.cs">
+      <DependentUpon>201603312145470_AddTemplateRemarks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\Messaging\Migrations\201604052046109_Add_TimeZoneId_To_Brand.cs" />
+    <Compile Include="DataAccess\Messaging\Migrations\201604052046109_Add_TimeZoneId_To_Brand.Designer.cs">
+      <DependentUpon>201604052046109_Add_TimeZoneId_To_Brand.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\Messaging\Migrations\Configuration.cs" />
+    <Compile Include="DataAccess\Payment\Mappings\BankAccountTypeMap.cs" />
+    <Compile Include="DataAccess\Payment\Mappings\BankMap.cs" />
+    <Compile Include="DataAccess\Payment\Mappings\BrandCurrencyMap.cs" />
+    <Compile Include="DataAccess\Payment\Mappings\BrandMap.cs" />
+    <Compile Include="DataAccess\Payment\Mappings\CurrencyExchangeMap.cs" />
+    <Compile Include="DataAccess\Payment\Mappings\CountryMap.cs" />
+    <Compile Include="DataAccess\Payment\Mappings\CurrencyMap.cs" />
+    <Compile Include="DataAccess\Payment\Mappings\DepositMap.cs" />
+    <Compile Include="DataAccess\Payment\Mappings\LicenseeMap.cs" />
+    <Compile Include="DataAccess\Payment\Mappings\OnlineDepositMap.cs" />
+    <Compile Include="DataAccess\Payment\Mappings\OfflineWithdrawalHistoryMap.cs" />
+    <Compile Include="DataAccess\Payment\Mappings\OfflineWithdrawMap.cs" />
+    <Compile Include="DataAccess\Payment\Mappings\OfflineDepositMap.cs" />
+    <Compile Include="DataAccess\Payment\Mappings\PaymentGatewaySettingsMap.cs" />
+    <Compile Include="DataAccess\Payment\Mappings\PaymentSettingsMap.cs" />
+    <Compile Include="DataAccess\Payment\Mappings\PlayerBankAccountMap.cs" />
+    <Compile Include="DataAccess\Payment\Mappings\PlayerPaymentLevelMap.cs" />
+    <Compile Include="DataAccess\Payment\Mappings\PlayerMap.cs" />
+    <Compile Include="DataAccess\Payment\Mappings\TransferFundMap.cs" />
+    <Compile Include="DataAccess\Payment\Mappings\TransferSettingsMap.cs" />
+    <Compile Include="DataAccess\Payment\Mappings\VipLevelMap.cs" />
+    <Compile Include="DataAccess\Payment\Mappings\WithdrawalLockMap.cs" />
+    <Compile Include="DataAccess\Payment\Migrations\201603301143074_InitialCreate.cs" />
+    <Compile Include="DataAccess\Payment\Migrations\201603301143074_InitialCreate.Designer.cs">
+      <DependentUpon>201603301143074_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\Payment\Migrations\201603310428482_ModifyPlayer_TimeOutSelfExcluded.cs" />
+    <Compile Include="DataAccess\Payment\Migrations\201603310428482_ModifyPlayer_TimeOutSelfExcluded.Designer.cs">
+      <DependentUpon>201603310428482_ModifyPlayer_TimeOutSelfExcluded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\Payment\Migrations\201604052322406_IncreaseBankAccountNumberLength.cs" />
+    <Compile Include="DataAccess\Payment\Migrations\201604052322406_IncreaseBankAccountNumberLength.Designer.cs">
+      <DependentUpon>201604052322406_IncreaseBankAccountNumberLength.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\Payment\Migrations\201604091054187_Unverified.cs" />
+    <Compile Include="DataAccess\Payment\Migrations\201604091054187_Unverified.Designer.cs">
+      <DependentUpon>201604091054187_Unverified.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\Payment\Migrations\201604161854032_AddUnverifyDepositField.cs" />
+    <Compile Include="DataAccess\Payment\Migrations\201604161854032_AddUnverifyDepositField.Designer.cs">
+      <DependentUpon>201604161854032_AddUnverifyDepositField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\Payment\Migrations\Configuration.cs" />
+    <Compile Include="DataAccess\Payment\PaymentRepository.cs" />
+    <Compile Include="DataAccess\Payment\PaymentRepositoryInitializer.cs" />
+    <Compile Include="DataAccess\Payment\Mappings\PaymentLevelMap.cs" />
+    <Compile Include="DataAccess\Player\Mappings\BankAccountMap.cs" />
+    <Compile Include="DataAccess\Player\Mappings\OnSiteMessageMap.cs" />
+    <Compile Include="DataAccess\Player\Mappings\PlayerBetStatisticsMap.cs" />
+    <Compile Include="DataAccess\Player\Mappings\IdentityVerificationMap.cs" />
+    <Compile Include="DataAccess\Player\Mappings\IdentificationDocumentSettingsMap.cs" />
+    <Compile Include="DataAccess\Player\Migrations\201604131848103_InitialCreate.cs" />
+    <Compile Include="DataAccess\Player\Migrations\201604131848103_InitialCreate.Designer.cs">
+      <DependentUpon>201604131848103_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\Player\PlayerRepository.cs" />
+    <Compile Include="DataAccess\Player\PlayerRepositoryInitializer.cs" />
+    <Compile Include="DataAccess\Payment\Mappings\BankAccountMap.cs" />
+    <Compile Include="DataAccess\Brand\Mappings\BrandMap.cs" />
+    <Compile Include="DataAccess\Brand\Mappings\CountryMap.cs" />
+    <Compile Include="DataAccess\Brand\Mappings\CultureCodeMap.cs" />
+    <Compile Include="DataAccess\Brand\Mappings\CurrencyMap.cs" />
+    <Compile Include="DataAccess\Player\Mappings\PlayerMap.cs" />
+    <Compile Include="DataAccess\Player\Migrations\Configuration.cs" />
+    <Compile Include="DataAccess\Event\Migrations\Configuration.cs" />
+    <Compile Include="DataAccess\Event\EventRepository.cs" />
+    <Compile Include="DataAccess\Report\Migrations\201603300909585_InitialCreate.cs" />
+    <Compile Include="DataAccess\Report\Migrations\201603300909585_InitialCreate.Designer.cs">
+      <DependentUpon>201603300909585_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\Security\Mappings\BrandMap.cs" />
+    <Compile Include="DataAccess\Security\Mappings\LicenseeFilterSelectionMap.cs" />
+    <Compile Include="DataAccess\Security\Mappings\BrandFilterSelectionMap.cs" />
+    <Compile Include="DataAccess\Security\Mappings\CurrencyCodeMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataAccess\Report\ReportRepository.cs" />
+    <Compile Include="DataAccess\Report\ReportRepositoryInitializer.cs" />
+    <Compile Include="DataAccess\Report\Migrations\Configuration.cs" />
+    <Compile Include="DataAccess\Security\Mappings\ErrorMap.cs" />
+    <Compile Include="DataAccess\Security\Mappings\RoleLicenseeIdMap.cs" />
+    <Compile Include="DataAccess\Security\Mappings\LicenseeIdMap.cs" />
+    <Compile Include="DataAccess\Game\Mappings\WalletMap.cs" />
+    <Compile Include="DataAccess\Game\Mappings\TransactionMap.cs" />
+    <Compile Include="DataAccess\Security\Migrations\201603300940502_InitialCreate.cs" />
+    <Compile Include="DataAccess\Security\Migrations\201603300940502_InitialCreate.Designer.cs">
+      <DependentUpon>201603300940502_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\Settings\Migrations\201603291011483_InitialCreate.cs" />
+    <Compile Include="DataAccess\Settings\Migrations\201603291011483_InitialCreate.Designer.cs">
+      <DependentUpon>201603291011483_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\Settings\SettingsRepository.cs" />
+    <Compile Include="DataAccess\Settings\Migrations\Configuration.cs" />
+    <Compile Include="DependencyResolution\BrandContainerFactory.cs" />
+    <Compile Include="DependencyResolution\PlayerContainerFactory.cs" />
+    <Compile Include="DependencyResolution\GameContainerFactory.cs" />
+    <Compile Include="DependencyResolution\WalletContainerFactory.cs" />
+    <Compile Include="DependencyResolution\DummyInterceptionBehavior.cs" />
+    <Compile Include="DependencyResolution\EventBusContainerFactory.cs" />
+    <Compile Include="DependencyResolution\AuthContainerFactory.cs" />
+    <Compile Include="DependencyResolution\SettingsContainerFactory.cs" />
+    <Compile Include="DependencyResolution\ServiceBusContainerFactory.cs" />
+    <Compile Include="DependencyResolution\MessagingContainerFactory.cs" />
+    <Compile Include="Extensions\CommonExtensions.cs" />
+    <Compile Include="GameIntegration\ProductApiClientFactory.cs" />
+    <Compile Include="GameIntegration\BrandApiClientFactory.cs" />
+    <Compile Include="GameIntegration\BrandOperations.cs" />
+    <Compile Include="GameIntegration\IProductApiClientFactory.cs" />
+    <Compile Include="GameIntegration\IBrandApiClientFactory.cs" />
+    <Compile Include="GameIntegration\ProductOperations.cs" />
+    <Compile Include="Helpers\EnumExtensionMethods.cs" />
+    <Compile Include="Providers\ClaimsIdentityProvider.cs" />
+    <Compile Include="DataAccess\Brand\Mappings\WalletTemplateMap.cs" />
+    <Compile Include="DependencyResolution\ApplicationContainerFactory.cs" />
+    <Compile Include="DataAccess\Security\Mappings\BrandIdMap.cs" />
+    <Compile Include="DataAccess\Security\Mappings\RoleMap.cs" />
+    <Compile Include="DataAccess\Security\Mappings\AdminMap.cs" />
+    <Compile Include="DataAccess\Security\Migrations\Configuration.cs" />
+    <Compile Include="DataAccess\Security\SecurityRepository.cs" />
+    <Compile Include="Mail\EmailNotifier.cs" />
+    <Compile Include="OAuth2\CryptoKeyPair.cs" />
+    <Compile Include="OAuth2\CryptoKeyStore.cs" />
+    <Compile Include="OAuth2\ICryptoKeyPair.cs" />
+    <Compile Include="OAuth2\IOAuth2ClientStore.cs" />
+    <Compile Include="OAuth2\GameApiOAuthServer.cs" />
+    <Compile Include="OAuth2\PlayerIdentity.cs" />
+    <Compile Include="OAuth2\RequestOAuth2ScopeAttribute.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\CommonSettingsProvider.cs" />
+    <Compile Include="Providers\TransactionScopeProvider.cs" />
+    <Compile Include="Sms\SmsNotifier.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Bonus\Api.Interface\Api.Interface.csproj">
+      <Project>{39D94CA9-75C0-4A6F-B5D9-25737C447269}</Project>
+      <Name>Api.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Core.Player.Interface\Core.Player.Interface.csproj">
+      <Project>{6C555240-E53D-42CD-BB59-7D29A9B31EDE}</Project>
+      <Name>Core.Player.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Core.Security.Interface\Core.Security.Interface.csproj">
+      <Project>{02c90586-e0e7-4557-a07e-66a84543d45d}</Project>
+      <Name>Core.Security.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Core.Player.Interface\Core.Player.Interface.csproj">
+      <Project>{6C555240-E53D-42CD-BB59-7D29A9B31EDE}</Project>
+      <Name>Core.Player.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Core.Settings.Interface\Core.Settings.Interface.csproj">
+      <Project>{4236345c-0e93-443c-a4ba-8d8df9c76740}</Project>
+      <Name>Core.Settings.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Core.Settings\Core.Settings.csproj">
+      <Project>{6d75aeb3-9c2d-4224-9c67-7dbc6b314f06}</Project>
+      <Name>Core.Settings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Core.Auth.Interface\Core.Auth.Interface.csproj">
+      <Project>{e7378369-7d0b-4724-aeef-9586cb54fde5}</Project>
+      <Name>Core.Auth.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Core.Auth\Core.Auth.csproj">
+      <Project>{4437cbf6-272c-41c8-b7dd-e84521498ddf}</Project>
+      <Name>Core.Auth</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Core.Brand.Interface\Core.Brand.Interface.csproj">
+      <Project>{12EBE87C-D355-40EA-B7F9-87B8460B74CB}</Project>
+      <Name>Core.Brand.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Core.Games\Core.Game.csproj">
+      <Project>{bfebc671-1c27-40e8-bb98-c5b23919fcc7}</Project>
+      <Name>Core.Game</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Core.Messaging.Interface\Core.Messaging.Interface.csproj">
+      <Project>{44911B69-EC90-4ED2-A777-3B9D7CADA79B}</Project>
+      <Name>Core.Messaging.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Core.Messaging\Core.Messaging.csproj">
+      <Project>{FB049381-7815-4533-BCAE-3077D86722B0}</Project>
+      <Name>Core.Messaging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Core.Bonus\Core.csproj">
+      <Project>{E7A571BC-3924-4BE5-8B56-BB8574B30CE9}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Core.Brand\Core.Brand.csproj">
+      <Project>{D519BE95-FEE1-42D1-A60E-A3C008E1F8AA}</Project>
+      <Name>Core.Brand</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Core.Fraud.Interface\Core.Fraud.Interface.csproj">
+      <Project>{f57f0bff-fa0a-467f-859e-281558eb53a5}</Project>
+      <Name>Core.Fraud.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Core.Fraud\Core.Fraud.csproj">
+      <Project>{A9C80924-5E70-4A3D-A9C3-DDF70681E76D}</Project>
+      <Name>Core.Fraud</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Core.Game.Interface\Core.Game.Interface.csproj">
+      <Project>{5DA8B439-142A-4409-AEA6-52B3ACECB6E5}</Project>
+      <Name>Core.Game.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Core.Payment.Interface\Core.Payment.Interface.csproj">
+      <Project>{ff8b0e71-6cb0-4177-9e69-9fccd9c10d41}</Project>
+      <Name>Core.Payment.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Core.Payment\Core.Payment.csproj">
+      <Project>{DBB83446-3C9E-4F1D-AC1C-2C88053BFDDD}</Project>
+      <Name>Core.Payment</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Core.Player\Core.Player.csproj">
+      <Project>{18B71681-F11B-4F62-A4E9-A388FCC9A4B7}</Project>
+      <Name>Core.Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Core.Report\Core.Report.csproj">
+      <Project>{72CAA794-0117-495A-9F88-D2EFDD81FA95}</Project>
+      <Name>Core.Report</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Core.Security\Core.Security.csproj">
+      <Project>{C26F378C-8F63-49B5-BBED-3031071C300A}</Project>
+      <Name>Core.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Core.Common\Core.Common.csproj">
+      <Project>{E60E73C7-09B9-45B2-950F-547350CFBE93}</Project>
+      <Name>Core.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\RegoBus\RegoBus.csproj">
+      <Project>{8016f5e0-9689-4a7c-93f1-ddb5382e6e12}</Project>
+      <Name>RegoBus</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Shared\Shared.csproj">
+      <Project>{3d268eba-3ef8-429b-90c7-ae35ce762fc8}</Project>
+      <Name>Shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Shared\Shared.csproj">
+      <Project>{3d268eba-3ef8-429b-90c7-ae35ce762fc8}</Project>
+      <Name>Shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bonus.Infrastructure\Infrastructure.csproj">
+      <Project>{E1810152-6118-4B33-B5CB-4A2618C0EDF9}</Project>
+      <Name>Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebServices\AdminApi.Interface\AdminApi.Interface.csproj">
+      <Project>{B6761F22-B7EE-4818-AF44-181DB6E3A703}</Project>
+      <Name>AdminApi.Interface</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <TransformOnBuild>true</TransformOnBuild>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="App.Debug.config">
+      <DependentUpon>App.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="App.QA.config">
+      <DependentUpon>App.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="App.Release.config">
+      <DependentUpon>App.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <Compile Include="DataAccess\ApplicationSeeder.Roles.cs" />
+    <None Include="DataAccess\SessionStorage\readme.md" />
+    <None Include="packages.config" />
+    <None Include="Properties\SlowCheetah\SlowCheetah.Transforms.targets" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Readme\Elmah.txt" />
+    <EmbeddedResource Include="DataAccess\Auth\Migrations\201603291609481_InitialCreate.resx">
+      <DependentUpon>201603291609481_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataAccess\Brand\Migrations\201603301201165_InitialCreate.resx">
+      <DependentUpon>201603301201165_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataAccess\Documents\Migrations\201603291128469_InitialCreate.resx">
+      <DependentUpon>201603291128469_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataAccess\Fraud\Migrations\201603291615402_InitialCreate.resx">
+      <DependentUpon>201603291615402_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataAccess\Game\Migrations\201604201900582_InitialCreate.resx">
+      <DependentUpon>201604201900582_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataAccess\Messaging\Migrations\201603301138450_InitialCreate.resx">
+      <DependentUpon>201603301138450_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataAccess\Messaging\Migrations\201603312145470_AddTemplateRemarks.resx">
+      <DependentUpon>201603312145470_AddTemplateRemarks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataAccess\Messaging\Migrations\201604052046109_Add_TimeZoneId_To_Brand.resx">
+      <DependentUpon>201604052046109_Add_TimeZoneId_To_Brand.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataAccess\Payment\Migrations\201603301143074_InitialCreate.resx">
+      <DependentUpon>201603301143074_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataAccess\Payment\Migrations\201603310428482_ModifyPlayer_TimeOutSelfExcluded.resx">
+      <DependentUpon>201603310428482_ModifyPlayer_TimeOutSelfExcluded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataAccess\Payment\Migrations\201604052322406_IncreaseBankAccountNumberLength.resx">
+      <DependentUpon>201604052322406_IncreaseBankAccountNumberLength.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataAccess\Payment\Migrations\201604091054187_Unverified.resx">
+      <DependentUpon>201604091054187_Unverified.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataAccess\Payment\Migrations\201604161854032_AddUnverifyDepositField.resx">
+      <DependentUpon>201604161854032_AddUnverifyDepositField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataAccess\Player\Migrations\201604131848103_InitialCreate.resx">
+      <DependentUpon>201604131848103_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataAccess\Report\Migrations\201603300909585_InitialCreate.resx">
+      <DependentUpon>201603300909585_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataAccess\Security\Migrations\201603300940502_InitialCreate.resx">
+      <DependentUpon>201603300940502_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataAccess\SessionStorage\InitializeSQLServerSessionStore.sql" />
+    <EmbeddedResource Include="DataAccess\Settings\Migrations\201603291011483_InitialCreate.resx">
+      <DependentUpon>201603291011483_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DataAccess\Event\Migrations\201510291455203_InitialCreate.resx">
+      <DependentUpon>201510291455203_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+    <Error Condition="!Exists('..\..\packages\StyleCop.MSBuild.4.7.49.0\build\StyleCop.MSBuild.Targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\StyleCop.MSBuild.4.7.49.0\build\StyleCop.MSBuild.Targets'))" />
+    <Error Condition="!Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
+  </Target>
+  <Import Project="$(SlowCheetahTargets)" Condition="Exists('$(SlowCheetahTargets)')" Label="SlowCheetah" />
+  <Import Project="..\..\packages\StyleCop.MSBuild.4.7.49.0\build\StyleCop.MSBuild.Targets" Condition="Exists('..\..\packages\StyleCop.MSBuild.4.7.49.0\build\StyleCop.MSBuild.Targets')" />
+  <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
